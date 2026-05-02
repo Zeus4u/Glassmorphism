@@ -1,0 +1,200 @@
+@import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
+
+/* =========================================
+   CYBER-GLASS PREMIER: V2 (HIGH CONTRAST & VISIBILITY)
+   ========================================= */
+
+:root {
+  /* Glassmorphism Blur & Colors */
+  --glass-blur: blur(35px) saturate(250%);
+  --accent-main: #8b5cf6; /* סגול ניאון */
+  --accent-alt: #f97316;  /* כתום אש */
+  --bg-deep: #050508;
+  
+  /* Panels - אטימות גבוהה יותר לקריאות טקסט */
+  --hb-bg: transparent;
+  --hb-panel: rgba(15, 15, 25, 0.65);
+  --hb-panel-hover: rgba(139, 92, 246, 0.25);
+  
+  /* Borders */
+  --hb-border: rgba(255, 255, 255, 0.15);
+  --hb-border-glow: rgba(139, 92, 246, 0.5);
+  
+  /* Text Colors - הבהרה משמעותית */
+  --hb-text: #f8fafc; 
+  --hb-text-strong: #ffffff;
+  --hb-muted: #e2e8f0; /* אפור בהיר מאוד לטקסטים קטנים */
+  --hb-link: #fca5a5;
+  --hb-link-hover: #fecaca;
+  
+  --hb-radius: 20px;
+  --hb-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* Background & Dynamic Lighting */
+body {
+  background: var(--bg-deep) !important;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 40%) !important;
+  background-attachment: fixed !important;
+  color: var(--hb-text) !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -10%; left: -10%;
+  width: 50%; height: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+  filter: blur(100px);
+  z-index: -1;
+  animation: pulse 10s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.5; }
+  to { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* =========================================
+   GLOBAL TEXT SHADOW FOR READABILITY
+   ========================================= */
+.box, .panel__body, td, th, a, span, p, h1, h2, h3, div, .desc, .small, label {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 1) !important;
+}
+
+/* ביטול הצללת טקסט מכפתורים ושדות טקסט כדי לשמור עליהם נקיים */
+input, button, .btn, select, textarea {
+  text-shadow: none !important;
+}
+
+/* =========================================
+   CONTENT BOXES & PANELS
+   ========================================= */
+.box, .panel__body, .torrent_table, .forum_post, .message_table {
+  background: var(--hb-panel) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important; /* השתקפות חזקה למעלה */
+  border-radius: var(--hb-radius) !important;
+  box-shadow: var(--hb-shadow) !important;
+  margin-bottom: 25px !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease !important;
+  color: var(--hb-text) !important;
+}
+
+.box:hover {
+  transform: translateY(-2px) !important;
+  border-color: var(--hb-border-glow) !important;
+}
+
+/* Headers (כותרות פאנלים) */
+.head, .colhead_dark, tr.colhead, thead th {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.3), rgba(0,0,0,0.5)) !important;
+  color: var(--hb-text-strong) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 800 !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  padding: 15px !important;
+  text-shadow: 0 2px 5px rgba(0,0,0,1) !important;
+}
+
+/* Specific Fixes for Polls and Small Texts (התאמה לתמונה) */
+.small, .desc, .forum_post .body, .poll, label, .news_post {
+  color: var(--hb-muted) !important;
+  font-weight: 600 !important;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+input[type="submit"], button, .btn {
+  background: linear-gradient(135deg, var(--accent-alt), #ea580c) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  border-radius: 50px !important;
+  padding: 10px 25px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+input[type="submit"]:hover, button:hover, .btn:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 10px 25px rgba(249, 115, 22, 0.7) !important;
+  filter: brightness(1.2) !important;
+}
+
+/* =========================================
+   HEADER & MENU NAVIGATION
+   ========================================= */
+#header, #menu {
+  background: rgba(10, 10, 15, 0.85) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+
+#menu ul > li > a {
+  font-weight: 700 !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+  color: var(--hb-text-strong) !important;
+}
+
+#menu ul > li > a:hover {
+  background: var(--hb-panel-hover) !important;
+  border-radius: 10px !important;
+  color: var(--accent-alt) !important;
+  text-shadow: 0 0 10px var(--accent-alt) !important;
+}
+
+/* =========================================
+   INPUTS & TEXTBOXES
+   ========================================= */
+input[type="text"], textarea, select, input[type="password"] {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: 12px !important;
+  color: var(--hb-text-strong) !important;
+  padding: 12px !important;
+  font-weight: 600 !important;
+}
+
+input[type="text"]:focus, textarea:focus, select:focus, input[type="password"]:focus {
+  border-color: var(--accent-main) !important;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.6) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  outline: none !important;
+}
+
+/* =========================================
+   SCROLLBAR (פס גלילה בהתאמה אישית)
+   ========================================= */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-main), var(--accent-alt));
+  border-radius: 10px;
+}
+
+/* =========================================
+   MOVIE COVERS (הקפצת התמונות של הסרטים)
+   ========================================= */
+img.banner, #covers img, .group_image img, .torrent_screenshots > img {
+  border-radius: 12px !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.9) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+img.banner:hover, #covers img:hover, .group_image img:hover {
+  transform: scale(1.05) translateY(-5px) !important;
+  box-shadow: 0 15px 30px rgba(139, 92, 246, 0.5) !important;
+  border-color: rgba(139, 92, 246, 0.8) !important;
+}
