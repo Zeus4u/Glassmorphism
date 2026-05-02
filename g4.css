@@ -1,0 +1,274 @@
+@import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
+
+/* =========================================
+   AURORA PREMIUM GLASS (Elegant & Alive)
+   ========================================= */
+
+:root {
+  /* Glassmorphism Core */
+  --glass-blur: blur(40px) saturate(180%);
+  
+  /* Deep Background */
+  --bg-deep: #03040b; /* כחול-שחור עמוק מאוד */
+  --hb-bg: transparent;
+  
+  /* Glass Panels - Neutral but highly transparent to let colors bleed through */
+  --hb-panel: rgba(20, 25, 40, 0.4);
+  --hb-panel-hover: rgba(40, 45, 65, 0.5);
+  --hb-panel-active: rgba(60, 65, 90, 0.6);
+  
+  /* Borders */
+  --hb-border: rgba(255, 255, 255, 0.1);
+  --hb-border-soft: rgba(255, 255, 255, 0.05);
+  
+  /* Typography - Maximum Readability */
+  --hb-text: #f1f5f9; 
+  --hb-text-strong: #ffffff;
+  --hb-muted: #94a3b8; 
+  
+  /* Colorful Accents (Ocean Blue to Purple Gradient) */
+  --accent-blue: #0ea5e9;
+  --accent-purple: #8b5cf6;
+  --accent-pink: #ec4899;
+  --accent-gradient: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  
+  --hb-link: #38bdf8;
+  --hb-link-hover: #fbcfe8; /* משתנה לורדרד עדין במעבר עכבר */
+  
+  /* Status */
+  --hb-success: #10b981;
+  --hb-danger: #f43f5e;
+  --hb-warn: #f59e0b;
+  
+  /* Layout */
+  --hb-radius-sm: 8px;
+  --hb-radius: 16px;
+  --hb-radius-lg: 24px;
+  --hb-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   BACKGROUND & AURORA LIGHTING
+   ========================================= */
+body {
+  background: var(--bg-deep) !important;
+  color: var(--hb-text) !important;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* צבעי רקע שנותנים חיים מבעד לזכוכית */
+body::before {
+  content: "";
+  position: fixed;
+  top: -10%; left: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 60%);
+  filter: blur(90px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -10%; right: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.05) 40%, transparent 60%);
+  filter: blur(90px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =========================================
+   MAIN PANELS & CARDS
+   ========================================= */
+.box, .panel__body, .torrent_table, .forum_post, .message_table, #inbox .box {
+  background: var(--hb-panel) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: var(--hb-radius) !important;
+  box-shadow: var(--hb-shadow) !important;
+  margin-bottom: 24px !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  color: var(--hb-text) !important;
+}
+
+.box:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(139, 92, 246, 0.3) !important; /* גבול מקבל צבע עדין בריחוף */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(14, 165, 233, 0.1) !important;
+}
+
+/* Tables */
+tr.group, tr.rowa td, tr.rowb td, .torrent_table tr td, .forum_index tbody td, td, th {
+  border-bottom: 1px solid var(--hb-border-soft) !important;
+  background: transparent !important;
+}
+
+tr:hover > td:not(.tdhack), .forum_index tbody tr:hover td, .torrent_table tbody tr:hover td {
+  background: var(--hb-panel-hover) !important;
+}
+
+/* Box Headers */
+.head, .colhead_dark, tr.colhead, thead th, .forum_category_title {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--hb-text-strong) !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  padding: 14px 16px !important;
+}
+
+/* =========================================
+   TYPOGRAPHY & READABILITY
+   ========================================= */
+/* הצללה קלה לטקסט כדי להפריד מהרקע הצבעוני */
+.box, .panel__body, td, th, h1, h2, h3, div, span, p {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+input, button, .btn, select, textarea {
+  text-shadow: none !important;
+}
+
+a {
+  color: var(--hb-link) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+a:hover {
+  color: var(--hb-link-hover) !important;
+  text-shadow: 0 0 8px rgba(236, 72, 153, 0.4) !important; /* זוהר צבעוני קל ללינקים */
+}
+
+.small, .desc, .poll, label, .news_post {
+  color: var(--hb-muted) !important;
+  font-weight: 500 !important;
+}
+
+/* =========================================
+   BUTTONS (Colorful & Alive)
+   ========================================= */
+input[type="submit"], button, .btn {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 99px !important;
+  padding: 8px 22px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+input[type="submit"]:hover, button:hover, .btn:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+#header, #menu {
+  background: rgba(10, 12, 18, 0.7) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+#menu ul > li > a {
+  font-weight: 500 !important;
+  color: var(--hb-text) !important;
+  padding: 12px 18px !important;
+  border-radius: var(--hb-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+#menu ul > li > a:hover, #header > #menu ul > li.active > a {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 -2px 0 var(--accent-blue) !important; /* קו הדגשה כחול למטה */
+}
+
+/* =========================================
+   INPUTS & FORMS
+   ========================================= */
+input[type="text"], input[type="search"], textarea, select, input[type="password"] {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: 10px !important;
+  color: var(--hb-text-strong) !important;
+  padding: 10px 14px !important;
+  transition: all 0.3s ease !important;
+}
+
+input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+  outline: none !important;
+}
+
+/* =========================================
+   MOVIE POSTERS & IMAGES
+   ========================================= */
+img.banner, #covers img, .group_image img, .torrent_screenshots > img {
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7) !important;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+img.banner:hover, #covers img:hover, .group_image img:hover {
+  transform: translateY(-5px) scale(1.03) !important;
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3) !important; /* הילה סגולה עדינה מסביב לפוסטר בריחוף */
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+/* =========================================
+   TAGS & BADGES
+   ========================================= */
+#taglist tr td a, .tags a, .movie-tooltip__tag {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: 8px !important;
+  padding: 4px 10px !important;
+  font-size: 0.85em !important;
+  color: var(--hb-text) !important;
+  transition: all 0.2s ease !important;
+}
+
+#taglist tr td a:hover, .tags a:hover {
+  background: var(--accent-gradient) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3) !important;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { filter: brightness(1.2); }
+
+/* =========================================
+   WYSIBB EDITOR
+   ========================================= */
+.wysibb, .wysibb-text, .wysibb-toolbar {
+  background: rgba(20, 25, 40, 0.6) !important;
+  border-color: var(--hb-border) !important;
+}
+.wysibb-body {
+  background: rgba(0, 0, 0, 0.4) !important;
+  color: var(--hb-text-strong) !important;
+}
