@@ -1,0 +1,373 @@
+@import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
+
+/* =========================================
+   PREMIUM DARK GLASSMORPHISM THEME
+   ========================================= */
+
+:root {
+  color-scheme: dark;
+  /* Glassmorphism Core Variables */
+  --glass-blur: blur(20px) saturate(180%);
+  --glass-glow: rgba(255, 255, 255, 0.03);
+  
+  /* Adjusted for transparency */
+  --hb-bg: transparent; 
+  --hb-bg-soft: rgba(17, 24, 32, 0.3);
+  --hb-panel: rgba(22, 27, 34, 0.35);
+  --hb-panel-2: rgba(28, 33, 40, 0.45);
+  --hb-panel-3: rgba(33, 38, 45, 0.55);
+  --hb-panel-hover: rgba(255, 255, 255, 0.08);
+  
+  /* Brightened borders to act as glass reflections */
+  --hb-border: rgba(255, 255, 255, 0.12);
+  --hb-border-soft: rgba(255, 255, 255, 0.06);
+  
+  --hb-text: #e2e8f0;
+  --hb-text-strong: #ffffff;
+  --hb-muted: #94a3b8;
+  --hb-link: #818cf8;
+  --hb-link-hover: #a5b4fc;
+  --hb-accent: #6366f1;
+  --hb-accent-soft: rgba(99, 102, 241, 0.2);
+  --hb-danger: #f87171;
+  --hb-danger-hover: #ef4444;
+  --hb-success: #4ade80;
+  --hb-success-hover: #22c55e;
+  --hb-warn: #fbbf24;
+  
+  --hb-radius-sm: 8px;
+  --hb-radius: 14px;
+  --hb-radius-lg: 20px;
+  --hb-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --hb-shadow-strong: 0 16px 48px 0 rgba(0, 0, 0, 0.6);
+  
+  --hb-font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --hb-mono: "Fira Code", ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+/* Base Body with Deep Gradient & Ambient Light */
+html, body, .body, .tdhack {
+  background: linear-gradient(135deg, #09090e 0%, #111424 50%, #0d1117 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--hb-text) !important;
+  font-family: var(--hb-font) !important;
+  line-height: 1.5 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* Ambient glow orbs behind the glass */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+body::before {
+  top: -10vw; left: -10vw;
+  width: 40vw; height: 40vw;
+  background: rgba(99, 102, 241, 0.15); /* Indigo glow */
+}
+body::after {
+  bottom: -10vw; right: -10vw;
+  width: 35vw; height: 35vw;
+  background: rgba(236, 72, 153, 0.1); /* Pink glow */
+}
+
+#wrapper, #content, .thin {
+  background: transparent !important;
+  color: var(--hb-text) !important;
+}
+
+#content {
+  padding-top: 16px !important;
+  padding-bottom: 28px !important;
+}
+
+/* Header & Menus - Heavy Glass */
+#header, #menu, #searchbars-wrapper, .holder {
+  background: var(--hb-panel) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border-color: var(--hb-border) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+}
+
+#menu {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+#menu ul > li > a, #userinfo a, #userinfo_minor a, #userinfo_major a, #userinfo_stats a {
+  color: var(--hb-text) !important;
+  transition: all 0.2s ease !important;
+}
+
+#menu ul > li > a:hover, #userinfo a:hover, #header a.username, a:hover {
+  color: var(--hb-link-hover) !important;
+  text-decoration: none !important;
+  text-shadow: 0 0 10px rgba(165, 180, 252, 0.4) !important;
+}
+
+#header > #menu ul > li.active > a, a.simple-tabs__link--active, .selected_link {
+  color: var(--hb-link-hover) !important;
+  font-weight: 700 !important;
+}
+
+.nav_dropdown > div {
+  background: rgba(17, 20, 26, 0.7) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: var(--hb-radius) !important;
+  box-shadow: var(--hb-shadow-strong) !important;
+  overflow: hidden !important;
+}
+
+.nav_dropdown > div > a {
+  padding-inline: 10px !important;
+  transition: background 0.2s ease !important;
+}
+
+.nav_dropdown > div > a:hover {
+  background: var(--hb-panel-hover) !important;
+}
+
+#banner { background-color: var(--hb-bg-soft) !important; }
+
+#userinfo {
+  background: rgba(13, 17, 23, 0.4) !important;
+  border-top: 1px solid var(--hb-border) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+}
+
+/* Main Content Boxes - Glass Cards */
+.box, .panel__body, .sidebar .box, .main_column .box, .main_column2 .box,
+.main-column .box, .main-column2 .box, .news_post .pad, .box.pad, .box.thin.clear,
+#blog .box, #staffblog .box, #scontent .box, table.layout.border, .forum_index,
+.torrent_table, .forum_post, .message_table, #inbox .box {
+  background: var(--hb-panel) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  color: var(--hb-text) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important; /* Top reflection */
+  border-radius: var(--hb-radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--hb-shadow) !important;
+}
+
+.layout, table.layout, td, th, .group td, #taglist, .desc, div.movie-item,
+#threadpoll, div#quickreplytext, form.search_form, table.ft_cat_list {
+  background: transparent !important; /* Let the box background show through */
+  color: var(--hb-text) !important;
+  border-color: var(--hb-border-soft) !important;
+}
+
+/* Headers of boxes */
+.head, .head.colhead_dark, .colhead td, .colhead_dark td, tr.colhead,
+tr.colhead_dark, thead th, .panel__heading, .forum-post__heading,
+.toggleable-search-form__toggler-container, .main_column .box .head,
+.main_column .box .head.colhead_dark, .sidebar .box .head,
+.box.filter_torrents .head, .box.news_post .head, #blog .head,
+#inbox .box .head, #reply_box h3, #inbox form .send_form #quickpost h3 {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(5px);
+  color: var(--hb-text-strong) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  padding: 12px 14px !important;
+}
+
+tr.group, tr.rowa td, tr.rowb td, .torrent_table tr td, .forum_index tbody td,
+#latest5posts td, td, th {
+  border-bottom: 1px solid var(--hb-border-soft) !important;
+  background: transparent !important;
+}
+
+/* Hover effects for table rows */
+tr:hover > td:not(.tdhack), .forum_index tbody tr:hover td,
+.torrent_table tbody tr:hover td, .winnerTable > tbody > tr:hover > td:not(.tdhack) {
+  background: var(--hb-panel-hover) !important;
+}
+
+/* Links */
+a, a:link, a:visited, td a, .head a, .forum_post a,
+.forum_post .body a:not([data-quote-jump]), #wrapper .alert-bars a,
+#summary .ui-widget-content a, .group_info > a:nth-child(2n),
+.group_info > a:nth-child(3n), #torrents .torrent_table a[onclick*=toggle],
+.box.filter_torrents .head a, #blog .head, .forum_post .colhead a,
+.forum_post .colhead_dark a, #inbox .box .head a, tr.unreadpm a,
+tr.inbox-message--unread td a {
+  color: var(--hb-link) !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+a:hover, td a:hover, .head a:hover, .forum_post a:hover,
+a.simple-tabs__link:hover, #wrapper .alert-bars a:hover {
+  color: var(--hb-link-hover) !important;
+  text-decoration: none !important;
+  text-shadow: 0 0 8px rgba(129, 140, 248, 0.4) !important;
+}
+
+.thin h2, .thin h3, #content h2, #content h3, .forum_category_title h2, .forum_category_title h3 {
+  color: var(--hb-text-strong) !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
+}
+
+/* Inputs & Forms - Glassy Textboxes */
+input, textarea, select, input[type="text"], input[type="email"],
+input[type="password"], input[type="search"], input[name="subject"],
+textarea[name="body"], textarea[name="comment"], form.search_form input, #header input {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: var(--hb-text) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: var(--hb-radius-sm) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus, textarea:focus, select:focus, #header input:focus,
+#header select:focus, form.search_form input:focus {
+  border-color: var(--hb-link) !important;
+  box-shadow: 0 0 0 3px var(--hb-accent-soft), inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  outline: none !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Buttons */
+input[type="submit"], input[type="button"], button, .btn,
+a.huge-movie-list__movie__title, a.huge-movie-list__movie__director {
+  background: rgba(74, 222, 128, 0.15) !important;
+  backdrop-filter: blur(4px) !important;
+  color: var(--hb-success) !important;
+  border: 1px solid rgba(74, 222, 128, 0.4) !important;
+  border-radius: var(--hb-radius-sm) !important;
+  font-weight: 650 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover {
+  background: rgba(74, 222, 128, 0.3) !important;
+  border-color: var(--hb-success) !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+input[type="checkbox"], input[type="radio"] { accent-color: var(--hb-accent) !important; }
+
+#searchbars, #header div#searchbars, #header div.search-bar { background: transparent !important; }
+
+#searchbars input, .search-bar input {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 999px !important;
+  padding-left: 15px !important;
+}
+
+/* Tags */
+#taglist tr td a, .tags a, .sidebar .stats.nobullet a, a.basic-movie-list__movie__tag,
+a.cover-movie-list__movie__tag, .huge-movie-list__movie__tag-list a, .movie-tooltip__tag {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(4px);
+  color: var(--hb-text) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: 999px !important;
+  transition: all 0.2s ease !important;
+}
+
+#taglist tr td a:hover, .tags a:hover, .sidebar .stats.nobullet a:hover,
+a.basic-movie-list__movie__tag:hover, a.cover-movie-list__movie__tag:hover,
+.huge-movie-list__movie__tag-list a:hover {
+  background: var(--hb-accent-soft) !important;
+  color: var(--hb-link-hover) !important;
+  border-color: var(--hb-link) !important;
+  box-shadow: 0 0 10px var(--hb-accent-soft) !important;
+}
+
+/* Blockquotes & Code */
+blockquote, pre, code, .torrentdetails blockquote, .forum_post blockquote, #inbox blockquote {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid var(--hb-border-soft) !important;
+  border-right: 4px solid var(--hb-accent) !important;
+  border-radius: var(--hb-radius-sm) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+
+/* Modern WysiBB editor skin (Glass) */
+html body .wysibb {
+  background: var(--hb-panel) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-top: 1px solid rgba(255,255,255,0.2) !important;
+  border-radius: var(--hb-radius-lg) !important;
+  box-shadow: var(--hb-shadow) !important;
+}
+
+html body .wysibb .wysibb-toolbar {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+}
+
+html body .wysibb .wysibb-text-editor, html body .wysibb .wysibb-body {
+  background: rgba(0, 0, 0, 0.2) !important;
+  color: var(--hb-text-strong) !important;
+  border: 1px solid transparent !important;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* Modal Boxes (Glass) */
+html body #wbbmodal {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+html body #wbbmodal .wbbm {
+  background: rgba(22, 27, 34, 0.6) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: var(--hb-shadow-strong) !important;
+}
+
+/* Image styling */
+img.banner, #artist .sidebar img, #covers img, .group_image img, .torrent_screenshots > img {
+  border-radius: var(--hb-radius) !important;
+  border: 1px solid var(--hb-border) !important;
+  box-shadow: var(--hb-shadow) !important;
+  transition: transform 0.3s ease !important;
+}
+img.banner:hover, .group_image img:hover {
+  transform: scale(1.02) !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); background-clip: padding-box; }
+
+/* Status Colors & Highlights */
+.tl_seeding, .good { color: var(--hb-success) !important; text-shadow: 0 0 8px rgba(74, 222, 128, 0.4) !important; }
+.tl_snatched, .bad { color: var(--hb-danger) !important; text-shadow: 0 0 8px rgba(248, 113, 113, 0.4) !important; }
+.new-torrent { color: var(--hb-warn) !important; text-shadow: 0 0 8px rgba(251, 191, 36, 0.4) !important; }
+
+/* Forum category titles */
+html body .forum_list h3.forum_category_title, html body h3.forum_category_title, html body .forum_category_title {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--hb-border) !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
