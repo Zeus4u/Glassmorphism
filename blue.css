@@ -2,10 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V40 (Ocean Blue Edition)
-   - Deep Navy Background (No Purple!)
-   - 1440px Widescreen
-   - Smooth Scroll & Anchor Fix
+   AURORA PREMIUM GLASS V40.6 (Ocean Blue Edition)
+   - Reply Box Header Fix (Removed Teal)
+   - Preview Buttons Fix
+   - Editor Icons Targeted Fix
+   - Prominent Quotes Update (Bright Blue Glass)
+   - Unread Forum Icons Highlight (Yellow Glow)
+   - Deep Navy Background
+   - 1440px Widescreen & Smooth Scroll
    - Unified Torrent Groups
    ========================================= */
 
@@ -190,7 +194,9 @@ table, tbody, tr, td, th {
   background-image: none !important;
 }
 
-.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title {
+/* נוסף פה תיקון לפס הירוק של "פרסם תגובה" (#reply_box h3, #reply_box .head) */
+.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title,
+#reply_box h3, #reply_box .head {
   background: rgba(255, 255, 255, 0.05) !important;
   color: var(--hb-text-strong) !important;
   font-weight: 700 !important;
@@ -200,7 +206,6 @@ table, tbody, tr, td, th {
   text-shadow: 0 1px 3px rgba(0,0,0,0.6) !important;
 }
 
-/* זברה שמותאמת לרקע הכחול-כהה */
 tr:nth-child(odd) > td, tr.rowa > td {
   background: rgba(0, 0, 0, 0.25) !important;
   border-bottom: 1px solid var(--hb-border-soft) !important;
@@ -220,7 +225,7 @@ tr:hover > td:not(.tdhack) {
    GROUPED TORRENTS HIERARCHY (The Unified Box)
    ========================================= */
 tr.group_torrent:nth-child(n) > td {
-  background: rgba(10, 15, 25, 0.5) !important; /* רקע עמוק ומאחד */
+  background: rgba(10, 15, 25, 0.5) !important; 
   border-bottom: 1px solid rgba(255, 255, 255, 0.02) !important; 
 }
 
@@ -257,6 +262,17 @@ a.hide_torrents:hover {
   opacity: 1 !important;
   filter: invert(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) !important;
   transform: scale(1.1);
+}
+
+/* =========================================
+   FORUM UNREAD ICONS 
+   ========================================= */
+td.unread:before, 
+td.unread_locked:before, 
+td.unread_locked_sticky:before, 
+td.unread_sticky:before {
+  color: #fbbf24 !important; 
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6) !important; 
 }
 
 /* =========================================
@@ -309,14 +325,18 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-weight: 500 !important;
 }
 
+/* =========================================
+   QUOTES (ציטוטים בפורום)
+   ========================================= */
 blockquote {
-  background: rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid var(--hb-border-soft) !important;
-  border-right: 3px solid var(--accent-primary) !important;
+  background: rgba(59, 130, 246, 0.15) !important; 
+  border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+  border-right: 4px solid var(--accent-secondary) !important; 
   border-radius: var(--hb-radius-sm) !important;
-  padding: 12px 16px !important;
-  color: var(--hb-text) !important;
-  margin: 10px 0 !important;
+  padding: 14px 18px !important;
+  color: var(--hb-text-strong) !important;
+  margin: 15px 0 !important;
+  box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.05), 0 4px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* =========================================
@@ -353,7 +373,7 @@ a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
 }
 
 /* =========================================
-   MASTER RANKS OVERRIDE (THE OFFICIAL SYSTEM COLORS)
+   MASTER RANKS OVERRIDE 
    ========================================= */
 a[class*="permission_"] {
   text-shadow: 0 0 3px rgba(0,0,0,0.5) !important; 
@@ -387,7 +407,7 @@ a.permission_11    { font-weight: bold !important; color: #e2e8f0 !important; }
 a.permission_10    { color: #cbd5e1 !important; } 
 
 /* =========================================
-   TAGS, PEOPLE & PILLS (SIDEBAR & MAIN)
+   TAGS, PEOPLE & PILLS 
    ========================================= */
 #taglist tr td a, .tags a, .movie-tooltip__tag,
 #artist_list a, ul.stats li a, ul.tags li a {
@@ -433,7 +453,7 @@ a.permission_10    { color: #cbd5e1 !important; }
 }
 
 /* =========================================
-   SVG ICONS, TORRENT ICONS & STATUS
+   SVG ICONS & STATUS
    ========================================= */
 svg { fill: var(--hb-text) !important; }
 .up_polygon, .upload_stat, .good, .goodish, .tl_seeding { fill: var(--hb-success) !important; color: var(--hb-success) !important; filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.4)); }
@@ -441,7 +461,6 @@ svg { fill: var(--hb-text) !important; }
 .internal-mark, .tl_notice, table#torrent_table strong, .bookmark_ic { color: var(--hb-warn) !important; fill: var(--hb-warn) !important; }
 .token_ic { color: #d2a8ff !important; fill: #d2a8ff !important; }
 
-/* צבעים ייעודיים לסמלים בטבלת הטורנטים */
 .torrent_icons i, .torrent_icons .fa {
   transition: all 0.2s ease !important;
   filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)) !important;
@@ -462,7 +481,8 @@ a[href*="torrentid="] i, .fa-link { color: #0ea5e9 !important; }
 /* =========================================
    BUTTONS & TAGS 
    ========================================= */
-input[type="submit"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] {
+/* נוסף פה input[type="button"] כדי להחיל את העיצוב על תצוגה מקדימה ושאר הכפתורים */
+input[type="submit"], input[type="button"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] {
   background: var(--accent-gradient) !important;
   color: #ffffff !important;
   border: none !important;
@@ -475,7 +495,7 @@ input[type="submit"], button, .btn, .filter_torrents div.submit.ft_submit input[
   cursor: pointer !important;
 }
 
-input[type="submit"]:hover, button:hover, .btn:hover {
+input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover {
   transform: translateY(-2px) scale(1.03) !important;
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5) !important;
   filter: brightness(1.2) !important;
@@ -488,7 +508,7 @@ input[type="submit"]:hover, button:hover, .btn:hover {
 }
 
 /* =========================================
-   INPUTS & FORMS (Cool Base)
+   INPUTS & FORMS 
    ========================================= */
 input[type="text"], input[type="search"], textarea, select, input[type="password"] {
   background: rgba(10, 15, 25, 0.6) !important; 
@@ -540,19 +560,78 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
 ::-webkit-scrollbar-thumb:hover { filter: brightness(1.3); }
 
 /* =========================================
-   WYSIBB EDITOR
+   WYSIBB EDITOR (Targeted Fixes)
    ========================================= */
 .wysibb, .wysibb-text, .wysibb-toolbar {
   background: rgba(15, 23, 35, 0.8) !important;
   border-color: var(--hb-border) !important;
 }
 .wysibb-body {
-  background: rgba(10, 15, 25, 0.6) !important;
+  background: rgba(10, 15, 25, 0.4) !important;
   color: var(--hb-text-strong) !important;
   font-family: var(--hb-font) !important;
 }
-.wysibb *, .wysibb-body * {
-  background-color: transparent !important;
+
+.wysibb-toolbar-btn {
+  color: var(--hb-text-strong) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* ביטול ההיפוך הכללי שהרס סמלים צבעוניים */
+.wysibb-toolbar-btn img {
+  filter: none !important; 
+}
+
+/* הפיכת רק האייקונים השחורים ללבנים בוהקים (כולל סמלי היישור) */
+.wbb-removeformat img,
+.wbb-bold img,
+.wbb-italic img,
+.wbb-underline img,
+.wbb-strike img,
+.wbb-justifyleft img,
+.wbb-justifycenter img,
+.wbb-justifyright img {
+  filter: invert(1) brightness(100) !important;
+}
+
+/* כותרות H1, H2, H3 - הפיכת הטקסט והאייקון ללבן מואר */
+.wbb-h1, .wbb-h2, .wbb-h3,
+.wbb-h1 *, .wbb-h2 *, .wbb-h3 * {
+  color: #ffffff !important;
+}
+
+/* טיפול נקודתי באייקון של בוחר הצבעים */
+.wbb-cp .fonticon, .wbb-cp ins.fonticon {
+  color: #ffffff !important;
+  text-shadow: 0 0 2px rgba(0,0,0,0.8) !important;
+}
+
+.wysibb-toolbar-btn:hover, .wysibb-toolbar-btn.on {
+  background: rgba(59, 130, 246, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.wbb-list {
+  background: #090e17 !important; 
+  border: 1px solid var(--hb-border) !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.8) !important;
+  border-radius: 8px !important;
+  padding: 5px !important;
+}
+
+.wbb-list .option, .wbb-list .nc {
+  color: var(--hb-text-strong) !important;
+  padding: 5px 10px !important;
+  border-radius: 4px !important;
+}
+
+.wbb-list .option:hover, .wbb-list .option.selected {
+  background: rgba(59, 130, 246, 0.3) !important;
+}
+
+.wbb-list .sc {
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 3px !important;
 }
 
 /* =========================================
