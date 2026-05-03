@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V14 (Sticky Menu + Full Fixes)
+   AURORA PREMIUM GLASS V15 (Unlimited Sticky Menu)
    ========================================= */
 
 :root {
@@ -36,7 +36,7 @@
   --hb-link: #38bdf8;
   --hb-link-hover: #fbcfe8; 
   
-  /* Status Colors */
+  /* Status */
   --hb-success: #10b981;
   --hb-danger: #f43f5e;
   --hb-warn: #f59e0b;
@@ -84,21 +84,24 @@ html, .body, .tdhack {
 }
 
 /* =========================================
-   HEADER & STICKY MENU NAVIGATION
+   HEADER & UNLIMITED STICKY MENU
    ========================================= */
-#header, #menu {
+/* שבירת הכלא של תיבת האב כדי שהתפריט יוכל לרוץ למטה */
+#header {
+  display: contents !important;
+}
+
+#menu {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 99999 !important; /* דואג שזה תמיד ירחף מעל הכל */
   background: rgba(19, 24, 38, 0.85) !important;
   backdrop-filter: blur(30px) !important;
   -webkit-backdrop-filter: blur(30px) !important;
   border-bottom: 1px solid var(--hb-border) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-
-/* הצמדת התפריט לגלילה (Sticky Menu) */
-#menu {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 99999 !important; /* דואג שזה תמיד ירחף מעל הכל */
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 #menu ul > li > a {
