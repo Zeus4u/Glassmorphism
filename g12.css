@@ -64,6 +64,14 @@ body::after {
   pointer-events: none;
 }
 
+/* =========================================
+   SMOOTH SCROLL & ANCHOR FIX (תיקון ההסתרה בעמוד החוקים)
+   ========================================= */
+html {
+  scroll-padding-top: 90px !important; /* נותן מרווח נשימה מלמעלה שלוקח בחשבון את גובה התפריט */
+  scroll-behavior: smooth !important; /* הופך את הקפיצה לגלילה חלקה ונעימה לעין */
+}
+
 html, .body, .tdhack {
   background: transparent !important;
 }
