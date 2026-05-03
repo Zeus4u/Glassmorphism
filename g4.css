@@ -386,3 +386,80 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
 .wysibb *, .wysibb-body * {
   background-color: transparent !important;
 }
+/* =========================================
+   OWL CAROUSEL FIXES (חצים ונקודות ניווט)
+   ========================================= */
+
+/* ריווח ומרכוז כללי כדי שלא יעלו אחד על השני */
+.owl-nav {
+  margin-top: 15px !important;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 15px !important; /* מרחק בין החצים */
+}
+
+.owl-dots {
+  margin-top: 15px !important;
+  text-align: center !important;
+}
+
+/* איפוס העיצוב הגלובלי שהרס אותם */
+.owl-nav button, .owl-dots button {
+  padding: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* עיצוב החצים (< >) - עיגולי זכוכית */
+.owl-nav button.owl-prev, .owl-nav button.owl-next {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--hb-border-soft) !important;
+  border-radius: 50% !important; /* הופך אותם לעיגול מושלם */
+  color: var(--hb-text) !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  transition: all 0.3s ease !important;
+}
+
+.owl-nav button.owl-prev span, .owl-nav button.owl-next span {
+  margin-top: -3px !important; /* תיקון גובה קטן לטקסט של החץ */
+}
+
+/* מעבר עכבר על החצים */
+.owl-nav button.owl-prev:hover, .owl-nav button.owl-next:hover {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  transform: scale(1.1) !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* עיצוב הנקודות למטה */
+.owl-dots .owl-dot {
+  display: inline-block !important;
+  margin: 0 6px !important;
+}
+
+.owl-dots .owl-dot span {
+  display: block !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  margin: 0 !important;
+}
+
+/* נקודה פעילה או מעבר עכבר */
+.owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span {
+  background: var(--accent-blue) !important; 
+  transform: scale(1.4) !important; /* הנקודה גדלה קצת כשהיא פעילה */
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.6) !important;
+}
