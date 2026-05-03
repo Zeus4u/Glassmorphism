@@ -1,7 +1,8 @@
 @import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS (Elegant & Alive)
+   AURORA PREMIUM GLASS V11 (Search Forms Cleanup)
    ========================================= */
 
 :root {
@@ -9,31 +10,31 @@
   --glass-blur: blur(40px) saturate(180%);
   
   /* Deep Background */
-  --bg-deep: #03040b; /* כחול-שחור עמוק מאוד */
+  --bg-deep: #131826; 
   --hb-bg: transparent;
   
-  /* Glass Panels - Neutral but highly transparent to let colors bleed through */
-  --hb-panel: rgba(20, 25, 40, 0.4);
-  --hb-panel-hover: rgba(40, 45, 65, 0.5);
-  --hb-panel-active: rgba(60, 65, 90, 0.6);
+  /* Glass Panels */
+  --hb-panel: rgba(22, 30, 46, 0.65);
+  --hb-panel-hover: rgba(35, 45, 65, 0.75);
   
   /* Borders */
-  --hb-border: rgba(255, 255, 255, 0.1);
-  --hb-border-soft: rgba(255, 255, 255, 0.05);
+  --hb-border: rgba(255, 255, 255, 0.12);
+  --hb-border-soft: rgba(255, 255, 255, 0.06);
   
-  /* Typography - Maximum Readability */
-  --hb-text: #f1f5f9; 
+  /* Typography */
+  --hb-text: #f8fafc; 
   --hb-text-strong: #ffffff;
-  --hb-muted: #94a3b8; 
+  --hb-muted: #94a3b8;
+  --hb-font: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   
-  /* Colorful Accents (Ocean Blue to Purple Gradient) */
+  /* Colorful Accents */
   --accent-blue: #0ea5e9;
   --accent-purple: #8b5cf6;
   --accent-pink: #ec4899;
   --accent-gradient: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
   
   --hb-link: #38bdf8;
-  --hb-link-hover: #fbcfe8; /* משתנה לורדרד עדין במעבר עכבר */
+  --hb-link-hover: #fbcfe8; 
   
   /* Status */
   --hb-success: #10b981;
@@ -43,8 +44,7 @@
   /* Layout */
   --hb-radius-sm: 8px;
   --hb-radius: 16px;
-  --hb-radius-lg: 24px;
-  --hb-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --hb-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); 
 }
 
 /* =========================================
@@ -53,17 +53,16 @@
 body {
   background: var(--bg-deep) !important;
   color: var(--hb-text) !important;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-family: var(--hb-font) !important;
   letter-spacing: 0.2px !important;
 }
 
-/* צבעי רקע שנותנים חיים מבעד לזכוכית */
 body::before {
   content: "";
   position: fixed;
   top: -10%; left: -10%;
   width: 60%; height: 60%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 60%);
   filter: blur(90px);
   z-index: -1;
   pointer-events: none;
@@ -74,172 +73,216 @@ body::after {
   position: fixed;
   bottom: -10%; right: -10%;
   width: 60%; height: 60%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.05) 40%, transparent 60%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.1) 40%, transparent 60%);
   filter: blur(90px);
   z-index: -1;
   pointer-events: none;
 }
 
+html, .body, .tdhack {
+  background: transparent !important;
+}
+
 /* =========================================
-   MAIN PANELS & CARDS
+   ADMIN ALERTS BAR 
    ========================================= */
-.box, .panel__body, .torrent_table, .forum_post, .message_table, #inbox .box {
+#alerts {
+  background: transparent !important;
+  padding: 15px 10px !important;
+}
+
+#alerts .alertbar {
   background: var(--hb-panel) !important;
   backdrop-filter: var(--glass-blur) !important;
   -webkit-backdrop-filter: var(--glass-blur) !important;
   border: 1px solid var(--hb-border) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: var(--hb-radius) !important;
-  box-shadow: var(--hb-shadow) !important;
-  margin-bottom: 24px !important;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-  color: var(--hb-text) !important;
-}
-
-.box:hover {
-  transform: translateY(-2px) !important;
-  border-color: rgba(139, 92, 246, 0.3) !important; /* גבול מקבל צבע עדין בריחוף */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(14, 165, 233, 0.1) !important;
-}
-
-/* Tables */
-tr.group, tr.rowa td, tr.rowb td, .torrent_table tr td, .forum_index tbody td, td, th {
-  border-bottom: 1px solid var(--hb-border-soft) !important;
-  background: transparent !important;
-}
-
-tr:hover > td:not(.tdhack), .forum_index tbody tr:hover td, .torrent_table tbody tr:hover td {
-  background: var(--hb-panel-hover) !important;
-}
-
-/* Box Headers */
-.head, .colhead_dark, tr.colhead, thead th, .forum_category_title {
-  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: var(--hb-radius-sm) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  padding: 12px 20px !important;
+  text-align: center !important;
   color: var(--hb-text-strong) !important;
   font-weight: 600 !important;
-  border-bottom: 1px solid var(--hb-border) !important;
-  padding: 14px 16px !important;
+  font-size: 14px !important;
+}
+
+#alerts .alertbar a {
+  margin: 0 6px !important;
+  font-weight: 700 !important;
+}
+
+#alerts .alertbar a[style*="color"] {
+  filter: brightness(1.4) drop-shadow(0 1px 4px rgba(0,0,0,0.8)) !important;
 }
 
 /* =========================================
-   TYPOGRAPHY & READABILITY
+   MAIN PANELS & CARDS
    ========================================= */
-/* הצללה קלה לטקסט כדי להפריד מהרקע הצבעוני */
-.box, .panel__body, td, th, h1, h2, h3, div, span, p {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+.box, .panel__body, table.torrent_table, table.forum_post, table.message_table, #inbox .box, .filter_torrents {
+  background: var(--hb-panel) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  
+  border: 1px solid var(--hb-border) !important;
+  border-top: 2px solid var(--accent-blue) !important; 
+  
+  border-radius: var(--hb-radius) !important;
+  box-shadow: var(--hb-shadow) !important;
+  margin-bottom: 24px !important;
+  transition: all 0.3s ease !important;
+  color: var(--hb-text) !important;
+  overflow: hidden !important; 
 }
 
-input, button, .btn, select, textarea {
-  text-shadow: none !important;
+.box:hover {
+  border-color: rgba(139, 92, 246, 0.4) !important; 
+  border-top-color: var(--accent-purple) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(14, 165, 233, 0.15) !important;
 }
 
-a {
-  color: var(--hb-link) !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease !important;
+/* =========================================
+   GLOBAL TABLE RESET 
+   ========================================= */
+table, tbody, tr, td, th {
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
-a:hover {
-  color: var(--hb-link-hover) !important;
-  text-shadow: 0 0 8px rgba(236, 72, 153, 0.4) !important; /* זוהר צבעוני קל ללינקים */
+.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--hb-text-strong) !important;
+  font-weight: 700 !important;
+  border-bottom: 1px solid var(--hb-border-soft) !important;
+  border-top: none !important; 
+  padding: 14px 16px !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6) !important;
 }
 
-.small, .desc, .poll, label, .news_post {
+tr:nth-child(odd) > td, tr.rowa > td {
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-bottom: 1px solid var(--hb-border-soft) !important;
+}
+
+tr:nth-child(even) > td, tr.rowb > td {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-bottom: 1px solid var(--hb-border-soft) !important;
+}
+
+tr:hover > td:not(.tdhack) {
+  background: rgba(139, 92, 246, 0.15) !important;
+  box-shadow: inset 2px 0 0 var(--accent-purple) !important; 
+}
+
+/* =========================================
+   NUKE ALL LEGACY FORM/SEARCH BACKGROUNDS
+   ========================================= */
+form.search_form,
+form.search_form > div,
+#searchbox,
+#searchbox > div,
+table.layout td, 
+.filter_torrents td, 
+.filter_torrents tr, 
+.filter_torrents div,
+table.forum_post td, 
+table.message_table td, 
+div.movie-item, 
+#threadpoll, 
+div#quickreplytext, 
+table.ft_cat_list td {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+table.forum_post td.avatar {
+  border-left: 1px solid var(--hb-border-soft) !important;
+}
+
+/* =========================================
+   TYPOGRAPHY & TEXT FIXES
+   ========================================= */
+.box, .panel__body, td, th, div, span, p, label {
+  text-shadow: none !important; 
+  font-family: var(--hb-font) !important;
+}
+
+/* צבע קריא וברור בתוך כל הטפסים והחיפושים */
+.forum_post .body, .message_table td, form.search_form, form.search_form div, form.search_form td, form.search_form label, table td {
+  color: var(--hb-text-strong) !important;
+  font-size: 14px !important; 
+  line-height: 1.6 !important;
+}
+
+.small, .desc, .poll, .news_post, span[style="color: grey;"] {
   color: var(--hb-muted) !important;
   font-weight: 500 !important;
 }
 
+a:not([href*="user.php?id="]) {
+  color: var(--hb-link) !important;
+}
+
+a {
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  font-family: var(--hb-font) !important;
+}
+
+a:hover {
+  color: var(--hb-link-hover) !important;
+  text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
+}
+
+.forum_post .colhead_dark a, .forum_post .head a {
+  font-weight: bold !important;
+}
+
+blockquote {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid var(--hb-border-soft) !important;
+  border-right: 3px solid var(--accent-purple) !important;
+  border-radius: var(--hb-radius-sm) !important;
+  padding: 12px 16px !important;
+  color: var(--hb-text) !important;
+  margin: 10px 0 !important;
+}
+
 /* =========================================
-   BUTTONS (Colorful & Alive)
+   BUTTONS & TAGS 
    ========================================= */
-input[type="submit"], button, .btn {
+input[type="submit"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] {
   background: var(--accent-gradient) !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 99px !important;
   padding: 8px 22px !important;
   font-weight: 600 !important;
+  font-family: var(--hb-font) !important;
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
 }
 
 input[type="submit"]:hover, button:hover, .btn:hover {
-  transform: translateY(-2px) scale(1.02) !important;
+  transform: translateY(-2px) scale(1.03) !important;
   box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5) !important;
-  filter: brightness(1.1) !important;
+  filter: brightness(1.2) !important;
 }
 
-/* =========================================
-   HEADER & NAVIGATION
-   ========================================= */
-#header, #menu {
-  background: rgba(10, 12, 18, 0.7) !important;
-  backdrop-filter: blur(30px) !important;
-  -webkit-backdrop-filter: blur(30px) !important;
-  border-bottom: 1px solid var(--hb-border) !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+.filter_torrents div.submit.ft_submit {
+  background: transparent !important;
+  border-top: 1px solid var(--hb-border-soft) !important;
+  padding: 15px !important;
 }
 
-#menu ul > li > a {
-  font-weight: 500 !important;
-  color: var(--hb-text) !important;
-  padding: 12px 18px !important;
-  border-radius: var(--hb-radius-sm) !important;
-  transition: all 0.2s ease !important;
-}
-
-#menu ul > li > a:hover, #header > #menu ul > li.active > a {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: #ffffff !important;
-  box-shadow: inset 0 -2px 0 var(--accent-blue) !important; /* קו הדגשה כחול למטה */
-}
-
-/* =========================================
-   INPUTS & FORMS
-   ========================================= */
-input[type="text"], input[type="search"], textarea, select, input[type="password"] {
-  background: rgba(0, 0, 0, 0.4) !important;
-  border: 1px solid var(--hb-border) !important;
-  border-radius: 10px !important;
-  color: var(--hb-text-strong) !important;
-  padding: 10px 14px !important;
-  transition: all 0.3s ease !important;
-}
-
-input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
-  background: rgba(0, 0, 0, 0.6) !important;
-  border-color: var(--accent-purple) !important;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
-  outline: none !important;
-}
-
-/* =========================================
-   MOVIE POSTERS & IMAGES
-   ========================================= */
-img.banner, #covers img, .group_image img, .torrent_screenshots > img {
-  border-radius: 10px !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.7) !important;
-  border: 1px solid rgba(255,255,255,0.05) !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-img.banner:hover, #covers img:hover, .group_image img:hover {
-  transform: translateY(-5px) scale(1.03) !important;
-  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3) !important; /* הילה סגולה עדינה מסביב לפוסטר בריחוף */
-  border-color: rgba(255,255,255,0.2) !important;
-}
-
-/* =========================================
-   TAGS & BADGES
-   ========================================= */
 #taglist tr td a, .tags a, .movie-tooltip__tag {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid var(--hb-border) !important;
-  border-radius: 8px !important;
+  background: rgba(14, 165, 233, 0.1) !important; 
+  border: 1px solid rgba(14, 165, 233, 0.3) !important;
+  border-radius: 6px !important;
   padding: 4px 10px !important;
   font-size: 0.85em !important;
-  color: var(--hb-text) !important;
+  color: var(--hb-link) !important;
   transition: all 0.2s ease !important;
 }
 
@@ -247,28 +290,99 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
   background: var(--accent-gradient) !important;
   border-color: transparent !important;
   color: #fff !important;
-  box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3) !important;
+  box-shadow: 0 4px 10px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+#header, #menu {
+  background: rgba(19, 24, 38, 0.85) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+#menu ul > li > a {
+  font-weight: 600 !important;
+  color: var(--hb-text) !important;
+  padding: 12px 18px !important;
+  border-radius: var(--hb-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+#menu ul > li > a:hover, #header > #menu ul > li.active > a {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 -3px 0 var(--accent-blue) !important; 
+}
+
+/* =========================================
+   INPUTS & FORMS
+   ========================================= */
+input[type="text"], input[type="search"], textarea, select, input[type="password"] {
+  background: rgba(0, 0, 0, 0.4) !important; 
+  border: 1px solid var(--hb-border) !important;
+  border-radius: 10px !important;
+  color: var(--hb-text-strong) !important;
+  padding: 10px 14px !important;
+  font-family: var(--hb-font) !important;
+  transition: all 0.3s ease !important;
+}
+
+input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3) !important;
+  outline: none !important;
+}
+
+/* תיקון קטן לסימון (Radio / Checkbox) שלא ייעלמו על רקע כהה */
+input[type="radio"], input[type="checkbox"] {
+  accent-color: var(--accent-blue) !important;
+  margin-left: 5px !important;
+}
+
+/* =========================================
+   MOVIE POSTERS & IMAGES
+   ========================================= */
+img.banner, #covers img, .group_image img, .torrent_screenshots > img {
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+img.banner:hover, #covers img:hover, .group_image img:hover {
+  transform: translateY(-5px) scale(1.03) !important;
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4) !important; 
+  border-color: rgba(255,255,255,0.3) !important;
 }
 
 /* =========================================
    SCROLLBAR
    ========================================= */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
   border-radius: 10px;
 }
-::-webkit-scrollbar-thumb:hover { filter: brightness(1.2); }
+::-webkit-scrollbar-thumb:hover { filter: brightness(1.3); }
 
 /* =========================================
    WYSIBB EDITOR
    ========================================= */
 .wysibb, .wysibb-text, .wysibb-toolbar {
-  background: rgba(20, 25, 40, 0.6) !important;
+  background: rgba(22, 30, 46, 0.8) !important;
   border-color: var(--hb-border) !important;
 }
 .wysibb-body {
   background: rgba(0, 0, 0, 0.4) !important;
   color: var(--hb-text-strong) !important;
+  font-family: var(--hb-font) !important;
+}
+.wysibb *, .wysibb-body * {
+  background-color: transparent !important;
 }
