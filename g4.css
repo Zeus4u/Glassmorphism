@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V13 (SVG Icons & Colors Fix)
+   AURORA PREMIUM GLASS V14 (Sticky Menu + Full Fixes)
    ========================================= */
 
 :root {
@@ -81,6 +81,38 @@ body::after {
 
 html, .body, .tdhack {
   background: transparent !important;
+}
+
+/* =========================================
+   HEADER & STICKY MENU NAVIGATION
+   ========================================= */
+#header, #menu {
+  background: rgba(19, 24, 38, 0.85) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border-bottom: 1px solid var(--hb-border) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+/* הצמדת התפריט לגלילה (Sticky Menu) */
+#menu {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 99999 !important; /* דואג שזה תמיד ירחף מעל הכל */
+}
+
+#menu ul > li > a {
+  font-weight: 600 !important;
+  color: var(--hb-text) !important;
+  padding: 12px 18px !important;
+  border-radius: var(--hb-radius-sm) !important;
+  transition: all 0.2s ease !important;
+}
+
+#menu ul > li > a:hover, #header > #menu ul > li.active > a {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 -3px 0 var(--accent-blue) !important; 
 }
 
 /* =========================================
@@ -259,14 +291,12 @@ blockquote {
 }
 
 /* =========================================
-   SVG ICONS & STATUS COLORS (התיקון של החצים)
+   SVG ICONS & STATUS COLORS
    ========================================= */
-/* כל סמל כללי מקבל את צבע הטקסט כדי לא להיות שחור */
 svg {
   fill: var(--hb-text) !important;
 }
 
-/* חצים עולים ויורדים - צבעי סטטוס כולל הילה */
 .up_polygon, .upload_stat, .good, .goodish, .tl_seeding {
   fill: var(--hb-success) !important;
   color: var(--hb-success) !important;
@@ -279,7 +309,6 @@ svg {
   filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.4));
 }
 
-/* התראות וסימניות מיוחדות */
 .internal-mark, .tl_notice, table#torrent_table strong, .bookmark_ic {
   color: var(--hb-warn) !important;
   fill: var(--hb-warn) !important;
@@ -330,31 +359,6 @@ input[type="submit"]:hover, button:hover, .btn:hover {
   border-color: transparent !important;
   color: #fff !important;
   box-shadow: 0 4px 10px rgba(14, 165, 233, 0.4) !important;
-}
-
-/* =========================================
-   HEADER & NAVIGATION
-   ========================================= */
-#header, #menu {
-  background: rgba(19, 24, 38, 0.85) !important;
-  backdrop-filter: blur(30px) !important;
-  -webkit-backdrop-filter: blur(30px) !important;
-  border-bottom: 1px solid var(--hb-border) !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-
-#menu ul > li > a {
-  font-weight: 600 !important;
-  color: var(--hb-text) !important;
-  padding: 12px 18px !important;
-  border-radius: var(--hb-radius-sm) !important;
-  transition: all 0.2s ease !important;
-}
-
-#menu ul > li > a:hover, #header > #menu ul > li.active > a {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-  box-shadow: inset 0 -3px 0 var(--accent-blue) !important; 
 }
 
 /* =========================================
