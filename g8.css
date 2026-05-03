@@ -185,7 +185,7 @@ tr:nth-child(even) > td, tr.rowb > td {
 }
 
 tr:hover > td:not(.tdhack) {
-  background: rgba(139, 92, 246, 0.15) !important;
+  background: rgba(120, 92, 246, 0.15) !important;
   box-shadow: inset 2px 0 0 var(--accent-purple) !important; 
 }
 
