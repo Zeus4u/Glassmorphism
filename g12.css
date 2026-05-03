@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V36 (Visibility Fix)
+   AURORA PREMIUM GLASS V37 (The Unified Box)
    ========================================= */
 
 :root {
@@ -198,30 +198,41 @@ tr:hover > td:not(.tdhack) {
 }
 
 /* =========================================
-   GROUPED TORRENTS HIERARCHY
+   GROUPED TORRENTS HIERARCHY (The Unified Box)
    ========================================= */
-tr.group_torrent > td {
-  background: rgba(0, 0, 0, 0.3) !important; 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+/* ביטול צבעי הזברה וקביעת רקע אחיד ועמוק לכל הגוש של הקבוצה */
+tr.group_torrent:nth-child(n) > td {
+  background: rgba(5, 10, 15, 0.4) !important; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02) !important; /* קו פנימי כמעט בלתי נראה */
 }
 
+/* בניית "קירות" לקופסה: קיר עבה מימין (חיבור הקבוצה) */
 tr.group_torrent > td:first-child {
-  box-shadow: inset -4px 0 0 rgba(139, 92, 246, 0.3) !important; 
-}
-
-tr.group_torrent:hover > td {
-  background: rgba(139, 92, 246, 0.15) !important;
-}
-tr.group_torrent:hover > td:first-child {
   box-shadow: inset -4px 0 0 var(--accent-purple) !important; 
 }
 
+/* בניית קיר משמאל שסוגר את הגוש */
+tr.group_torrent > td:last-child {
+  box-shadow: inset 2px 0 0 var(--accent-purple) !important; 
+}
+
+/* הריחוף יאיר את השורה אבל ישמור על האחידות של הקירות משני הצדדים */
+tr.group_torrent:hover:nth-child(n) > td {
+  background: rgba(139, 92, 246, 0.15) !important;
+}
+tr.group_torrent:hover > td:first-child {
+  box-shadow: inset -4px 0 0 var(--accent-blue) !important; 
+}
+tr.group_torrent:hover > td:last-child {
+  box-shadow: inset 2px 0 0 var(--accent-blue) !important; 
+}
+
 /* =========================================
-   TORRENT GROUPS EXPAND / COLLAPSE (התיקון של ה- + ו -)
+   TORRENT GROUPS EXPAND / COLLAPSE (כפתורי הפלוס והמינוס)
    ========================================= */
 a.show_torrents, 
 a.hide_torrents {
-  filter: invert(1) brightness(100) !important; /* הופך תמונות שחורות ללבנות */
+  filter: invert(1) brightness(100) !important; 
   opacity: 0.7 !important;
   transition: all 0.2s ease !important;
 }
