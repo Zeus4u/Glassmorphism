@@ -319,7 +319,6 @@ a:not([class*="permission_"]):hover {
 
 /* הגברת ניאון לדרגות בשאר האתר (איפה שהן לא נדרסו) */
 a[class*="permission_"] {
-  filter: brightness(1.6) saturate(1.5) drop-shadow(0 0 4px currentcolor) !important;
   font-weight: 800 !important;
   text-shadow: none !important; 
 }
