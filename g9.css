@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V31 (Anti-Jitter Update)
+   AURORA PREMIUM GLASS V32 (The 1440px Masterpiece)
    ========================================= */
 
 :root {
@@ -66,6 +66,14 @@ body::after {
 
 html, .body, .tdhack {
   background: transparent !important;
+}
+
+/* =========================================
+   WIDESCREEN LAYOUT (ההרחבה שלך - 1440px)
+   ========================================= */
+#content, #searchbars {
+  max-width: 1440px !important;
+  margin: 0 auto !important; /* דואג שיישאר ממורכז בדיוק באמצע */
 }
 
 /* =========================================
@@ -287,7 +295,6 @@ a[class*="permission_"] {
   transition: all 0.2s ease !important;
 }
 
-/* הריחוף נשאר נקי ורק משנה תאורה - בלי קפיצות או transform */
 a[class*="permission_"]:hover {
   filter: brightness(1.3) drop-shadow(0 0 6px currentColor) !important;
 }
@@ -373,7 +380,7 @@ svg { fill: var(--hb-text) !important; }
 .torrent_icons i, .torrent_icons .fa {
   transition: all 0.2s ease !important;
   filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)) !important;
-  display: inline-block !important; /* מייצב את הסמל בזמן הגדלה */
+  display: inline-block !important;
 }
 
 .download_ic i, .download_ic .fa-download { color: #10b981 !important; }
@@ -383,7 +390,6 @@ a[href*="action=edit"] i, .fa-pencil-square-o { color: #f59e0b !important; }
 a[href*="action=delete"] i, .fa-trash { color: #ef4444 !important; }
 a[href*="torrentid="] i, .fa-link { color: #0ea5e9 !important; }
 
-/* הHover של הסמלים מייצר רק זוהר בלי transform כדי למנוע קפיצות במסכים צפופים */
 .torrent_icons a:hover i {
   filter: brightness(1.4) drop-shadow(0 0 6px currentColor) !important;
 }
