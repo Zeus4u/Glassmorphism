@@ -1,6 +1,7 @@
 @import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
+
 :root {
   --glass-blur: blur(40px) saturate(180%);
   --bg-deep: #160d08; 
