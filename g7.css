@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V20 (Pure System Rank Colors)
+   AURORA PREMIUM GLASS V21 (System Bug Override)
    ========================================= */
 
 :root {
@@ -144,7 +144,6 @@ html, .body, .tdhack {
   font-weight: 700 !important;
 }
 
-/* מעצים צבעים מקוריים של התראות דינמיות כמו אדום/זהב */
 #alerts .alertbar a[style*="color"] {
   filter: brightness(1.4) drop-shadow(0 1px 4px rgba(0,0,0,0.8)) !important;
 }
@@ -275,7 +274,7 @@ blockquote {
 }
 
 /* =========================================
-   LINKS & PURE SYSTEM COLORS FOR RANKS
+   LINKS & THE GRAY EXTERMINATOR
    ========================================= */
 a {
   text-decoration: none !important;
@@ -283,7 +282,7 @@ a {
   font-family: var(--hb-font) !important;
 }
 
-/* חיסול האפור עבור לינקים רגילים בכותרות (כמו פח, עריכה, מספר הודעה) */
+/* השמדת האפור מהכותרות עבור כפתורים רגילים (כמו פח, עריכה, מספר הודעה) */
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]),
 .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]),
 .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]),
@@ -310,8 +309,7 @@ a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
 
-/* שמות משתמשים ודרגות (בפורום ובשאר האתר) - נטו צבע מערכת מוגבר! 
-   מחקנו את override הכחול - הצבע שייצא זה בדיוק מה שהאתר שולח */
+/* הגברת ניאון לדרגות משתמשים בכל האתר (שלא נדרסו) */
 a[class*="permission_"], a[href*="user.php?id="] {
   filter: brightness(1.6) saturate(1.5) drop-shadow(0 0 4px currentcolor) !important;
   font-weight: 800 !important;
@@ -323,6 +321,23 @@ a[class*="permission_"]:hover, a[href*="user.php?id="]:hover {
   transform: scale(1.05);
   display: inline-block;
 }
+
+/* =========================================
+   SYSTEM BUG FIX: RANK COLORS OVERRIDE
+   (האתר דורס לעצמו את צבעי הדרגות בפורום עם #313131. אנחנו מחזירים אותם בכוח!)
+   ========================================= */
+
+/* דרגת Vig / FLS (זהב כהה/חום) - יזרח בזכות מגבר הניאון למעלה */
+a.permission_450 {
+  color: #c4a000 !important;
+}
+
+/* 
+  אם תמצא עוד דרגות בפורום שנהיות אפורות, פשוט תעתיק את השורה פה למטה, 
+  תשנה את המספר (למשל 100, 200) ותן את צבע ההקסדצימלי המתאים! 
+*/
+/* a.permission_XXX { color: #HEXCODE !important; } */
+
 
 /* =========================================
    SVG ICONS & STATUS COLORS
