@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V35 (The Hierarchy Update + 1440px)
+   AURORA PREMIUM GLASS V36 (Visibility Fix)
    ========================================= */
 
 :root {
@@ -198,25 +198,39 @@ tr:hover > td:not(.tdhack) {
 }
 
 /* =========================================
-   GROUPED TORRENTS HIERARCHY (תיקון היררכיה לרשומות)
+   GROUPED TORRENTS HIERARCHY
    ========================================= */
-/* רקע כהה ושקוע יותר לרשומות הפנימיות ליצירת תחושת עומק/תיקייה */
 tr.group_torrent > td {
   background: rgba(0, 0, 0, 0.3) !important; 
   border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
 }
 
-/* יצירת פס סגול עדין בצד ימין שאוגד את כל הרשומות תחת אותה קבוצה */
 tr.group_torrent > td:first-child {
   box-shadow: inset -4px 0 0 rgba(139, 92, 246, 0.3) !important; 
 }
 
-/* אפקט ריחוף על הרשומות הפנימיות שמדליק את הרקע והפס יחד */
 tr.group_torrent:hover > td {
   background: rgba(139, 92, 246, 0.15) !important;
 }
 tr.group_torrent:hover > td:first-child {
   box-shadow: inset -4px 0 0 var(--accent-purple) !important; 
+}
+
+/* =========================================
+   TORRENT GROUPS EXPAND / COLLAPSE (התיקון של ה- + ו -)
+   ========================================= */
+a.show_torrents, 
+a.hide_torrents {
+  filter: invert(1) brightness(100) !important; /* הופך תמונות שחורות ללבנות */
+  opacity: 0.7 !important;
+  transition: all 0.2s ease !important;
+}
+
+a.show_torrents:hover, 
+a.hide_torrents:hover {
+  opacity: 1 !important;
+  filter: invert(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) !important;
+  transform: scale(1.1);
 }
 
 /* =========================================
