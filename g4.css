@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V12 (Headers Fix + Owl Carousel Integration)
+   AURORA PREMIUM GLASS V13 (SVG Icons & Colors Fix)
    ========================================= */
 
 :root {
@@ -36,7 +36,7 @@
   --hb-link: #38bdf8;
   --hb-link-hover: #fbcfe8; 
   
-  /* Status */
+  /* Status Colors */
   --hb-success: #10b981;
   --hb-danger: #f43f5e;
   --hb-warn: #f59e0b;
@@ -197,14 +197,13 @@ table.forum_post td.avatar {
 }
 
 /* =========================================
-   TYPOGRAPHY & TEXT FIXES
+   TYPOGRAPHY, TEXT & HEADERS
    ========================================= */
 .box, .panel__body, td, th, div, span, p, label {
   text-shadow: none !important; 
   font-family: var(--hb-font) !important;
 }
 
-/* תיקון גורף לכל הכותרות באתר (H1-H6) שיהיו לבנות וקריאות */
 h1, h2, h3, h4, h5, h6 {
   color: var(--hb-text-strong) !important;
   font-family: var(--hb-font) !important;
@@ -212,7 +211,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0 !important;
 }
 
-/* עיצוב לתתי-כותרות קטנות ליד כותרת ראשית */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   color: var(--hb-muted) !important;
   font-size: 0.75em !important;
@@ -259,6 +257,35 @@ blockquote {
   color: var(--hb-text) !important;
   margin: 10px 0 !important;
 }
+
+/* =========================================
+   SVG ICONS & STATUS COLORS (התיקון של החצים)
+   ========================================= */
+/* כל סמל כללי מקבל את צבע הטקסט כדי לא להיות שחור */
+svg {
+  fill: var(--hb-text) !important;
+}
+
+/* חצים עולים ויורדים - צבעי סטטוס כולל הילה */
+.up_polygon, .upload_stat, .good, .goodish, .tl_seeding {
+  fill: var(--hb-success) !important;
+  color: var(--hb-success) !important;
+  filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.4));
+}
+
+.down_polygon, .down_stat, .bad, .badish, .tl_snatched {
+  fill: var(--hb-danger) !important;
+  color: var(--hb-danger) !important;
+  filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.4));
+}
+
+/* התראות וסימניות מיוחדות */
+.internal-mark, .tl_notice, table#torrent_table strong, .bookmark_ic {
+  color: var(--hb-warn) !important;
+  fill: var(--hb-warn) !important;
+}
+.token_ic { color: #d2a8ff !important; fill: #d2a8ff !important; }
+.reseed_ic { color: #d29922 !important; fill: #d29922 !important; }
 
 /* =========================================
    BUTTONS & TAGS 
@@ -399,7 +426,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
 }
 
 /* =========================================
-   OWL CAROUSEL FIXES (חצים ונקודות ניווט)
+   OWL CAROUSEL FIXES
    ========================================= */
 .owl-nav {
   margin-top: 15px !important;
