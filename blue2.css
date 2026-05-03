@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V40.4 (Ocean Blue Edition)
-   - Editor Icons Targeted Fix
+   AURORA PREMIUM GLASS V40.5 (Ocean Blue Edition)
+   - Ultimate Editor Icons Fix (Alignments & Headings)
    - Prominent Quotes Update (Bright Blue Glass)
    - Unread Forum Icons Highlight (Yellow Glow)
    - Deep Navy Background
@@ -69,7 +69,6 @@ body::after {
   position: fixed;
   bottom: -10%; right: -10%;
   width: 60%; height: 60%;
-  /* תאורת אווירה כחולה-תכלת חלקה */
   background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 40%, transparent 60%);
   filter: blur(90px);
   z-index: -1;
@@ -261,7 +260,7 @@ a.hide_torrents:hover {
 }
 
 /* =========================================
-   FORUM UNREAD ICONS (הודעות שלא נקראו)
+   FORUM UNREAD ICONS 
    ========================================= */
 td.unread:before, 
 td.unread_locked:before, 
@@ -515,7 +514,7 @@ input[type="text"], input[type="search"], textarea, select, input[type="password
   transition: all 0.3s ease !important;
 }
 
-input[type="text"]:focus, input[type="search"], textarea:focus, select:focus {
+input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
   background: rgba(15, 25, 40, 0.8) !important;
   border-color: var(--accent-secondary) !important;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3) !important;
@@ -572,18 +571,27 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
   transition: all 0.2s ease !important;
 }
 
-/* חובה! ביטול ההיפוך הכללי שהרס את האייקונים הצבעוניים */
+/* ביטול ההיפוך הכללי שהרס סמלים צבעוניים */
 .wysibb-toolbar-btn img {
   filter: none !important; 
 }
 
-/* חובה! הפיכת רק האייקונים השחורים שציינת ללבנים בוהקים */
+/* הפיכת רק האייקונים השחורים ללבנים בוהקים (כולל סמלי היישור) */
 .wbb-removeformat img,
 .wbb-bold img,
 .wbb-italic img,
 .wbb-underline img,
-.wbb-strike img {
+.wbb-strike img,
+.wbb-justifyleft img,
+.wbb-justifycenter img,
+.wbb-justifyright img {
   filter: invert(1) brightness(100) !important;
+}
+
+/* כותרות H1, H2, H3 - הפיכת הטקסט והאייקון ללבן מואר */
+.wbb-h1, .wbb-h2, .wbb-h3,
+.wbb-h1 *, .wbb-h2 *, .wbb-h3 * {
+  color: #ffffff !important;
 }
 
 /* טיפול נקודתי באייקון של בוחר הצבעים */
