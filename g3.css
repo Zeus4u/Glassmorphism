@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V16 (Neon User Ranks + Unlimited Sticky)
+   AURORA PREMIUM GLASS V17 (Neon Ranks Fix)
    ========================================= */
 
 :root {
@@ -231,7 +231,7 @@ table.forum_post td.avatar {
 }
 
 /* =========================================
-   TYPOGRAPHY, HEADERS & READABILITY
+   TYPOGRAPHY, TEXT & HEADERS
    ========================================= */
 .box, .panel__body, td, th, div, span, p, label {
   text-shadow: none !important; 
@@ -274,35 +274,36 @@ blockquote {
 }
 
 /* =========================================
-   LINKS & USER RANKS (NEON GLOW FIX)
+   LINKS & NEON USER RANKS
    ========================================= */
+/* קישורים כלליים - ללא Important כדי שדרגות יוכלו לדרוס אותם בטבעיות */
 a {
+  color: var(--hb-link);
   text-decoration: none !important;
   transition: all 0.2s ease !important;
   font-family: var(--hb-font) !important;
 }
 
-/* קישורים רגילים באתר שאינם משתמשים */
-a:not([class*="permission_"]):not([href*="user.php?id="]) {
-  color: var(--hb-link) !important;
-}
-
-a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
-  color: var(--hb-link-hover) !important;
+a:hover {
+  color: var(--hb-link-hover);
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
 
-/* שמות משתמשים ודרגות - מגביר את הצבע המקורי ומוסיף הילה צבעונית! */
-a[class*="permission_"], a[href*="user.php?id="] {
-  filter: brightness(1.4) saturate(1.3) drop-shadow(0 0 4px currentcolor) !important;
-  font-weight: 700 !important;
+/* מנוע הניאון למשתמשים: לוקח את הצבע המקורי והחשוך של המערכת ומפוצץ אותו בבהירות! */
+a[class*="permission_"] {
+  filter: brightness(2) saturate(2) drop-shadow(0 0 4px currentColor) !important;
+  font-weight: 800 !important;
+  text-shadow: none !important; /* מבטל הצללה רגילה כדי לא ללכלך את הניאון */
 }
 
-/* אפקט ריחוף על שם משתמש - הופך לזורח יותר במקום לשנות צבע לתכלת */
-a[class*="permission_"]:hover, a[href*="user.php?id="]:hover {
-  filter: brightness(1.7) saturate(1.5) drop-shadow(0 0 8px currentcolor) !important;
+a[class*="permission_"]:hover {
+  filter: brightness(2.5) saturate(2.5) drop-shadow(0 0 8px currentColor) !important;
   transform: scale(1.05);
   display: inline-block;
+}
+
+.forum_post .colhead_dark a, .forum_post .head a {
+  font-weight: bold !important;
 }
 
 /* =========================================
