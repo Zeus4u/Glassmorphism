@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V30 (The True V27 + Icons)
+   AURORA PREMIUM GLASS V32 (Widescreen + Icons + V27 Base)
    ========================================= */
 
 :root {
@@ -66,6 +66,16 @@ body::after {
 
 html, .body, .tdhack {
   background: transparent !important;
+}
+
+/* =========================================
+   WIDESCREEN LAYOUT FIX (הרחבת האתר!)
+   ========================================= */
+/* שובר את ההגבלה המקורית ונותן לאתר יותר אוויר - עד 1400 פיקסלים ברוחב */
+#wrapper {
+  max-width: 1400px !important;
+  width: 95% !important; /* דואג שיהיו שוליים קטנים במסכים צרים יותר */
+  margin: 0 auto !important; /* ממורכז באמצע המסך */
 }
 
 /* =========================================
@@ -227,6 +237,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 
 .forum_post .body, .message_table td, form.search_form, form.search_form div, form.search_form td, form.search_form label, table td {
   color: var(--hb-text-strong) !important;
+  font-size: 14px !important; 
   line-height: 1.6 !important;
 }
 
@@ -283,11 +294,12 @@ a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
    ========================================= */
 a[class*="permission_"] {
   text-shadow: 0 0 3px rgba(0,0,0,0.5) !important; 
+  transition: all 0.2s ease !important;
 }
+
+/* הריחוף נשאר נקי ורק משנה תאורה - בלי קפיצות או transform */
 a[class*="permission_"]:hover {
-  filter: brightness(1.2);
-  transform: scale(1.05);
-  display: inline-block;
+  filter: brightness(1.3) drop-shadow(0 0 6px currentColor) !important;
 }
 
 a.permission_staff { font-weight: bold !important; color: #026ad4 !important; }
@@ -371,6 +383,7 @@ svg { fill: var(--hb-text) !important; }
 .torrent_icons i, .torrent_icons .fa {
   transition: all 0.2s ease !important;
   filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)) !important;
+  display: inline-block !important; /* מייצב את הסמל בזמן הגדלה */
 }
 
 .download_ic i, .download_ic .fa-download { color: #10b981 !important; }
@@ -380,9 +393,9 @@ a[href*="action=edit"] i, .fa-pencil-square-o { color: #f59e0b !important; }
 a[href*="action=delete"] i, .fa-trash { color: #ef4444 !important; }
 a[href*="torrentid="] i, .fa-link { color: #0ea5e9 !important; }
 
+/* הHover של הסמלים מייצר רק זוהר בלי transform כדי למנוע קפיצות במסכים צפופים */
 .torrent_icons a:hover i {
-  transform: scale(1.3) !important;
-  filter: brightness(1.4) drop-shadow(0 0 5px currentColor) !important;
+  filter: brightness(1.4) drop-shadow(0 0 6px currentColor) !important;
 }
 
 /* =========================================
