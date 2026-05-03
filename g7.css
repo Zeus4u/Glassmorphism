@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V23 (Bug Smash Edition)
+   AURORA PREMIUM GLASS V24 (Permission Fix Edition)
    ========================================= */
 
 :root {
@@ -274,7 +274,7 @@ blockquote {
 }
 
 /* =========================================
-   LINKS & THE GRAY EXTERMINATOR (ביטול החוקים שצילמת!)
+   LINKS & THE GRAY EXTERMINATOR
    ========================================= */
 a {
   text-decoration: none !important;
@@ -282,7 +282,7 @@ a {
   font-family: var(--hb-font) !important;
 }
 
-/* 1. ביטול החוק העליון בתמונה (האפור #313131 בכותרות) - רק לקישורים רגילים */
+/* קישורים רגילים בכותרות הפורום (לא דרגות משתמשים) */
 #inbox .box .head a:not([class*="permission_"]),
 .box.filter_torrents .head a:not([class*="permission_"]),
 .forum_post .colhead a:not([class*="permission_"]),
@@ -299,7 +299,7 @@ a {
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
 
-/* 2. ביטול החוק התחתון בתמונה (הטורקיז #32867d בתוך הפורום) - רק לקישורים רגילים */
+/* קישורים רגילים בתוך הפורום (לא דרגות משתמשים) */
 .forum_post a:not([class*="permission_"]) {
   color: var(--hb-link) !important;
 }
@@ -308,7 +308,7 @@ a {
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
 
-/* קישורים רגילים בשאר האתר שאינם משתמשים */
+/* קישורים רגילים בשאר האתר */
 a:not([class*="permission_"]) {
   color: var(--hb-link);
 }
@@ -317,7 +317,7 @@ a:not([class*="permission_"]):hover {
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
 
-/* הגברת ניאון לדרגות בשאר האתר (איפה שהן לא נדרסו) */
+/* בסיס לדרגות - ניאון בהובר */
 a[class*="permission_"] {
   font-weight: 800 !important;
   text-shadow: none !important; 
@@ -331,26 +331,37 @@ a[class*="permission_"]:hover {
 
 /* =========================================
    SYSTEM BUG FIX: RANK COLORS OVERRIDE
-   (האתר דורס לעצמו את צבעי הדרגות בפורום עם #313131. אנחנו מחזירים אותם בכוח!)
+   דורס את האפור של האתר על שמות משתמשים בכותרות הפורום
+   הסלקטורים זהים לחוק של האתר + class ספציפי = specificity גבוה יותר
    ========================================= */
 
-/* שחזור צבע ה-Vig בתוך אזורי הפורום הבעייתיים */
-.forum_post .colhead_dark a.permission_450,
-.forum_post .colhead a.permission_450 {
-  color: #c4a000 !important; /* צבע זהב/חום ל-Vig */
+/* Heb Rookie - מוסיף תחת ההנחה שזו דרגת permission_100. 
+   אם הצבע לא משתנה, פתח DevTools ותבדוק את המספר האמיתי */
+#inbox .box .head a.permission_100,
+.box.filter_torrents .head a.permission_100,
+.forum_post .colhead a.permission_100,
+.forum_post .colhead_dark a.permission_100 {
+  color: #38bdf8 !important;
+}
+
+/* Vig - permission_450 */
+#inbox .box .head a.permission_450,
+.box.filter_torrents .head a.permission_450,
+.forum_post .colhead a.permission_450,
+.forum_post .colhead_dark a.permission_450 {
+  color: #c4a000 !important;
 }
 
 /* 
-  אם תמצא עוד משתמשים אפורים בפורום, פשוט העתק את הבלוק הזה, 
-  שנה את המספר (למשל permission_100) ושים את הצבע המתאים. 
-*/
-/*
-.forum_post .colhead_dark a.permission_XXX,
-.forum_post .colhead a.permission_XXX {
-  color: #HEXCODE !important; 
-}
-*/
+  תבנית להוספת דרגות נוספות - העתק, החלף XXX במספר הדרגה ושים צבע:
 
+  #inbox .box .head a.permission_XXX,
+  .box.filter_torrents .head a.permission_XXX,
+  .forum_post .colhead a.permission_XXX,
+  .forum_post .colhead_dark a.permission_XXX {
+    color: #HEXCODE !important;
+  }
+*/
 
 /* =========================================
    SVG ICONS & STATUS COLORS
