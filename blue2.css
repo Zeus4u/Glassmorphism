@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V40.1 (Ocean Blue Edition)
+   AURORA PREMIUM GLASS V40.2 (Ocean Blue Edition)
+   - Unread Forum Icons Highlight (Yellow Glow)
    - Editor Toolbar Fixes
    - Deep Navy Background
    - 1440px Widescreen & Smooth Scroll
@@ -257,6 +258,17 @@ a.hide_torrents:hover {
   opacity: 1 !important;
   filter: invert(1) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) !important;
   transform: scale(1.1);
+}
+
+/* =========================================
+   FORUM UNREAD ICONS (הודעות שלא נקראו)
+   ========================================= */
+td.unread:before, 
+td.unread_locked:before, 
+td.unread_locked_sticky:before, 
+td.unread_sticky:before {
+  color: #fbbf24 !important; /* צהוב-זהב בוהק במקום הטורקיז שנבלע */
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6) !important; /* אפקט תאורה עדין שמושך את העין */
 }
 
 /* =========================================
@@ -551,24 +563,20 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
   font-family: var(--hb-font) !important;
 }
 
-/* סידור הלחצנים בעורך הראשי */
 .wysibb-toolbar-btn {
   color: var(--hb-text-strong) !important;
   transition: all 0.2s ease !important;
 }
 
-/* הפיכת תמונות/אייקונים שחורים ללבנים מוארים */
 .wysibb-toolbar-btn img {
   filter: invert(1) brightness(100) !important;
 }
 
-/* עיצוב במעבר עכבר ללחצני העורך */
 .wysibb-toolbar-btn:hover, .wysibb-toolbar-btn.on {
   background: rgba(59, 130, 246, 0.2) !important;
   border-radius: 4px !important;
 }
 
-/* עיצוב רשימות נפתחות (גודל, סמיילים, צבעים) כקופסאות אטומות וברורות */
 .wbb-list {
   background: #090e17 !important; 
   border: 1px solid var(--hb-border) !important;
@@ -587,7 +595,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
   background: rgba(59, 130, 246, 0.3) !important;
 }
 
-/* קווי מתאר לבוחר הצבעים */
 .wbb-list .sc {
   border: 1px solid rgba(255,255,255,0.1) !important;
   border-radius: 3px !important;
