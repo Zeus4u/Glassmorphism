@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V40.3 (Ocean Blue Edition)
+   AURORA PREMIUM GLASS V40.4 (Ocean Blue Edition)
+   - Editor Icons Targeted Fix
    - Prominent Quotes Update (Bright Blue Glass)
    - Unread Forum Icons Highlight (Yellow Glow)
-   - Editor Toolbar Fixes
    - Deep Navy Background
    - 1440px Widescreen & Smooth Scroll
    - Unified Torrent Groups
@@ -69,6 +69,7 @@ body::after {
   position: fixed;
   bottom: -10%; right: -10%;
   width: 60%; height: 60%;
+  /* תאורת אווירה כחולה-תכלת חלקה */
   background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 40%, transparent 60%);
   filter: blur(90px);
   z-index: -1;
@@ -324,9 +325,9 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
    QUOTES (ציטוטים בפורום)
    ========================================= */
 blockquote {
-  background: rgba(59, 130, 246, 0.15) !important; /* רקע כחול שקוף ובולט */
-  border: 1px solid rgba(59, 130, 246, 0.3) !important; /* מסגרת תכלת עדינה מסביב */
-  border-right: 4px solid var(--accent-secondary) !important; /* פס ימני עבה וזוהר */
+  background: rgba(59, 130, 246, 0.15) !important; 
+  border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+  border-right: 4px solid var(--accent-secondary) !important; 
   border-radius: var(--hb-radius-sm) !important;
   padding: 14px 18px !important;
   color: var(--hb-text-strong) !important;
@@ -514,7 +515,7 @@ input[type="text"], input[type="search"], textarea, select, input[type="password
   transition: all 0.3s ease !important;
 }
 
-input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
+input[type="text"]:focus, input[type="search"], textarea:focus, select:focus {
   background: rgba(15, 25, 40, 0.8) !important;
   border-color: var(--accent-secondary) !important;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3) !important;
@@ -554,7 +555,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
 ::-webkit-scrollbar-thumb:hover { filter: brightness(1.3); }
 
 /* =========================================
-   WYSIBB EDITOR (Fixes)
+   WYSIBB EDITOR (Targeted Fixes)
    ========================================= */
 .wysibb, .wysibb-text, .wysibb-toolbar {
   background: rgba(15, 23, 35, 0.8) !important;
@@ -571,8 +572,24 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
   transition: all 0.2s ease !important;
 }
 
+/* חובה! ביטול ההיפוך הכללי שהרס את האייקונים הצבעוניים */
 .wysibb-toolbar-btn img {
+  filter: none !important; 
+}
+
+/* חובה! הפיכת רק האייקונים השחורים שציינת ללבנים בוהקים */
+.wbb-removeformat img,
+.wbb-bold img,
+.wbb-italic img,
+.wbb-underline img,
+.wbb-strike img {
   filter: invert(1) brightness(100) !important;
+}
+
+/* טיפול נקודתי באייקון של בוחר הצבעים */
+.wbb-cp .fonticon, .wbb-cp ins.fonticon {
+  color: #ffffff !important;
+  text-shadow: 0 0 2px rgba(0,0,0,0.8) !important;
 }
 
 .wysibb-toolbar-btn:hover, .wysibb-toolbar-btn.on {
