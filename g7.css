@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 /* =========================================
-   AURORA PREMIUM GLASS V22 (Pure Unmodified Ranks)
+   AURORA PREMIUM GLASS V23 (Bug Smash Edition)
    ========================================= */
 
 :root {
@@ -274,7 +274,7 @@ blockquote {
 }
 
 /* =========================================
-   LINKS & THE GRAY EXTERMINATOR
+   LINKS & THE GRAY EXTERMINATOR (ביטול החוקים שצילמת!)
    ========================================= */
 a {
   text-decoration: none !important;
@@ -282,32 +282,76 @@ a {
   font-family: var(--hb-font) !important;
 }
 
-/* חיסול האפור עבור לינקים רגילים בכותרות (כמו פח, עריכה, מספר הודעה) */
-#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]),
-.box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]),
-.forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]),
-.forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) {
+/* 1. ביטול החוק העליון בתמונה (האפור #313131 בכותרות) - רק לקישורים רגילים */
+#inbox .box .head a:not([class*="permission_"]),
+.box.filter_torrents .head a:not([class*="permission_"]),
+.forum_post .colhead a:not([class*="permission_"]),
+.forum_post .colhead_dark a:not([class*="permission_"]) {
   color: var(--hb-text-strong) !important;
   text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
 }
 
-#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover,
-.box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover,
-.forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover,
-.forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
+#inbox .box .head a:not([class*="permission_"]):hover,
+.box.filter_torrents .head a:not([class*="permission_"]):hover,
+.forum_post .colhead a:not([class*="permission_"]):hover,
+.forum_post .colhead_dark a:not([class*="permission_"]):hover {
+  color: var(--hb-link-hover) !important;
+  text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
+}
+
+/* 2. ביטול החוק התחתון בתמונה (הטורקיז #32867d בתוך הפורום) - רק לקישורים רגילים */
+.forum_post a:not([class*="permission_"]) {
+  color: var(--hb-link) !important;
+}
+.forum_post a:not([class*="permission_"]):hover {
   color: var(--hb-link-hover) !important;
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
 
 /* קישורים רגילים בשאר האתר שאינם משתמשים */
-a:not([class*="permission_"]):not([href*="user.php?id="]) {
+a:not([class*="permission_"]) {
   color: var(--hb-link);
 }
-
-a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
+a:not([class*="permission_"]):hover {
   color: var(--hb-link-hover);
   text-shadow: 0 0 8px rgba(14, 165, 233, 0.6) !important;
 }
+
+/* הגברת ניאון לדרגות בשאר האתר (איפה שהן לא נדרסו) */
+a[class*="permission_"] {
+  filter: brightness(1.6) saturate(1.5) drop-shadow(0 0 4px currentcolor) !important;
+  font-weight: 800 !important;
+  text-shadow: none !important; 
+}
+
+a[class*="permission_"]:hover {
+  filter: brightness(2) saturate(2) drop-shadow(0 0 8px currentcolor) !important;
+  transform: scale(1.05);
+  display: inline-block;
+}
+
+/* =========================================
+   SYSTEM BUG FIX: RANK COLORS OVERRIDE
+   (האתר דורס לעצמו את צבעי הדרגות בפורום עם #313131. אנחנו מחזירים אותם בכוח!)
+   ========================================= */
+
+/* שחזור צבע ה-Vig בתוך אזורי הפורום הבעייתיים */
+.forum_post .colhead_dark a.permission_450,
+.forum_post .colhead a.permission_450 {
+  color: #c4a000 !important; /* צבע זהב/חום ל-Vig */
+}
+
+/* 
+  אם תמצא עוד משתמשים אפורים בפורום, פשוט העתק את הבלוק הזה, 
+  שנה את המספר (למשל permission_100) ושים את הצבע המתאים. 
+*/
+/*
+.forum_post .colhead_dark a.permission_XXX,
+.forum_post .colhead a.permission_XXX {
+  color: #HEXCODE !important; 
+}
+*/
+
 
 /* =========================================
    SVG ICONS & STATUS COLORS
