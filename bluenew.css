@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS OCEAN SOLID PRO (V41.2)
-   - VOD Carousel Fix (Netflix Style Cards, No Gaps)
-   - Dynamic Flexbox Searchbars Added
+   HEBITS OCEAN SOLID PRO (V41.3)
+   - Perfect VOD Grid (Uniform Heights & Multi-line Titles)
+   - Dynamic Flexbox Searchbars 
    - Zero Glassmorphism
    - Professional Flat & Solid UI
    - 1440px Widescreen
@@ -36,6 +36,7 @@
   
   --hb-radius-sm: 6px;
   --hb-radius: 12px;
+  /* Realistic, crisp box-shadow */
   --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2); 
 }
 
@@ -176,8 +177,19 @@ html {
 }
 
 /* =========================================
-   LATEST TORRENTS CAROUSEL (VOD Cards Fix)
+   LATEST TORRENTS CAROUSEL (Uniform Heights & Wrapping Fix)
    ========================================= */
+/* הפיכת שורת הקרוסלה למערך גמיש שמושך את כל הכרטיסים לאותו גובה בדיוק */
+#latest5tor .owl-stage {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+#latest5tor .owl-item {
+  display: flex !important;
+  float: none !important;
+}
+
 #latest5tor .owl-item > div {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
@@ -189,6 +201,11 @@ html {
   position: relative !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
+  
+  /* Flexbox הגדרת הכרטיסייה הפנימית כ */
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
 }
 
 #latest5tor .owl-item > div:hover {
@@ -197,51 +214,54 @@ html {
   box-shadow: 0 8px 15px rgba(0,0,0,0.4) !important;
 }
 
-/* הפוסטר ימלא עכשיו את כל הרוחב ויעלים את ה"חורים" בין הסרטים */
 #latest5tor .owl-item a > div[style*="background-image"] {
-  height: 200px !important; /* הגבהת התמונה */
-  background-size: cover !important; /* מריחה על כל שטח הקופסה */
+  height: 190px !important; 
+  background-size: cover !important; 
   background-position: center top !important;
   border-radius: 4px !important;
   margin-bottom: 12px !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.5) !important;
   width: 100% !important;
+  flex-shrink: 0 !important;
 }
 
-/* סידור ושמירה על שורה אחת ישרה לכותרת */
+/* עטיפת הטקסט - מאפשר לטקסט ארוך לגלוש ל-2 שורות לפני שמופיעות הנקודות */
 #latest5tor .owl-item a > span.tooltip {
-  display: block !important;
-  font-size: 14px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   color: var(--hb-text-strong) !important;
-  white-space: nowrap !important;
+  white-space: normal !important; 
   overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 6px !important;
+  line-height: 1.4 !important;
 }
 
 #latest5tor .owl-item br { display: none !important; }
 
-/* טקסט עונה/פרק נקי */
 #latest5tor .owl-item span[style*="font-size: 90%"] {
   display: block !important;
   font-size: 12px !important;
   color: var(--hb-muted) !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 10px !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
 
-/* תווית הזמן שמופיעה למטה */
-#latest5tor .owl-item div[style*="font-size: 95%"] {
+/* כפתור "לפני X זמן" - נדחף אוטומטית לקצה התחתון של הכרטיסייה */
+#latest5tor .owl-item > div > div[style*="font-size: 95%"] {
+  margin-top: auto !important; /* זה הקסם שדואג ליישר הכל למטה! */
   font-size: 12px !important;
   color: var(--accent-secondary) !important;
   font-weight: 500 !important;
   background: #0f172a !important; 
   border-radius: 4px !important;
-  padding: 4px 0 !important;
+  padding: 6px 0 !important;
   border: 1px solid var(--hb-border-soft) !important;
+  width: 100% !important;
 }
 
 /* =========================================
