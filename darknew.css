@@ -2,13 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V43.1)
-   - Real Sticky Sidebar Fix (No internal scroll)
+   HEBITS STEALTH SOLID PRO (V43.2)
+   - 75% Dynamic Screen Width (No fixed px)
+   - Real Sticky Sidebar Fix
    - Beautiful "Pill" Searchbars Redesign
    - Perfect VOD Grid (Uniform Heights)
    - Black & Gray Monochrome Theme
    - Zero Glassmorphism (Solid UI)
-   - 1440px Widescreen
    ========================================= */
 
 :root {
@@ -38,7 +38,9 @@ body { background: var(--bg-deep) !important; color: var(--hb-text) !important; 
 body::before, body::after { display: none !important; }
 html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
-#content { max-width: 1440px !important; margin: 0 auto !important; }
+
+/* רוחב דינמי 75% מהמסך */
+#content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 
 #header { display: contents !important; }
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; }
@@ -48,8 +50,11 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 /* =========================================
    QUICK SEARCH BARS (Beautiful Pill Design)
    ========================================= */
-#searchbars-wrapper { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; padding: 24px 20px !important; margin-bottom: 20px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; }
-#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; max-width: 1440px !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
+#searchbars-wrapper { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; padding: 24px 0 !important; margin-bottom: 20px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; }
+
+/* סרגל החיפוש מקבל גם הוא 75% רוחב כדי להתיישר במדויק מעל התוכן */
+#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
+
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 #searchbars input[type="text"] { width: 100% !important; background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 100px !important; color: var(--hb-text-strong) !important; padding: 14px 24px !important; font-size: 14px !important; font-weight: 500 !important; text-align: center !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; box-sizing: border-box !important; }
 #searchbars input[type="text"]::placeholder { color: var(--hb-muted) !important; font-weight: 400 !important; transition: opacity 0.3s ease !important; }
