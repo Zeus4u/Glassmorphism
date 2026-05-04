@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS OCEAN SOLID PRO (V41)
+   HEBITS OCEAN SOLID PRO (V41.1)
+   - Dynamic Flexbox Searchbars Added
    - Zero Glassmorphism
    - Professional Flat & Solid UI
-   - Material / Tailwind Inspired
    - 1440px Widescreen
    ========================================= */
 
@@ -35,7 +35,7 @@
   
   --hb-radius-sm: 6px;
   --hb-radius: 12px;
-  /* Realistic, crisp box-shadow instead of diffuse glow */
+  /* Realistic, crisp box-shadow */
   --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2); 
 }
 
@@ -46,10 +46,9 @@ body {
   background: var(--bg-deep) !important;
   color: var(--hb-text) !important;
   font-family: var(--hb-font) !important;
-  letter-spacing: 0px !important; /* Cleaner without extra spacing */
+  letter-spacing: 0px !important; 
 }
 
-/* Removing the Aurora lights completely */
 body::before, body::after {
   display: none !important;
 }
@@ -58,18 +57,12 @@ html, .body, .tdhack {
   background: transparent !important;
 }
 
-/* =========================================
-   SMOOTH SCROLL 
-   ========================================= */
 html {
   scroll-padding-top: 90px !important; 
   scroll-behavior: smooth !important; 
 }
 
-/* =========================================
-   WIDESCREEN LAYOUT
-   ========================================= */
-#content, #searchbars {
+#content {
   max-width: 1440px !important;
   margin: 0 auto !important; 
 }
@@ -85,7 +78,7 @@ html {
   position: sticky !important;
   top: 0 !important;
   z-index: 99999 !important; 
-  background: #0b1120 !important; /* Darker solid header */
+  background: #0b1120 !important; 
   border-bottom: 1px solid var(--hb-border) !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
   width: 100% !important;
@@ -107,11 +100,74 @@ html {
 }
 
 /* =========================================
+   QUICK SEARCH BARS (Solid Pro Dashboard)
+   ========================================= */
+#searchbars-wrapper {
+  background: #0b1120 !important; /* התאמה לצבע התפריט העליון */
+  border-bottom: 1px solid var(--hb-border) !important;
+  padding: 16px 20px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+
+#searchbars {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#searchbars form.search_form {
+  flex: 1 1 140px !important; /* פריסה אחידה ושווה על כל המסך */
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#searchbars input[type="text"] {
+  width: 100% !important;
+  background: #0f172a !important; /* מראה שקוע עמוק ויוקרתי */
+  border: 1px solid var(--hb-border-soft) !important;
+  border-radius: 8px !important;
+  color: var(--hb-text-strong) !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-align: center !important; /* טקסט ממורכז ונקי */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+#searchbars input[type="text"]::placeholder {
+  color: var(--hb-muted) !important;
+  font-weight: 400 !important;
+}
+
+#searchbars input[type="text"]:hover {
+  background: #1e293b !important; 
+  border-color: #64748b !important; 
+}
+
+#searchbars input[type="text"]:focus {
+  background: #1e293b !important;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25), 0 4px 10px rgba(0,0,0,0.3) !important;
+  transform: translateY(-2px) !important; /* אפקט קפיצה החוצה מרשים */
+  outline: none !important;
+}
+
+/* =========================================
    ADMIN ALERTS BAR 
    ========================================= */
 #alerts {
   background: transparent !important;
-  padding: 20px 0 10px 0 !important;
+  padding: 0 0 10px 0 !important;
 }
 
 #alerts .alertbar {
@@ -137,7 +193,7 @@ html {
 .box, .panel__body, table.torrent_table, table.forum_post, table.message_table, #inbox .box, .filter_torrents {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
-  border-top: 3px solid var(--accent-primary) !important; /* Professional thick top line */
+  border-top: 3px solid var(--accent-primary) !important; 
   border-radius: var(--hb-radius) !important;
   box-shadow: var(--hb-shadow) !important;
   margin-bottom: 24px !important;
@@ -161,7 +217,7 @@ table, tbody, tr, td, th {
 }
 
 .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head {
-  background: #0f172a !important; /* Slightly darker than panel for contrast */
+  background: #0f172a !important; 
   color: var(--hb-text-strong) !important;
   font-weight: 600 !important;
   border-bottom: 1px solid var(--hb-border) !important;
@@ -170,7 +226,6 @@ table, tbody, tr, td, th {
   text-shadow: none !important;
 }
 
-/* Solid Alternating Rows */
 tr:nth-child(odd) > td, tr.rowa > td {
   background: var(--hb-panel) !important;
   border-bottom: 1px solid var(--hb-border) !important;
@@ -183,7 +238,7 @@ tr:nth-child(even) > td, tr.rowb > td {
 
 tr:hover > td:not(.tdhack) {
   background: var(--hb-panel-hover) !important;
-  box-shadow: inset 3px 0 0 var(--accent-primary) !important; /* Solid left accent line */
+  box-shadow: inset 3px 0 0 var(--accent-primary) !important; 
 }
 
 /* =========================================
@@ -195,7 +250,7 @@ tr.group_torrent:nth-child(n) > td {
 }
 
 tr.group_torrent > td:first-child {
-  box-shadow: inset -4px 0 0 var(--hb-border-soft) !important; /* subtle grouping line */
+  box-shadow: inset -4px 0 0 var(--hb-border-soft) !important; 
 }
 
 tr.group_torrent > td:last-child {
@@ -225,13 +280,13 @@ a.show_torrents:hover, a.hide_torrents:hover {
 /* Forum Unread */
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before {
   color: var(--accent-secondary) !important; 
-  text-shadow: none !important; /* Removed glow, kept solid color */
+  text-shadow: none !important; 
 }
 
 /* =========================================
    CLEANING FORMS & INVISIBLE TABLES
    ========================================= */
-form.search_form, form.search_form > div, #searchbox, #searchbox > div,
+form.search_form:not(#searchbars form), form.search_form > div, #searchbox, #searchbox > div,
 table.layout td, .filter_torrents td, .filter_torrents tr, .filter_torrents div,
 table.forum_post td, table.message_table td, div.movie-item, #threadpoll, 
 div#quickreplytext, table.ft_cat_list td {
@@ -268,7 +323,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   margin-right: 8px !important;
 }
 
-.forum_post .body, .message_table td, form.search_form, form.search_form div, form.search_form td, form.search_form label, table td {
+.forum_post .body, .message_table td, form.search_form label, table td {
   color: var(--hb-text) !important;
   font-size: 14px !important; 
   line-height: 1.6 !important;
@@ -322,7 +377,7 @@ a:not([class*="permission_"]):not([href*="user.php?id="]) {
 }
 a:not([class*="permission_"]):not([href*="user.php?id="]):hover {
   color: var(--hb-link-hover);
-  text-decoration: underline !important; /* Clean underline instead of glow */
+  text-decoration: underline !important; 
 }
 
 /* =========================================
@@ -451,9 +506,9 @@ input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover
 }
 
 /* =========================================
-   INPUTS & FORMS 
+   GENERAL INPUTS & FORMS 
    ========================================= */
-input[type="text"], input[type="search"], textarea, select, input[type="password"] {
+input[type="text"]:not(#searchbars input), input[type="search"]:not(#searchbars input), textarea, select, input[type="password"] {
   background: #0f172a !important; 
   border: 1px solid var(--hb-border-soft) !important;
   border-radius: var(--hb-radius-sm) !important;
@@ -464,7 +519,7 @@ input[type="text"], input[type="search"], textarea, select, input[type="password
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
 }
 
-input[type="text"]:focus, input[type="search"]:focus, textarea:focus, select:focus {
+input[type="text"]:focus:not(#searchbars input), input[type="search"]:focus:not(#searchbars input), textarea:focus, select:focus {
   background: #1e293b !important;
   border-color: var(--accent-primary) !important;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
