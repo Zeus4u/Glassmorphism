@@ -2,12 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V44.1)
-   - 📱 FIXED: Forced Mobile App Layout for strict browsers
+   HEBITS STEALTH SOLID PRO (V45)
+   - 📱 MOBILE APP OVERHAUL: Huge VOD Slider, Snap Scrolling, Fixed Jumps
    - 75% Dynamic Screen Width (Desktop)
-   - Real Sticky Sidebar 
-   - Beautiful "Pill" Searchbars
-   - Perfect VOD Grid (Uniform Heights)
+   - Real Sticky Sidebar Fix
+   - Beautiful "Pill" Searchbars Redesign
    - Black & Gray Monochrome Theme
    - Zero Glassmorphism (Solid UI)
    ========================================= */
@@ -35,18 +34,22 @@
   --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4); 
 }
 
-body { background: var(--bg-deep) !important; color: var(--hb-text) !important; font-family: var(--hb-font) !important; letter-spacing: 0px !important; overflow-x: hidden !important; }
+body { background: var(--bg-deep) !important; color: var(--hb-text) !important; font-family: var(--hb-font) !important; letter-spacing: 0px !important; }
 body::before, body::after { display: none !important; }
 html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
+
+/* 75% רוחב דינמי למסכי מחשב */
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 
 #header { display: contents !important; }
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; }
-#menu ul > li > a { font-weight: 500 !important; color: var(--hb-text) !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
+#menu ul > li > a { font-weight: 500 !important; color: var(--hb-text) !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; }
 #menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; color: var(--hb-text-strong) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
-/* QUICK SEARCH BARS */
+/* =========================================
+   QUICK SEARCH BARS (Pill Design)
+   ========================================= */
 #searchbars-wrapper { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; padding: 24px 0 !important; margin-bottom: 20px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; }
 #searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
@@ -56,7 +59,9 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #searchbars input[type="text"]:focus { background: var(--hb-panel) !important; border-color: var(--accent-secondary) !important; box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25), 0 8px 20px rgba(0,0,0,0.6) !important; transform: translateY(-3px) !important; outline: none !important; }
 #searchbars input[type="text"]:focus::placeholder { opacity: 0 !important; }
 
-/* TRUE STICKY SIDEBAR */
+/* =========================================
+   TRUE STICKY SIDEBAR
+   ========================================= */
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
@@ -66,7 +71,9 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 .box, .panel__body, table.torrent_table, table.forum_post, table.message_table, #inbox .box, .filter_torrents { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; color: var(--hb-text) !important; overflow: hidden !important; }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* LATEST TORRENTS CAROUSEL (Desktop Heights) */
+/* =========================================
+   LATEST TORRENTS CAROUSEL (Desktop Heights)
+   ========================================= */
 #latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
 #latest5tor .owl-item { display: flex !important; float: none !important; }
 #latest5tor .owl-item > div { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; padding: 10px !important; box-shadow: var(--hb-shadow) !important; transition: all 0.2s ease !important; text-align: center !important; position: relative !important; overflow: hidden !important; box-sizing: border-box !important; display: flex !important; flex-direction: column !important; width: 100% !important; }
@@ -77,6 +84,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #latest5tor .owl-item span[style*="font-size: 90%"] { display: block !important; font-size: 12px !important; color: var(--hb-muted) !important; margin-bottom: 10px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
 #latest5tor .owl-item > div > div[style*="font-size: 95%"] { margin-top: auto !important; font-size: 12px !important; color: var(--hb-text-strong) !important; font-weight: 500 !important; background: var(--bg-deep) !important; border-radius: 4px !important; padding: 6px 0 !important; border: 1px solid var(--hb-border-soft) !important; width: 100% !important; }
 
+/* TABLES & ROWS */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border: none !important; }
 .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; border-bottom: 1px solid var(--hb-border) !important; border-top: none !important; padding: 14px 16px !important; text-shadow: none !important; }
 tr:nth-child(odd) > td, tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
@@ -174,48 +182,53 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
+/* DESKTOP OWL CAROUSEL FIXES */
+.owl-nav { margin-top: 20px !important; text-align: center !important; display: flex !important; justify-content: center !important; gap: 10px !important; }
+.owl-dots { margin-top: 15px !important; text-align: center !important; }
+.owl-nav button, .owl-dots button { padding: 0 !important; box-shadow: none !important; background: transparent !important; border: none !important; }
+.owl-nav button.owl-prev, .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 8px !important; color: var(--hb-text) !important; font-size: 20px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
+.owl-nav button.owl-prev span, .owl-nav button.owl-next span { margin-top: -3px !important; }
+.owl-nav button.owl-prev:hover, .owl-nav button.owl-next:hover { background: var(--hb-panel-hover) !important; color: var(--hb-text-strong) !important; border-color: var(--hb-border-soft) !important; }
+.owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
+.owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
+.owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
+
 
 /* =========================================
-   📱 MOBILE RESPONSIVE DESIGN (App Layout) 📱
+   📱 MOBILE OVERHAUL (FIXED ZOOM & SCROLL) 📱
    ========================================= */
-@media screen and (max-width: 992px), screen and (max-device-width: 992px) {
+@media screen and (max-width: 992px) {
   
-  /* FORCE BROWSER TO OBEY WIDTH ON NON-RESPONSIVE SITES */
-  html, body {
-    width: 100vw !important;
+  /* Prevent the "zoomed out" desktop look */
+  body, html, #wrapper, #content, .thin {
+    width: 100% !important;
     min-width: 0 !important;
-    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Reset container constraints to fill the small screen */
-  #content, #searchbars { 
-    width: 100% !important; 
-    padding: 0 10px !important; 
-    box-sizing: border-box !important; 
+  /* Force header banner to scale down */
+  #header img, #logo a img, .logo img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
   }
+
+  /* Fix inner padding */
+  #content { padding: 10px !important; box-sizing: border-box !important; }
   
-  /* Stack Layout Columns (Sidebar below Main Content) */
-  .thin { 
-    display: flex !important; 
-    flex-direction: column !important; 
-    width: 100% !important;
-  }
-  
-  .sidebar, .main_column { 
-    width: 100% !important; 
-    float: none !important; 
-    margin: 0 0 20px 0 !important; 
-    padding: 0 !important; 
-    box-sizing: border-box !important;
-  }
-  
-  /* Disable Sticky Sidebar on Mobile to save screen space */
+  /* Disable Sticky Sidebar to clear vertical space */
   .sidebar { 
     position: relative !important; 
     top: auto !important; 
+    width: 100% !important; 
+    margin-bottom: 20px !important;
   }
 
-  /* Header Scrollable Menu */
+  .main_column { width: 100% !important; }
+
+  /* Top Menu Horizontal Scroll */
   #menu ul { 
     display: flex !important; 
     overflow-x: auto !important; 
@@ -223,32 +236,29 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     -webkit-overflow-scrolling: touch !important; 
     padding-bottom: 5px !important; 
   }
-  
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
-  #menu ul::-webkit-scrollbar { display: none !important; } /* Hide menu scrollbar */
+  #menu ul::-webkit-scrollbar { display: none !important; } 
 
-  /* Searchbars Grid */
-  #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important;}
-  #searchbars { gap: 10px !important; width: 100% !important; }
-  #searchbars form.search_form { flex: 1 1 45% !important; }
+  /* Fat, easy-to-tap Search Bars */
+  #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
+  #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
+  #searchbars form.search_form { width: 100% !important; flex: none !important; }
+  #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; }
 
-  /* 🌟 THE VOD CAROUSEL FIX (Swipeable) 🌟 */
+  /* 🌟 HUGE VOD CAROUSEL (NATIVE APP FEEL) 🌟 */
   #latest5tor .owl-carousel { display: block !important; }
   
   #latest5tor .owl-stage-outer {
+    width: 100% !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
-    padding-bottom: 15px !important; 
-    margin: 0 -10px !important; 
-    padding-left: 10px !important;
-    width: 100vw !important;
+    padding: 15px 0 !important; 
+    scroll-snap-type: x mandatory !important; /* Netflix Style Snapping */
   }
   
-  #latest5tor .owl-stage-outer::-webkit-scrollbar { height: 4px; }
-  #latest5tor .owl-stage-outer::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 4px; }
+  #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
   
-  /* Kill Owl's JS transformations so native CSS scroll works */
   #latest5tor .owl-stage {
     display: flex !important;
     width: max-content !important; 
@@ -257,30 +267,37 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   }
   
   #latest5tor .owl-item {
-    width: 35vw !important; 
-    min-width: 130px !important; 
+    width: 75vw !important; /* HUGE: 75% of screen per movie */
+    max-width: 320px !important;
     flex: 0 0 auto !important;
-    margin-left: 10px !important; 
+    margin: 0 8px !important; 
+    scroll-snap-align: center !important; /* Centers movie on swipe */
   }
   
-  /* Hide navigation controls on touch devices */
+  #latest5tor .owl-item a > div[style*="background-image"] {
+    height: 45vw !important; /* Keep aspect ratio clean */
+    max-height: 200px !important;
+  }
+  
+  /* Bigger text inside slider for mobile */
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 14px !important; }
+  
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* Adjust Torrent Tables to scroll horizontally */
+  /* Fix wide tables breaking the screen */
   table.torrent_table { 
     display: block !important; 
-    overflow-x: auto !important; 
-    white-space: nowrap !important; 
-    -webkit-overflow-scrolling: touch !important; 
     width: 100% !important;
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
   }
-  
-  /* Optimize forums for mobile reading */
+
+  /* Make general text larger and readable */
+  .box, .panel__body, table td, .forum_post .body {
+    font-size: 15px !important;
+  }
+
   table.forum_post td.avatar { display: none !important; } 
-  table.forum_post td.body { 
-    padding: 12px 10px !important; 
-    display: block !important; 
-    width: 100% !important; 
-    box-sizing: border-box !important;
-  }
+  table.forum_post td.body { padding: 15px 10px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
