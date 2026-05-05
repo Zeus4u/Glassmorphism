@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V57)
-   - 🌟 NEW: Beautiful User Info Stats Bar (Pill Design, Native Colors)
+   HEBITS STEALTH SOLID PRO (V58 - DASHBOARD MASTER)
+   - 🌟 USERINFO MERGED: Centered perfectly, unified with searchbar background!
+   - 💻 DESKTOP FIX: Carousel cards no longer clip on hover
    - 💻 RESTORED: Owl Carousel Navigation Arrows
-   - 💻 DESKTOP FIX: Carousel cards clipping fix
    - 📱 MOBILE IPS FORUMS: Flawless Card UI & Inline Categories
    - 📱 GRID SEARCH: Perfectly forced 2-column searchbars
    - Perfect VOD Grid (2.5 Cards natively swiping)
@@ -51,24 +51,27 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; color: var(--hb-text-strong) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
 /* =========================================
-   USER INFO STATS BAR (NEW PILL DESIGN)
+   USER INFO STATS BAR (CENTERED & MERGED)
    ========================================= */
 #userinfo {
   display: flex !important;
   flex-wrap: wrap !important;
-  justify-content: space-between !important;
+  justify-content: center !important; /* CENTER EVERYTHING */
   align-items: center !important;
-  background: var(--hb-panel) !important;
-  border: 1px solid var(--hb-border) !important;
-  border-radius: var(--hb-radius) !important;
-  padding: 14px 20px !important;
-  margin-bottom: 24px !important;
-  box-shadow: var(--hb-shadow) !important;
-  gap: 15px !important;
+  background: #000000 !important; /* MATCH SEARCH/MENU BG */
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 20px 20px 10px 20px !important; /* FLOW INTO ELEMENTS BELOW */
+  margin: 0 !important;
+  box-shadow: none !important;
+  gap: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 #userinfo ul {
   display: flex !important;
   flex-wrap: wrap !important;
+  justify-content: center !important; /* CENTER ALL ITEMS */
   gap: 10px !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -100,7 +103,6 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #userinfo li a:hover {
   color: var(--hb-text-strong) !important;
 }
-/* Ensure system colors aren't overridden but fonts are bolded */
 #userinfo li span.stat, #userinfo li .tooltip {
   font-weight: 700 !important;
   margin-right: 6px !important; 
@@ -108,7 +110,13 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #userinfo li svg { margin-left: 6px !important; }
 
 /* QUICK SEARCH BARS */
-#searchbars-wrapper { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; padding: 24px 0 !important; margin-bottom: 20px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; }
+#searchbars-wrapper { 
+  background: #000000 !important; 
+  border-bottom: 1px solid var(--hb-border) !important; 
+  padding: 10px 0 24px 0 !important; /* REDUCED TOP PADDING TO MERGE */
+  margin-bottom: 20px !important; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; 
+}
 #searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 #searchbars input[type="text"] { width: 100% !important; background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 100px !important; color: var(--hb-text-strong) !important; padding: 14px 24px !important; font-size: 14px !important; font-weight: 500 !important; text-align: center !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; box-sizing: border-box !important; }
@@ -127,16 +135,8 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 .box, .panel__body, table.torrent_table, table.forum_post, table.message_table, #inbox .box, .filter_torrents { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; color: var(--hb-text) !important; overflow: hidden !important; }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* =========================================
-   LATEST TORRENTS CAROUSEL
-   ========================================= */
-#latest5tor .owl-stage-outer {
-  padding-top: 10px !important;
-  padding-bottom: 15px !important;
-  margin-top: -10px !important;
-  margin-bottom: -15px !important;
-}
-
+/* LATEST TORRENTS CAROUSEL */
+#latest5tor .owl-stage-outer { padding-top: 10px !important; padding-bottom: 15px !important; margin-top: -10px !important; margin-bottom: -15px !important; }
 #latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
 #latest5tor .owl-item { display: flex !important; float: none !important; }
 #latest5tor .owl-item > div { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; padding: 10px !important; box-shadow: var(--hb-shadow) !important; transition: all 0.2s ease !important; text-align: center !important; position: relative !important; overflow: hidden !important; box-sizing: border-box !important; display: flex !important; flex-direction: column !important; width: 100% !important; }
@@ -147,22 +147,13 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #latest5tor .owl-item span[style*="font-size: 90%"] { display: block !important; font-size: 12px !important; color: var(--hb-muted) !important; margin-bottom: 10px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
 #latest5tor .owl-item > div > div[style*="font-size: 95%"] { margin-top: auto !important; font-size: 12px !important; color: var(--hb-text-strong) !important; font-weight: 500 !important; background: var(--bg-deep) !important; border-radius: 4px !important; padding: 6px 0 !important; border: 1px solid var(--hb-border-soft) !important; width: 100% !important; }
 
-/* 💻 DESKTOP SLIDER BUTTONS RESTORED */
+/* DESKTOP SLIDER BUTTONS RESTORED */
 #latest5tor .owl-nav { margin-top: 20px !important; text-align: center !important; display: flex !important; justify-content: center !important; gap: 12px !important; }
 #latest5tor .owl-dots { margin-top: 15px !important; text-align: center !important; }
 #latest5tor .owl-nav button, #latest5tor .owl-dots button { padding: 0 !important; box-shadow: none !important; background: transparent !important; border: none !important; }
-#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next { 
-  display: flex !important; align-items: center !important; justify-content: center !important; 
-  width: 40px !important; height: 40px !important; 
-  background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; 
-  border-radius: 50% !important; color: var(--hb-text) !important; font-size: 24px !important; 
-  line-height: 1 !important; transition: all 0.2s ease !important; 
-}
+#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 40px !important; height: 40px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 50% !important; color: var(--hb-text) !important; font-size: 24px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
 #latest5tor .owl-nav button.owl-prev span, #latest5tor .owl-nav button.owl-next span { margin-top: -4px !important; }
-#latest5tor .owl-nav button.owl-prev:hover, #latest5tor .owl-nav button.owl-next:hover { 
-  background: var(--accent-primary) !important; color: #fff !important; 
-  border-color: var(--accent-secondary) !important; transform: scale(1.1) !important; 
-}
+#latest5tor .owl-nav button.owl-prev:hover, #latest5tor .owl-nav button.owl-next:hover { background: var(--accent-primary) !important; color: #fff !important; border-color: var(--accent-secondary) !important; transform: scale(1.1) !important; }
 #latest5tor .owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
 #latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
