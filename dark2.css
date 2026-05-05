@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V48 - FINAL)
+   HEBITS STEALTH SOLID PRO (V48.1 - FINAL)
+   - 📱 MOBILE FORUMS OVERHAUL: Clear, block-style latest posts
    - 📱 PERFECT MOBILE SCALE: Pure VW units, exactly 2.5 cards, 2:3 Poster Ratio
    - True Column Stacking & Reordering
    - 75% Dynamic Screen Width (Desktop)
@@ -183,7 +184,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
    ========================================= */
 @media screen and (max-width: 992px) {
   
-  /* Force viewport width and kill weird zooming */
   html, body, #wrapper, #content {
     width: 100vw !important;
     max-width: 100vw !important;
@@ -196,24 +196,16 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
   #content { padding: 10px !important; box-sizing: border-box !important; }
 
-  /* 🌟 THE COLUMN FIX: Reorder & Smash Floats 🌟 */
-  .thin {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-  
-  /* Force the Main Content to appear BEFORE the Sidebar */
+  /* 🌟 THE COLUMN FIX 🌟 */
+  .thin { display: flex !important; flex-direction: column !important; width: 100% !important; }
   #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
   .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
   .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
 
-  /* Top Menu Horizontal Scroll */
   #menu ul { display: flex !important; overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 5px !important; }
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
   #menu ul::-webkit-scrollbar { display: none !important; } 
 
-  /* Search Bars Grid */
   #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
   #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
   #searchbars form.search_form { width: 100% !important; flex: none !important; }
@@ -226,73 +218,99 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   
   #latest5tor .owl-stage-outer {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: scroll !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 15px 0 !important; 
-    scroll-snap-type: x mandatory !important;
-    touch-action: pan-x !important;
-    transform: none !important;
-    height: auto !important;
-    position: relative !important;
+    width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important;
   }
-  
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
   
-  #latest5tor .owl-stage {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    width: max-content !important;
-    min-width: 100% !important;
-    transform: none !important;
-    transition: none !important;
-    padding: 0 10px !important;
-    touch-action: pan-x !important;
-    pointer-events: none !important;
-  }
+  #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
   
-  /* Exactly 40vw per card = 2.5 cards on screen */
-  #latest5tor .owl-item,
-  #latest5tor .owl-item.active,
-  #latest5tor .owl-item.cloned {
-    width: 40vw !important; 
-    flex: 0 0 40vw !important;
-    max-width: none !important; /* NO FIXED PIXELS */
-    min-width: 0 !important;    /* NO FIXED PIXELS */
-    margin: 0 2vw !important;   /* Proportional gaps */
-    scroll-snap-align: center !important;
-    float: none !important;
-    touch-action: pan-x !important;
-    pointer-events: auto !important;
+  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned {
+    width: 40vw !important; flex: 0 0 40vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important;
   }
   
   #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
+  #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
   
-  #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div {
-    touch-action: pan-x pan-y !important;
-    pointer-events: auto !important;
-  }
-  
-  /* PERFECT CINEMA RATIO POSTERS (2:3) */
   #latest5tor .owl-item a > div[style*="background-image"] {
-    height: 60vw !important; /* 40vw width * 1.5 = 60vw height */
-    max-height: none !important;
-    min-height: 0 !important;
-    width: 100% !important;
-    background-size: cover !important; 
-    background-position: center top !important;
+    height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important;
   }
   
-  /* Scale text up slightly for the bigger cards */
   #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; }
   #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
   #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
   
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* General Table & Post scaling */
+  /* 🌟 MOBILE FORUMS / TORRENTS FIX (Block Style) 🌟 */
+  #latest5posts table, #latest5torrents_p table, 
+  #latest5forums_p, #latest5torrents_p {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  #latest5posts tbody, #latest5torrents_p tbody,
+  #latest5posts tr, #latest5torrents_p tr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Each post/torrent becomes a padded card */
+  #latest5posts td, #latest5torrents_p td {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 12px !important;
+    border-bottom: 1px solid var(--hb-border) !important;
+    box-sizing: border-box !important;
+    text-align: right !important;
+  }
+
+  /* Remove table borders that might break the design */
+  #latest5posts td:last-child, #latest5torrents_p td:last-child {
+    border-bottom: none !important;
+  }
+
+  /* Make the main title bigger and break to new line */
+  #latest5posts td > span > a:first-child, 
+  #latest5torrents_p td > span > a:first-child {
+    display: block !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+    color: var(--hb-text-strong) !important;
+    white-space: normal !important; /* Allow long titles to wrap */
+    word-break: break-word !important;
+  }
+
+  /* Make the secondary info (user, time, category) a block below */
+  #latest5posts td > span > span, 
+  #latest5torrents_p td > span > span {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+    float: none !important; /* Kill the float that squishes text */
+    color: var(--hb-muted) !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Category tag formatting */
+  #latest5posts td > span > a:nth-child(2), 
+  #latest5torrents_p td > span > strong {
+    display: inline-block !important;
+    font-size: 12px !important;
+    color: var(--accent-secondary) !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* "Show All" link centered */
+  #latest5posts td[style*="text-align: center"],
+  #latest5torrents_p td[style*="text-align: center"] {
+    text-align: center !important;
+    padding: 16px !important;
+    background: var(--bg-deep) !important;
+  }
+  
+  /* General Table overrides */
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
   .box, .panel__body, table td, .forum_post .body { font-size: 15px !important; }
   table.forum_post td.avatar { display: none !important; } 
