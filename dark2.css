@@ -239,30 +239,42 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #searchbars form.search_form { width: 100% !important; flex: none !important; }
   #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; }
 
-  /* 🌟 HUGE VOD CAROUSEL - REAL NATIVE SCROLL 🌟 */
+  /* =========================================
+     🌟 NATIVE VOD CAROUSEL - PROFESSIONAL FIX 🌟
+     Strategy: Completely defeat Owl Carousel JS by:
+     1. Disabling its drag class (.owl-drag) behavior via pointer-events
+     2. Using touch-action: pan-x on the scroll container
+     3. Re-enabling pointer-events on links/clickables only
+     ========================================= */
   
-  /* 1. Neutralize the Owl Carousel container completely */
+  /* 1. Owl carousel container - reset everything */
   #latest5tor .owl-carousel,
   #latest5tor .owl-carousel.owl-loaded,
-  #latest5tor .owl-carousel.owl-drag {
+  #latest5tor .owl-carousel.owl-drag,
+  #latest5tor .owl-carousel.owl-grab {
     display: block !important;
     width: 100% !important;
     overflow: visible !important;
-    touch-action: auto !important;
+    touch-action: pan-x !important;
+    -ms-touch-action: pan-x !important;
+    cursor: default !important;
   }
   
-  /* 2. The outer wrapper becomes the actual scroll container */
+  /* 2. THE KEY FIX: Outer wrapper is the REAL scroll container */
   #latest5tor .owl-stage-outer {
     width: 100% !important;
     max-width: 100vw !important;
     overflow-x: scroll !important;
-    overflow-y: hidden !important;
+    overflow-y: visible !important;
     -webkit-overflow-scrolling: touch !important;
     padding: 15px 0 !important; 
     scroll-snap-type: x mandatory !important;
     touch-action: pan-x !important;
+    -ms-touch-action: pan-x !important;
     transform: none !important;
+    -webkit-transform: none !important;
     height: auto !important;
+    position: relative !important;
   }
   
   #latest5tor .owl-stage-outer::-webkit-scrollbar { 
@@ -271,7 +283,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     width: 0 !important;
   }
   
-  /* 3. Kill Owl's transform on the stage - this is what blocks scrolling */
+  /* 3. Kill Owl's transform/transition on the stage */
   #latest5tor .owl-stage {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -283,39 +295,67 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     -webkit-transition: none !important;
     padding: 0 10px !important;
     touch-action: pan-x !important;
+    -ms-touch-action: pan-x !important;
+    /* CRITICAL: Block Owl's mouse/touch handlers from firing */
+    pointer-events: none !important;
   }
   
-  /* 4. Items - real native size, not Owl's calculated width */
+  /* 4. Items - native size, override Owl's inline width */
   #latest5tor .owl-item,
   #latest5tor .owl-item.active,
   #latest5tor .owl-item.cloned {
     width: 75vw !important;
     min-width: 75vw !important;
-    max-width: 320px !important;
+    max-width: 340px !important;
     flex: 0 0 75vw !important;
     margin: 0 6px !important;
     scroll-snap-align: center !important;
     float: none !important;
+    touch-action: pan-x !important;
+    /* Re-enable pointer events on items so links work */
+    pointer-events: auto !important;
   }
   
-  /* 5. Card inside item - fill the bigger container */
+  /* 5. Card inside item - fill bigger container */
   #latest5tor .owl-item > div {
     width: 100% !important;
     height: auto !important;
     padding: 12px !important;
+    pointer-events: auto !important;
   }
   
-  /* 6. Bigger poster image */
+  /* 6. CRITICAL: Links must allow vertical/horizontal scroll passthrough */
+  #latest5tor .owl-item a,
+  #latest5tor .owl-item a *,
+  #latest5tor .owl-item span,
+  #latest5tor .owl-item div {
+    touch-action: pan-x pan-y !important;
+    -ms-touch-action: pan-x pan-y !important;
+    pointer-events: auto !important;
+  }
+  
+  /* 7. DOUBLE THE POSTER HEIGHT - real cinema feel */
   #latest5tor .owl-item a > div[style*="background-image"] {
-    height: 50vw !important;
-    max-height: 220px !important;
-    min-height: 180px !important;
+    height: 95vw !important;
+    max-height: 440px !important;
+    min-height: 360px !important;
     width: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
   }
   
   /* Bigger text inside slider for mobile */
-  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; }
-  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 14px !important; }
+  #latest5tor .owl-item a > span.tooltip { 
+    font-size: 17px !important; 
+    line-height: 1.4 !important;
+  }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { 
+    font-size: 14px !important; 
+  }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] {
+    font-size: 13px !important;
+    padding: 8px 0 !important;
+  }
   
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
