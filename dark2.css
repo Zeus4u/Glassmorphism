@@ -2,12 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V52 - MASTER)
-   - 📱 MOBILE FIX: Ranks colors restored!
-   - 📱 MOBILE FIX: Searchbars now 2 per row (no more long columns)
-   - 📱 MOBILE IPS FORUMS: Category inline with title, "by user" aligned left
+   HEBITS STEALTH SOLID PRO (V53 - MASTERPIECE)
+   - 📱 GRID SEARCH: Perfectly forced 2-column searchbars on mobile!
+   - 📱 FORUM LAYOUT FIXED: Inline badges, clean 'by user' formatting!
+   - 📱 MOBILE Ranks colors completely restored!
    - Perfect VOD Grid (2.5 Cards natively swiping)
-   - 75% Dynamic Screen Width (Desktop)
    - Black & Gray Monochrome Theme
    ========================================= */
 
@@ -80,6 +79,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #latest5tor .owl-item span[style*="font-size: 90%"] { display: block !important; font-size: 12px !important; color: var(--hb-muted) !important; margin-bottom: 10px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
 #latest5tor .owl-item > div > div[style*="font-size: 95%"] { margin-top: auto !important; font-size: 12px !important; color: var(--hb-text-strong) !important; font-weight: 500 !important; background: var(--bg-deep) !important; border-radius: 4px !important; padding: 6px 0 !important; border: 1px solid var(--hb-border-soft) !important; width: 100% !important; }
 
+/* TABLES & ROWS */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border: none !important; }
 .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; border-bottom: 1px solid var(--hb-border) !important; border-top: none !important; padding: 14px 16px !important; text-shadow: none !important; }
 tr:nth-child(odd) > td, tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
@@ -197,13 +197,13 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
   #menu ul::-webkit-scrollbar { display: none !important; } 
 
-  /* Search Bars Grid - 2 Per Row on Mobile */
-  #searchbars-wrapper { padding: 12px 10px !important; width: 100% !important; box-sizing: border-box !important; }
-  #searchbars { flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; width: 100% !important; }
-  #searchbars form.search_form { width: calc(50% - 4px) !important; flex: 1 1 calc(50% - 10px) !important; }
-  #searchbars input[type="text"] { padding: 12px 15px !important; font-size: 14px !important; width: 100% !important; }
+  /* 🌟 CSS GRID SEARCH BARS (2 per row always) 🌟 */
+  #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
+  #searchbars { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; width: 100% !important; }
+  #searchbars form.search_form { width: 100% !important; margin: 0 !important; }
+  #searchbars input[type="text"] { padding: 14px 15px !important; font-size: 15px !important; width: 100% !important; }
 
-  /* 🌟 VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
+  /* 🌟 VOD CAROUSEL 🌟 */
   #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
@@ -212,7 +212,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
   #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
-  
   #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} 
   #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
   #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
@@ -235,28 +234,29 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td { width: 100% !important; padding: 18px 16px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; }
 
-  /* Flexbox Hack to hide the ugly brackets in Torrents [סדרות] */
-  #latest5posts td > span, #latest5torrents_p td > span { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: space-between !important; font-size: 0 !important; }
+  /* THE MAGIC HACK: Hide the ugly stray text nodes (&nbsp; and |) */
+  #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; color: transparent !important; font-size: 0 !important; line-height: 0 !important; }
+  #latest5posts td > span > *, #latest5torrents_p td > span > * { line-height: normal !important; }
 
   /* Title */
   #latest5posts td > span > a:first-child, 
-  #latest5torrents_p td > span > a:first-child { display: inline !important; flex: 1 1 60% !important; font-size: 18px !important; font-weight: 600 !important; margin-bottom: 14px !important; color: var(--hb-text-strong) !important; white-space: normal !important; word-break: break-word !important; line-height: 1.4 !important; text-align: right !important; }
+  #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 18px !important; font-weight: 600 !important; color: var(--hb-text-strong) !important; word-break: break-word !important; line-height: 1.5 !important; margin-left: 8px !important; }
 
   /* Category Badge - INLINE with Title */
   #latest5posts td > span > a:nth-child(2), 
-  #latest5torrents_p td > span > strong { display: inline-block !important; flex: 0 0 auto !important; background: rgba(59, 130, 246, 0.15) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 14px !important; font-weight: 600 !important; margin-right: 12px !important; margin-bottom: 14px !important; margin-top: -2px !important; }
+  #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(59, 130, 246, 0.15) !important; color: var(--accent-secondary) !important; padding: 4px 10px !important; border-radius: 6px !important; font-size: 14px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -2px !important; }
 
   /* Metadata Container (Bottom Row - User & Time) */
   #latest5posts td > span > span, 
-  #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 14px !important; margin-top: 14px !important; font-size: 15px !important; color: var(--hb-muted) !important; float: none !important; text-align: left !important; clear: both !important; }
+  #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 14px !important; margin-top: 14px !important; font-size: 15px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
-  /* The Time */
+  /* The Time - Pushed to the far left */
   #latest5posts td > span > span .time, 
-  #latest5torrents_p td > span > span .time { float: right !important; font-size: 14px !important; margin-top: 2px !important; }
+  #latest5torrents_p td > span > span .time { float: left !important; font-size: 14px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
   
   /* The Username Link */
   #latest5posts td > span > span a, 
-  #latest5torrents_p td > span > span a { font-size: 16px !important; font-weight: 600 !important; }
+  #latest5torrents_p td > span > span a { font-size: 16px !important; font-weight: 600 !important; margin-right: 4px !important; }
   
   /* Fix Username Colors: Allow custom rank colors, force white ONLY for normal links */
   #latest5posts td > span > span a:not([class*="permission_"]), 
