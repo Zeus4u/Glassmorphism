@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V59 - GLASS DASHBOARD)
-   - 🌟 NEW: Content pushed down to reveal the banner!
-   - 🌟 NEW: Frosted Glass (Blur) effect for the unified Dashboard (Userinfo + Search)
+   HEBITS STEALTH SOLID PRO (V60 - FINAL DASHBOARD FIX)
+   - 🌟 PLACEMENT FIX: Pushed the actual UserInfo + Search dashboard down!
+   - 🌟 Frosted Glass (Blur) effect for the unified Dashboard
    - 💻 DESKTOP FIX: Carousel cards no longer clip on hover
    - 📱 MOBILE IPS FORUMS: Flawless Card UI & Inline Categories
    - Black & Gray Monochrome Theme
@@ -41,8 +41,7 @@ body::before, body::after { display: none !important; }
 html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
 
-/* 🌟 PUSH CONTENT DOWN TO REVEAL BANNER 🌟 */
-#content { width: 75% !important; max-width: none !important; margin: 50px auto 30px auto !important; }
+#content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 
 #header { display: contents !important; }
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; }
@@ -64,7 +63,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   border-bottom: none !important; /* Merges with searchbars */
   border-radius: 16px 16px 0 0 !important; /* Rounded top only */
   padding: 20px 20px 10px 20px !important;
-  margin: 0 !important;
+  margin: 60px auto 0 auto !important; /* PUSHES DASHBOARD DOWN TO REVEAL BANNER */
   gap: 10px !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -258,14 +257,14 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
    ========================================= */
 @media screen and (max-width: 1100px) {
   
-  html, body, #wrapper, #content { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
+  html, body, #wrapper { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
   
-  /* Reset mobile content padding so the dashboard stretches */
-  #content { padding: 0 10px 10px 10px !important; margin: 20px auto !important; box-sizing: border-box !important; }
+  /* Reset content margin for mobile so it fits naturally */
+  #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 0 auto !important; box-sizing: border-box !important; }
 
-  /* Adjust Mobile Glass Dashboard */
-  #userinfo { border-radius: 12px 12px 0 0 !important; padding: 15px 10px 5px 10px !important; }
+  /* Ensure Mobile Dashboard sits well below banner */
+  #userinfo { border-radius: 12px 12px 0 0 !important; padding: 15px 10px 5px 10px !important; margin-top: 20px !important; }
   #searchbars-wrapper { border-radius: 0 0 12px 12px !important; padding: 5px 10px 15px 10px !important; margin-bottom: 20px !important;}
 
   /* THE COLUMN FIX */
