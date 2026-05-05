@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V44)
-   - 📱 NEW: App-like Mobile Layout (3.5 VOD Swipe & Column Stacking)
+   HEBITS STEALTH SOLID PRO (V44.1)
+   - 📱 FIXED: Forced Mobile App Layout for strict browsers
    - 75% Dynamic Screen Width (Desktop)
-   - Real Sticky Sidebar Fix
+   - Real Sticky Sidebar 
    - Beautiful "Pill" Searchbars
    - Perfect VOD Grid (Uniform Heights)
    - Black & Gray Monochrome Theme
@@ -35,14 +35,10 @@
   --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4); 
 }
 
-/* =========================================
-   DESKTOP & GENERAL STYLES
-   ========================================= */
 body { background: var(--bg-deep) !important; color: var(--hb-text) !important; font-family: var(--hb-font) !important; letter-spacing: 0px !important; overflow-x: hidden !important; }
 body::before, body::after { display: none !important; }
 html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
-
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 
 #header { display: contents !important; }
@@ -178,23 +174,19 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
-/* DESKTOP OWL CAROUSEL FIXES */
-.owl-nav { margin-top: 20px !important; text-align: center !important; display: flex !important; justify-content: center !important; gap: 10px !important; }
-.owl-dots { margin-top: 15px !important; text-align: center !important; }
-.owl-nav button, .owl-dots button { padding: 0 !important; box-shadow: none !important; background: transparent !important; border: none !important; }
-.owl-nav button.owl-prev, .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 8px !important; color: var(--hb-text) !important; font-size: 20px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
-.owl-nav button.owl-prev span, .owl-nav button.owl-next span { margin-top: -3px !important; }
-.owl-nav button.owl-prev:hover, .owl-nav button.owl-next:hover { background: var(--hb-panel-hover) !important; color: var(--hb-text-strong) !important; border-color: var(--hb-border-soft) !important; }
-.owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
-.owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
-.owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
-
 
 /* =========================================
    📱 MOBILE RESPONSIVE DESIGN (App Layout) 📱
    ========================================= */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 992px), screen and (max-device-width: 992px) {
   
+  /* FORCE BROWSER TO OBEY WIDTH ON NON-RESPONSIVE SITES */
+  html, body {
+    width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
   /* Reset container constraints to fill the small screen */
   #content, #searchbars { 
     width: 100% !important; 
@@ -206,6 +198,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   .thin { 
     display: flex !important; 
     flex-direction: column !important; 
+    width: 100% !important;
   }
   
   .sidebar, .main_column { 
@@ -213,6 +206,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     float: none !important; 
     margin: 0 0 20px 0 !important; 
     padding: 0 !important; 
+    box-sizing: border-box !important;
   }
   
   /* Disable Sticky Sidebar on Mobile to save screen space */
@@ -233,12 +227,12 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
   #menu ul::-webkit-scrollbar { display: none !important; } /* Hide menu scrollbar */
 
-  /* Searchbars Grid (2 per row for better thumb reach) */
-  #searchbars-wrapper { padding: 15px 10px !important; }
-  #searchbars { gap: 10px !important; }
+  /* Searchbars Grid */
+  #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important;}
+  #searchbars { gap: 10px !important; width: 100% !important; }
   #searchbars form.search_form { flex: 1 1 45% !important; }
 
-  /* 🌟 THE VOD CAROUSEL FIX (3.5 Items, Swipeable) 🌟 */
+  /* 🌟 THE VOD CAROUSEL FIX (Swipeable) 🌟 */
   #latest5tor .owl-carousel { display: block !important; }
   
   #latest5tor .owl-stage-outer {
@@ -246,8 +240,9 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
     padding-bottom: 15px !important; 
-    margin: 0 -10px !important; /* Pull out to edges of screen */
+    margin: 0 -10px !important; 
     padding-left: 10px !important;
+    width: 100vw !important;
   }
   
   #latest5tor .owl-stage-outer::-webkit-scrollbar { height: 4px; }
@@ -262,25 +257,30 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   }
   
   #latest5tor .owl-item {
-    /* Magic Number: 27vw ensures exactly ~3.5 items are visible on screen */
-    width: 27vw !important; 
-    min-width: 120px !important; 
+    width: 35vw !important; 
+    min-width: 130px !important; 
     flex: 0 0 auto !important;
-    margin-left: 10px !important; /* RTL spacing */
+    margin-left: 10px !important; 
   }
   
   /* Hide navigation controls on touch devices */
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* Adjust Torrent Tables to scroll horizontally instead of squishing text */
+  /* Adjust Torrent Tables to scroll horizontally */
   table.torrent_table { 
     display: block !important; 
     overflow-x: auto !important; 
     white-space: nowrap !important; 
     -webkit-overflow-scrolling: touch !important; 
+    width: 100% !important;
   }
   
   /* Optimize forums for mobile reading */
-  table.forum_post td.avatar { display: none !important; } /* Hide avatars to save horizontal space */
-  table.forum_post td.body { padding: 12px 10px !important; }
+  table.forum_post td.avatar { display: none !important; } 
+  table.forum_post td.body { 
+    padding: 12px 10px !important; 
+    display: block !important; 
+    width: 100% !important; 
+    box-sizing: border-box !important;
+  }
 }
