@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V47)
-   - 📱 MOBILE APP OVERHAUL: True Column Stacking & Reordering!
-   - 📱 Perfect 2.5 Cinema-Ratio VOD Slider
+   HEBITS STEALTH SOLID PRO (V48 - FINAL)
+   - 📱 PERFECT MOBILE SCALE: Pure VW units, exactly 2.5 cards, 2:3 Poster Ratio
+   - True Column Stacking & Reordering
    - 75% Dynamic Screen Width (Desktop)
    - Real Sticky Sidebar Fix
    - Beautiful "Pill" Searchbars
@@ -179,7 +179,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
 
 /* =========================================
-   📱 MOBILE OVERHAUL (THE REAL FIX) 📱
+   📱 MOBILE OVERHAUL (THE TRUE APP LAYOUT) 📱
    ========================================= */
 @media screen and (max-width: 992px) {
   
@@ -194,7 +194,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   }
 
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
-
   #content { padding: 10px !important; box-sizing: border-box !important; }
 
   /* 🌟 THE COLUMN FIX: Reorder & Smash Floats 🌟 */
@@ -218,9 +217,9 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
   #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
   #searchbars form.search_form { width: 100% !important; flex: none !important; }
-  #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; }
+  #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; width: 100% !important; }
 
-  /* 🌟 HUGE VOD CAROUSEL (NATIVE SCROLL) 🌟 */
+  /* 🌟 HUGE VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
   #latest5tor .owl-carousel,
   #latest5tor .owl-carousel.owl-loaded,
   #latest5tor .owl-carousel.owl-drag,
@@ -251,47 +250,49 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     transition: none !important;
     padding: 0 10px !important;
     touch-action: pan-x !important;
-    pointer-events: none !important; /* Disable script stealing swipe */
+    pointer-events: none !important;
   }
   
-  /* 2.5 Cards visible */
+  /* Exactly 40vw per card = 2.5 cards on screen */
   #latest5tor .owl-item,
   #latest5tor .owl-item.active,
   #latest5tor .owl-item.cloned {
-    width: 36vw !important; 
-    min-width: 140px !important;
-    max-width: 180px !important;
-    flex: 0 0 36vw !important;
-    margin: 0 6px !important;
+    width: 40vw !important; 
+    flex: 0 0 40vw !important;
+    max-width: none !important; /* NO FIXED PIXELS */
+    min-width: 0 !important;    /* NO FIXED PIXELS */
+    margin: 0 2vw !important;   /* Proportional gaps */
     scroll-snap-align: center !important;
     float: none !important;
     touch-action: pan-x !important;
     pointer-events: auto !important;
   }
   
-  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; }
+  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div {
     touch-action: pan-x pan-y !important;
     pointer-events: auto !important;
   }
   
-  /* PERFECT CINEMA RATIO POSTERS */
+  /* PERFECT CINEMA RATIO POSTERS (2:3) */
   #latest5tor .owl-item a > div[style*="background-image"] {
-    height: 55vw !important; /* Forces 2:3 poster ratio based on width */
-    max-height: 250px !important;
-    min-height: 180px !important;
+    height: 60vw !important; /* 40vw width * 1.5 = 60vw height */
+    max-height: none !important;
+    min-height: 0 !important;
     width: 100% !important;
-    background-size: cover !important; /* Fills beautifully */
-    background-position: center center !important;
+    background-size: cover !important; 
+    background-position: center top !important;
   }
   
-  #latest5tor .owl-item a > span.tooltip { font-size: 15px !important; line-height: 1.4 !important; }
-  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 12px !important; padding: 8px 0 !important; }
+  /* Scale text up slightly for the bigger cards */
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
   
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
+  /* General Table & Post scaling */
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
   .box, .panel__body, table td, .forum_post .body { font-size: 15px !important; }
   table.forum_post td.avatar { display: none !important; } 
