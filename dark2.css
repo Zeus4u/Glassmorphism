@@ -2,13 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V46)
-   - 📱 COMPLETELY REBUILT MOBILE SLIDER (Native Scroll, 2x Height)
+   HEBITS STEALTH SOLID PRO (V47)
+   - 📱 MOBILE APP OVERHAUL: True Column Stacking & Reordering!
+   - 📱 Perfect 2.5 Cinema-Ratio VOD Slider
    - 75% Dynamic Screen Width (Desktop)
    - Real Sticky Sidebar Fix
-   - Beautiful "Pill" Searchbars Redesign
+   - Beautiful "Pill" Searchbars
    - Black & Gray Monochrome Theme
-   - Zero Glassmorphism (Solid UI)
    ========================================= */
 
 :root {
@@ -177,86 +177,55 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
-/* DESKTOP OWL CAROUSEL FIXES */
-.owl-nav { margin-top: 20px !important; text-align: center !important; display: flex !important; justify-content: center !important; gap: 10px !important; }
-.owl-dots { margin-top: 15px !important; text-align: center !important; }
-.owl-nav button, .owl-dots button { padding: 0 !important; box-shadow: none !important; background: transparent !important; border: none !important; }
-.owl-nav button.owl-prev, .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 8px !important; color: var(--hb-text) !important; font-size: 20px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
-.owl-nav button.owl-prev span, .owl-nav button.owl-next span { margin-top: -3px !important; }
-.owl-nav button.owl-prev:hover, .owl-nav button.owl-next:hover { background: var(--hb-panel-hover) !important; color: var(--hb-text-strong) !important; border-color: var(--hb-border-soft) !important; }
-.owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
-.owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
-.owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
 /* =========================================
-   📱 MOBILE OVERHAUL (FIXED ZOOM & SCROLL) 📱
+   📱 MOBILE OVERHAUL (THE REAL FIX) 📱
    ========================================= */
 @media screen and (max-width: 992px) {
   
-  /* Prevent the "zoomed out" desktop look */
-  body, html, #wrapper, #content, .thin {
-    width: 100% !important;
-    min-width: 0 !important;
+  /* Force viewport width and kill weird zooming */
+  html, body, #wrapper, #content {
+    width: 100vw !important;
     max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* Force header banner to scale down */
-  #header img, #logo a img, .logo img {
-    max-width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-  }
+  #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
 
-  /* Fix inner padding */
   #content { padding: 10px !important; box-sizing: border-box !important; }
-  
-  /* Disable Sticky Sidebar to clear vertical space */
-  .sidebar { 
-    position: relative !important; 
-    top: auto !important; 
-    width: 100% !important; 
-    margin-bottom: 20px !important;
-  }
 
-  .main_column { width: 100% !important; }
+  /* 🌟 THE COLUMN FIX: Reorder & Smash Floats 🌟 */
+  .thin {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  /* Force the Main Content to appear BEFORE the Sidebar */
+  #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
+  .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
+  .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
 
   /* Top Menu Horizontal Scroll */
-  #menu ul { 
-    display: flex !important; 
-    overflow-x: auto !important; 
-    white-space: nowrap !important; 
-    -webkit-overflow-scrolling: touch !important; 
-    padding-bottom: 5px !important; 
-  }
+  #menu ul { display: flex !important; overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 5px !important; }
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
   #menu ul::-webkit-scrollbar { display: none !important; } 
 
-  /* Fat, easy-to-tap Search Bars */
+  /* Search Bars Grid */
   #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
   #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
   #searchbars form.search_form { width: 100% !important; flex: none !important; }
   #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; }
 
-  /* =========================================
-     🌟 NATIVE VOD CAROUSEL - 2.5 CARDS & FULL POSTER 🌟
-     ========================================= */
-  
-  /* 1. Owl carousel container - reset everything */
+  /* 🌟 HUGE VOD CAROUSEL (NATIVE SCROLL) 🌟 */
   #latest5tor .owl-carousel,
   #latest5tor .owl-carousel.owl-loaded,
   #latest5tor .owl-carousel.owl-drag,
-  #latest5tor .owl-carousel.owl-grab {
-    display: block !important;
-    width: 100% !important;
-    overflow: visible !important;
-    touch-action: pan-x !important;
-    -ms-touch-action: pan-x !important;
-    cursor: default !important;
-  }
+  #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   
-  /* 2. THE KEY FIX: Outer wrapper is the REAL scroll container */
   #latest5tor .owl-stage-outer {
     width: 100% !important;
     max-width: 100vw !important;
@@ -266,43 +235,33 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     padding: 15px 0 !important; 
     scroll-snap-type: x mandatory !important;
     touch-action: pan-x !important;
-    -ms-touch-action: pan-x !important;
     transform: none !important;
-    -webkit-transform: none !important;
     height: auto !important;
     position: relative !important;
   }
   
-  #latest5tor .owl-stage-outer::-webkit-scrollbar { 
-    display: none !important; 
-    height: 0 !important;
-    width: 0 !important;
-  }
+  #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
   
-  /* 3. Kill Owl's transform/transition on the stage */
   #latest5tor .owl-stage {
     display: flex !important;
     flex-wrap: nowrap !important;
     width: max-content !important;
     min-width: 100% !important;
     transform: none !important;
-    -webkit-transform: none !important;
     transition: none !important;
-    -webkit-transition: none !important;
     padding: 0 10px !important;
     touch-action: pan-x !important;
-    -ms-touch-action: pan-x !important;
-    pointer-events: none !important;
+    pointer-events: none !important; /* Disable script stealing swipe */
   }
   
-  /* 4. Items - 2.5 items visible (approx 38vw) */
+  /* 2.5 Cards visible */
   #latest5tor .owl-item,
   #latest5tor .owl-item.active,
   #latest5tor .owl-item.cloned {
-    width: 38vw !important; /* ~2.5 items */
+    width: 36vw !important; 
     min-width: 140px !important;
-    max-width: 200px !important;
-    flex: 0 0 38vw !important;
+    max-width: 180px !important;
+    flex: 0 0 36vw !important;
     margin: 0 6px !important;
     scroll-snap-align: center !important;
     float: none !important;
@@ -310,64 +269,31 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     pointer-events: auto !important;
   }
   
-  /* 5. Card inside item */
-  #latest5tor .owl-item > div {
-    width: 100% !important;
-    height: auto !important;
-    padding: 10px !important;
-    pointer-events: auto !important;
-  }
+  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; }
   
-  /* 6. CRITICAL: Links must allow vertical/horizontal scroll passthrough */
-  #latest5tor .owl-item a,
-  #latest5tor .owl-item a *,
-  #latest5tor .owl-item span,
-  #latest5tor .owl-item div {
+  #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div {
     touch-action: pan-x pan-y !important;
-    -ms-touch-action: pan-x pan-y !important;
     pointer-events: auto !important;
   }
   
-  /* 7. POSTER IMAGE - Full view (contain) and adjusted height */
+  /* PERFECT CINEMA RATIO POSTERS */
   #latest5tor .owl-item a > div[style*="background-image"] {
-    height: 240px !important; /* Adjusted for 2.5 width */
-    max-height: 280px !important;
-    min-height: 200px !important;
+    height: 55vw !important; /* Forces 2:3 poster ratio based on width */
+    max-height: 250px !important;
+    min-height: 180px !important;
     width: 100% !important;
-    background-size: contain !important; /* Shows full image */
-    background-position: center top !important;
-    background-repeat: no-repeat !important; /* Prevents tiling if image is narrow */
+    background-size: cover !important; /* Fills beautifully */
+    background-position: center center !important;
   }
   
-  /* Text inside slider for mobile */
-  #latest5tor .owl-item a > span.tooltip { 
-    font-size: 14px !important; 
-    line-height: 1.3 !important;
-    margin-top: 8px !important;
-  }
-  #latest5tor .owl-item span[style*="font-size: 90%"] { 
-    font-size: 12px !important; 
-  }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] {
-    font-size: 11px !important;
-    padding: 6px 0 !important;
-  }
+  #latest5tor .owl-item a > span.tooltip { font-size: 15px !important; line-height: 1.4 !important; }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 12px !important; padding: 8px 0 !important; }
   
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* Fix wide tables breaking the screen */
-  table.torrent_table { 
-    display: block !important; 
-    width: 100% !important;
-    overflow-x: auto !important; 
-    -webkit-overflow-scrolling: touch !important; 
-  }
-
-  /* Make general text larger and readable */
-  .box, .panel__body, table td, .forum_post .body {
-    font-size: 15px !important;
-  }
-
+  table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
+  .box, .panel__body, table td, .forum_post .body { font-size: 15px !important; }
   table.forum_post td.avatar { display: none !important; } 
   table.forum_post td.body { padding: 15px 10px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
