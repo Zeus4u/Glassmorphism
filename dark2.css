@@ -188,131 +188,18 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 .owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
-/* =========================================
-   📱 MOBILE OVERHAUL (FIXED ZOOM & SCROLL) 📱
-   ========================================= */
-@media screen and (max-width: 992px) {
-  
-  /* Prevent the "zoomed out" desktop look */
-  body, html, #wrapper, #content, .thin {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100vw !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* Force header banner to scale down */
-  #header img, #logo a img, .logo img {
-    max-width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-  }
-
-  /* Fix inner padding */
-  #content { padding: 10px !important; box-sizing: border-box !important; }
-  
-  /* Disable Sticky Sidebar to clear vertical space */
-  .sidebar { 
-    position: relative !important; 
-    top: auto !important; 
-    width: 100% !important; 
-    margin-bottom: 20px !important;
-  }
-
-  .main_column { width: 100% !important; }
-
-  /* Top Menu Horizontal Scroll */
-  #menu ul { 
-    display: flex !important; 
-    overflow-x: auto !important; 
-    white-space: nowrap !important; 
-    -webkit-overflow-scrolling: touch !important; 
-    padding-bottom: 5px !important; 
-  }
-  #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
-  #menu ul::-webkit-scrollbar { display: none !important; } 
-
-  /* Fat, easy-to-tap Search Bars */
-  #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
-  #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
-  #searchbars form.search_form { width: 100% !important; flex: none !important; }
-  #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; }
-
-  /* =========================================
-     🌟 NATIVE VOD CAROUSEL - PROFESSIONAL FIX 🌟
-     Strategy: Completely defeat Owl Carousel JS by:
-     1. Disabling its drag class (.owl-drag) behavior via pointer-events
-     2. Using touch-action: pan-x on the scroll container
-     3. Re-enabling pointer-events on links/clickables only
-     ========================================= */
-  
-  /* 1. Owl carousel container - reset everything */
-  #latest5tor .owl-carousel,
-  #latest5tor .owl-carousel.owl-loaded,
-  #latest5tor .owl-carousel.owl-drag,
-  #latest5tor .owl-carousel.owl-grab {
-    display: block !important;
-    width: 100% !important;
-    overflow: visible !important;
-    touch-action: pan-x !important;
-    -ms-touch-action: pan-x !important;
-    cursor: default !important;
-  }
-  
-  /* 2. THE KEY FIX: Outer wrapper is the REAL scroll container */
-  #latest5tor .owl-stage-outer {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: scroll !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 15px 0 !important; 
-    scroll-snap-type: x mandatory !important;
-    touch-action: pan-x !important;
-    -ms-touch-action: pan-x !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-    height: auto !important;
-    position: relative !important;
-  }
-  
-  #latest5tor .owl-stage-outer::-webkit-scrollbar { 
-    display: none !important; 
-    height: 0 !important;
-    width: 0 !important;
-  }
-  
-  /* 3. Kill Owl's transform/transition on the stage */
-  #latest5tor .owl-stage {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    width: max-content !important;
-    min-width: 100% !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-    transition: none !important;
-    -webkit-transition: none !important;
-    padding: 0 10px !important;
-    touch-action: pan-x !important;
-    -ms-touch-action: pan-x !important;
-    /* CRITICAL: Block Owl's mouse/touch handlers from firing */
-    pointer-events: none !important;
-  }
-  
-  /* 4. Items - native size, override Owl's inline width */
+/* 4. Items - 2.5 cards visible (narrow & tall like a real movie poster) */
   #latest5tor .owl-item,
   #latest5tor .owl-item.active,
   #latest5tor .owl-item.cloned {
-    width: 75vw !important;
-    min-width: 75vw !important;
-    max-width: 340px !important;
-    flex: 0 0 75vw !important;
-    margin: 0 6px !important;
-    scroll-snap-align: center !important;
+    width: 38vw !important;
+    min-width: 38vw !important;
+    max-width: 200px !important;
+    flex: 0 0 38vw !important;
+    margin: 0 5px !important;
+    scroll-snap-align: start !important;
     float: none !important;
     touch-action: pan-x !important;
-    /* Re-enable pointer events on items so links work */
     pointer-events: auto !important;
   }
   
@@ -320,7 +207,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-item > div {
     width: 100% !important;
     height: auto !important;
-    padding: 12px !important;
+    padding: 8px !important;
     pointer-events: auto !important;
   }
   
@@ -334,44 +221,14 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     pointer-events: auto !important;
   }
   
-  /* 7. DOUBLE THE POSTER HEIGHT - real cinema feel */
+  /* 7. FULL POSTER - true 2:3 movie poster aspect, no cropping */
   #latest5tor .owl-item a > div[style*="background-image"] {
-    height: 95vw !important;
-    max-height: 440px !important;
-    min-height: 360px !important;
+    height: 57vw !important;
+    max-height: 300px !important;
+    min-height: 220px !important;
     width: 100% !important;
-    background-size: cover !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
     background-position: center center !important;
+    background-color: var(--bg-deep) !important;
   }
-  
-  /* Bigger text inside slider for mobile */
-  #latest5tor .owl-item a > span.tooltip { 
-    font-size: 17px !important; 
-    line-height: 1.4 !important;
-  }
-  #latest5tor .owl-item span[style*="font-size: 90%"] { 
-    font-size: 14px !important; 
-  }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] {
-    font-size: 13px !important;
-    padding: 8px 0 !important;
-  }
-  
-  #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
-
-  /* Fix wide tables breaking the screen */
-  table.torrent_table { 
-    display: block !important; 
-    width: 100% !important;
-    overflow-x: auto !important; 
-    -webkit-overflow-scrolling: touch !important; 
-  }
-
-  /* Make general text larger and readable */
-  .box, .panel__body, table td, .forum_post .body {
-    font-size: 15px !important;
-  }
-
-  table.forum_post td.avatar { display: none !important; } 
-  table.forum_post td.body { padding: 15px 10px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
-}
