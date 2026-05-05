@@ -2,13 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V48.1 - FINAL)
-   - 📱 MOBILE FORUMS OVERHAUL: Clear, block-style latest posts
-   - 📱 PERFECT MOBILE SCALE: Pure VW units, exactly 2.5 cards, 2:3 Poster Ratio
-   - True Column Stacking & Reordering
-   - 75% Dynamic Screen Width (Desktop)
-   - Real Sticky Sidebar Fix
-   - Beautiful "Pill" Searchbars
+   HEBITS STEALTH SOLID PRO (V49)
+   - 📱 MOBILE BUG FIXED: Expanded breakpoint to 1100px to force mobile view
+   - 📱 IPS FORUM STYLE: Modern cards and tab pills for latest posts
+   - 📱 HIDDEN TABS FIXED: Forums and Torrents won't overlap anymore
+   - Perfect VOD Grid (2.5 Cards natively swiping)
    - Black & Gray Monochrome Theme
    ========================================= */
 
@@ -43,6 +41,7 @@ body::before, body::after { display: none !important; }
 html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
 
+/* Desktop Width */
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 
 #header { display: contents !important; }
@@ -81,6 +80,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #latest5tor .owl-item span[style*="font-size: 90%"] { display: block !important; font-size: 12px !important; color: var(--hb-muted) !important; margin-bottom: 10px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
 #latest5tor .owl-item > div > div[style*="font-size: 95%"] { margin-top: auto !important; font-size: 12px !important; color: var(--hb-text-strong) !important; font-weight: 500 !important; background: var(--bg-deep) !important; border-radius: 4px !important; padding: 6px 0 !important; border: 1px solid var(--hb-border-soft) !important; width: 100% !important; }
 
+/* TABLES & ROWS */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border: none !important; }
 .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; border-bottom: 1px solid var(--hb-border) !important; border-top: none !important; padding: 14px 16px !important; text-shadow: none !important; }
 tr:nth-child(odd) > td, tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
@@ -180,14 +180,15 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
 
 /* =========================================
-   📱 MOBILE OVERHAUL (THE TRUE APP LAYOUT) 📱
+   📱 MOBILE OVERHAUL (THE APP EXPERIENCE) 📱
    ========================================= */
-@media screen and (max-width: 992px) {
+/* INCREASED TO 1100px: Forces mobile view on iPads and stubborn high-res mobile browsers */
+@media screen and (max-width: 1100px) {
   
   html, body, #wrapper, #content {
     width: 100vw !important;
     max-width: 100vw !important;
-    min-width: 0 !important;
+    min-width: 320px !important; /* Safety minimum */
     overflow-x: hidden !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -211,7 +212,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #searchbars form.search_form { width: 100% !important; flex: none !important; }
   #searchbars input[type="text"] { padding: 16px 20px !important; font-size: 16px !important; width: 100% !important; }
 
-  /* 🌟 HUGE VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
+  /* 🌟 VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
   #latest5tor .owl-carousel,
   #latest5tor .owl-carousel.owl-loaded,
   #latest5tor .owl-carousel.owl-drag,
@@ -231,9 +232,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
   
-  #latest5tor .owl-item a > div[style*="background-image"] {
-    height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important;
-  }
+  #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
   
   #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; }
   #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
@@ -241,78 +240,136 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* 🌟 MOBILE FORUMS / TORRENTS FIX (Block Style) 🌟 */
-  #latest5posts table, #latest5torrents_p table, 
-  #latest5forums_p, #latest5torrents_p {
-    display: block !important;
+
+  /* =========================================
+     🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
+     ========================================= */
+  
+  /* Modern Tab Pills */
+  #latestForums .head {
+    background: transparent !important;
+    border: none !important;
+    padding: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  #latestForums .head > span {
+    background: var(--bg-deep) !important;
+    border-radius: 12px !important;
+    padding: 6px !important;
+    display: flex !important;
+    gap: 8px !important;
+    border: 1px solid var(--hb-border) !important;
     width: 100% !important;
+    justify-content: space-around !important;
+    box-sizing: border-box !important;
+  }
+  
+  #latestForums .head > span a {
+    padding: 10px !important;
+    border-radius: 8px !important;
+    color: var(--hb-muted) !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    flex: 1 !important;
+  }
+  
+  #latestForums .head > span a.simple-tabs__link--active {
+    background: var(--accent-primary) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5) !important;
+    border: none !important;
   }
 
+  /* Reset tables to lists */
+  #latest5forums_p, #latest5torrents_p {
+    background: transparent !important;
+    border: none !important;
+    width: 100% !important;
+    display: block !important;
+  }
+  
   #latest5posts tbody, #latest5torrents_p tbody,
   #latest5posts tr, #latest5torrents_p tr {
     display: block !important;
     width: 100% !important;
   }
 
-  /* Each post/torrent becomes a padded card */
+  /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
-    padding: 14px 12px !important;
-    border-bottom: 1px solid var(--hb-border) !important;
+    padding: 16px 14px !important;
+    background: var(--hb-panel) !important;
+    border: 1px solid var(--hb-border) !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
     box-sizing: border-box !important;
     text-align: right !important;
   }
 
-  /* Remove table borders that might break the design */
-  #latest5posts td:last-child, #latest5torrents_p td:last-child {
-    border-bottom: none !important;
-  }
-
-  /* Make the main title bigger and break to new line */
+  /* Title */
   #latest5posts td > span > a:first-child, 
   #latest5torrents_p td > span > a:first-child {
     display: block !important;
     font-size: 16px !important;
     font-weight: 600 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 12px !important;
     color: var(--hb-text-strong) !important;
-    white-space: normal !important; /* Allow long titles to wrap */
-    word-break: break-word !important;
+    white-space: normal !important;
+    line-height: 1.4 !important;
   }
 
-  /* Make the secondary info (user, time, category) a block below */
+  /* Metadata Container (Bottom Row) */
   #latest5posts td > span > span, 
   #latest5torrents_p td > span > span {
     display: flex !important;
+    flex-direction: row-reverse !important; /* Puts User/Time on left, Badge on right */
+    justify-content: space-between !important;
     align-items: center !important;
-    gap: 8px !important;
+    width: 100% !important;
+    border-top: 1px solid var(--hb-border-soft) !important;
+    padding-top: 12px !important;
     font-size: 13px !important;
-    float: none !important; /* Kill the float that squishes text */
     color: var(--hb-muted) !important;
-    flex-wrap: wrap !important;
+    float: none !important;
   }
 
-  /* Category tag formatting */
+  /* Category Badge */
   #latest5posts td > span > a:nth-child(2), 
   #latest5torrents_p td > span > strong {
     display: inline-block !important;
-    font-size: 12px !important;
+    background: rgba(59, 130, 246, 0.1) !important;
     color: var(--accent-secondary) !important;
-    margin-bottom: 8px !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
   }
 
-  /* "Show All" link centered */
+  /* "Show All" Link styling */
   #latest5posts td[style*="text-align: center"],
   #latest5torrents_p td[style*="text-align: center"] {
     text-align: center !important;
-    padding: 16px !important;
-    background: var(--bg-deep) !important;
+    background: transparent !important;
+    border: 1px dashed var(--hb-border-soft) !important;
+    color: var(--accent-secondary) !important;
   }
   
-  /* General Table overrides */
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
   .box, .panel__body, table td, .forum_post .body { font-size: 15px !important; }
   table.forum_post td.avatar { display: none !important; } 
   table.forum_post td.body { padding: 15px 10px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
+}
+
+/* =========================================
+   CRITICAL OVERRIDE: Keep hidden elements hidden!
+   (Must stay at the very bottom of the file)
+   ========================================= */
+.hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { 
+  display: none !important; 
 }
