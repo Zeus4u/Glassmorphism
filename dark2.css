@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V50 - MASTER)
-   - 📱 MOBILE IPS FORUMS: Category inline with title, "by user" aligned left
-   - 📱 BIGGER FONTS for mobile readability
-   - Perfect VOD Grid (2.5 Cards natively swiping)
+   HEBITS STEALTH SOLID PRO (V51)
+   - 📱 MOBILE IPS FORUMS: Clear cards, Inline Categories, Correct "By User" layout!
+   - 📱 PERFECT MOBILE SCALE: Pure VW units, exactly 2.5 cards, 2:3 Poster Ratio
+   - True Column Stacking & Reordering
    - 75% Dynamic Screen Width (Desktop)
    - Beautiful "Pill" Searchbars
    - Black & Gray Monochrome Theme
@@ -179,14 +179,14 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
 
 /* =========================================
-   📱 MOBILE OVERHAUL (THE APP EXPERIENCE) 📱
+   📱 MOBILE OVERHAUL (THE TRUE APP FIX) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
   
   html, body, #wrapper, #content {
     width: 100vw !important;
     max-width: 100vw !important;
-    min-width: 320px !important; 
+    min-width: 0 !important;
     overflow-x: hidden !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -208,9 +208,9 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
   #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
   #searchbars form.search_form { width: 100% !important; flex: none !important; }
-  #searchbars input[type="text"] { padding: 18px 20px !important; font-size: 18px !important; width: 100% !important; } /* הגדלת טקסט חיפוש */
+  #searchbars input[type="text"] { padding: 18px 20px !important; font-size: 16px !important; width: 100% !important; }
 
-  /* 🌟 VOD CAROUSEL 🌟 */
+  /* 🌟 HUGE VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
   #latest5tor .owl-carousel,
   #latest5tor .owl-carousel.owl-loaded,
   #latest5tor .owl-carousel.owl-drag,
@@ -222,59 +222,59 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
   
   #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 40vw !important; flex: 0 0 40vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
+  
   #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
   
   #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
   
-  #latest5tor .owl-item a > span.tooltip { font-size: 18px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} /* הגדלת שם הסרט */
-  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 15px !important; margin-bottom: 12px !important; }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 14px !important; padding: 10px 0 !important; }
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
   
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
-
 
   /* =========================================
      🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
      ========================================= */
   
-  /* Modern Tab Pills */
+  /* Modern Tab Pills for Latest Posts Header */
   #latestForums .head {
     background: transparent !important;
     border: none !important;
-    padding: 10px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    padding: 10px 0 !important;
+    display: block !important;
+    text-align: center !important;
   }
-  
+  #latestForums .head > a.tooltip { display: none !important; } /* Hide the weird eye icon */
+
   #latestForums .head > span {
     background: var(--bg-deep) !important;
     border-radius: 12px !important;
     padding: 6px !important;
     display: flex !important;
-    gap: 8px !important;
     border: 1px solid var(--hb-border) !important;
     width: 100% !important;
-    justify-content: space-around !important;
     box-sizing: border-box !important;
+    font-size: 0 !important; /* Hides the ugly "|" separator text node */
   }
-  
+
   #latestForums .head > span a {
     padding: 12px !important;
     border-radius: 8px !important;
     color: var(--hb-muted) !important;
-    font-size: 16px !important; /* הגדלת טקסט טאבים */
+    font-size: 15px !important;
+    font-weight: 500 !important;
     text-align: center !important;
     flex: 1 !important;
+    display: inline-block !important;
   }
-  
+
   #latestForums .head > span a.simple-tabs__link--active {
-    background: var(--accent-primary) !important;
+    background: var(--hb-panel-hover) !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5) !important;
-    border: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
   }
 
   /* Reset tables to lists */
@@ -293,6 +293,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
   /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td {
+    display: block !important;
     width: 100% !important;
     padding: 18px 16px !important;
     background: var(--hb-panel) !important;
@@ -301,46 +302,40 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     margin-bottom: 12px !important;
     box-sizing: border-box !important;
     text-align: right !important;
+    box-shadow: var(--hb-shadow) !important;
   }
 
-  /* Flexbox Hack to hide the ugly brackets in Torrents [סדרות] */
+  /* Ensure the span wraps correctly */
   #latest5posts td > span, #latest5torrents_p td > span {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: flex-start !important;
-    justify-content: space-between !important;
-    font-size: 0 !important; /* Magic: Hides all text nodes (like brackets and spaces) */
+    display: block !important;
+    width: 100% !important;
   }
 
-  /* Title */
+  /* Title - Now larger and inline with the category */
   #latest5posts td > span > a:first-child, 
   #latest5torrents_p td > span > a:first-child {
-    display: block !important;
-    flex: 1 1 60% !important;
-    font-size: 18px !important; /* הגדלת כותרת הפוסט */
+    display: inline !important; 
+    font-size: 17px !important;
     font-weight: 600 !important;
-    margin-bottom: 14px !important;
     color: var(--hb-text-strong) !important;
-    white-space: normal !important;
+    line-height: 1.5 !important;
     word-break: break-word !important;
-    line-height: 1.4 !important;
-    text-align: right !important;
   }
 
-  /* Category Badge - Now INLINE with Title! */
+  /* Category Badge - Inline with title at the right */
   #latest5posts td > span > a:nth-child(2), 
   #latest5torrents_p td > span > strong {
     display: inline-block !important;
-    flex: 0 0 auto !important;
-    background: rgba(59, 130, 246, 0.1) !important;
+    background: rgba(59, 130, 246, 0.15) !important;
     color: var(--accent-secondary) !important;
-    padding: 6px 14px !important;
+    padding: 3px 8px !important;
     border-radius: 6px !important;
-    font-size: 14px !important; /* הגדלת טקסט קטגוריה */
+    font-size: 13px !important;
     font-weight: 600 !important;
-    margin-right: 12px !important;
-    margin-bottom: 14px !important;
-    margin-top: -2px !important;
+    margin-right: 8px !important;
+    vertical-align: middle !important;
+    position: relative !important;
+    top: -2px !important;
   }
 
   /* Metadata Container (Bottom Row - User & Time) */
@@ -350,25 +345,29 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     width: 100% !important;
     border-top: 1px solid var(--hb-border-soft) !important;
     padding-top: 14px !important;
-    font-size: 15px !important; /* הגדלת טקסט ע"י וזמן */
+    margin-top: 14px !important;
+    font-size: 15px !important;
     color: var(--hb-muted) !important;
     float: none !important;
-    text-align: left !important; /* Aligns "ע"י Username" perfectly to the left */
+    text-align: right !important;
+    clear: both !important;
   }
 
-  /* The Time */
+  /* The Time - floated cleanly to the left */
   #latest5posts td > span > span .time, 
   #latest5torrents_p td > span > span .time {
-    float: right !important; /* Pushes time strictly to the right side */
-    font-size: 14px !important;
+    float: left !important; 
+    font-size: 13px !important;
     margin-top: 2px !important;
+    color: var(--accent-secondary) !important;
   }
   
   /* The Username Link */
   #latest5posts td > span > span a, 
   #latest5torrents_p td > span > span a {
-    font-size: 16px !important; /* הגדלת שם משתמש */
+    font-size: 16px !important; 
     font-weight: 600 !important;
+    color: var(--hb-text-strong) !important;
   }
 
   /* "Show All" Link styling */
@@ -378,13 +377,13 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     background: transparent !important;
     border: 1px dashed var(--hb-border-soft) !important;
     color: var(--accent-secondary) !important;
-    font-size: 16px !important;
     padding: 16px !important;
+    font-size: 16px !important;
   }
-  
+
   /* General Table overrides */
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
-  .box, .panel__body, table td, .forum_post .body { font-size: 16px !important; } /* הגדלת פונט כללי בנייד */
+  .box, .panel__body, table td, .forum_post .body { font-size: 16px !important; }
   table.forum_post td.avatar { display: none !important; } 
   table.forum_post td.body { padding: 15px 10px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
@@ -392,4 +391,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 /* =========================================
    CRITICAL OVERRIDE: Keep hidden elements hidden!
    ========================================= */
-.hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { display: none !important; }
+.hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { 
+  display: none !important; 
+}
