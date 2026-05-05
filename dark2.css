@@ -2,12 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V51)
-   - 📱 MOBILE IPS FORUMS: Clear cards, Inline Categories, Correct "By User" layout!
-   - 📱 PERFECT MOBILE SCALE: Pure VW units, exactly 2.5 cards, 2:3 Poster Ratio
-   - True Column Stacking & Reordering
+   HEBITS STEALTH SOLID PRO (V52 - MASTER)
+   - 📱 MOBILE FIX: Ranks colors restored!
+   - 📱 MOBILE FIX: Searchbars now 2 per row (no more long columns)
+   - 📱 MOBILE IPS FORUMS: Category inline with title, "by user" aligned left
+   - Perfect VOD Grid (2.5 Cards natively swiping)
    - 75% Dynamic Screen Width (Desktop)
-   - Beautiful "Pill" Searchbars
    - Black & Gray Monochrome Theme
    ========================================= */
 
@@ -179,19 +179,11 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
 
 /* =========================================
-   📱 MOBILE OVERHAUL (THE TRUE APP FIX) 📱
+   📱 MOBILE OVERHAUL (THE APP EXPERIENCE) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
   
-  html, body, #wrapper, #content {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
+  html, body, #wrapper, #content { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
   #content { padding: 10px !important; box-sizing: border-box !important; }
 
@@ -205,192 +197,79 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
   #menu ul::-webkit-scrollbar { display: none !important; } 
 
-  #searchbars-wrapper { padding: 15px 10px !important; width: 100% !important; box-sizing: border-box !important; }
-  #searchbars { flex-direction: column !important; gap: 10px !important; width: 100% !important; }
-  #searchbars form.search_form { width: 100% !important; flex: none !important; }
-  #searchbars input[type="text"] { padding: 18px 20px !important; font-size: 16px !important; width: 100% !important; }
+  /* Search Bars Grid - 2 Per Row on Mobile */
+  #searchbars-wrapper { padding: 12px 10px !important; width: 100% !important; box-sizing: border-box !important; }
+  #searchbars { flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; width: 100% !important; }
+  #searchbars form.search_form { width: calc(50% - 4px) !important; flex: 1 1 calc(50% - 10px) !important; }
+  #searchbars input[type="text"] { padding: 12px 15px !important; font-size: 14px !important; width: 100% !important; }
 
-  /* 🌟 HUGE VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
-  #latest5tor .owl-carousel,
-  #latest5tor .owl-carousel.owl-loaded,
-  #latest5tor .owl-carousel.owl-drag,
-  #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
-  
+  /* 🌟 VOD CAROUSEL (NO PIXELS, ONLY VW) 🌟 */
+  #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
-  
   #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
-  
   #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 40vw !important; flex: 0 0 40vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
-  
   #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
-  
   #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
   
-  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; }
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} 
   #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
   #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
-  
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
+
 
   /* =========================================
      🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
      ========================================= */
   
-  /* Modern Tab Pills for Latest Posts Header */
-  #latestForums .head {
-    background: transparent !important;
-    border: none !important;
-    padding: 10px 0 !important;
-    display: block !important;
-    text-align: center !important;
-  }
-  #latestForums .head > a.tooltip { display: none !important; } /* Hide the weird eye icon */
+  #latestForums .head { background: transparent !important; border: none !important; padding: 10px 0 !important; display: block !important; text-align: center !important; }
+  #latestForums .head > a.tooltip { display: none !important; } 
+  #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 6px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
+  #latestForums .head > span a { padding: 12px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 16px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
+  #latestForums .head > span a.simple-tabs__link--active { background: var(--hb-panel-hover) !important; color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; }
 
-  #latestForums .head > span {
-    background: var(--bg-deep) !important;
-    border-radius: 12px !important;
-    padding: 6px !important;
-    display: flex !important;
-    border: 1px solid var(--hb-border) !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    font-size: 0 !important; /* Hides the ugly "|" separator text node */
-  }
-
-  #latestForums .head > span a {
-    padding: 12px !important;
-    border-radius: 8px !important;
-    color: var(--hb-muted) !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    text-align: center !important;
-    flex: 1 !important;
-    display: inline-block !important;
-  }
-
-  #latestForums .head > span a.simple-tabs__link--active {
-    background: var(--hb-panel-hover) !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important;
-  }
-
-  /* Reset tables to lists */
-  #latest5forums_p, #latest5torrents_p {
-    background: transparent !important;
-    border: none !important;
-    width: 100% !important;
-    display: block !important;
-  }
-  
-  #latest5posts tbody, #latest5torrents_p tbody,
-  #latest5posts tr, #latest5torrents_p tr {
-    display: block !important;
-    width: 100% !important;
-  }
+  #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
+  #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
   /* Individual Post Cards */
-  #latest5posts td, #latest5torrents_p td {
-    display: block !important;
-    width: 100% !important;
-    padding: 18px 16px !important;
-    background: var(--hb-panel) !important;
-    border: 1px solid var(--hb-border) !important;
-    border-radius: 12px !important;
-    margin-bottom: 12px !important;
-    box-sizing: border-box !important;
-    text-align: right !important;
-    box-shadow: var(--hb-shadow) !important;
-  }
+  #latest5posts td, #latest5torrents_p td { width: 100% !important; padding: 18px 16px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; }
 
-  /* Ensure the span wraps correctly */
-  #latest5posts td > span, #latest5torrents_p td > span {
-    display: block !important;
-    width: 100% !important;
-  }
+  /* Flexbox Hack to hide the ugly brackets in Torrents [סדרות] */
+  #latest5posts td > span, #latest5torrents_p td > span { display: flex !important; flex-wrap: wrap !important; align-items: flex-start !important; justify-content: space-between !important; font-size: 0 !important; }
 
-  /* Title - Now larger and inline with the category */
+  /* Title */
   #latest5posts td > span > a:first-child, 
-  #latest5torrents_p td > span > a:first-child {
-    display: inline !important; 
-    font-size: 17px !important;
-    font-weight: 600 !important;
-    color: var(--hb-text-strong) !important;
-    line-height: 1.5 !important;
-    word-break: break-word !important;
-  }
+  #latest5torrents_p td > span > a:first-child { display: inline !important; flex: 1 1 60% !important; font-size: 18px !important; font-weight: 600 !important; margin-bottom: 14px !important; color: var(--hb-text-strong) !important; white-space: normal !important; word-break: break-word !important; line-height: 1.4 !important; text-align: right !important; }
 
-  /* Category Badge - Inline with title at the right */
+  /* Category Badge - INLINE with Title */
   #latest5posts td > span > a:nth-child(2), 
-  #latest5torrents_p td > span > strong {
-    display: inline-block !important;
-    background: rgba(59, 130, 246, 0.15) !important;
-    color: var(--accent-secondary) !important;
-    padding: 3px 8px !important;
-    border-radius: 6px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    margin-right: 8px !important;
-    vertical-align: middle !important;
-    position: relative !important;
-    top: -2px !important;
-  }
+  #latest5torrents_p td > span > strong { display: inline-block !important; flex: 0 0 auto !important; background: rgba(59, 130, 246, 0.15) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 14px !important; font-weight: 600 !important; margin-right: 12px !important; margin-bottom: 14px !important; margin-top: -2px !important; }
 
   /* Metadata Container (Bottom Row - User & Time) */
   #latest5posts td > span > span, 
-  #latest5torrents_p td > span > span {
-    display: block !important;
-    width: 100% !important;
-    border-top: 1px solid var(--hb-border-soft) !important;
-    padding-top: 14px !important;
-    margin-top: 14px !important;
-    font-size: 15px !important;
-    color: var(--hb-muted) !important;
-    float: none !important;
-    text-align: right !important;
-    clear: both !important;
-  }
+  #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 14px !important; margin-top: 14px !important; font-size: 15px !important; color: var(--hb-muted) !important; float: none !important; text-align: left !important; clear: both !important; }
 
-  /* The Time - floated cleanly to the left */
+  /* The Time */
   #latest5posts td > span > span .time, 
-  #latest5torrents_p td > span > span .time {
-    float: left !important; 
-    font-size: 13px !important;
-    margin-top: 2px !important;
-    color: var(--accent-secondary) !important;
-  }
+  #latest5torrents_p td > span > span .time { float: right !important; font-size: 14px !important; margin-top: 2px !important; }
   
   /* The Username Link */
   #latest5posts td > span > span a, 
-  #latest5torrents_p td > span > span a {
-    font-size: 16px !important; 
-    font-weight: 600 !important;
-    color: var(--hb-text-strong) !important;
-  }
+  #latest5torrents_p td > span > span a { font-size: 16px !important; font-weight: 600 !important; }
+  
+  /* Fix Username Colors: Allow custom rank colors, force white ONLY for normal links */
+  #latest5posts td > span > span a:not([class*="permission_"]), 
+  #latest5torrents_p td > span > span a:not([class*="permission_"]) { color: var(--hb-text-strong) !important; }
 
   /* "Show All" Link styling */
-  #latest5posts td[style*="text-align: center"],
-  #latest5torrents_p td[style*="text-align: center"] {
-    text-align: center !important;
-    background: transparent !important;
-    border: 1px dashed var(--hb-border-soft) !important;
-    color: var(--accent-secondary) !important;
-    padding: 16px !important;
-    font-size: 16px !important;
-  }
-
-  /* General Table overrides */
+  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 16px !important; padding: 16px !important; }
+  
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
-  .box, .panel__body, table td, .forum_post .body { font-size: 16px !important; }
+  .box, .panel__body, table td, .forum_post .body { font-size: 16px !important; } 
   table.forum_post td.avatar { display: none !important; } 
   table.forum_post td.body { padding: 15px 10px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
 
-/* =========================================
-   CRITICAL OVERRIDE: Keep hidden elements hidden!
-   ========================================= */
-.hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { 
-  display: none !important; 
-}
+/* CRITICAL OVERRIDE: Keep hidden elements hidden! */
+.hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { display: none !important; }
