@@ -2,12 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V76 - SYSTEM COLORS RESTORED)
-   - 🎨 SYSTEM COLORS FIX: Global alerts (Freeleech/Bluebox/Redbox) retain their native colors!
-   - 🎨 MENU COLOR FIX: Links with inline styles (like the Red Donate button) now keep their system colors!
-   - 💻 CORNERS FIX: Added top border-radius to .head to prevent background bleeding.
-   - 📱 MOBILE GRID ALIGNMENT: Cards use Flexbox to align bottom stats.
+   HEBITS STEALTH SOLID PRO (V77 - THE FINAL MASTERPIECE)
+   - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes (Red/Green/Blue) for perfect Dark Mode contrast.
+   - 🎨 COLOR FIX: Inline system colors (like Wheat or Donate Red) are strictly protected.
+   - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
    - 🔤 OMNI-FONT OVERRIDE: Caught the missing fonts in options, selects, and small tags.
+   - 📱 MOBILE GRID FIX: 2 Massive posters/row with proper scaling.
+   - 🌟 DROPDOWNS: Restored and functional.
+   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
    ========================================= */
 
 :root {
@@ -37,7 +39,7 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* THE OMNI-FONT OVERRIDE */
+/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
 body, html, .body, .tdhack, p, label, a, h1, h2, h3, h4, h5, h6, 
 input, select, option, optgroup, textarea, button, td, th, tr, tbody, thead, table,
 strong, b, ul, li, em, small, center, blockquote, q, dt, dd, dl, form, fieldset, legend, caption,
@@ -58,15 +60,13 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
 #menu ul > li { position: relative !important; }
 
-/* Menu structural styling (Color is separated to protect system colors like Donate Red) */
+/* Menu links styling - System Colors (like Donate red) are protected */
 #menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
-
-/* Apply our blue/white color ONLY if the system hasn't injected an inline color style! */
 #menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
 #menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
-
 #menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
+/* Dropdowns */
 #menu ul > li > ul { display: none; position: absolute !important; top: 100% !important; right: 0 !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; padding: 8px 0 !important; z-index: 100000 !important; min-width: 180px !important; }
 #menu ul > li:hover > ul { display: flex !important; flex-direction: column !important; }
 #menu ul > li > ul > li { display: block !important; width: 100% !important; }
@@ -203,27 +203,50 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
 /* =========================================
-   🚨 ALERTS & SYSTEM BOXES (RESTORED SYSTEM COLORS) 🚨
+   🚨 SYSTEM ALERTS (GLOBALBOX FIX) 🚨
    ========================================= */
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
 
-/* Base styling for all alertbars (Shadow, padding, corners) */
+/* Base App-Like Alert Styles */
 .alertbar { 
   border-radius: var(--hb-radius-sm) !important; 
   box-shadow: var(--hb-shadow) !important; 
-  padding: 12px 20px !important; 
+  padding: 14px 20px !important; 
   text-align: center !important; 
   font-weight: 600 !important; 
-  font-size: 14px !important; 
-  margin-bottom: 10px !important;
+  font-size: 15px !important; 
+  margin-bottom: 12px !important;
+  border: 1px solid var(--hb-border) !important;
+  background: var(--hb-panel) !important;
+  color: var(--hb-text-strong) !important;
 }
-/* Apply our Dark Theme ONLY if it's NOT a system colored box (Freeleech etc.) */
-.alertbar:not(.globalbox):not(.bluebox):not(.redbox):not(.greenbox):not(.yellowbox) { 
-  background: var(--hb-panel) !important; 
-  border: 1px solid var(--hb-border) !important; 
-  color: var(--hb-text-strong) !important; 
+
+/* 🎨 SEMANTIC DARK-MODE COLORS FOR SYSTEM ALERTS */
+.alertbar.redbox { 
+  background: rgba(220, 38, 38, 0.15) !important; 
+  border-color: rgba(220, 38, 38, 0.4) !important; 
+  color: #fca5a5 !important; 
 }
-.alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: var(--accent-secondary) !important;}
+.alertbar.greenbox { 
+  background: rgba(5, 150, 105, 0.15) !important; 
+  border-color: rgba(5, 150, 105, 0.4) !important; 
+  color: #6ee7b7 !important; 
+}
+.alertbar.goldbox, .alertbar.yellowbox { 
+  background: rgba(217, 119, 6, 0.15) !important; 
+  border-color: rgba(217, 119, 6, 0.4) !important; 
+  color: #fde047 !important; 
+}
+.alertbar.bluebox { 
+  background: rgba(37, 99, 235, 0.15) !important; 
+  border-color: rgba(37, 99, 235, 0.4) !important; 
+  color: #93c5fd !important; 
+}
+
+/* Protect spans with inline styles (like the Wheat Freeleech text) inside alerts */
+.alertbar span { text-shadow: none !important; }
+.alertbar span:not([style*="color"]) { color: inherit !important; }
+.alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
 
 /* =========================================
    ALL TABLES & PANELS UNIFICATION
@@ -242,7 +265,6 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* General Table Cleanup */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
 /* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
@@ -255,7 +277,6 @@ table, tbody, tr, td, th { background-color: transparent !important; background-
   padding: 14px 16px !important; 
   text-shadow: none !important; 
 }
-/* Ensure table headers have rounded corners to fit inside the parent .box */
 table tr.colhead_dark:first-child td, table tr.colhead:first-child td {
   border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
   border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
@@ -294,6 +315,7 @@ tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-
 #latest5tor .owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
 #latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
+
 
 /* =========================================
    🌟 MOVIES / SERIES GRID VIEW (DESKTOP) 🌟
@@ -555,22 +577,31 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
   #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
+  /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td { 
     display: block !important; width: 100% !important; padding: 24px 20px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
   }
 
+  /* MAGIC HACK */
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
   #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
+  /* Title */
   #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
+  /* Category Badge */
   #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(255, 255, 255, 0.1) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 15px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -3px !important; }
 
+  /* Metadata Container */
   #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 18px !important; margin-top: 18px !important; font-size: 17px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
+  /* The Time */
   #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 16px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
+  
+  /* The Username Link */
   #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 17px !important; font-weight: 600 !important; }
 
+  /* Show All Link */
   #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
   /* =========================================
