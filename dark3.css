@@ -2,15 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V83 - DARK MODE RANKS FIX)
-   - 🎨 RANKS FIX: Inverted dark rank colors to bright/neon equivalents for Dark Mode visibility!
-   - 🎨 GREY TEXT FIX: Restored specific colors. Removed destructive override that killed rank colors.
-   - 🎨 LINKS FIX: Forced all generic links (like in widgets) to be bright and readable.
-   - 📱 MEGA MOBILE: Massively increased fonts and touch areas.
+   HEBITS STEALTH SOLID PRO (V84 - LAYOUT & NATIVE RANKS)
+   - 📏 LAYOUT ALIGNMENT FIX: #userinfo and #searchbars-wrapper are now perfectly aligned to 75% width to match the rest of the site's content box.
+   - 🎨 NATIVE RANKS RESTORED: All rank colors set to the exact requested HEX codes (except Rookie/User for Dark Mode visibility).
+   - 🔤 THE NUKE FONT FIX: Used the Universal Selector (*) to force Inter everywhere, safely ignoring icons!
    - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
    - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
-   - 🔤 OMNI-FONT OVERRIDE: Forced Inter on absolutely every text node.
-   - 🌟 MOVIES GRID: 2 Massive posters/row, pure CSS grid, flex-aligned.
+   - 📱 MOBILE GRID FIX: 2 Massive posters/row with proper scaling.
+   - 🌟 DROPDOWNS: Restored and functional.
+   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
    ========================================= */
 
 :root {
@@ -22,7 +22,7 @@
   --hb-border-soft: #3f3f46; 
   --hb-text: #d4d4d8; 
   --hb-text-strong: #ffffff; 
-  --hb-muted: #a1a1aa; 
+  --hb-muted: #71717a; 
   --hb-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --accent-primary: #52525b; 
   --accent-secondary: #a1a1aa; 
@@ -40,7 +40,8 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
+/* 🌟 UNIVERSAL FONT ENGINE 🌟 */
+/* Forces the font on absolutely everything EXCEPT FontAwesome and specific icon tags */
 *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
   font-family: var(--hb-font) !important;
 }
@@ -57,7 +58,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
 #menu ul > li { position: relative !important; }
 
-/* Menu links styling */
+/* Menu links styling - System Colors (like Donate red) are protected */
 #menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
 #menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
 #menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
@@ -87,13 +88,13 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   padding: 20px 20px 10px 20px !important;
   margin: 60px auto 0 auto !important; 
   gap: 10px !important;
-  width: 100% !important;
+  width: 75% !important; /* Perfect alignment with main content */
   box-sizing: border-box !important;
 }
 #userinfo ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; align-items: center !important; }
 #userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(0, 0, 0, 0.5) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
 #userinfo li:hover { border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; }
-#userinfo li a { color: var(--hb-text) !important; display: inline-flex !important; align-items: center !important; }
+#userinfo li a { color: var(--hb-muted) !important; display: inline-flex !important; align-items: center !important; }
 #userinfo li a:hover { color: var(--hb-text-strong) !important; }
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
 #userinfo li svg { margin-left: 6px !important; }
@@ -107,10 +108,12 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   border-top: none !important; 
   border-radius: 0 0 16px 16px !important; 
   padding: 10px 0 24px 0 !important; 
-  margin-bottom: 30px !important; 
+  margin: 0 auto 30px auto !important; 
+  width: 75% !important; /* Perfect alignment with main content */
   box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; 
+  box-sizing: border-box !important;
 }
-#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
+#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 100% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 
 /* GLOBALLY CATCH ALL INPUTS */
@@ -255,6 +258,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   box-shadow: var(--hb-shadow) !important; 
   margin-bottom: 24px !important; 
   transition: transform 0.2s ease, box-shadow 0.2s ease !important; 
+  color: var(--hb-text) !important; 
   overflow: hidden !important; 
   border-collapse: collapse !important;
 }
@@ -267,7 +271,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
 /* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
-.head, .sidebar .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
+.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
   background: var(--bg-deep) !important; 
   color: var(--hb-text-strong) !important; 
   font-weight: 600 !important; 
@@ -361,11 +365,11 @@ table.movies_chart td.movie-item .movie-item-tags a {
 }
 
 /* =========================================
-   GENERAL ELEMENTS & TYPOGRAPHY
+   GENERAL ELEMENTS
    ========================================= */
-/* 🔗 FORCE ALL LINKS TO BE VISIBLE (Fixes dark grey text in widgets) */
-a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link) !important; }
-a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover) !important; text-decoration: underline !important; }
+/* Protect explicitly styled links from global override */
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
@@ -374,35 +378,41 @@ td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.un
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
-.box, .panel__body, td, th, p, label { color: var(--hb-text); text-shadow: none !important; }
+.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
-.forum_post .body, .message_table td, form.search_form label, table td { font-size: 14px !important; line-height: 1.6 !important; }
+.forum_post .body, .message_table td, form.search_form label, table td { color: var(--hb-text) !important; font-size: 14px !important; line-height: 1.6 !important; }
 .small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--hb-muted) !important; font-weight: 500 !important; }
 
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-/* 🌟 CUSTOM RANKS - ADAPTED FOR DARK MODE (Brightened dark colors) 🌟 */
-.permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #60a5fa !important; } /* Was #026ad4 */
-.permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #ff4d4d !important; } /* Was #cd0010 */
-.permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #ff6680 !important; } /* Was #F0133F */
-.permission_800, a.permission_800, span.permission_800   { font-weight: bold !important; color: #60a5fa !important; } /* Was #026ad4 */
-.permission_700, a.permission_700, span.permission_700   { font-weight: bold !important; color: #ff8c42 !important; } /* Was #b72b06 */
-.permission_600, a.permission_600, span.permission_600   { font-weight: bold !important; color: #e484d9 !important; } /* Was #c46ebd */
+a { text-decoration: none !important; transition: color 0.15s ease !important; }
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
+
+/* 🌟 EXACT CUSTOM RANK COLORS 🌟 */
+a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
+a[class*="permission_"]:hover { filter: brightness(1.2) !important; }
+.permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #026ad4 !important; }
+.permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #cd0010 !important; } 
+.permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #F0133F !important; } 
+.permission_800, a.permission_800, span.permission_800   { font-weight: bold !important; color: #026ad4 !important; } 
+.permission_700, a.permission_700, span.permission_700   { font-weight: bold !important; color: #b72b06 !important; } 
+.permission_600, a.permission_600, span.permission_600   { font-weight: bold !important; color: #c46ebd !important; } 
 .permission_450, a.permission_450, span.permission_450   { font-weight: bold !important; color: #66CCFF !important; } 
 .permission_400, a.permission_400, span.permission_400   { color: #FF0099 !important; } 
-.permission_205, a.permission_205, span.permission_205   { color: #4ade80 !important; } /* Was #00AB22 */
+.permission_205, a.permission_205, span.permission_205   { color: #00AB22 !important; } 
 .permission_200, a.permission_200, span.permission_200   { color: #00FF99 !important; } 
 .permission_150, a.permission_150, span.permission_150   { font-weight: bold !important; color: #FF9900 !important; } 
 .permission_100, a.permission_100, span.permission_100   { color: #FFF300 !important; } 
 .permission_17, a.permission_17, span.permission_17    { color: #66CC99 !important; } 
-.permission_16, a.permission_16, span.permission_16    { color: #e6b800 !important; } /* Was #CC9933 */
+.permission_16, a.permission_16, span.permission_16    { color: #CC9933 !important; } 
 .permission_15, a.permission_15, span.permission_15    { color: #99CC00 !important; } 
 .permission_14, a.permission_14, span.permission_14    { color: #66CC00 !important; } 
-.permission_13, a.permission_13, span.permission_13    { color: #22c55e !important; } /* Was #009c00 */
-.permission_12, a.permission_12, span.permission_12    { color: #4ade80 !important; } /* Was #006b00 */
-.permission_11, a.permission_11, span.permission_11    { font-weight: bold !important; color: var(--hb-text-strong) !important; } /* Was #000000 */
-.permission_10, a.permission_10, span.permission_10    { color: var(--hb-text) !important; } /* Was #000000 */
+.permission_13, a.permission_13, span.permission_13    { color: #009c00 !important; } 
+.permission_12, a.permission_12, span.permission_12    { color: #006b00 !important; } 
+.permission_11, a.permission_11, span.permission_11    { font-weight: bold !important; color: var(--hb-text-strong) !important; } 
+.permission_10, a.permission_10, span.permission_10    { color: var(--hb-text) !important; } 
 
 #taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 4px !important; padding: 4px 10px !important; font-size: 0.85em !important; font-weight: 500 !important; color: var(--hb-text) !important; transition: all 0.15s ease !important; display: inline-block !important; margin: 2px !important; }
 #taglist tr td a:hover, .tags a:hover, .movie-tooltip__tag:hover, #artist_list a:hover, ul.stats li a:hover, ul.tags li a:hover { background: var(--accent-primary) !important; border-color: var(--accent-primary) !important; color: #fff !important; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important; }
@@ -438,7 +448,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
 
 .wysibb, .wysibb-text, .wysibb-toolbar { background: var(--hb-panel) !important; border-color: var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; }
-.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
+.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-family: var(--hb-font) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
 .wysibb-toolbar-btn { color: var(--hb-text) !important; transition: background-color 0.15s ease !important; border-radius: 4px !important; }
 .wysibb-toolbar-btn img { filter: none !important; }
 .wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img, .wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { filter: invert(1) brightness(0.8) !important; }
@@ -451,7 +461,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
 /* =========================================
-   📱 MOBILE OVERHAUL (IMDB MAXIMUM SCALE UI) 📱
+   📱 MOBILE OVERHAUL
    ========================================= */
 @media screen and (max-width: 1100px) {
   
@@ -478,13 +488,14 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #userinfo { 
     border-radius: 12px 12px 0 0 !important; 
     padding: 15px 10px !important; 
-    margin-top: 15px !important; 
+    margin: 15px auto 0 auto !important; 
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important;
     overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
     justify-content: flex-start !important; 
+    width: 100% !important;
   }
   #userinfo::-webkit-scrollbar { display: none !important; }
   #userinfo ul { 
@@ -504,7 +515,8 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #searchbars-wrapper { 
     border-radius: 0 0 12px 12px !important; 
     padding: 0 0 15px 0 !important; 
-    margin-bottom: 20px !important;
+    margin: 0 auto 20px auto !important;
+    width: 100% !important;
   }
   #searchbars { 
     display: flex !important; 
@@ -606,7 +618,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
   /* =========================================
-     🌟 MOBILE MOVIES / SERIES GRID (FLEX-ALIGN) 🌟
+     🌟 MOBILE MOVIES / SERIES GRID 🌟
      ========================================= */
   table.movies_chart { 
     display: block !important; 
@@ -621,7 +633,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px !important;
     width: 100% !important;
-    align-items: stretch !important; 
   }
   table.movies_chart tr { display: contents !important; } 
   
@@ -636,15 +647,11 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     box-sizing: border-box !important;
     width: 100% !important;
     margin: 0 !important;
-    height: 100% !important; 
-  }
-  
-  table.movies_chart td.movie-item > a {
-    flex-shrink: 0 !important; 
   }
   
   table.movies_chart td.movie-item > a > div[style*="background-image"] {
-    height: 60vw !important; 
+    height: auto !important; 
+    aspect-ratio: 2 / 3 !important; 
     width: 100% !important;
     border-radius: 8px !important;
     background-size: contain !important; 
@@ -663,26 +670,12 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     line-height: 1.4 !important;
   }
   
-  table.movies_chart td.movie-item .desc { 
-    flex-grow: 1 !important; 
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-end !important;
-    margin-top: 15px !important; 
-    text-align: center !important; 
-    border-top: 1px solid var(--hb-border-soft) !important; 
-    padding-top: 15px !important; 
-  }
+  table.movies_chart td.movie-item .desc { text-align: center !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 10px !important; margin-top: 10px !important; }
   table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 17px !important; margin: 5px !important; color: var(--hb-text-strong) !important; font-weight: 600 !important;}
   
   table.movies_chart td.movie-item .movie-item-tags { font-size: 15px !important; margin-top: 12px !important; }
   table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.1) !important; color: var(--accent-secondary) !important; padding: 6px 12px !important; border-radius: 6px !important; margin: 3px !important; display: inline-block !important; }
   table.movies_chart td.movie-item .tags { font-size: 14px !important; margin-top: 10px !important; }
-
-  /* 🌟 SIDEBAR MEGA FIX (MOBILE) 🌟 */
-  .sidebar .box { font-size: 20px !important; }
-  .sidebar .head { font-size: 24px !important; padding: 20px !important; }
-  .sidebar ul.stats li, .sidebar ul.nobullet li { padding: 12px 0 !important; }
 
   /* GENERAL TABLES / POSTS OVERRIDE FOR MOBILE */
   table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table { 
