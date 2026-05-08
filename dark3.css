@@ -2,15 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V84 - LAYOUT & NATIVE RANKS)
-   - 📏 LAYOUT ALIGNMENT FIX: #userinfo and #searchbars-wrapper are now perfectly aligned to 75% width to match the rest of the site's content box.
-   - 🎨 NATIVE RANKS RESTORED: All rank colors set to the exact requested HEX codes (except Rookie/User for Dark Mode visibility).
-   - 🔤 THE NUKE FONT FIX: Used the Universal Selector (*) to force Inter everywhere, safely ignoring icons!
+   HEBITS STEALTH SOLID PRO (V83 - DARK MODE RANKS FIX)
+   - 🎨 RANKS FIX: Inverted dark rank colors to bright/neon equivalents for Dark Mode visibility!
+   - 🎨 GREY TEXT FIX: Restored specific colors. Removed destructive override that killed rank colors.
+   - 🎨 LINKS FIX: Forced all generic links (like in widgets) to be bright and readable.
+   - 📱 MEGA MOBILE: Massively increased fonts and touch areas.
    - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
    - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
-   - 📱 MOBILE GRID FIX: 2 Massive posters/row with proper scaling.
-   - 🌟 DROPDOWNS: Restored and functional.
-   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
+   - 🔤 OMNI-FONT OVERRIDE: Forced Inter on absolutely every text node.
+   - 🌟 MOVIES GRID: 2 Massive posters/row, pure CSS grid, flex-aligned.
    ========================================= */
 
 :root {
@@ -22,7 +22,7 @@
   --hb-border-soft: #3f3f46; 
   --hb-text: #d4d4d8; 
   --hb-text-strong: #ffffff; 
-  --hb-muted: #71717a; 
+  --hb-muted: #a1a1aa; 
   --hb-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --accent-primary: #52525b; 
   --accent-secondary: #a1a1aa; 
@@ -40,8 +40,7 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* 🌟 UNIVERSAL FONT ENGINE 🌟 */
-/* Forces the font on absolutely everything EXCEPT FontAwesome and specific icon tags */
+/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
 *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
   font-family: var(--hb-font) !important;
 }
@@ -58,7 +57,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
 #menu ul > li { position: relative !important; }
 
-/* Menu links styling - System Colors (like Donate red) are protected */
+/* Menu links styling */
 #menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
 #menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
 #menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
@@ -88,13 +87,13 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   padding: 20px 20px 10px 20px !important;
   margin: 60px auto 0 auto !important; 
   gap: 10px !important;
-  width: 75% !important; /* Perfect alignment with main content */
+  width: 100% !important;
   box-sizing: border-box !important;
 }
 #userinfo ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; align-items: center !important; }
 #userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(0, 0, 0, 0.5) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
 #userinfo li:hover { border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; }
-#userinfo li a { color: var(--hb-muted) !important; display: inline-flex !important; align-items: center !important; }
+#userinfo li a { color: var(--hb-text) !important; display: inline-flex !important; align-items: center !important; }
 #userinfo li a:hover { color: var(--hb-text-strong) !important; }
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
 #userinfo li svg { margin-left: 6px !important; }
@@ -108,12 +107,10 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   border-top: none !important; 
   border-radius: 0 0 16px 16px !important; 
   padding: 10px 0 24px 0 !important; 
-  margin: 0 auto 30px auto !important; 
-  width: 75% !important; /* Perfect alignment with main content */
+  margin-bottom: 30px !important; 
   box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; 
-  box-sizing: border-box !important;
 }
-#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 100% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
+#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 
 /* GLOBALLY CATCH ALL INPUTS */
@@ -124,6 +121,7 @@ textarea, select {
   border-radius: var(--hb-radius-sm) !important; 
   color: var(--hb-text-strong) !important; 
   padding: 10px 14px !important; 
+  font-family: var(--hb-font) !important; 
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important; 
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; 
 }
@@ -271,7 +269,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
 /* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
-.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
+.head, .sidebar .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
   background: var(--bg-deep) !important; 
   color: var(--hb-text-strong) !important; 
   font-weight: 600 !important; 
@@ -367,10 +365,6 @@ table.movies_chart td.movie-item .movie-item-tags a {
 /* =========================================
    GENERAL ELEMENTS
    ========================================= */
-/* Protect explicitly styled links from global override */
-a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]) { color: var(--hb-link); }
-a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
-
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
@@ -378,17 +372,11 @@ td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.un
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
-.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
-h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
-.forum_post .body, .message_table td, form.search_form label, table td { color: var(--hb-text) !important; font-size: 14px !important; line-height: 1.6 !important; }
-.small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--hb-muted) !important; font-weight: 500 !important; }
-
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-a { text-decoration: none !important; transition: color 0.15s ease !important; }
-#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
-#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
+/* 🔗 Protect System Colors in Links 🔗 */
+a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
 /* 🌟 EXACT CUSTOM RANK COLORS 🌟 */
 a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
