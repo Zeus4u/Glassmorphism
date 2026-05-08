@@ -2,14 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V83 - DARK MODE RANKS FIX)
-   - 🎨 RANKS FIX: Inverted dark rank colors to bright/neon equivalents for Dark Mode visibility!
-   - 🎨 GREY TEXT FIX: Restored specific colors. Removed destructive override that killed rank colors.
-   - 🎨 LINKS FIX: Forced all generic links (like in widgets) to be bright and readable.
-   - 📱 MEGA MOBILE: Massively increased fonts and touch areas.
-   - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
-   - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
+   HEBITS STEALTH SOLID PRO (V86 - FINAL ADJUSTMENTS)
+   - 💬 FORUM TEXT FIX: Explicitly forced post bodies to use light text color.
+   - 🎨 NATIVE RANKS: Exactly applied the requested hex color codes for all ranks, protecting Rookie/User.
+   - 🛡️ TOP BAR SOFTENER: Kept the pure flat black (#000000) for seamless integration.
    - 🔤 OMNI-FONT OVERRIDE: Forced Inter on absolutely every text node.
+   - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
    - 🌟 MOVIES GRID: 2 Massive posters/row, pure CSS grid, flex-aligned.
    ========================================= */
 
@@ -22,7 +20,7 @@
   --hb-border-soft: #3f3f46; 
   --hb-text: #d4d4d8; 
   --hb-text-strong: #ffffff; 
-  --hb-muted: #a1a1aa; 
+  --hb-muted: #71717a; 
   --hb-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --accent-primary: #52525b; 
   --accent-secondary: #a1a1aa; 
@@ -40,7 +38,7 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
+/* 🌟 UNIVERSAL FONT ENGINE 🌟 */
 *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
   font-family: var(--hb-font) !important;
 }
@@ -78,39 +76,39 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   flex-wrap: wrap !important;
   justify-content: center !important;
   align-items: center !important;
-  background: rgba(0, 0, 0, 0.65) !important; 
-  backdrop-filter: blur(20px) !important; 
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important; 
-  border-bottom: none !important; 
+  background: #000000 !important; 
+  backdrop-filter: none !important; 
+  -webkit-backdrop-filter: none !important;
+  border: none !important; 
   border-radius: 16px 16px 0 0 !important; 
   padding: 20px 20px 10px 20px !important;
   margin: 60px auto 0 auto !important; 
   gap: 10px !important;
-  width: 100% !important;
+  width: 75% !important;
   box-sizing: border-box !important;
 }
 #userinfo ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; align-items: center !important; }
-#userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(0, 0, 0, 0.5) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
+#userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(255, 255, 255, 0.05) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
 #userinfo li:hover { border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; }
-#userinfo li a { color: var(--hb-text) !important; display: inline-flex !important; align-items: center !important; }
+#userinfo li a { color: var(--hb-muted) !important; display: inline-flex !important; align-items: center !important; }
 #userinfo li a:hover { color: var(--hb-text-strong) !important; }
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
 #userinfo li svg { margin-left: 6px !important; }
 
 /* QUICK SEARCH BARS (PILL DESIGN) */
 #searchbars-wrapper { 
-  background: rgba(0, 0, 0, 0.65) !important; 
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important; 
-  border-top: none !important; 
+  background: #000000 !important; 
+  backdrop-filter: none !important; 
+  -webkit-backdrop-filter: none !important;
+  border: none !important; 
   border-radius: 0 0 16px 16px !important; 
   padding: 10px 0 24px 0 !important; 
-  margin-bottom: 30px !important; 
+  margin: 0 auto 30px auto !important; 
+  width: 75% !important; 
   box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; 
+  box-sizing: border-box !important;
 }
-#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
+#searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 100% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 
 /* GLOBALLY CATCH ALL INPUTS */
@@ -174,7 +172,6 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 }
 form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform: none !important; box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; }
 
-/* 🛡️ CORNER FIX: Force the head to have rounded top corners so it doesn't bleed! */
 .filter_torrents .head { 
   background: #000000 !important; 
   border-bottom: 1px solid var(--hb-border) !important; 
@@ -185,7 +182,6 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 
-/* Protect the layout table inside search from row coloring */
 .filter_torrents table.layout, 
 .filter_torrents table.layout tr, 
 .filter_torrents table.layout tr > td, 
@@ -204,7 +200,6 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
    ========================================= */
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
 
-/* Base App-Like Alert Styles */
 .alertbar { 
   border-radius: var(--hb-radius-sm) !important; 
   box-shadow: var(--hb-shadow) !important; 
@@ -218,29 +213,11 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   color: var(--hb-text-strong) !important;
 }
 
-/* 🎨 SEMANTIC DARK-MODE COLORS FOR SYSTEM ALERTS */
-.alertbar.redbox { 
-  background: rgba(220, 38, 38, 0.15) !important; 
-  border-color: rgba(220, 38, 38, 0.4) !important; 
-  color: #fca5a5 !important; 
-}
-.alertbar.greenbox { 
-  background: rgba(5, 150, 105, 0.15) !important; 
-  border-color: rgba(5, 150, 105, 0.4) !important; 
-  color: #6ee7b7 !important; 
-}
-.alertbar.goldbox, .alertbar.yellowbox { 
-  background: rgba(217, 119, 6, 0.15) !important; 
-  border-color: rgba(217, 119, 6, 0.4) !important; 
-  color: #fde047 !important; 
-}
-.alertbar.bluebox { 
-  background: rgba(37, 99, 235, 0.15) !important; 
-  border-color: rgba(37, 99, 235, 0.4) !important; 
-  color: #93c5fd !important; 
-}
+.alertbar.redbox { background: rgba(220, 38, 38, 0.15) !important; border-color: rgba(220, 38, 38, 0.4) !important; color: #fca5a5 !important; }
+.alertbar.greenbox { background: rgba(5, 150, 105, 0.15) !important; border-color: rgba(5, 150, 105, 0.4) !important; color: #6ee7b7 !important; }
+.alertbar.goldbox, .alertbar.yellowbox { background: rgba(217, 119, 6, 0.15) !important; border-color: rgba(217, 119, 6, 0.4) !important; color: #fde047 !important; }
+.alertbar.bluebox { background: rgba(37, 99, 235, 0.15) !important; border-color: rgba(37, 99, 235, 0.4) !important; color: #93c5fd !important; }
 
-/* Protect spans with inline styles (like the Wheat Freeleech text) inside alerts */
 .alertbar span { text-shadow: none !important; }
 .alertbar span:not([style*="color"]) { color: inherit !important; }
 .alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
@@ -262,13 +239,9 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .box:hover, .sidebar .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* 📰 NEWS BODY FIX: Ensure announcements have no stray light background */
-.newsbody, .box > .pad { background: transparent !important; color: var(--hb-text) !important; }
-
 /* General Table Cleanup */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
-/* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
 .head, .sidebar .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
   background: var(--bg-deep) !important; 
   color: var(--hb-text-strong) !important; 
@@ -317,7 +290,6 @@ tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-
 #latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
-
 /* =========================================
    🌟 MOVIES / SERIES GRID VIEW (DESKTOP) 🌟
    ========================================= */
@@ -363,8 +335,11 @@ table.movies_chart td.movie-item .movie-item-tags a {
 }
 
 /* =========================================
-   GENERAL ELEMENTS
+   GENERAL ELEMENTS & TYPOGRAPHY
    ========================================= */
+a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
+
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
@@ -372,15 +347,26 @@ td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.un
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
+.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
+
+/* 💬 FORUMS TEXT FIX: Guarantee light text inside posts */
+.forum_post .body { color: var(--hb-text) !important; }
+.newsbody, .pad { color: var(--hb-text) !important; }
+
+h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
+.forum_post .body, .message_table td, form.search_form label, table td { font-size: 14px !important; line-height: 1.6 !important; }
+.small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--hb-muted) !important; font-weight: 500 !important; }
+
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-/* 🔗 Protect System Colors in Links 🔗 */
-a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); }
-a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
 
-/* 🌟 EXACT CUSTOM RANK COLORS 🌟 */
-a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
+/* 🌟 EXACT CUSTOM RANK COLORS (Restored to exact user codes) 🌟 */
+a[class*="permission_"], span[class*="permission_"], strong[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
 a[class*="permission_"]:hover { filter: brightness(1.2) !important; }
+
 .permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #026ad4 !important; }
 .permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #cd0010 !important; } 
 .permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #F0133F !important; } 
@@ -449,7 +435,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
 /* =========================================
-   📱 MOBILE OVERHAUL
+   📱 MOBILE OVERHAUL (IMDB MAXIMUM SCALE UI) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
   
@@ -476,14 +462,13 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #userinfo { 
     border-radius: 12px 12px 0 0 !important; 
     padding: 15px 10px !important; 
-    margin: 15px auto 0 auto !important; 
+    margin-top: 15px !important; 
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important;
     overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
     justify-content: flex-start !important; 
-    width: 100% !important;
   }
   #userinfo::-webkit-scrollbar { display: none !important; }
   #userinfo ul { 
@@ -503,8 +488,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #searchbars-wrapper { 
     border-radius: 0 0 12px 12px !important; 
     padding: 0 0 15px 0 !important; 
-    margin: 0 auto 20px auto !important;
-    width: 100% !important;
+    margin-bottom: 20px !important;
   }
   #searchbars { 
     display: flex !important; 
@@ -587,7 +571,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
   #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
-  /* Title (IMDB Massive Title) */
+  /* Title */
   #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
   /* Category Badge */
