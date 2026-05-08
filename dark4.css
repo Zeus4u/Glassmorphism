@@ -2,17 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V65 - MOBILE HEADER OVERHAUL)
-   - 💻 TABLES FIX: Killed all vertical dividers! Hover line appears ONLY on the far edge.
-   - 💻 SEARCH UI FIX: Distinct panel background and fixed corners.
-   - 💻 GLOBAL FONT FIX: Forced "Inter" font on every single element.
-   - 🌟 PLACEMENT FIX: Pushed the UserInfo dashboard down.
-   - 📱 MOBILE HEADER: Clean banner + readable stats + proper nav buttons
-   - 📱 MOBILE IPS FORUMS: Flawless Card UI & Inline Categories
-   - Black & Gray Monochrome Theme
+   HEBITS STEALTH SOLID PRO (V80 - MEGA MOBILE SCALE)
+   - 📱 MEGA MOBILE: Massively increased fonts, paddings, and touch targets across the entire mobile UI.
+   - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
+   - 🎨 COLOR FIX: Inline system colors (like Wheat or Donate Red) are protected.
+   - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
+   - 🔤 OMNI-FONT OVERRIDE: Caught the missing fonts in options, selects, and small tags.
+   - 🌟 DROPDOWNS: Restored and functional.
+   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
    ========================================= */
 
 :root {
+  /* THE PURE MONOCHROME PALETTE */
   --bg-deep: #09090b; 
   --hb-panel: #18181b; 
   --hb-panel-hover: #27272a; 
@@ -38,8 +39,12 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-body, html, .body, .tdhack, div, span, p, label, a, h1, h2, h3, h4, h5, h6, 
-input, select, textarea, button, td, th {
+/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
+body, html, .body, .tdhack, p, label, a, h1, h2, h3, h4, h5, h6, 
+input, select, option, optgroup, textarea, button, td, th, tr, tbody, thead, table,
+strong, b, ul, li, em, small, center, blockquote, q, dt, dd, dl, form, fieldset, legend, caption,
+div:not([class*="fa"]):not([class*="icon"]):not(.fonticon), 
+span:not([class*="fa"]):not([class*="icon"]):not(.fonticon) {
   font-family: var(--hb-font) !important;
 }
 
@@ -49,11 +54,24 @@ html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
 
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
-
 #header { display: contents !important; }
-#menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; }
-#menu ul > li > a { font-weight: 500 !important; color: var(--hb-text) !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
-#menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; color: var(--hb-text-strong) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
+
+/* 🌟 MAIN NAVIGATION MENU & DROPDOWNS 🌟 */
+#menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
+#menu ul > li { position: relative !important; }
+
+/* Menu links styling - System Colors (like Donate red) are protected */
+#menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
+#menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
+#menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
+#menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
+
+/* Dropdowns */
+#menu ul > li > ul { display: none; position: absolute !important; top: 100% !important; right: 0 !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; padding: 8px 0 !important; z-index: 100000 !important; min-width: 180px !important; }
+#menu ul > li:hover > ul { display: flex !important; flex-direction: column !important; }
+#menu ul > li > ul > li { display: block !important; width: 100% !important; }
+#menu ul > li > ul > li > a { display: block !important; padding: 12px 20px !important; font-size: 15px !important; color: var(--hb-text) !important; text-align: right !important; white-space: nowrap !important; border-radius: 0 !important; box-shadow: none !important; }
+#menu ul > li > ul > li > a:hover { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 
 /* =========================================
    USER INFO STATS BAR
@@ -66,7 +84,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   background: rgba(0, 0, 0, 0.65) !important; 
   backdrop-filter: blur(20px) !important; 
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important; 
   border-bottom: none !important; 
   border-radius: 16px 16px 0 0 !important; 
   padding: 20px 20px 10px 20px !important;
@@ -97,38 +115,191 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 }
 #searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
-#searchbars input[type="text"] { width: 100% !important; background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 100px !important; color: var(--hb-text-strong) !important; padding: 14px 24px !important; font-size: 14px !important; font-weight: 500 !important; text-align: center !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; box-sizing: border-box !important; }
-#searchbars input[type="text"]::placeholder { color: var(--hb-muted) !important; font-weight: 400 !important; transition: opacity 0.3s ease !important; }
-#searchbars input[type="text"]:hover { background: var(--hb-panel) !important; border-color: #52525b !important; transform: translateY(-2px) !important; box-shadow: 0 6px 14px rgba(0,0,0,0.4) !important; }
-#searchbars input[type="text"]:focus { background: var(--hb-panel) !important; border-color: var(--accent-secondary) !important; box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25), 0 8px 20px rgba(0,0,0,0.6) !important; transform: translateY(-3px) !important; outline: none !important; }
-#searchbars input[type="text"]:focus::placeholder { opacity: 0 !important; }
+
+/* GLOBALLY CATCH ALL INPUTS */
+input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), 
+textarea, select { 
+  background: var(--bg-deep) !important; 
+  border: 1px solid var(--hb-border-soft) !important; 
+  border-radius: var(--hb-radius-sm) !important; 
+  color: var(--hb-text-strong) !important; 
+  padding: 10px 14px !important; 
+  font-family: var(--hb-font) !important; 
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important; 
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; 
+}
+input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus, 
+textarea:focus, select:focus { 
+  background: var(--hb-panel) !important; 
+  border-color: var(--accent-secondary) !important; 
+  box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25) !important; 
+  outline: none !important; 
+}
+
+/* SEARCHBAR PILL FIX */
+#searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { 
+  width: 100% !important; 
+  border-radius: 100px !important; 
+  padding: 14px 24px !important; 
+  font-size: 14px !important; 
+  font-weight: 500 !important; 
+  text-align: center !important; 
+  box-sizing: border-box !important; 
+}
+#searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):hover { 
+  background: var(--hb-panel) !important; 
+  border-color: var(--accent-primary) !important; 
+  transform: translateY(-2px) !important; 
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4) !important; 
+}
+#searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus { 
+  transform: translateY(-3px) !important; 
+  box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25), 0 8px 20px rgba(0,0,0,0.6) !important; 
+}
+#searchbars input::placeholder { color: var(--hb-muted) !important; font-weight: 400 !important; transition: opacity 0.3s ease !important; }
+#searchbars input:focus::placeholder { opacity: 0 !important; }
 
 /* =========================================
-   ADVANCED SEARCH PANEL
+   ADVANCED SEARCH PANEL (PROTECTED FROM TABLES)
    ========================================= */
+form.search_form, form.search_form > div { background: transparent !important; border: none !important; box-shadow: none !important; }
+
 form.search_form:not(#searchbars form) > .box.filter_torrents {
-  background: var(--hb-panel) !important;
+  background: #000000 !important; 
   border: 1px solid var(--hb-border) !important;
-  border-top: 4px solid var(--accent-primary) !important;
+  border-top: 4px solid var(--accent-primary) !important; 
   border-radius: var(--hb-radius) !important;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important;
   padding: 0 !important;
   overflow: hidden !important;
   margin-bottom: 30px !important;
+  transition: none !important;
 }
-.filter_torrents .head { background: var(--bg-deep) !important; border-bottom: 1px solid var(--hb-border) !important; padding: 15px 20px !important; font-size: 16px !important; }
+form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform: none !important; box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; }
+
+/* 🛡️ CORNER FIX: Force the head to have rounded top corners so it doesn't bleed! */
+.filter_torrents .head { 
+  background: #000000 !important; 
+  border-bottom: 1px solid var(--hb-border) !important; 
+  padding: 15px 20px !important; 
+  font-size: 16px !important; 
+  border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
+  border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
+}
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
-.filter_torrents table.layout { background: transparent !important; }
+
+/* Protect the layout table inside search from row coloring */
+.filter_torrents table.layout, 
+.filter_torrents table.layout tr, 
+.filter_torrents table.layout tr > td, 
+.filter_torrents table.layout tr:nth-child(n) > td,
+.filter_torrents table.layout tr:hover > td { 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none !important; 
+}
 
 /* TRUE STICKY SIDEBAR */
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
+/* =========================================
+   🚨 ALERTS & SYSTEM BOXES (RESTORED SYSTEM COLORS) 🚨
+   ========================================= */
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
-#alerts .alertbar { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: var(--hb-shadow) !important; padding: 12px 20px !important; text-align: center !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; font-size: 14px !important; }
-#alerts .alertbar a { margin: 0 6px !important; font-weight: 700 !important; }
 
-.box, .panel__body, table.forum_post, table.message_table, #inbox .box { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; color: var(--hb-text) !important; overflow: hidden !important; }
+/* Base App-Like Alert Styles */
+.alertbar { 
+  border-radius: var(--hb-radius-sm) !important; 
+  box-shadow: var(--hb-shadow) !important; 
+  padding: 14px 20px !important; 
+  text-align: center !important; 
+  font-weight: 600 !important; 
+  font-size: 15px !important; 
+  margin-bottom: 12px !important;
+  border: 1px solid var(--hb-border) !important;
+  background: var(--hb-panel) !important;
+  color: var(--hb-text-strong) !important;
+}
+
+/* 🎨 SEMANTIC DARK-MODE COLORS FOR SYSTEM ALERTS */
+.alertbar.redbox { 
+  background: rgba(220, 38, 38, 0.15) !important; 
+  border-color: rgba(220, 38, 38, 0.4) !important; 
+  color: #fca5a5 !important; 
+}
+.alertbar.greenbox { 
+  background: rgba(5, 150, 105, 0.15) !important; 
+  border-color: rgba(5, 150, 105, 0.4) !important; 
+  color: #6ee7b7 !important; 
+}
+.alertbar.goldbox, .alertbar.yellowbox { 
+  background: rgba(217, 119, 6, 0.15) !important; 
+  border-color: rgba(217, 119, 6, 0.4) !important; 
+  color: #fde047 !important; 
+}
+.alertbar.bluebox { 
+  background: rgba(37, 99, 235, 0.15) !important; 
+  border-color: rgba(37, 99, 235, 0.4) !important; 
+  color: #93c5fd !important; 
+}
+
+/* Protect spans with inline styles (like the Wheat Freeleech text) inside alerts */
+.alertbar span { text-shadow: none !important; }
+.alertbar span:not([style*="color"]) { color: inherit !important; }
+.alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
+
+/* =========================================
+   ALL TABLES & PANELS UNIFICATION
+   ========================================= */
+.box, .panel__body, table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, #inbox .box { 
+  background: var(--hb-panel) !important; 
+  border: 1px solid var(--hb-border) !important; 
+  border-top: 3px solid var(--accent-primary) !important; 
+  border-radius: var(--hb-radius) !important; 
+  box-shadow: var(--hb-shadow) !important; 
+  margin-bottom: 24px !important; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important; 
+  color: var(--hb-text) !important; 
+  overflow: hidden !important; 
+  border-collapse: collapse !important;
+}
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
+
+/* 📰 NEWS BODY FIX: Ensure announcements have no stray light background */
+.newsbody, .box > .pad {
+  background: transparent !important;
+  color: var(--hb-text) !important;
+}
+
+/* General Table Cleanup */
+table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
+
+/* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
+.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
+  background: var(--bg-deep) !important; 
+  color: var(--hb-text-strong) !important; 
+  font-weight: 600 !important; 
+  border-bottom: 1px solid var(--hb-border) !important; 
+  border-top: none !important; 
+  padding: 14px 16px !important; 
+  text-shadow: none !important; 
+}
+table tr.colhead_dark:first-child td, table tr.colhead:first-child td {
+  border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
+  border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
+}
+
+/* Global Row Backgrounds & Hovers */
+table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
+table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: #111111 !important; border-bottom: 1px solid var(--hb-border) !important; }
+table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-shadow: none !important; }
+table:not(.movies_chart) tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
+
+/* Grouped Torrents Rows */
+tr.group_torrent:nth-child(n) > td { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
+tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; } 
+tr.group_torrent:hover:nth-child(n) > td { background: var(--hb-panel) !important; box-shadow: none !important; }
+tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; } 
 
 /* LATEST TORRENTS CAROUSEL */
 #latest5tor .owl-stage-outer { padding-top: 15px !important; padding-bottom: 20px !important; margin-top: -15px !important; margin-bottom: -20px !important; }
@@ -145,7 +316,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 #latest5tor .owl-nav { margin-top: 20px !important; text-align: center !important; display: flex !important; justify-content: center !important; gap: 12px !important; }
 #latest5tor .owl-dots { margin-top: 15px !important; text-align: center !important; }
 #latest5tor .owl-nav button, #latest5tor .owl-dots button { padding: 0 !important; box-shadow: none !important; background: transparent !important; border: none !important; }
-#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 40px !important; height: 40px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 50% !important; color: var(--hb-text) !important; font-size: 24px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
+#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 40px !important; height: 40px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 50% !important; color: var(--accent-secondary) !important; font-size: 24px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
 #latest5tor .owl-nav button.owl-prev span, #latest5tor .owl-nav button.owl-next span { margin-top: -4px !important; }
 #latest5tor .owl-nav button.owl-prev:hover, #latest5tor .owl-nav button.owl-next:hover { background: var(--accent-primary) !important; color: #fff !important; border-color: var(--accent-secondary) !important; transform: scale(1.1) !important; }
 #latest5tor .owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
@@ -153,44 +324,72 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
 /* =========================================
-   TABLES & ROWS (NO VERTICAL DIVIDERS!)
+   🌟 MOVIES / SERIES GRID VIEW (DESKTOP) 🌟
    ========================================= */
-table.torrent_table { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; overflow: hidden !important; }
-table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; }
+table.movies_chart { 
+  border-spacing: 15px !important; 
+  border-collapse: separate !important; 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none !important; 
+}
+table.movies_chart tr, table.movies_chart tbody { background: transparent !important; border: none !important; box-shadow: none !important; }
 
-.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; border-bottom: 1px solid var(--hb-border) !important; border-top: none !important; padding: 14px 16px !important; text-shadow: none !important; }
-tr:nth-child(odd) > td, tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
-tr:nth-child(even) > td, tr.rowb > td { background: #121214 !important; border-bottom: 1px solid var(--hb-border) !important; }
+table.movies_chart tr:nth-child(n) > td, table.movies_chart tr.rowa > td, table.movies_chart tr.rowb > td { background: transparent !important; border: none !important; box-shadow: none !important; }
+table.movies_chart tr:hover > td, table.movies_chart tr:hover > td:last-child { background: transparent !important; box-shadow: none !important; }
 
-tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-shadow: none !important; }
-tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
+table.movies_chart td.movie-item {
+  background: var(--hb-panel) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: var(--hb-radius) !important;
+  box-shadow: var(--hb-shadow) !important;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  position: relative !important;
+  padding: 12px !important;
+}
+table.movies_chart td.movie-item > a > div[style*="background-image"] { border-radius: 6px !important; background-size: cover !important; }
 
-tr.group_torrent:nth-child(n) > td { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
-tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; }
-tr.group_torrent:hover:nth-child(n) > td { background: var(--hb-panel) !important; box-shadow: none !important; }
-tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
+table.movies_chart td.movie-item:hover {
+  background: var(--hb-panel-hover) !important;
+  border-color: var(--hb-border-soft) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.8), inset 0 4px 0 var(--accent-secondary) !important;
+  z-index: 50 !important;
+}
 
+table.movies_chart td.movie-item .movie-item-tags { margin-top: 10px !important; }
+table.movies_chart td.movie-item .movie-item-tags a { 
+  background: rgba(255,255,255,0.05) !important; 
+  padding: 3px 6px !important; 
+  border-radius: 4px !important; 
+  display: inline-block !important; 
+  margin: 2px !important;
+  font-size: 12px !important;
+}
+
+/* =========================================
+   GENERAL ELEMENTS
+   ========================================= */
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
 
-form.search_form:not(#searchbars form) > div, #searchbox, #searchbox > div, table.layout td, .filter_torrents td, .filter_torrents tr, .filter_torrents div, table.forum_post td, table.message_table td, div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
+div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
-.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; font-family: var(--hb-font) !important; }
-h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-family: var(--hb-font) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
+.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
+h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
 .forum_post .body, .message_table td, form.search_form label, table td { color: var(--hb-text) !important; font-size: 14px !important; line-height: 1.6 !important; }
 .small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--hb-muted) !important; font-weight: 500 !important; }
 
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-a { text-decoration: none !important; transition: color 0.15s ease !important; font-family: var(--hb-font) !important; }
+a { text-decoration: none !important; transition: color 0.15s ease !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
-a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-link); }
-a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
+/* PERMISSIONS COLORS */
 a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
 a[class*="permission_"]:hover { filter: brightness(1.2) !important; }
 a.permission_staff { font-weight: bold !important; color: #60a5fa !important; }
@@ -225,13 +424,11 @@ a[href*="action=delete"] i, .fa-trash { color: var(--accent-secondary) !importan
 a[href*="torrentid="] i, .fa-link { color: var(--accent-secondary) !important; } 
 .torrent_icons a:hover i { transform: scale(1.15); color: #ffffff !important; filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) !important; }
 
-input[type="submit"], input[type="button"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] { background: var(--accent-primary) !important; color: #ffffff !important; border: 1px solid var(--accent-hover) !important; border-radius: var(--hb-radius-sm) !important; padding: 8px 20px !important; font-weight: 500 !important; font-family: var(--hb-font) !important; box-shadow: 0 1px 2px rgba(0,0,0,0.5) !important; transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important; cursor: pointer !important; }
+input[type="radio"], input[type="checkbox"] { accent-color: var(--accent-primary) !important; margin-left: 5px !important; }
+
+input[type="submit"], input[type="button"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] { background: var(--accent-primary) !important; color: #ffffff !important; border: 1px solid var(--accent-hover) !important; border-radius: var(--hb-radius-sm) !important; padding: 8px 20px !important; font-weight: 500 !important; box-shadow: 0 1px 2px rgba(0,0,0,0.5) !important; transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important; cursor: pointer !important; }
 input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover { background: var(--accent-hover) !important; transform: translateY(-1px) !important; box-shadow: 0 4px 6px rgba(0,0,0,0.6) !important; }
 .filter_torrents div.submit.ft_submit { background: transparent !important; border-top: 1px solid var(--hb-border) !important; padding: 15px !important; }
-
-input[type="text"]:not(#searchbars input), input[type="search"]:not(#searchbars input), textarea, select, input[type="password"] { background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: var(--hb-radius-sm) !important; color: var(--hb-text-strong) !important; padding: 10px 14px !important; font-family: var(--hb-font) !important; transition: border-color 0.2s ease, box-shadow 0.2s ease !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; }
-input[type="text"]:focus:not(#searchbars input), input[type="search"]:focus:not(#searchbars input), textarea:focus, select:focus { background: var(--hb-panel) !important; border-color: var(--accent-secondary) !important; box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25) !important; outline: none !important; }
-input[type="radio"], input[type="checkbox"] { accent-color: var(--accent-primary) !important; margin-left: 5px !important; }
 
 img.banner, #covers img, .group_image img, .torrent_screenshots > img { border-radius: var(--hb-radius-sm) !important; box-shadow: var(--hb-shadow) !important; border: 1px solid var(--hb-border) !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
 img.banner:hover, #covers img:hover, .group_image img:hover { transform: translateY(-4px) !important; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8) !important; border-color: var(--hb-border-soft) !important; }
@@ -254,271 +451,250 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
-
 /* =========================================
-   📱 MOBILE OVERHAUL (THE APP EXPERIENCE) 📱
+   📱 MOBILE OVERHAUL (MEGA MOBILE SCALE) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
-
+  
   html, body, #wrapper { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
-  body { font-size: 16px !important; }
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
+  
+  #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 10px auto !important; box-sizing: border-box !important; }
 
-  #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 0 auto !important; box-sizing: border-box !important; }
+  /* 🌟 MEGA MOBILE MENU SWIPE 🌟 */
+  #menu ul { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: wrap !important; 
+    overflow: visible !important; 
+    padding: 15px 5px !important; 
+    justify-content: center !important; 
+    gap: 12px !important;
+  }
+  #menu ul::-webkit-scrollbar { display: none !important; } 
+  #menu ul > li { flex: 0 0 auto !important; }
+  #menu ul > li > a { font-size: 22px !important; padding: 18px 28px !important; font-weight: 600 !important; }
 
-  /* =========================================
-     📱 HEADER: BANNER + STATS REDESIGN
-     ========================================= */
+  /* 🌟 MEGA MOBILE USERINFO SWIPE 🌟 */
+  #userinfo { 
+    border-radius: 12px 12px 0 0 !important; 
+    padding: 20px 15px !important; 
+    margin-top: 20px !important; 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    justify-content: flex-start !important; 
+  }
+  #userinfo::-webkit-scrollbar { display: none !important; }
+  #userinfo ul { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    width: auto !important; 
+    padding: 0 !important; 
+    margin: 0 !important; 
+    justify-content: flex-start !important; 
+    gap: 15px !important; 
+  }
+  #userinfo li { flex: 0 0 auto !important; font-size: 20px !important; padding: 12px 24px !important; }
+  #userinfo li span.stat, #userinfo li .tooltip { font-size: 24px !important; }
 
-  /* Wrapper שמכיל את הבאנר + סטטס + כפתורים - נהפוך לבלוק אחד מסודר */
-  #userinfo {
-    /* הסר את הרקע הטשטוש, תן לבאנר לנשום */
-    display: block !important;
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    gap: 0 !important;
-    position: relative !important;
+  /* 🌟 MEGA MOBILE SEARCHBARS SWIPE 🌟 */
+  #searchbars-wrapper { 
+    border-radius: 0 0 12px 12px !important; 
+    padding: 0 0 20px 0 !important; 
+    margin-bottom: 25px !important;
+  }
+  #searchbars { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    width: 100% !important; 
+    padding: 5px 15px !important; 
+    justify-content: flex-start !important; 
+    gap: 15px !important; 
+  }
+  #searchbars::-webkit-scrollbar { display: none !important; }
+  #searchbars form.search_form { 
+    flex: 0 0 220px !important; 
+    width: 220px !important; 
+    min-width: 220px !important; 
+    margin: 0 !important; 
+  }
+  #searchbars input[type="text"] { 
+    padding: 20px 24px !important; 
+    font-size: 22px !important; 
+    width: 100% !important; 
   }
 
-  /* הבאנר עצמו - תמונה מלאה ורחבה */
-  #userinfo img.banner,
-  #userinfo > img {
-    display: block !important;
-    width: 100% !important;
-    height: 180px !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-    border-radius: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    transform: none !important;
+  /* 🌟 MEGA MOBILE ALERTS SWIPE 🌟 */
+  #alerts .alertbar { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    padding: 20px 24px !important; 
+    justify-content: flex-start !important; 
+    align-items: center !important; 
+    font-size: 22px !important; 
+    gap: 20px !important;
   }
+  #alerts .alertbar::-webkit-scrollbar { display: none !important; }
+  #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
 
-  /* פאנל הסטטיסטיקות - מתחת לבאנר, עם גלס מורפיזם */
-  #userinfo ul {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 14px 12px !important;
-    margin: 0 !important;
-    background: rgba(9, 9, 11, 0.92) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid var(--hb-border) !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    list-style: none !important;
-  }
-
-  /* כל פריט סטטיסטיקה - פיל קומפקטי וקריא */
-  #userinfo li {
-    display: inline-flex !important;
-    align-items: center !important;
-    background: rgba(39, 39, 42, 0.8) !important;
-    padding: 7px 14px !important;
-    border-radius: 100px !important;
-    border: 1px solid var(--hb-border-soft) !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    white-space: nowrap !important;
-    box-shadow: none !important;
-    transition: none !important;
-    transform: none !important;
-  }
-
-  #userinfo li:hover {
-    transform: none !important;
-    border-color: var(--hb-border-soft) !important;
-  }
-
-  #userinfo li a { color: var(--hb-text) !important; }
-  #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; color: var(--hb-text-strong) !important; margin-right: 5px !important; }
-  #userinfo li svg { width: 14px !important; height: 14px !important; margin-left: 5px !important; }
-
-  /* =========================================
-     📱 SEARCHBARS WRAPPER - תחת הסטטס
-     ========================================= */
-  #searchbars-wrapper {
-    background: var(--hb-panel) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: none !important;
-    border-bottom: 1px solid var(--hb-border) !important;
-    border-radius: 0 !important;
-    padding: 14px 12px !important;
-    margin: 0 0 16px 0 !important;
-    box-shadow: none !important;
-  }
-
-  #searchbars {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  #searchbars form.search_form { width: 100% !important; margin: 0 !important; }
-
-  #searchbars input[type="text"] {
-    padding: 13px 14px !important;
-    font-size: 15px !important;
-    width: 100% !important;
-    border-radius: 10px !important;
-    text-align: center !important;
-  }
-
-  /* =========================================
-     📱 NAV QUICK LINKS (אנשים/פורומים/טורנטים וכו') 
-     - אם יש divs/links מתחת לסטטס, נסדר כגריד כפתורים
-     ========================================= */
-  #userinfo ~ div a[href*="torrents"],
-  #userinfo ~ div a[href*="forums"],
-  #userinfo ~ div a[href*="user"],
-  #userinfo ~ div a[href*="requests"],
-  #userinfo ~ div a[href*="wiki"] {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: var(--hb-panel) !important;
-    border: 1px solid var(--hb-border-soft) !important;
-    border-radius: 10px !important;
-    padding: 12px 16px !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    color: var(--hb-text-strong) !important;
-    min-height: 48px !important;
-    text-align: center !important;
-  }
-
-  /* =========================================
-     📱 כפתורי ניווט (אנשים, פורומים, טורנטים וכו') 
-     שנמצאים ב-#userinfo עצמו כ-li עם קישורים
-     ========================================= */
-
-  /* li-ים שמכילים ניווט (לא סטטיסטיקות) - זיהוי לפי href */
-  #userinfo li:has(a[href*="torrents.php"]),
-  #userinfo li:has(a[href*="forums.php"]),
-  #userinfo li:has(a[href*="requests.php"]),
-  #userinfo li:has(a[href*="wiki.php"]),
-  #userinfo li:has(a[href*="user.php"]),
-  #userinfo li:has(a[href*="staffpm"]),
-  #userinfo li:has(a[href*="inbox"]) {
-    background: var(--hb-panel) !important;
-    border: 1px solid var(--hb-border-soft) !important;
-    border-radius: 10px !important;
-    padding: 10px 18px !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    min-height: 44px !important;
-  }
-
-  #userinfo li:has(a[href*="torrents.php"]) a,
-  #userinfo li:has(a[href*="forums.php"]) a,
-  #userinfo li:has(a[href*="requests.php"]) a,
-  #userinfo li:has(a[href*="wiki.php"]) a,
-  #userinfo li:has(a[href*="user.php"]) a,
-  #userinfo li:has(a[href*="staffpm"]) a,
-  #userinfo li:has(a[href*="inbox"]) a {
-    color: var(--hb-text-strong) !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-  }
-
-  /* =========================================
-     📱 LAYOUT - עמודות
-     ========================================= */
+  /* THE COLUMN FIX */
   .thin { display: flex !important; flex-direction: column !important; width: 100% !important; }
   #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
   .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
   .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
 
-  /* =========================================
-     📱 MENU
-     ========================================= */
-  #menu ul { display: flex !important; overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; }
-  #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
-  #menu ul > li > a { padding: 15px 18px !important; font-size: 15px !important; font-weight: 600 !important; }
-  #menu ul::-webkit-scrollbar { display: none !important; }
-
-  /* =========================================
-     📱 CAROUSEL
-     ========================================= */
+  /* VOD CAROUSEL (HOMEPAGE) */
   #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; margin: 0 !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
   #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
-  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 44vw !important; flex: 0 0 44vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
-  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
+  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 40vw !important; flex: 0 0 40vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
+  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 15px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
-  #latest5tor .owl-item a > div[style*="background-image"] { height: 64vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
-  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; margin-bottom: 8px !important; font-weight: 700 !important; }
-  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 14px !important; margin-bottom: 12px !important; }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 14px !important; padding: 10px 0 !important; font-weight: 600 !important; }
+  #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
+  #latest5tor .owl-item a > span.tooltip { font-size: 20px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} 
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 16px !important; margin-bottom: 12px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 16px !important; padding: 10px 0 !important; }
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
   /* =========================================
-     🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
+     🌟 MEGA MOBILE FORUMS 🌟
      ========================================= */
   #latestForums .head { background: transparent !important; border: none !important; padding: 10px 0 !important; display: block !important; text-align: center !important; }
-  #latestForums .head > a.tooltip { display: none !important; }
-  #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 6px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
-  #latestForums .head > span a { padding: 13px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 16px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
-  #latestForums .head > span a.simple-tabs__link--active { background: var(--hb-panel-hover) !important; color: #ffffff !important; font-weight: 700 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; }
+  #latestForums .head > a.tooltip { display: none !important; } 
+  #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 8px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
+  #latestForums .head > span a { padding: 20px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 22px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
+  #latestForums .head > span a.simple-tabs__link--active { background: var(--hb-panel-hover) !important; color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; }
 
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
   #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
-  #latest5posts td, #latest5torrents_p td {
-    display: block !important; width: 100% !important; padding: 16px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important;
+  /* Individual Post Cards */
+  #latest5posts td, #latest5torrents_p td { 
+    display: block !important; width: 100% !important; padding: 30px 24px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 16px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
   }
 
+  /* MAGIC HACK */
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
-  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 15px !important; color: var(--hb-text) !important; }
+  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 22px !important; color: var(--hb-text) !important; }
 
-  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 17px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.5 !important; margin-left: 8px !important; }
+  /* Title (MEGA Massive Title) */
+  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 28px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.3 !important; margin-left: 10px !important; }
 
-  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(59, 130, 246, 0.15) !important; color: var(--accent-secondary) !important; padding: 4px 10px !important; border-radius: 6px !important; font-size: 13px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -2px !important; }
+  /* Category Badge */
+  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(255, 255, 255, 0.1) !important; color: var(--accent-secondary) !important; padding: 8px 16px !important; border-radius: 8px !important; font-size: 18px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -4px !important; }
 
-  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 12px !important; margin-top: 12px !important; font-size: 14px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
+  /* Metadata Container */
+  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 22px !important; margin-top: 22px !important; font-size: 20px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
-  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 13px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
-  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 15px !important; font-weight: 600 !important; }
+  /* The Time */
+  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 19px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
+  
+  /* The Username Link */
+  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 20px !important; font-weight: 600 !important; }
 
-  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 16px !important; padding: 16px !important; }
+  /* Show All Link */
+  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 22px !important; padding: 24px !important; font-weight: 600 !important; }
+  
+  /* =========================================
+     🌟 MEGA MOBILE MOVIES / SERIES GRID 🌟
+     ========================================= */
+  table.movies_chart { 
+    display: block !important; 
+    width: 100% !important; 
+    background: transparent !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    margin-top: 20px !important;
+  }
+  table.movies_chart tbody {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    align-items: stretch !important; 
+  }
+  table.movies_chart tr { display: contents !important; } 
+  
+  table.movies_chart td.movie-item {
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--hb-panel) !important;
+    border: 1px solid var(--hb-border) !important;
+    border-radius: 12px !important;
+    padding: 20px !important; 
+    box-shadow: var(--hb-shadow) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 0 !important;
+    height: 100% !important; 
+  }
+  
+  table.movies_chart td.movie-item > a {
+    flex-shrink: 0 !important; 
+  }
+  
+  table.movies_chart td.movie-item > a > div[style*="background-image"] {
+    height: 60vw !important; 
+    width: 100% !important;
+    border-radius: 8px !important;
+    background-size: contain !important; 
+    background-repeat: no-repeat !important; 
+    background-position: center top !important; 
+    background-color: transparent !important; 
+  }
+  
+  table.movies_chart td.movie-item > a > span.tooltip {
+    font-size: 24px !important; 
+    font-weight: 700 !important;
+    color: var(--hb-text-strong) !important;
+    text-align: center !important;
+    display: block !important;
+    margin-top: 20px !important;
+    line-height: 1.4 !important;
+  }
+  
+  table.movies_chart td.movie-item .desc { 
+    flex-grow: 1 !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    margin-top: 20px !important; 
+    text-align: center !important; 
+    border-top: 1px solid var(--hb-border-soft) !important; 
+    padding-top: 20px !important; 
+  }
+  table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 22px !important; margin: 8px !important; color: var(--hb-text-strong) !important; font-weight: 600 !important;}
+  
+  table.movies_chart td.movie-item .movie-item-tags { font-size: 18px !important; margin-top: 16px !important; }
+  table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.1) !important; color: var(--accent-secondary) !important; padding: 8px 16px !important; border-radius: 8px !important; margin: 4px !important; display: inline-block !important; }
+  table.movies_chart td.movie-item .tags { font-size: 18px !important; margin-top: 14px !important; }
 
-  /* TABLES */
-  table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; border-left: none !important; border-right: none !important; }
-  table.torrent_table td, table.torrent_table th { padding: 13px 10px !important; font-size: 15px !important; }
-  .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th { padding: 14px 12px !important; font-size: 15px !important; }
-  .box, .panel__body, table td, .forum_post .body, .message_table td { font-size: 16px !important; line-height: 1.65 !important; }
+  /* GENERAL TABLES / POSTS OVERRIDE FOR MOBILE */
+  table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table { 
+    display: block !important; 
+    width: 100% !important; 
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    border-left: none !important; 
+    border-right: none !important; 
+  }
+  
+  .box, .panel__body, table td, .forum_post .body { font-size: 22px !important; line-height: 1.6 !important; } 
+  input, select, textarea { font-size: 22px !important; padding: 16px !important;}
 
-  h1 { font-size: 24px !important; }
-  h2 { font-size: 20px !important; }
-  h3 { font-size: 18px !important; }
-  h4 { font-size: 16px !important; }
-
-  #alerts .alertbar { padding: 14px 16px !important; font-size: 15px !important; }
-  #taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { padding: 6px 12px !important; font-size: 14px !important; }
-  input[type="submit"], input[type="button"], button, .btn { padding: 12px 22px !important; font-size: 15px !important; }
-  input[type="text"]:not(#searchbars input), input[type="search"]:not(#searchbars input), textarea, select, input[type="password"] { padding: 12px 14px !important; font-size: 16px !important; }
-  table.forum_post td.avatar { display: none !important; }
-  table.forum_post td.body { padding: 16px 12px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; font-size: 16px !important; line-height: 1.7 !important; }
-  .filter_torrents .head { padding: 14px 16px !important; font-size: 16px !important; }
-  .filter_torrents .pad { padding: 16px !important; }
-  .filter_torrents td { font-size: 15px !important; }
-  .small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { font-size: 14px !important; }
-  blockquote { padding: 16px 20px !important; font-size: 16px !important; }
+  table.forum_post td.avatar { display: none !important; } 
+  table.forum_post td.body { padding: 24px 20px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
 
 /* CRITICAL OVERRIDE: Keep hidden elements hidden! */
