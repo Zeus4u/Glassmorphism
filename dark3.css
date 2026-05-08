@@ -2,12 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V70 - GRID VIEW MASTER)
-   - 💻 COVERS/GRID FIX: Hovering a poster now highlights ONLY the card, not the whole row!
+   HEBITS STEALTH SOLID PRO (V71 - THE GRID MASTER)
+   - 💻 MOVIES/SERIES FIX: Hovering highlights only ONE card, not the row!
+   - 📱 MOBILE GRID: Movies & Series now use CSS Grid! 2 massive cards per row.
+   - 💻 SEARCH FIX: Stopped the advanced search panel from jumping & showing background.
    - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
-   - 🌟 DROPDOWN FIX: Submenus completely restored and styled perfectly.
-   - 📱 IMDB SCALE: Massive fonts and touch areas for the ultimate mobile experience.
-   - 💻 TABLES FIX: Killed all vertical dividers! Hover line appears ONLY on the far edge.
+   - 🌟 DROPDOWN FIX: Submenus perfectly restored.
    ========================================= */
 
 :root {
@@ -37,7 +37,6 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* FORCE THE FONT EVERYWHERE */
 body, html, .body, .tdhack, div, span, p, label, a, h1, h2, h3, h4, h5, h6, 
 input, select, textarea, button, td, th {
   font-family: var(--hb-font) !important;
@@ -65,7 +64,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu ul > li > ul > li > a:hover { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 
 /* =========================================
-   USER INFO STATS BAR (BLACK GLASS DASHBOARD)
+   USER INFO STATS BAR
    ========================================= */
 #userinfo {
   display: flex !important;
@@ -112,7 +111,15 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #searchbars input[type="text"]:focus { background: var(--hb-panel) !important; border-color: var(--accent-secondary) !important; box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25), 0 8px 20px rgba(0,0,0,0.6) !important; transform: translateY(-3px) !important; outline: none !important; }
 #searchbars input[type="text"]:focus::placeholder { opacity: 0 !important; }
 
-/* ADVANCED SEARCH PANEL */
+/* =========================================
+   ADVANCED SEARCH PANEL (FIXED JUMP & BG)
+   ========================================= */
+form.search_form, form.search_form > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 form.search_form:not(#searchbars form) > .box.filter_torrents {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
@@ -122,7 +129,13 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
   padding: 0 !important;
   overflow: hidden !important;
   margin-bottom: 30px !important;
+  transition: none !important; /* PREVENT JUMPING! */
 }
+form.search_form:not(#searchbars form) > .box.filter_torrents:hover {
+  transform: none !important; /* PREVENT JUMPING! */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important;
+}
+
 .filter_torrents .head { background: var(--bg-deep) !important; border-bottom: 1px solid var(--hb-border) !important; padding: 15px 20px !important; font-size: 16px !important; }
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 .filter_torrents table.layout { background: transparent !important; }
@@ -134,6 +147,9 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 #alerts .alertbar { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: var(--hb-shadow) !important; padding: 12px 20px !important; text-align: center !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; font-size: 14px !important; }
 #alerts .alertbar a { margin: 0 6px !important; font-weight: 700 !important; color: var(--accent-secondary) !important;}
 
+/* =========================================
+   GENERAL BOXES & CARDS
+   ========================================= */
 .box, .panel__body, table.forum_post, table.message_table, #inbox .box { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; color: var(--hb-text) !important; overflow: hidden !important; }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
@@ -160,52 +176,66 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
 /* =========================================
-   TABLES & ROWS
+   TABLES & ROWS (LIST VIEW)
    ========================================= */
 table.torrent_table { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; overflow: hidden !important; }
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
 .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; border-bottom: 1px solid var(--hb-border) !important; border-top: none !important; padding: 14px 16px !important; text-shadow: none !important; }
 
-/* 🌟 STANDARD ROW HOVER (EXCLUDES MOVIES GRID) 🌟 */
-tr:nth-child(odd) > td, tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
-tr:nth-child(even) > td, tr.rowb > td { background: #111111 !important; border-bottom: 1px solid var(--hb-border) !important; }
-tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-shadow: none !important; }
-tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
+/* Global Row Backgrounds (Excluding the Grid View) */
+table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
+table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: #111111 !important; border-bottom: 1px solid var(--hb-border) !important; }
+table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-shadow: none !important; }
+table:not(.movies_chart) tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
 
-/* Grouped Torrents Rows */
 tr.group_torrent:nth-child(n) > td { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
 tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; } 
 tr.group_torrent:hover:nth-child(n) > td { background: var(--hb-panel) !important; box-shadow: none !important; }
 tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; } 
 
 /* =========================================
-   🌟 GRID VIEW / COVERS OVERRIDE (THE FIX) 🌟
+   🌟 MOVIES / SERIES GRID VIEW (DESKTOP FIX) 🌟
    ========================================= */
 table.movies_chart { 
-  border-spacing: 12px !important; 
+  border-spacing: 15px !important; 
   border-collapse: separate !important; 
   background: transparent !important; 
   border: none !important; 
   box-shadow: none !important; 
 }
+table.movies_chart tr, table.movies_chart tbody { background: transparent !important; border: none !important; box-shadow: none !important; }
 
-/* Force rows to be completely invisible */
-table.movies_chart tr:nth-child(n) > td { background: transparent !important; border-bottom: none !important; box-shadow: none !important; }
-table.movies_chart tr:hover > td, table.movies_chart tr:hover > td:last-child { background: transparent !important; box-shadow: none !important; }
+/* Cancel the row background and hover effect for the grid entirely! */
+table.movies_chart tr:nth-child(n) > td, 
+table.movies_chart tr.rowa > td, 
+table.movies_chart tr.rowb > td { 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none !important; 
+}
+table.movies_chart tr:hover > td, 
+table.movies_chart tr:hover > td:last-child { 
+  background: transparent !important; 
+  box-shadow: none !important; 
+}
 
-/* The individual Poster Card */
+/* Individual Card (Poster) Styles and Hover */
 table.movies_chart td.movie-item {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
   border-radius: var(--hb-radius) !important;
+  box-shadow: var(--hb-shadow) !important;
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
   position: relative !important;
-  box-shadow: var(--hb-shadow) !important;
-  padding-bottom: 10px !important;
+  padding: 12px !important;
+}
+table.movies_chart td.movie-item > a > div[style*="background-image"] {
+  border-radius: 6px !important;
+  background-size: cover !important;
 }
 
-/* Only the specific card hovered lights up! */
+/* ONLY the specific card hovered lights up! */
 table.movies_chart td.movie-item:hover {
   background: var(--hb-panel-hover) !important;
   border-color: var(--hb-border-soft) !important;
@@ -214,7 +244,20 @@ table.movies_chart td.movie-item:hover {
   z-index: 50 !important;
 }
 
-/* Rest of General Styles */
+/* Fix Tags inside Desktop Grid */
+table.movies_chart td.movie-item .movie-item-tags { margin-top: 10px !important; }
+table.movies_chart td.movie-item .movie-item-tags a { 
+  background: rgba(255,255,255,0.05) !important; 
+  padding: 3px 6px !important; 
+  border-radius: 4px !important; 
+  display: inline-block !important; 
+  margin: 2px !important;
+  font-size: 12px !important;
+}
+
+/* =========================================
+   GENERAL ELEMENTS
+   ========================================= */
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
@@ -324,7 +367,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #menu ul > li { flex: 0 0 auto !important; }
   #menu ul > li > a { font-size: 18px !important; padding: 16px 24px !important; }
 
-  /* 🌟 MOBILE USERINFO SWIPE (Huge Fonts) 🌟 */
+  /* 🌟 MOBILE USERINFO SWIPE 🌟 */
   #userinfo { 
     border-radius: 12px 12px 0 0 !important; 
     padding: 15px 10px !important; 
@@ -350,7 +393,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #userinfo li { flex: 0 0 auto !important; font-size: 16px !important; padding: 10px 20px !important; }
   #userinfo li span.stat, #userinfo li .tooltip { font-size: 18px !important; }
 
-  /* 🌟 MOBILE SEARCHBARS SWIPE (Huge Inputs) 🌟 */
+  /* 🌟 MOBILE SEARCHBARS SWIPE 🌟 */
   #searchbars-wrapper { 
     border-radius: 0 0 12px 12px !important; 
     padding: 0 0 15px 0 !important; 
@@ -437,7 +480,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
   #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
-  /* Title (IMDB Massive Title) */
+  /* Title */
   #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
   /* Category Badge */
@@ -455,6 +498,69 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   /* Show All Link */
   #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
+  /* =========================================
+     🌟 MOBILE MOVIES / SERIES GRID (IMDB STYLE) 🌟
+     ========================================= */
+  table.movies_chart { 
+    display: block !important; 
+    width: 100% !important; 
+    background: transparent !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    margin-top: 15px !important;
+  }
+  table.movies_chart tbody {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+    width: 100% !important;
+  }
+  table.movies_chart tr { display: contents !important; } /* Unwraps TRs so TDs become grid items! */
+  
+  table.movies_chart td.movie-item {
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--hb-panel) !important;
+    border: 1px solid var(--hb-border) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-shadow: var(--hb-shadow) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  table.movies_chart td.movie-item > a > div[style*="background-image"] {
+    height: 60vw !important; /* Huge posters matching homepage! */
+    max-height: none !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    background-size: cover !important; 
+  }
+  
+  table.movies_chart td.movie-item > a > span.tooltip {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: var(--hb-text-strong) !important;
+    text-align: center !important;
+    display: block !important;
+    margin-top: 12px !important;
+    line-height: 1.4 !important;
+  }
+  
+  table.movies_chart td.movie-item .desc { margin-top: auto !important; text-align: center !important; }
+  table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 15px !important; margin: 5px !important; }
+  
+  table.movies_chart td.movie-item .movie-item-tags { font-size: 13px !important; margin-top: 10px !important; }
+  table.movies_chart td.movie-item .movie-item-tags a {
+    background: rgba(255,255,255,0.1) !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    margin: 2px !important;
+    display: inline-block !important;
+  }
+  table.movies_chart td.movie-item .tags { font-size: 14px !important; margin-top: 10px !important; }
+
   /* GENERAL TABLES / POSTS OVERRIDE */
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; border-left: none !important; border-right: none !important; }
   .box, .panel__body, table td, .forum_post .body { font-size: 18px !important; line-height: 1.6 !important; } 
