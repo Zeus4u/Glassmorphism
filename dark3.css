@@ -2,13 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V74 - FINAL OVERRIDE)
-   - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
-   - 💻 INPUT TYPES FIX: Targeted ALL inputs (even custom 'size_min' types).
-   - 💻 GLOBAL FONT FIX: Forced Inter on strong, b, em, small, and all inputs.
-   - 📱 MOBILE GRID FIX: 2 Massive posters/row with proper scaling.
-   - 🌟 DROPDOWNS: Restored and functional.
-   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
+   HEBITS STEALTH SOLID PRO (V75 - FINAL POLISH)
+   - 💻 CORNERS FIX: Added top border-radius to .head to prevent background bleeding!
+   - 📱 MOBILE GRID ALIGNMENT: Cards now use Flexbox to perfectly align bottom stats, regardless of title length.
+   - 📱 MOBILE POSTER SIZE: Synced directly to homepage 60vw size, fully visible.
+   - 🔤 OMNI-FONT OVERRIDE: Caught the missing fonts in options, selects, and small tags.
+   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray system-wide.
    ========================================= */
 
 :root {
@@ -38,13 +37,10 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* AGGRESSIVE FONT OVERRIDE */
+/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
 body, html, .body, .tdhack, p, label, a, h1, h2, h3, h4, h5, h6, 
-input, select, textarea, button, td, th, strong, b, ul, li, em, small, center {
-  font-family: var(--hb-font) !important;
-}
-
-/* Safe override for generic divs and spans (avoids breaking icons) */
+input, select, option, optgroup, textarea, button, td, th, tr, tbody, thead, table,
+strong, b, ul, li, em, small, center, blockquote, q, dt, dd, dl, form, fieldset, legend, caption,
 div:not([class*="fa"]):not([class*="icon"]):not(.fonticon), 
 span:not([class*="fa"]):not([class*="icon"]):not(.fonticon) {
   font-family: var(--hb-font) !important;
@@ -56,7 +52,6 @@ html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
 
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
-
 #header { display: contents !important; }
 
 /* 🌟 MAIN NAVIGATION MENU & DROPDOWNS 🌟 */
@@ -114,7 +109,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 
-/* GLOBALLY CATCH ALL TEXT/SEARCH INPUTS */
+/* GLOBALLY CATCH ALL INPUTS */
 input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), 
 textarea, select { 
   background: var(--bg-deep) !important; 
@@ -134,7 +129,7 @@ textarea:focus, select:focus {
   outline: none !important; 
 }
 
-/* OVERRIDE ONLY FOR QUICK SEARCH BARS TO KEEP THEM AS PILLS */
+/* SEARCHBAR PILL FIX */
 #searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { 
   width: 100% !important; 
   border-radius: 100px !important; 
@@ -158,8 +153,14 @@ textarea:focus, select:focus {
 #searchbars input:focus::placeholder { opacity: 0 !important; }
 
 /* =========================================
-   ADVANCED SEARCH PANEL (PROTECTED FROM TABLES)
+   ADVANCED SEARCH PANEL & WHITE CORNERS KILLER
    ========================================= */
+form.search_form, form.search_form > div {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 form.search_form:not(#searchbars form) > .box.filter_torrents {
   background: #000000 !important; 
   border: 1px solid var(--hb-border) !important;
@@ -172,10 +173,19 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
   transition: none !important;
 }
 form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform: none !important; box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; }
-.filter_torrents .head { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; padding: 15px 20px !important; font-size: 16px !important; }
+
+/* 🛡️ CORNER FIX: Force the head to have rounded top corners so it doesn't bleed! */
+.filter_torrents .head { 
+  background: #000000 !important; 
+  border-bottom: 1px solid var(--hb-border) !important; 
+  padding: 15px 20px !important; 
+  font-size: 16px !important; 
+  border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
+  border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
+}
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 
-/* 🛡️ PROTECTION SHIELD: Keep layout table transparent! */
+/* Protect the layout table inside search from row coloring */
 .filter_torrents table.layout, 
 .filter_torrents table.layout tr, 
 .filter_torrents table.layout tr > td, 
@@ -210,10 +220,23 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* General Table Cleanup */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
-.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; border-bottom: 1px solid var(--hb-border) !important; border-top: none !important; padding: 14px 16px !important; text-shadow: none !important; }
+/* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
+.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
+  background: var(--bg-deep) !important; 
+  color: var(--hb-text-strong) !important; 
+  font-weight: 600 !important; 
+  border-bottom: 1px solid var(--hb-border) !important; 
+  border-top: none !important; 
+  padding: 14px 16px !important; 
+  text-shadow: none !important; 
+}
+/* Ensure table headers have rounded corners to fit inside the parent .box */
+table tr.colhead_dark:first-child td, table tr.colhead:first-child td {
+  border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
+  border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
+}
 
 /* Global Row Backgrounds & Hovers */
 table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
@@ -249,9 +272,8 @@ tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-
 #latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
-
 /* =========================================
-   🌟 MOVIES / SERIES GRID VIEW (DESKTOP FIX) 🌟
+   🌟 MOVIES / SERIES GRID VIEW (DESKTOP) 🌟
    ========================================= */
 table.movies_chart { 
   border-spacing: 15px !important; 
@@ -262,21 +284,9 @@ table.movies_chart {
 }
 table.movies_chart tr, table.movies_chart tbody { background: transparent !important; border: none !important; box-shadow: none !important; }
 
-/* Cancel the row background and hover effect for the grid entirely! */
-table.movies_chart tr:nth-child(n) > td, 
-table.movies_chart tr.rowa > td, 
-table.movies_chart tr.rowb > td { 
-  background: transparent !important; 
-  border: none !important; 
-  box-shadow: none !important; 
-}
-table.movies_chart tr:hover > td, 
-table.movies_chart tr:hover > td:last-child { 
-  background: transparent !important; 
-  box-shadow: none !important; 
-}
+table.movies_chart tr:nth-child(n) > td, table.movies_chart tr.rowa > td, table.movies_chart tr.rowb > td { background: transparent !important; border: none !important; box-shadow: none !important; }
+table.movies_chart tr:hover > td, table.movies_chart tr:hover > td:last-child { background: transparent !important; box-shadow: none !important; }
 
-/* Individual Card (Poster) Styles and Hover */
 table.movies_chart td.movie-item {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
@@ -286,12 +296,8 @@ table.movies_chart td.movie-item {
   position: relative !important;
   padding: 12px !important;
 }
-table.movies_chart td.movie-item > a > div[style*="background-image"] {
-  border-radius: 6px !important;
-  background-size: cover !important;
-}
+table.movies_chart td.movie-item > a > div[style*="background-image"] { border-radius: 6px !important; background-size: cover !important; }
 
-/* ONLY the specific card hovered lights up! */
 table.movies_chart td.movie-item:hover {
   background: var(--hb-panel-hover) !important;
   border-color: var(--hb-border-soft) !important;
@@ -300,7 +306,6 @@ table.movies_chart td.movie-item:hover {
   z-index: 50 !important;
 }
 
-/* Fix Tags inside Desktop Grid */
 table.movies_chart td.movie-item .movie-item-tags { margin-top: 10px !important; }
 table.movies_chart td.movie-item .movie-item-tags a { 
   background: rgba(255,255,255,0.05) !important; 
@@ -318,7 +323,7 @@ a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; tr
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
 
-form.search_form:not(#searchbars form) > div, #searchbox, #searchbox > div, table.layout td, div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
+div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
 .box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
@@ -385,7 +390,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
 
 .wysibb, .wysibb-text, .wysibb-toolbar { background: var(--hb-panel) !important; border-color: var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; }
-.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-family: var(--hb-font) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
+.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
 .wysibb-toolbar-btn { color: var(--hb-text) !important; transition: background-color 0.15s ease !important; border-radius: 4px !important; }
 .wysibb-toolbar-btn img { filter: none !important; }
 .wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img, .wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { filter: invert(1) brightness(0.8) !important; }
@@ -525,35 +530,26 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
   #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
-  /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td { 
     display: block !important; width: 100% !important; padding: 24px 20px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
   }
 
-  /* MAGIC HACK */
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
   #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
-  /* Title (IMDB Massive Title) */
   #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
-  /* Category Badge */
   #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(255, 255, 255, 0.1) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 15px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -3px !important; }
 
-  /* Metadata Container */
   #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 18px !important; margin-top: 18px !important; font-size: 17px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
-  /* The Time */
   #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 16px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
-  
-  /* The Username Link */
   #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 17px !important; font-weight: 600 !important; }
 
-  /* Show All Link */
   #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
   /* =========================================
-     🌟 MOBILE MOVIES / SERIES GRID (IMDB SCALE) 🌟
+     🌟 MOBILE MOVIES / SERIES GRID (FLEX-ALIGN) 🌟
      ========================================= */
   table.movies_chart { 
     display: block !important; 
@@ -568,6 +564,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px !important;
     width: 100% !important;
+    align-items: stretch !important; /* Forces all cards in row to be same height */
   }
   table.movies_chart tr { display: contents !important; } 
   
@@ -582,17 +579,21 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     box-sizing: border-box !important;
     width: 100% !important;
     margin: 0 !important;
+    height: 100% !important; /* Fill grid cell perfectly */
+  }
+  
+  table.movies_chart td.movie-item > a {
+    flex-shrink: 0 !important; /* Keep poster un-shrunk */
   }
   
   table.movies_chart td.movie-item > a > div[style*="background-image"] {
-    height: auto !important; 
-    aspect-ratio: 2 / 3 !important; 
+    height: 60vw !important; /* Exact size from homepage carousel */
     width: 100% !important;
     border-radius: 8px !important;
-    background-size: contain !important; 
+    background-size: contain !important; /* Full poster visible */
     background-repeat: no-repeat !important; 
     background-position: center top !important; 
-    background-color: #000 !important; 
+    background-color: transparent !important; 
   }
   
   table.movies_chart td.movie-item > a > span.tooltip {
@@ -605,18 +606,21 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     line-height: 1.4 !important;
   }
   
-  table.movies_chart td.movie-item .desc { margin-top: auto !important; text-align: center !important; border-top: 1px solid var(--hb-border) !important; padding-top: 10px !important; margin-top: 10px !important; }
+  /* Flex-grow pushes description block to bottom so they all align perfectly! */
+  table.movies_chart td.movie-item .desc { 
+    flex-grow: 1 !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    margin-top: 15px !important; 
+    text-align: center !important; 
+    border-top: 1px solid var(--hb-border-soft) !important; 
+    padding-top: 15px !important; 
+  }
   table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 17px !important; margin: 5px !important; color: var(--hb-text-strong) !important; font-weight: 600 !important;}
   
   table.movies_chart td.movie-item .movie-item-tags { font-size: 15px !important; margin-top: 12px !important; }
-  table.movies_chart td.movie-item .movie-item-tags a {
-    background: rgba(255,255,255,0.1) !important;
-    color: var(--accent-secondary) !important;
-    padding: 6px 12px !important;
-    border-radius: 6px !important;
-    margin: 3px !important;
-    display: inline-block !important;
-  }
+  table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.1) !important; color: var(--accent-secondary) !important; padding: 6px 12px !important; border-radius: 6px !important; margin: 3px !important; display: inline-block !important; }
   table.movies_chart td.movie-item .tags { font-size: 14px !important; margin-top: 10px !important; }
 
   /* GENERAL TABLES / POSTS OVERRIDE FOR MOBILE */
