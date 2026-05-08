@@ -2,12 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V75 - FINAL POLISH)
-   - 💻 CORNERS FIX: Added top border-radius to .head to prevent background bleeding!
-   - 📱 MOBILE GRID ALIGNMENT: Cards now use Flexbox to perfectly align bottom stats, regardless of title length.
-   - 📱 MOBILE POSTER SIZE: Synced directly to homepage 60vw size, fully visible.
+   HEBITS STEALTH SOLID PRO (V76 - SYSTEM COLORS RESTORED)
+   - 🎨 SYSTEM COLORS FIX: Global alerts (Freeleech/Bluebox/Redbox) retain their native colors!
+   - 🎨 MENU COLOR FIX: Links with inline styles (like the Red Donate button) now keep their system colors!
+   - 💻 CORNERS FIX: Added top border-radius to .head to prevent background bleeding.
+   - 📱 MOBILE GRID ALIGNMENT: Cards use Flexbox to align bottom stats.
    - 🔤 OMNI-FONT OVERRIDE: Caught the missing fonts in options, selects, and small tags.
-   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray system-wide.
    ========================================= */
 
 :root {
@@ -37,7 +37,7 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
+/* THE OMNI-FONT OVERRIDE */
 body, html, .body, .tdhack, p, label, a, h1, h2, h3, h4, h5, h6, 
 input, select, option, optgroup, textarea, button, td, th, tr, tbody, thead, table,
 strong, b, ul, li, em, small, center, blockquote, q, dt, dd, dl, form, fieldset, legend, caption,
@@ -57,8 +57,15 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 /* 🌟 MAIN NAVIGATION MENU & DROPDOWNS 🌟 */
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
 #menu ul > li { position: relative !important; }
-#menu ul > li > a { font-weight: 500 !important; color: var(--hb-link) !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
-#menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; color: var(--hb-text-strong) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
+
+/* Menu structural styling (Color is separated to protect system colors like Donate Red) */
+#menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
+
+/* Apply our blue/white color ONLY if the system hasn't injected an inline color style! */
+#menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
+#menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
+
+#menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
 #menu ul > li > ul { display: none; position: absolute !important; top: 100% !important; right: 0 !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; padding: 8px 0 !important; z-index: 100000 !important; min-width: 180px !important; }
 #menu ul > li:hover > ul { display: flex !important; flex-direction: column !important; }
@@ -153,13 +160,9 @@ textarea:focus, select:focus {
 #searchbars input:focus::placeholder { opacity: 0 !important; }
 
 /* =========================================
-   ADVANCED SEARCH PANEL & WHITE CORNERS KILLER
+   ADVANCED SEARCH PANEL (PROTECTED FROM TABLES)
    ========================================= */
-form.search_form, form.search_form > div {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
+form.search_form, form.search_form > div { background: transparent !important; border: none !important; box-shadow: none !important; }
 
 form.search_form:not(#searchbars form) > .box.filter_torrents {
   background: #000000 !important; 
@@ -199,9 +202,28 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 /* TRUE STICKY SIDEBAR */
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
+/* =========================================
+   🚨 ALERTS & SYSTEM BOXES (RESTORED SYSTEM COLORS) 🚨
+   ========================================= */
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
-#alerts .alertbar { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: var(--hb-shadow) !important; padding: 12px 20px !important; text-align: center !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; font-size: 14px !important; }
-#alerts .alertbar a { margin: 0 6px !important; font-weight: 700 !important; color: var(--accent-secondary) !important;}
+
+/* Base styling for all alertbars (Shadow, padding, corners) */
+.alertbar { 
+  border-radius: var(--hb-radius-sm) !important; 
+  box-shadow: var(--hb-shadow) !important; 
+  padding: 12px 20px !important; 
+  text-align: center !important; 
+  font-weight: 600 !important; 
+  font-size: 14px !important; 
+  margin-bottom: 10px !important;
+}
+/* Apply our Dark Theme ONLY if it's NOT a system colored box (Freeleech etc.) */
+.alertbar:not(.globalbox):not(.bluebox):not(.redbox):not(.greenbox):not(.yellowbox) { 
+  background: var(--hb-panel) !important; 
+  border: 1px solid var(--hb-border) !important; 
+  color: var(--hb-text-strong) !important; 
+}
+.alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: var(--accent-secondary) !important;}
 
 /* =========================================
    ALL TABLES & PANELS UNIFICATION
@@ -220,6 +242,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
+/* General Table Cleanup */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
 /* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
@@ -319,6 +342,10 @@ table.movies_chart td.movie-item .movie-item-tags a {
 /* =========================================
    GENERAL ELEMENTS
    ========================================= */
+/* Protect explicitly styled links from global override */
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
+
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
@@ -337,8 +364,6 @@ blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-b
 a { text-decoration: none !important; transition: color 0.15s ease !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
-a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-link); }
-a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
 /* PERMISSIONS COLORS */
 a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
@@ -390,7 +415,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
 
 .wysibb, .wysibb-text, .wysibb-toolbar { background: var(--hb-panel) !important; border-color: var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; }
-.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
+.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-family: var(--hb-font) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
 .wysibb-toolbar-btn { color: var(--hb-text) !important; transition: background-color 0.15s ease !important; border-radius: 4px !important; }
 .wysibb-toolbar-btn img { filter: none !important; }
 .wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img, .wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { filter: invert(1) brightness(0.8) !important; }
@@ -564,7 +589,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px !important;
     width: 100% !important;
-    align-items: stretch !important; /* Forces all cards in row to be same height */
+    align-items: stretch !important; 
   }
   table.movies_chart tr { display: contents !important; } 
   
@@ -579,18 +604,18 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     box-sizing: border-box !important;
     width: 100% !important;
     margin: 0 !important;
-    height: 100% !important; /* Fill grid cell perfectly */
+    height: 100% !important; 
   }
   
   table.movies_chart td.movie-item > a {
-    flex-shrink: 0 !important; /* Keep poster un-shrunk */
+    flex-shrink: 0 !important; 
   }
   
   table.movies_chart td.movie-item > a > div[style*="background-image"] {
-    height: 60vw !important; /* Exact size from homepage carousel */
+    height: 60vw !important; 
     width: 100% !important;
     border-radius: 8px !important;
-    background-size: contain !important; /* Full poster visible */
+    background-size: contain !important; 
     background-repeat: no-repeat !important; 
     background-position: center top !important; 
     background-color: transparent !important; 
@@ -606,7 +631,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     line-height: 1.4 !important;
   }
   
-  /* Flex-grow pushes description block to bottom so they all align perfectly! */
   table.movies_chart td.movie-item .desc { 
     flex-grow: 1 !important; 
     display: flex !important;
