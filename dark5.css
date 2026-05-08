@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V80 - MEGA MOBILE SCALE)
-   - 📱 MEGA MOBILE: Massively increased fonts, paddings, and touch targets across the entire mobile UI.
+   HEBITS STEALTH SOLID PRO (V81 - THE ULTIMATE FIX)
+   - 📱 SIDEBAR FIX: Sidebar boxes and stats lists now perfectly match the rounded dark panels.
+   - 🎨 GRAY TEXT FIX: Forced all list items, paragraphs, and cells to use clear, bright text.
+   - 📱 MEGA MOBILE: Massively increased fonts for the sidebar and all general text.
    - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
-   - 🎨 COLOR FIX: Inline system colors (like Wheat or Donate Red) are protected.
    - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
-   - 🔤 OMNI-FONT OVERRIDE: Caught the missing fonts in options, selects, and small tags.
-   - 🌟 DROPDOWNS: Restored and functional.
-   - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
+   - 🔤 OMNI-FONT OVERRIDE: Forced Inter on absolutely every text node.
+   - 🌟 MOVIES GRID: 2 Massive posters/row, pure CSS grid, flex-aligned.
    ========================================= */
 
 :root {
@@ -160,7 +160,7 @@ textarea:focus, select:focus {
 #searchbars input:focus::placeholder { opacity: 0 !important; }
 
 /* =========================================
-   ADVANCED SEARCH PANEL (PROTECTED FROM TABLES)
+   ADVANCED SEARCH PANEL
    ========================================= */
 form.search_form, form.search_form > div { background: transparent !important; border: none !important; box-shadow: none !important; }
 
@@ -177,7 +177,6 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 }
 form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform: none !important; box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; }
 
-/* 🛡️ CORNER FIX: Force the head to have rounded top corners so it doesn't bleed! */
 .filter_torrents .head { 
   background: #000000 !important; 
   border-bottom: 1px solid var(--hb-border) !important; 
@@ -188,26 +187,15 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 
-/* Protect the layout table inside search from row coloring */
-.filter_torrents table.layout, 
-.filter_torrents table.layout tr, 
-.filter_torrents table.layout tr > td, 
-.filter_torrents table.layout tr:nth-child(n) > td,
-.filter_torrents table.layout tr:hover > td { 
-  background: transparent !important; 
-  border: none !important; 
-  box-shadow: none !important; 
+.filter_torrents table.layout, .filter_torrents table.layout tr, .filter_torrents table.layout tr > td, .filter_torrents table.layout tr:nth-child(n) > td, .filter_torrents table.layout tr:hover > td { 
+  background: transparent !important; border: none !important; box-shadow: none !important; 
 }
-
-/* TRUE STICKY SIDEBAR */
-.sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
 /* =========================================
    🚨 ALERTS & SYSTEM BOXES (RESTORED SYSTEM COLORS) 🚨
    ========================================= */
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
 
-/* Base App-Like Alert Styles */
 .alertbar { 
   border-radius: var(--hb-radius-sm) !important; 
   box-shadow: var(--hb-shadow) !important; 
@@ -221,37 +209,20 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   color: var(--hb-text-strong) !important;
 }
 
-/* 🎨 SEMANTIC DARK-MODE COLORS FOR SYSTEM ALERTS */
-.alertbar.redbox { 
-  background: rgba(220, 38, 38, 0.15) !important; 
-  border-color: rgba(220, 38, 38, 0.4) !important; 
-  color: #fca5a5 !important; 
-}
-.alertbar.greenbox { 
-  background: rgba(5, 150, 105, 0.15) !important; 
-  border-color: rgba(5, 150, 105, 0.4) !important; 
-  color: #6ee7b7 !important; 
-}
-.alertbar.goldbox, .alertbar.yellowbox { 
-  background: rgba(217, 119, 6, 0.15) !important; 
-  border-color: rgba(217, 119, 6, 0.4) !important; 
-  color: #fde047 !important; 
-}
-.alertbar.bluebox { 
-  background: rgba(37, 99, 235, 0.15) !important; 
-  border-color: rgba(37, 99, 235, 0.4) !important; 
-  color: #93c5fd !important; 
-}
+.alertbar.redbox { background: rgba(220, 38, 38, 0.15) !important; border-color: rgba(220, 38, 38, 0.4) !important; color: #fca5a5 !important; }
+.alertbar.greenbox { background: rgba(5, 150, 105, 0.15) !important; border-color: rgba(5, 150, 105, 0.4) !important; color: #6ee7b7 !important; }
+.alertbar.goldbox, .alertbar.yellowbox { background: rgba(217, 119, 6, 0.15) !important; border-color: rgba(217, 119, 6, 0.4) !important; color: #fde047 !important; }
+.alertbar.bluebox { background: rgba(37, 99, 235, 0.15) !important; border-color: rgba(37, 99, 235, 0.4) !important; color: #93c5fd !important; }
 
-/* Protect spans with inline styles (like the Wheat Freeleech text) inside alerts */
 .alertbar span { text-shadow: none !important; }
 .alertbar span:not([style*="color"]) { color: inherit !important; }
 .alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
 
 /* =========================================
-   ALL TABLES & PANELS UNIFICATION
+   ALL TABLES, PANELS & SIDEBAR UNIFICATION
    ========================================= */
-.box, .panel__body, table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, #inbox .box { 
+/* Ensure all boxes, including sidebar panels, get the sleek design */
+.box, .sidebar .box, .panel__body, table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, #inbox .box { 
   background: var(--hb-panel) !important; 
   border: 1px solid var(--hb-border) !important; 
   border-top: 3px solid var(--accent-primary) !important; 
@@ -259,23 +230,23 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   box-shadow: var(--hb-shadow) !important; 
   margin-bottom: 24px !important; 
   transition: transform 0.2s ease, box-shadow 0.2s ease !important; 
-  color: var(--hb-text) !important; 
   overflow: hidden !important; 
   border-collapse: collapse !important;
 }
-.box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
+.box:hover, .sidebar .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
+
+/* 🎨 THE GRAY TEXT FIX: Force bright text color on normal elements inside panels */
+.box, .panel__body, td, th, li, p { color: var(--hb-text) !important; text-shadow: none !important; }
+strong, b, h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; }
 
 /* 📰 NEWS BODY FIX: Ensure announcements have no stray light background */
-.newsbody, .box > .pad {
-  background: transparent !important;
-  color: var(--hb-text) !important;
-}
+.newsbody, .box > .pad { background: transparent !important; color: var(--hb-text) !important; }
 
 /* General Table Cleanup */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
-/* 🛡️ CORNER FIX 2: Apply to all box heads just in case */
-.head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
+/* Universal Box Headers */
+.head, .sidebar .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
   background: var(--bg-deep) !important; 
   color: var(--hb-text-strong) !important; 
   font-weight: 600 !important; 
@@ -288,6 +259,11 @@ table tr.colhead_dark:first-child td, table tr.colhead:first-child td {
   border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
   border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
 }
+
+/* Sidebar specific internal padding (Stats Lists) */
+.sidebar ul.stats, .sidebar ul.nobullet { padding: 15px !important; margin: 0 !important; }
+.sidebar ul.stats li, .sidebar ul.nobullet li { padding: 8px 0 !important; border-bottom: 1px solid var(--hb-border-soft) !important; }
+.sidebar ul.stats li:last-child, .sidebar ul.nobullet li:last-child { border-bottom: none !important; }
 
 /* Global Row Backgrounds & Hovers */
 table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
@@ -370,6 +346,10 @@ table.movies_chart td.movie-item .movie-item-tags a {
 /* =========================================
    GENERAL ELEMENTS
    ========================================= */
+/* Protect explicitly styled links from global override */
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
+
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
@@ -377,10 +357,9 @@ td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.un
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
-.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
-.forum_post .body, .message_table td, form.search_form label, table td { color: var(--hb-text) !important; font-size: 14px !important; line-height: 1.6 !important; }
+.forum_post .body, .message_table td, form.search_form label, table td { font-size: 14px !important; line-height: 1.6 !important; }
 .small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--hb-muted) !important; font-weight: 500 !important; }
 
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
@@ -452,7 +431,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
 /* =========================================
-   📱 MOBILE OVERHAUL (MEGA MOBILE SCALE) 📱
+   📱 MOBILE OVERHAUL (IMDB MAXIMUM SCALE UI) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
   
@@ -461,25 +440,25 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   
   #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 10px auto !important; box-sizing: border-box !important; }
 
-  /* 🌟 MEGA MOBILE MENU SWIPE 🌟 */
+  /* 🌟 MOBILE MENU - WRAPS SO DROPDOWNS ESCAPE 🌟 */
   #menu ul { 
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: wrap !important; 
     overflow: visible !important; 
-    padding: 15px 5px !important; 
+    padding: 10px 5px !important; 
     justify-content: center !important; 
-    gap: 12px !important;
+    gap: 10px !important;
   }
   #menu ul::-webkit-scrollbar { display: none !important; } 
   #menu ul > li { flex: 0 0 auto !important; }
-  #menu ul > li > a { font-size: 22px !important; padding: 18px 28px !important; font-weight: 600 !important; }
+  #menu ul > li > a { font-size: 18px !important; padding: 16px 24px !important; }
 
-  /* 🌟 MEGA MOBILE USERINFO SWIPE 🌟 */
+  /* 🌟 MOBILE USERINFO SWIPE 🌟 */
   #userinfo { 
     border-radius: 12px 12px 0 0 !important; 
-    padding: 20px 15px !important; 
-    margin-top: 20px !important; 
+    padding: 15px 10px !important; 
+    margin-top: 15px !important; 
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important;
@@ -496,16 +475,16 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     padding: 0 !important; 
     margin: 0 !important; 
     justify-content: flex-start !important; 
-    gap: 15px !important; 
+    gap: 10px !important; 
   }
-  #userinfo li { flex: 0 0 auto !important; font-size: 20px !important; padding: 12px 24px !important; }
-  #userinfo li span.stat, #userinfo li .tooltip { font-size: 24px !important; }
+  #userinfo li { flex: 0 0 auto !important; font-size: 16px !important; padding: 10px 20px !important; }
+  #userinfo li span.stat, #userinfo li .tooltip { font-size: 18px !important; }
 
-  /* 🌟 MEGA MOBILE SEARCHBARS SWIPE 🌟 */
+  /* 🌟 MOBILE SEARCHBARS SWIPE 🌟 */
   #searchbars-wrapper { 
     border-radius: 0 0 12px 12px !important; 
-    padding: 0 0 20px 0 !important; 
-    margin-bottom: 25px !important;
+    padding: 0 0 15px 0 !important; 
+    margin-bottom: 20px !important;
   }
   #searchbars { 
     display: flex !important; 
@@ -516,33 +495,33 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     width: 100% !important; 
     padding: 5px 15px !important; 
     justify-content: flex-start !important; 
-    gap: 15px !important; 
+    gap: 12px !important; 
   }
   #searchbars::-webkit-scrollbar { display: none !important; }
   #searchbars form.search_form { 
-    flex: 0 0 220px !important; 
-    width: 220px !important; 
-    min-width: 220px !important; 
+    flex: 0 0 180px !important; 
+    width: 180px !important; 
+    min-width: 180px !important; 
     margin: 0 !important; 
   }
   #searchbars input[type="text"] { 
-    padding: 20px 24px !important; 
-    font-size: 22px !important; 
+    padding: 16px 20px !important; 
+    font-size: 18px !important; 
     width: 100% !important; 
   }
 
-  /* 🌟 MEGA MOBILE ALERTS SWIPE 🌟 */
+  /* 🌟 MOBILE ALERTS SWIPE 🌟 */
   #alerts .alertbar { 
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important; 
     overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
-    padding: 20px 24px !important; 
+    padding: 16px 20px !important; 
     justify-content: flex-start !important; 
     align-items: center !important; 
-    font-size: 22px !important; 
-    gap: 20px !important;
+    font-size: 18px !important; 
+    gap: 15px !important;
   }
   #alerts .alertbar::-webkit-scrollbar { display: none !important; }
   #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
@@ -559,21 +538,21 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
   #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
   #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 40vw !important; flex: 0 0 40vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
-  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 15px !important; pointer-events: auto !important; box-sizing: border-box !important; }
+  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
   #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
-  #latest5tor .owl-item a > span.tooltip { font-size: 20px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} 
-  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 16px !important; margin-bottom: 12px !important; }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 16px !important; padding: 10px 0 !important; }
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} 
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
   /* =========================================
-     🌟 MEGA MOBILE FORUMS 🌟
+     🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
      ========================================= */
   #latestForums .head { background: transparent !important; border: none !important; padding: 10px 0 !important; display: block !important; text-align: center !important; }
   #latestForums .head > a.tooltip { display: none !important; } 
-  #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 8px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
-  #latestForums .head > span a { padding: 20px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 22px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
+  #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 6px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
+  #latestForums .head > span a { padding: 16px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 18px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
   #latestForums .head > span a.simple-tabs__link--active { background: var(--hb-panel-hover) !important; color: #ffffff !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; }
 
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
@@ -581,33 +560,33 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
   /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td { 
-    display: block !important; width: 100% !important; padding: 30px 24px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 16px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
+    display: block !important; width: 100% !important; padding: 24px 20px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
   }
 
   /* MAGIC HACK */
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
-  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 22px !important; color: var(--hb-text) !important; }
+  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
-  /* Title (MEGA Massive Title) */
-  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 28px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.3 !important; margin-left: 10px !important; }
+  /* Title (IMDB Massive Title) */
+  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
   /* Category Badge */
-  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(255, 255, 255, 0.1) !important; color: var(--accent-secondary) !important; padding: 8px 16px !important; border-radius: 8px !important; font-size: 18px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -4px !important; }
+  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(255, 255, 255, 0.1) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 15px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -3px !important; }
 
   /* Metadata Container */
-  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 22px !important; margin-top: 22px !important; font-size: 20px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
+  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 18px !important; margin-top: 18px !important; font-size: 17px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
   /* The Time */
-  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 19px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
+  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 16px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
   
   /* The Username Link */
-  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 20px !important; font-weight: 600 !important; }
+  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 17px !important; font-weight: 600 !important; }
 
   /* Show All Link */
-  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 22px !important; padding: 24px !important; font-weight: 600 !important; }
+  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
   /* =========================================
-     🌟 MEGA MOBILE MOVIES / SERIES GRID 🌟
+     🌟 MOBILE MOVIES / SERIES GRID (FLEX-ALIGN) 🌟
      ========================================= */
   table.movies_chart { 
     display: block !important; 
@@ -615,12 +594,12 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     background: transparent !important; 
     border: none !important; 
     box-shadow: none !important; 
-    margin-top: 20px !important;
+    margin-top: 15px !important;
   }
   table.movies_chart tbody {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+    gap: 15px !important;
     width: 100% !important;
     align-items: stretch !important; 
   }
@@ -632,7 +611,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     background: var(--hb-panel) !important;
     border: 1px solid var(--hb-border) !important;
     border-radius: 12px !important;
-    padding: 20px !important; 
+    padding: 15px !important; 
     box-shadow: var(--hb-shadow) !important;
     box-sizing: border-box !important;
     width: 100% !important;
@@ -655,12 +634,12 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   }
   
   table.movies_chart td.movie-item > a > span.tooltip {
-    font-size: 24px !important; 
+    font-size: 19px !important; 
     font-weight: 700 !important;
     color: var(--hb-text-strong) !important;
     text-align: center !important;
     display: block !important;
-    margin-top: 20px !important;
+    margin-top: 15px !important;
     line-height: 1.4 !important;
   }
   
@@ -669,16 +648,21 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-end !important;
-    margin-top: 20px !important; 
+    margin-top: 15px !important; 
     text-align: center !important; 
     border-top: 1px solid var(--hb-border-soft) !important; 
-    padding-top: 20px !important; 
+    padding-top: 15px !important; 
   }
-  table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 22px !important; margin: 8px !important; color: var(--hb-text-strong) !important; font-weight: 600 !important;}
+  table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 17px !important; margin: 5px !important; color: var(--hb-text-strong) !important; font-weight: 600 !important;}
   
-  table.movies_chart td.movie-item .movie-item-tags { font-size: 18px !important; margin-top: 16px !important; }
-  table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.1) !important; color: var(--accent-secondary) !important; padding: 8px 16px !important; border-radius: 8px !important; margin: 4px !important; display: inline-block !important; }
-  table.movies_chart td.movie-item .tags { font-size: 18px !important; margin-top: 14px !important; }
+  table.movies_chart td.movie-item .movie-item-tags { font-size: 15px !important; margin-top: 12px !important; }
+  table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.1) !important; color: var(--accent-secondary) !important; padding: 6px 12px !important; border-radius: 6px !important; margin: 3px !important; display: inline-block !important; }
+  table.movies_chart td.movie-item .tags { font-size: 14px !important; margin-top: 10px !important; }
+
+  /* 🌟 SIDEBAR MEGA FIX (MOBILE) 🌟 */
+  .sidebar .box { font-size: 20px !important; }
+  .sidebar .head { font-size: 24px !important; padding: 20px !important; }
+  .sidebar ul.stats li, .sidebar ul.nobullet li { padding: 12px 0 !important; }
 
   /* GENERAL TABLES / POSTS OVERRIDE FOR MOBILE */
   table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table { 
@@ -690,11 +674,11 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     border-right: none !important; 
   }
   
-  .box, .panel__body, table td, .forum_post .body { font-size: 22px !important; line-height: 1.6 !important; } 
-  input, select, textarea { font-size: 22px !important; padding: 16px !important;}
+  .box, .panel__body, table td, .forum_post .body { font-size: 19px !important; line-height: 1.6 !important; } 
+  input, select, textarea { font-size: 18px !important; }
 
   table.forum_post td.avatar { display: none !important; } 
-  table.forum_post td.body { padding: 24px 20px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
+  table.forum_post td.body { padding: 20px 15px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
 
 /* CRITICAL OVERRIDE: Keep hidden elements hidden! */
