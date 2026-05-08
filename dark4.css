@@ -2,9 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V64 - MOBILE READABILITY)
-   - 📱 Larger fonts and elements on mobile (IMDB-style readability)
-   - 💻 Desktop unchanged
+   HEBITS STEALTH SOLID PRO (V65 - MOBILE HEADER OVERHAUL)
+   - 💻 TABLES FIX: Killed all vertical dividers! Hover line appears ONLY on the far edge.
+   - 💻 SEARCH UI FIX: Distinct panel background and fixed corners.
+   - 💻 GLOBAL FONT FIX: Forced "Inter" font on every single element.
+   - 🌟 PLACEMENT FIX: Pushed the UserInfo dashboard down.
+   - 📱 MOBILE HEADER: Clean banner + readable stats + proper nav buttons
+   - 📱 MOBILE IPS FORUMS: Flawless Card UI & Inline Categories
+   - Black & Gray Monochrome Theme
    ========================================= */
 
 :root {
@@ -31,7 +36,7 @@
 }
 
 /* =========================================
-   DESKTOP & GENERAL STYLES (UNCHANGED)
+   DESKTOP & GENERAL STYLES
    ========================================= */
 body, html, .body, .tdhack, div, span, p, label, a, h1, h2, h3, h4, h5, h6, 
 input, select, textarea, button, td, th {
@@ -50,6 +55,9 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu ul > li > a { font-weight: 500 !important; color: var(--hb-text) !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
 #menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; color: var(--hb-text-strong) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
+/* =========================================
+   USER INFO STATS BAR
+   ========================================= */
 #userinfo {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -75,6 +83,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
 #userinfo li svg { margin-left: 6px !important; }
 
+/* QUICK SEARCH BARS (PILL DESIGN) */
 #searchbars-wrapper { 
   background: rgba(0, 0, 0, 0.65) !important; 
   backdrop-filter: blur(20px) !important;
@@ -94,6 +103,9 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #searchbars input[type="text"]:focus { background: var(--hb-panel) !important; border-color: var(--accent-secondary) !important; box-shadow: 0 0 0 3px rgba(161, 161, 170, 0.25), 0 8px 20px rgba(0,0,0,0.6) !important; transform: translateY(-3px) !important; outline: none !important; }
 #searchbars input[type="text"]:focus::placeholder { opacity: 0 !important; }
 
+/* =========================================
+   ADVANCED SEARCH PANEL
+   ========================================= */
 form.search_form:not(#searchbars form) > .box.filter_torrents {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
@@ -108,6 +120,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 .filter_torrents table.layout { background: transparent !important; }
 
+/* TRUE STICKY SIDEBAR */
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
@@ -117,6 +130,7 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 .box, .panel__body, table.forum_post, table.message_table, #inbox .box { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; color: var(--hb-text) !important; overflow: hidden !important; }
 .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
+/* LATEST TORRENTS CAROUSEL */
 #latest5tor .owl-stage-outer { padding-top: 15px !important; padding-bottom: 20px !important; margin-top: -15px !important; margin-bottom: -20px !important; }
 #latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
 #latest5tor .owl-item { display: flex !important; float: none !important; }
@@ -138,6 +152,9 @@ form.search_form:not(#searchbars form) > .box.filter_torrents {
 #latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
+/* =========================================
+   TABLES & ROWS (NO VERTICAL DIVIDERS!)
+   ========================================= */
 table.torrent_table { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-top: 3px solid var(--accent-primary) !important; border-radius: var(--hb-radius) !important; box-shadow: var(--hb-shadow) !important; margin-bottom: 24px !important; overflow: hidden !important; }
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; }
 
@@ -239,127 +256,269 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 
 
 /* =========================================
-   📱 MOBILE OVERHAUL (LARGER & READABLE) 📱
+   📱 MOBILE OVERHAUL (THE APP EXPERIENCE) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
-  
+
   html, body, #wrapper { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
-  
-  /* ⬆️ Base font size bump */
   body { font-size: 16px !important; }
-  
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
-  
-  #content { width: 100% !important; padding: 0 12px 12px 12px !important; margin: 20px auto !important; box-sizing: border-box !important; }
 
-  /* ⬆️ USER INFO - LARGER STATS */
-  #userinfo { border-radius: 12px 12px 0 0 !important; padding: 18px 12px 8px 12px !important; margin-top: 20px !important; gap: 12px !important; }
-  #userinfo ul { gap: 12px !important; }
-  #userinfo li { padding: 10px 18px !important; font-size: 15px !important; font-weight: 600 !important; }
-  #userinfo li svg { width: 18px !important; height: 18px !important; margin-left: 8px !important; }
-  
-  #searchbars-wrapper { border-radius: 0 0 12px 12px !important; padding: 8px 12px 18px 12px !important; margin-bottom: 20px !important;}
+  #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 0 auto !important; box-sizing: border-box !important; }
 
+  /* =========================================
+     📱 HEADER: BANNER + STATS REDESIGN
+     ========================================= */
+
+  /* Wrapper שמכיל את הבאנר + סטטס + כפתורים - נהפוך לבלוק אחד מסודר */
+  #userinfo {
+    /* הסר את הרקע הטשטוש, תן לבאנר לנשום */
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 0 !important;
+    position: relative !important;
+  }
+
+  /* הבאנר עצמו - תמונה מלאה ורחבה */
+  #userinfo img.banner,
+  #userinfo > img {
+    display: block !important;
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  /* פאנל הסטטיסטיקות - מתחת לבאנר, עם גלס מורפיזם */
+  #userinfo ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 14px 12px !important;
+    margin: 0 !important;
+    background: rgba(9, 9, 11, 0.92) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid var(--hb-border) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    list-style: none !important;
+  }
+
+  /* כל פריט סטטיסטיקה - פיל קומפקטי וקריא */
+  #userinfo li {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: rgba(39, 39, 42, 0.8) !important;
+    padding: 7px 14px !important;
+    border-radius: 100px !important;
+    border: 1px solid var(--hb-border-soft) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    box-shadow: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  #userinfo li:hover {
+    transform: none !important;
+    border-color: var(--hb-border-soft) !important;
+  }
+
+  #userinfo li a { color: var(--hb-text) !important; }
+  #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; color: var(--hb-text-strong) !important; margin-right: 5px !important; }
+  #userinfo li svg { width: 14px !important; height: 14px !important; margin-left: 5px !important; }
+
+  /* =========================================
+     📱 SEARCHBARS WRAPPER - תחת הסטטס
+     ========================================= */
+  #searchbars-wrapper {
+    background: var(--hb-panel) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-bottom: 1px solid var(--hb-border) !important;
+    border-radius: 0 !important;
+    padding: 14px 12px !important;
+    margin: 0 0 16px 0 !important;
+    box-shadow: none !important;
+  }
+
+  #searchbars {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  #searchbars form.search_form { width: 100% !important; margin: 0 !important; }
+
+  #searchbars input[type="text"] {
+    padding: 13px 14px !important;
+    font-size: 15px !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+  }
+
+  /* =========================================
+     📱 NAV QUICK LINKS (אנשים/פורומים/טורנטים וכו') 
+     - אם יש divs/links מתחת לסטטס, נסדר כגריד כפתורים
+     ========================================= */
+  #userinfo ~ div a[href*="torrents"],
+  #userinfo ~ div a[href*="forums"],
+  #userinfo ~ div a[href*="user"],
+  #userinfo ~ div a[href*="requests"],
+  #userinfo ~ div a[href*="wiki"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--hb-panel) !important;
+    border: 1px solid var(--hb-border-soft) !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: var(--hb-text-strong) !important;
+    min-height: 48px !important;
+    text-align: center !important;
+  }
+
+  /* =========================================
+     📱 כפתורי ניווט (אנשים, פורומים, טורנטים וכו') 
+     שנמצאים ב-#userinfo עצמו כ-li עם קישורים
+     ========================================= */
+
+  /* li-ים שמכילים ניווט (לא סטטיסטיקות) - זיהוי לפי href */
+  #userinfo li:has(a[href*="torrents.php"]),
+  #userinfo li:has(a[href*="forums.php"]),
+  #userinfo li:has(a[href*="requests.php"]),
+  #userinfo li:has(a[href*="wiki.php"]),
+  #userinfo li:has(a[href*="user.php"]),
+  #userinfo li:has(a[href*="staffpm"]),
+  #userinfo li:has(a[href*="inbox"]) {
+    background: var(--hb-panel) !important;
+    border: 1px solid var(--hb-border-soft) !important;
+    border-radius: 10px !important;
+    padding: 10px 18px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    min-height: 44px !important;
+  }
+
+  #userinfo li:has(a[href*="torrents.php"]) a,
+  #userinfo li:has(a[href*="forums.php"]) a,
+  #userinfo li:has(a[href*="requests.php"]) a,
+  #userinfo li:has(a[href*="wiki.php"]) a,
+  #userinfo li:has(a[href*="user.php"]) a,
+  #userinfo li:has(a[href*="staffpm"]) a,
+  #userinfo li:has(a[href*="inbox"]) a {
+    color: var(--hb-text-strong) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+  }
+
+  /* =========================================
+     📱 LAYOUT - עמודות
+     ========================================= */
   .thin { display: flex !important; flex-direction: column !important; width: 100% !important; }
   #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
   .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
   .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
 
-  /* ⬆️ MENU - LARGER LINKS */
-  #menu ul { display: flex !important; overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 5px !important; }
+  /* =========================================
+     📱 MENU
+     ========================================= */
+  #menu ul { display: flex !important; overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; }
   #menu ul > li { display: inline-block !important; flex-shrink: 0 !important; }
-  #menu ul > li > a { padding: 16px 22px !important; font-size: 16px !important; font-weight: 600 !important; }
-  #menu ul::-webkit-scrollbar { display: none !important; } 
+  #menu ul > li > a { padding: 15px 18px !important; font-size: 15px !important; font-weight: 600 !important; }
+  #menu ul::-webkit-scrollbar { display: none !important; }
 
-  /* ⬆️ SEARCH BARS - LARGER INPUTS */
-  #searchbars { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; width: 100% !important; }
-  #searchbars form.search_form { width: 100% !important; margin: 0 !important; }
-  #searchbars input[type="text"] { padding: 16px 16px !important; font-size: 16px !important; width: 100% !important; }
-
-  /* ⬆️ CAROUSEL - LARGER CARDS (48vw instead of 40vw) */
+  /* =========================================
+     📱 CAROUSEL
+     ========================================= */
   #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; margin: 0 !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
   #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
-  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 48vw !important; flex: 0 0 48vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
-  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 14px !important; pointer-events: auto !important; box-sizing: border-box !important; }
+  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 44vw !important; flex: 0 0 44vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
+  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
-  #latest5tor .owl-item a > div[style*="background-image"] { height: 70vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
-  #latest5tor .owl-item a > span.tooltip { font-size: 18px !important; line-height: 1.4 !important; margin-bottom: 10px !important; font-weight: 700 !important; } 
-  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 15px !important; margin-bottom: 14px !important; }
-  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 15px !important; padding: 12px 0 !important; font-weight: 600 !important; }
+  #latest5tor .owl-item a > div[style*="background-image"] { height: 64vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: cover !important; background-position: center top !important; }
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; margin-bottom: 8px !important; font-weight: 700 !important; }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 14px !important; margin-bottom: 12px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 14px !important; padding: 10px 0 !important; font-weight: 600 !important; }
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* ⬆️ MOBILE FORUMS / IP.BOARD STYLE */
+  /* =========================================
+     🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
+     ========================================= */
   #latestForums .head { background: transparent !important; border: none !important; padding: 10px 0 !important; display: block !important; text-align: center !important; }
-  #latestForums .head > a.tooltip { display: none !important; } 
+  #latestForums .head > a.tooltip { display: none !important; }
   #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 6px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
-  #latestForums .head > span a { padding: 14px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 17px !important; font-weight: 600 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
+  #latestForums .head > span a { padding: 13px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 16px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
   #latestForums .head > span a.simple-tabs__link--active { background: var(--hb-panel-hover) !important; color: #ffffff !important; font-weight: 700 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.5) !important; }
 
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
   #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
-  #latest5posts td, #latest5torrents_p td { 
-    display: block !important; width: 100% !important; padding: 18px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
+  #latest5posts td, #latest5torrents_p td {
+    display: block !important; width: 100% !important; padding: 16px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important;
   }
 
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
-  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 16px !important; color: var(--hb-text) !important; }
+  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 15px !important; color: var(--hb-text) !important; }
 
-  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 19px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.5 !important; margin-left: 8px !important; }
+  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 17px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.5 !important; margin-left: 8px !important; }
 
-  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(59, 130, 246, 0.15) !important; color: var(--accent-secondary) !important; padding: 5px 12px !important; border-radius: 6px !important; font-size: 14px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -2px !important; }
+  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(59, 130, 246, 0.15) !important; color: var(--accent-secondary) !important; padding: 4px 10px !important; border-radius: 6px !important; font-size: 13px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -2px !important; }
 
-  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 14px !important; margin-top: 14px !important; font-size: 15px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
+  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 12px !important; margin-top: 12px !important; font-size: 14px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
-  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 14px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
-  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 16px !important; font-weight: 600 !important; }
+  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 13px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
+  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 15px !important; font-weight: 600 !important; }
 
-  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 17px !important; padding: 18px !important; }
-  
-  /* ⬆️ TABLES - LARGER TEXT */
+  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 16px !important; padding: 16px !important; }
+
+  /* TABLES */
   table.torrent_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; border-left: none !important; border-right: none !important; }
-  table.torrent_table td, table.torrent_table th { padding: 14px 12px !important; font-size: 15px !important; }
-  
-  .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th { padding: 16px 14px !important; font-size: 16px !important; }
-  
-  .box, .panel__body, table td, .forum_post .body, .message_table td { font-size: 16px !important; line-height: 1.65 !important; } 
-  
-  /* ⬆️ HEADERS */
-  h1 { font-size: 26px !important; }
-  h2 { font-size: 22px !important; }
-  h3 { font-size: 19px !important; }
-  h4 { font-size: 17px !important; }
-  
-  /* ⬆️ ALERTS */
-  #alerts .alertbar { padding: 14px 18px !important; font-size: 15px !important; }
-  
-  /* ⬆️ TAGS */
-  #taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { padding: 6px 14px !important; font-size: 14px !important; }
-  
-  /* ⬆️ BUTTONS */
-  input[type="submit"], input[type="button"], button, .btn { padding: 12px 24px !important; font-size: 15px !important; }
-  
-  /* ⬆️ INPUTS */
-  input[type="text"]:not(#searchbars input), input[type="search"]:not(#searchbars input), textarea, select, input[type="password"] { padding: 12px 16px !important; font-size: 16px !important; }
-  
-  /* ⬆️ FORUM POSTS */
-  table.forum_post td.avatar { display: none !important; } 
-  table.forum_post td.body { padding: 18px 14px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; font-size: 16px !important; line-height: 1.7 !important; }
-  
-  /* ⬆️ FILTER PANELS */
-  .filter_torrents .head { padding: 16px 18px !important; font-size: 17px !important; }
-  .filter_torrents .pad { padding: 18px !important; }
+  table.torrent_table td, table.torrent_table th { padding: 13px 10px !important; font-size: 15px !important; }
+  .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th { padding: 14px 12px !important; font-size: 15px !important; }
+  .box, .panel__body, table td, .forum_post .body, .message_table td { font-size: 16px !important; line-height: 1.65 !important; }
+
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 18px !important; }
+  h4 { font-size: 16px !important; }
+
+  #alerts .alertbar { padding: 14px 16px !important; font-size: 15px !important; }
+  #taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { padding: 6px 12px !important; font-size: 14px !important; }
+  input[type="submit"], input[type="button"], button, .btn { padding: 12px 22px !important; font-size: 15px !important; }
+  input[type="text"]:not(#searchbars input), input[type="search"]:not(#searchbars input), textarea, select, input[type="password"] { padding: 12px 14px !important; font-size: 16px !important; }
+  table.forum_post td.avatar { display: none !important; }
+  table.forum_post td.body { padding: 16px 12px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; font-size: 16px !important; line-height: 1.7 !important; }
+  .filter_torrents .head { padding: 14px 16px !important; font-size: 16px !important; }
+  .filter_torrents .pad { padding: 16px !important; }
   .filter_torrents td { font-size: 15px !important; }
-  
-  /* ⬆️ SMALL/MUTED TEXT */
   .small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { font-size: 14px !important; }
-  
-  /* ⬆️ BLOCKQUOTES */
-  blockquote { padding: 18px 22px !important; font-size: 16px !important; }
-  
-  a { line-height: 1.6 !important; }
+  blockquote { padding: 16px 20px !important; font-size: 16px !important; }
 }
 
 /* CRITICAL OVERRIDE: Keep hidden elements hidden! */
