@@ -2,36 +2,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V66 - TOP UI MASTER)
-   - 📱 SWIPE MENUS: UserInfo, Searchbars, and Alerts are now single horizontal scrollable rows!
-   - 🌟 PLACEMENT FIX: Top area no longer crowds the screen.
-   - 💻 TABLES FIX: Killed all vertical dividers! 
+   HEBITS Deep Navy Edition (V67 - THE NUKE FIX)
+   - 📱 CRITICAL MOBILE FIX: Forced 1-line swipe for Userinfo and Searchbars!
+   - 🌟 COLOR OVERHAUL: Full Dark Blue / Navy palette.
+   - 🌟 MODERN UI: Retains Glassmorphism, Clean Tables, and Typography.
+   - 💻 TABLES FIX: Killed all vertical dividers! Hover line appears ONLY on the far edge.
    - 💻 GLOBAL FONT FIX: Forced "Inter" font on every single element.
-   - 📱 MOBILE IPS FORUMS: Flawless Card UI
-   - Black & Gray Monochrome Theme
    ========================================= */
 
 :root {
-  --bg-deep: #09090b; 
-  --hb-panel: #18181b; 
-  --hb-panel-hover: #27272a; 
-  --hb-border: #27272a; 
-  --hb-border-soft: #3f3f46; 
-  --hb-text: #d4d4d8; 
-  --hb-text-strong: #ffffff; 
-  --hb-muted: #71717a; 
+  /* THE CORE BLUE PALETTE */
+  --bg-deep: #050812;          
+  --hb-panel: #0d1226;          
+  --hb-panel-hover: #171c3a;    
+  --hb-border: #171c3a;         
+  --hb-border-soft: #252d59;    
+  
+  /* TEXT */
+  --hb-text: #ced5e8;           
+  --hb-text-strong: #ffffff;     
+  --hb-muted: #7d8bb3;          
   --hb-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --accent-primary: #52525b; 
-  --accent-secondary: #a1a1aa; 
-  --accent-hover: #71717a; 
-  --hb-link: #e4e4e7; 
-  --hb-link-hover: #ffffff; 
-  --hb-success: #10b981;
-  --hb-danger: #ef4444;
-  --hb-warn: #eab308;
+  
+  /* ACCENTS & LINKS */
+  --accent-primary: #335ca8;    
+  --accent-secondary: #7fbfff;  
+  --accent-hover: #4b78cc;      
+  --hb-link: #d4e1ff;           
+  --hb-link-hover: #ffffff;      
+  
+  /* STATUS */
+  --hb-success: #10b981;        
+  --hb-danger: #ef4444;         
+  --hb-warn: #eab308;           
+  
+  /* OTHER */
   --hb-radius-sm: 6px;
   --hb-radius: 12px;
-  --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4); 
+  --hb-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.7), 0 2px 6px -1px rgba(0, 0, 0, 0.5); 
 }
 
 /* =========================================
@@ -55,7 +63,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; color: var(--hb-text-strong) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
 /* =========================================
-   USER INFO STATS BAR
+   USER INFO STATS BAR (BLUE GLASS DASHBOARD)
    ========================================= */
 #userinfo {
   display: flex !important;
@@ -82,7 +90,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; color: var(--accent-secondary) !important; }
 #userinfo li svg { margin-left: 6px !important; fill: var(--accent-secondary) !important; }
 
-/* QUICK SEARCH BARS */
+/* QUICK SEARCH BARS (PILL DESIGN) */
 #searchbars-wrapper { 
   background: rgba(5, 8, 18, 0.7) !important; 
   backdrop-filter: blur(20px) !important;
@@ -106,7 +114,7 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 form.search_form:not(#searchbars form) > .box.filter_torrents {
   background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
-  border-top: 4px solid var(--accent-primary) !important;
+  border-top: 4px solid var(--accent-primary) !important; 
   border-radius: var(--hb-radius) !important;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important;
   padding: 0 !important;
@@ -161,9 +169,9 @@ tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-s
 tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
 
 tr.group_torrent:nth-child(n) > td { background: #020408 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
-tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; }
+tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; } 
 tr.group_torrent:hover:nth-child(n) > td { background: var(--hb-panel) !important; box-shadow: none !important; }
-tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
+tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; } 
 
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
@@ -186,6 +194,7 @@ a { text-decoration: none !important; transition: color 0.15s ease !important; f
 a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-link); }
 a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
+/* PERMISSIONS COLORS */
 a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
 a[class*="permission_"]:hover { filter: brightness(1.2) !important; }
 a.permission_staff { font-weight: bold !important; color: #60a5fa !important; }
@@ -216,7 +225,7 @@ svg { fill: var(--hb-text) !important; }
 .report_ic i, .report_ic .fa-exclamation-triangle { color: var(--accent-secondary) !important; }
 .reseed_ic i, .reseed_ic .fa-refresh { color: var(--accent-secondary) !important; } 
 a[href*="action=edit"] i, .fa-pencil-square-o { color: var(--accent-secondary) !important; }
-a[href*action="delete"] i, .fa-trash { color: var(--accent-secondary) !important; }
+a[href*="action=delete"] i, .fa-trash { color: var(--accent-secondary) !important; }
 a[href*="torrentid="] i, .fa-link { color: var(--accent-secondary) !important; } 
 .torrent_icons a:hover i { transform: scale(1.15); color: #ffffff !important; filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) !important; }
 
@@ -249,9 +258,8 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
-
 /* =========================================
-   📱 MOBILE OVERHAUL (THE APP EXPERIENCE) 📱
+   📱 MOBILE OVERHAUL (THE PERFECT SWIPE UI) 📱
    ========================================= */
 @media screen and (max-width: 1100px) {
   
@@ -260,28 +268,90 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   
   #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 10px auto !important; box-sizing: border-box !important; }
 
-  /* 🌟 MOBILE SWIPE UI - MENUS 🌟 */
-  #menu ul { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 5px !important; justify-content: flex-start !important; }
+  /* 🌟 MOBILE MENU SWIPE 🌟 */
+  #menu ul { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; /* Forces single line */
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    padding: 10px 5px !important; 
+    justify-content: flex-start !important; 
+    gap: 10px !important;
+  }
+  #menu ul::-webkit-scrollbar { display: none !important; } 
   #menu ul > li { flex: 0 0 auto !important; }
   #menu ul > li > a { font-size: 16px !important; padding: 14px 20px !important; }
-  #menu ul::-webkit-scrollbar { display: none !important; } 
 
-  /* 🌟 MOBILE SWIPE UI - USER INFO 🌟 */
-  #userinfo { border-radius: 12px 12px 0 0 !important; padding: 15px 0 !important; margin-top: 15px !important; }
-  #userinfo ul { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; width: 100% !important; padding: 5px 15px !important; justify-content: flex-start !important; gap: 10px !important; }
-  #userinfo ul::-webkit-scrollbar { display: none !important; }
+  /* 🌟 MOBILE USERINFO SWIPE 🌟 */
+  #userinfo { 
+    border-radius: 12px 12px 0 0 !important; 
+    padding: 15px 10px !important; 
+    margin-top: 15px !important; 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; /* Forces single line */
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    justify-content: flex-start !important; 
+  }
+  #userinfo::-webkit-scrollbar { display: none !important; }
+  #userinfo ul { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; /* Forces single line */
+    width: auto !important; 
+    padding: 0 !important; 
+    margin: 0 !important; 
+    justify-content: flex-start !important; 
+    gap: 10px !important; 
+  }
   #userinfo li { flex: 0 0 auto !important; font-size: 15px !important; padding: 8px 16px !important; }
   #userinfo li span.stat, #userinfo li .tooltip { font-size: 16px !important; }
 
-  /* 🌟 MOBILE SWIPE UI - SEARCHBARS 🌟 */
-  #searchbars-wrapper { border-radius: 0 0 12px 12px !important; padding: 0 0 15px 0 !important; margin-bottom: 20px !important;}
-  #searchbars { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; width: 100% !important; padding: 5px 15px !important; justify-content: flex-start !important; gap: 12px !important; }
+  /* 🌟 MOBILE SEARCHBARS SWIPE 🌟 */
+  #searchbars-wrapper { 
+    border-radius: 0 0 12px 12px !important; 
+    padding: 0 0 15px 0 !important; 
+    margin-bottom: 20px !important;
+  }
+  #searchbars { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; /* Forces single line */
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    width: 100% !important; 
+    padding: 5px 15px !important; 
+    justify-content: flex-start !important; 
+    gap: 12px !important; 
+  }
   #searchbars::-webkit-scrollbar { display: none !important; }
-  #searchbars form.search_form { flex: 0 0 45vw !important; min-width: 150px !important; margin: 0 !important; width: auto !important; }
-  #searchbars input[type="text"] { padding: 12px 16px !important; font-size: 15px !important; width: 100% !important; }
+  #searchbars form.search_form { 
+    flex: 0 0 150px !important; /* Fixed width prevents shrinking */
+    width: 150px !important; 
+    min-width: 150px !important; 
+    margin: 0 !important; 
+  }
+  #searchbars input[type="text"] { 
+    padding: 14px 16px !important; 
+    font-size: 16px !important; 
+    width: 100% !important; 
+  }
 
-  /* 🌟 MOBILE SWIPE UI - ALERTS BAR 🌟 */
-  #alerts .alertbar { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding: 12px 15px !important; justify-content: flex-start !important; align-items: center !important; font-size: 16px !important; }
+  /* 🌟 MOBILE ALERTS SWIPE 🌟 */
+  #alerts .alertbar { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    overflow-x: auto !important; 
+    -webkit-overflow-scrolling: touch !important; 
+    padding: 12px 15px !important; 
+    justify-content: flex-start !important; 
+    align-items: center !important; 
+    font-size: 16px !important; 
+    gap: 15px !important;
+  }
   #alerts .alertbar::-webkit-scrollbar { display: none !important; }
   #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
 
@@ -291,7 +361,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
   .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
 
-  /* VOD CAROUSEL (Perfectly scaled) */
+  /* VOD CAROUSEL */
   #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; margin: 0 !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
