@@ -2,12 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 /* =========================================
-   HEBITS STEALTH SOLID PRO (V78 - NEWSFEED FIX)
-   - 📰 NEWS FIX: Cleaned the light background from .newsbody announcements.
+   HEBITS STEALTH SOLID PRO (V79 - UNIVERSAL FONT ENGINE)
+   - 🔤 THE NUKE FONT FIX: Used the Universal Selector (*) to force Inter everywhere, safely ignoring icons!
    - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
    - 🎨 COLOR FIX: Inline system colors (like Wheat or Donate Red) are protected.
    - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
-   - 🔤 OMNI-FONT OVERRIDE: Caught the missing fonts in options, selects, and small tags.
    - 📱 MOBILE GRID FIX: 2 Massive posters/row with proper scaling.
    - 🌟 DROPDOWNS: Restored and functional.
    - 🎨 COLOR FIX: 100% Pure Black & Stealth Gray.
@@ -40,12 +39,9 @@
 /* =========================================
    DESKTOP & GENERAL STYLES
    ========================================= */
-/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
-body, html, .body, .tdhack, p, label, a, h1, h2, h3, h4, h5, h6, 
-input, select, option, optgroup, textarea, button, td, th, tr, tbody, thead, table,
-strong, b, ul, li, em, small, center, blockquote, q, dt, dd, dl, form, fieldset, legend, caption,
-div:not([class*="fa"]):not([class*="icon"]):not(.fonticon), 
-span:not([class*="fa"]):not([class*="icon"]):not(.fonticon) {
+/* 🌟 UNIVERSAL FONT ENGINE 🌟 */
+/* Forces the font on absolutely everything EXCEPT FontAwesome and specific icon tags */
+*:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
   font-family: var(--hb-font) !important;
 }
 
@@ -125,7 +121,6 @@ textarea, select {
   border-radius: var(--hb-radius-sm) !important; 
   color: var(--hb-text-strong) !important; 
   padding: 10px 14px !important; 
-  font-family: var(--hb-font) !important; 
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important; 
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; 
 }
@@ -372,6 +367,10 @@ table.movies_chart td.movie-item .movie-item-tags a {
 /* =========================================
    GENERAL ELEMENTS
    ========================================= */
+/* Protect explicitly styled links from global override */
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
+
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
@@ -379,6 +378,7 @@ td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.un
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
 
+/* Remove forced text shadow to avoid glowing text bugs */
 .box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
@@ -387,7 +387,6 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-mut
 
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-a { text-decoration: none !important; transition: color 0.15s ease !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
 
@@ -441,7 +440,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
 
 .wysibb, .wysibb-text, .wysibb-toolbar { background: var(--hb-panel) !important; border-color: var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; }
-.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-family: var(--hb-font) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
+.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
 .wysibb-toolbar-btn { color: var(--hb-text) !important; transition: background-color 0.15s ease !important; border-radius: 4px !important; }
 .wysibb-toolbar-btn img { filter: none !important; }
 .wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img, .wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { filter: invert(1) brightness(0.8) !important; }
