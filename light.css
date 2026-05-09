@@ -288,7 +288,7 @@ table.movies_chart {
 table.movies_chart tr, table.movies_chart tbody { background: transparent !important; border: none !important; box-shadow: none !important; }
 
 table.movies_chart tr:nth-child(n) > td, table.movies_chart tr.rowa > td, table.movies_chart tr.rowb > td { background: transparent !important; border: none !important; box-shadow: none !important; }
-table.movies_chart tr:hover > td, table.movies_chart tr:hover > td:last-child { background: transparent !important; box-shadow: none !important; }
+table.movies_chart tr:hover > td { background: transparent !important; box-shadow: none !important; }
 
 table.movies_chart td.movie-item {
   background: var(--hb-panel) !important;
@@ -301,7 +301,8 @@ table.movies_chart td.movie-item {
 }
 table.movies_chart td.movie-item > a > div[style*="background-image"] { border-radius: 6px !important; background-size: cover !important; }
 
-table.movies_chart td.movie-item:hover {
+table.movies_chart td.movie-item:hover,
+table.movies_chart tr:hover > td.movie-item:hover {
   background: var(--hb-panel-hover) !important;
   border-color: var(--hb-border-soft) !important;
   transform: translateY(-6px) !important;
@@ -592,7 +593,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     height: 60vw !important; 
     width: 100% !important;
     border-radius: 8px !important;
-    background-size: contain !important; 
+    background-size: cover !important; 
     background-repeat: no-repeat !important; 
     background-position: center top !important; 
     background-color: transparent !important; 
