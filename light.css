@@ -280,7 +280,6 @@ table.movies_chart {
 table.movies_chart tr, table.movies_chart tbody { background: transparent !important; border: none !important; box-shadow: none !important; }
 
 table.movies_chart tr:nth-child(n) > td, table.movies_chart tr.rowa > td, table.movies_chart tr.rowb > td { background: transparent !important; border: none !important; box-shadow: none !important; }
-table.movies_chart tr:hover > td, table.movies_chart tr:hover > td:last-child { background: transparent !important; box-shadow: none !important; }
 
 table.movies_chart td.movie-item {
   background: var(--hb-panel) !important;
@@ -330,14 +329,14 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-mut
 
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); font-weight: 600 !important; }
 a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
-#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 600 !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
 
-a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
-a[class*="permission_"]:hover { filter: brightness(0.8) !important; }
+a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; font-weight: 600 !important; }
+a[class*="permission_"]:hover { filter: brightness(0.8) !important; text-decoration: underline !important; }
 .permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #1d4ed8 !important; }
 .permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #991b1b !important; } 
 .permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #dc2626 !important; } 
@@ -370,7 +369,7 @@ svg { fill: var(--hb-text) !important; }
 .internal-mark, .tl_notice, table#torrent_table strong { color: var(--hb-warn) !important; fill: var(--hb-warn) !important; filter: none !important;}
 
 .torrent_icons i, .torrent_icons .fa { transition: transform 0.15s ease, filter 0.15s ease !important; display: inline-block !important; filter: none !important; }
-a.simple-tabs__link--active, .selected_link { color: #0d9488 !important; font-weight: bold !important; }
+a.simple-tabs__link--active, .selected_link { color: #0d9488 !important; font-weight: bold !important; text-decoration: underline !important; }
 .token_ic, .token_ic i, .token_ic .fa { color: #c026d3 !important; }
 .reseed_ic, .reseed_ic i, .reseed_ic .fa { color: #b45309 !important; }
 .download_ic, .download_ic i, .download_ic .fa { color: #16a34a !important; }
