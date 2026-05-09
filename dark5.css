@@ -1,19 +1,7 @@
 @import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-/* =========================================
-   HEBITS STEALTH SOLID PRO (V81 - THE ULTIMATE FIX)
-   - 📱 SIDEBAR FIX: Sidebar boxes and stats lists now perfectly match the rounded dark panels.
-   - 🎨 GRAY TEXT FIX: Forced all list items, paragraphs, and cells to use clear, bright text.
-   - 📱 MEGA MOBILE: Massively increased fonts for the sidebar and all general text.
-   - 🚨 SYSTEM ALERTS FIX: Re-engineered Globalboxes for perfect Dark Mode contrast.
-   - 💻 SEARCH BG FIX: Protected advanced search table from global row colors.
-   - 🔤 OMNI-FONT OVERRIDE: Forced Inter on absolutely every text node.
-   - 🌟 MOVIES GRID: 2 Massive posters/row, pure CSS grid, flex-aligned.
-   ========================================= */
-
 :root {
-  /* THE PURE MONOCHROME PALETTE */
   --bg-deep: #09090b; 
   --hb-panel: #18181b; 
   --hb-panel-hover: #27272a; 
@@ -36,15 +24,7 @@
   --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4); 
 }
 
-/* =========================================
-   DESKTOP & GENERAL STYLES
-   ========================================= */
-/* THE OMNI-FONT OVERRIDE: Targets literally every text container to avoid defaults */
-body, html, .body, .tdhack, p, label, a, h1, h2, h3, h4, h5, h6, 
-input, select, option, optgroup, textarea, button, td, th, tr, tbody, thead, table,
-strong, b, ul, li, em, small, center, blockquote, q, dt, dd, dl, form, fieldset, legend, caption,
-div:not([class*="fa"]):not([class*="icon"]):not(.fonticon), 
-span:not([class*="fa"]):not([class*="icon"]):not(.fonticon) {
+*:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
   font-family: var(--hb-font) !important;
 }
 
@@ -56,36 +36,29 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 #header { display: contents !important; }
 
-/* 🌟 MAIN NAVIGATION MENU & DROPDOWNS 🌟 */
 #menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
 #menu ul > li { position: relative !important; }
 
-/* Menu links styling - System Colors (like Donate red) are protected */
 #menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
 #menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
 #menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
 #menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
-/* Dropdowns */
 #menu ul > li > ul { display: none; position: absolute !important; top: 100% !important; right: 0 !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; padding: 8px 0 !important; z-index: 100000 !important; min-width: 180px !important; }
 #menu ul > li:hover > ul { display: flex !important; flex-direction: column !important; }
 #menu ul > li > ul > li { display: block !important; width: 100% !important; }
 #menu ul > li > ul > li > a { display: block !important; padding: 12px 20px !important; font-size: 15px !important; color: var(--hb-text) !important; text-align: right !important; white-space: nowrap !important; border-radius: 0 !important; box-shadow: none !important; }
 #menu ul > li > ul > li > a:hover { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 
-/* =========================================
-   USER INFO STATS BAR
-   ========================================= */
 #userinfo {
   display: flex !important;
   flex-wrap: wrap !important;
   justify-content: center !important;
   align-items: center !important;
-  background: rgba(0, 0, 0, 0.65) !important; 
-  backdrop-filter: blur(20px) !important; 
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important; 
-  border-bottom: none !important; 
+  background: #000000 !important; 
+  backdrop-filter: none !important; 
+  -webkit-backdrop-filter: none !important;
+  border: none !important; 
   border-radius: 16px 16px 0 0 !important; 
   padding: 20px 20px 10px 20px !important;
   margin: 60px auto 0 auto !important; 
@@ -94,29 +67,28 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   box-sizing: border-box !important;
 }
 #userinfo ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; align-items: center !important; }
-#userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(0, 0, 0, 0.5) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
+#userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(255, 255, 255, 0.05) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
 #userinfo li:hover { border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; }
 #userinfo li a { color: var(--hb-muted) !important; display: inline-flex !important; align-items: center !important; }
 #userinfo li a:hover { color: var(--hb-text-strong) !important; }
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
 #userinfo li svg { margin-left: 6px !important; }
 
-/* QUICK SEARCH BARS (PILL DESIGN) */
 #searchbars-wrapper { 
-  background: rgba(0, 0, 0, 0.65) !important; 
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important; 
-  border-top: none !important; 
+  background: #000000 !important; 
+  backdrop-filter: none !important; 
+  -webkit-backdrop-filter: none !important;
+  border: none !important; 
   border-radius: 0 0 16px 16px !important; 
   padding: 10px 0 24px 0 !important; 
-  margin-bottom: 30px !important; 
+  margin-bottom: 30px !important;
+  width: 100% !important;
   box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; 
+  box-sizing: border-box !important;
 }
 #searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 
-/* GLOBALLY CATCH ALL INPUTS */
 input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), 
 textarea, select { 
   background: var(--bg-deep) !important; 
@@ -124,7 +96,6 @@ textarea, select {
   border-radius: var(--hb-radius-sm) !important; 
   color: var(--hb-text-strong) !important; 
   padding: 10px 14px !important; 
-  font-family: var(--hb-font) !important; 
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important; 
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; 
 }
@@ -136,7 +107,6 @@ textarea:focus, select:focus {
   outline: none !important; 
 }
 
-/* SEARCHBAR PILL FIX */
 #searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { 
   width: 100% !important; 
   border-radius: 100px !important; 
@@ -159,9 +129,6 @@ textarea:focus, select:focus {
 #searchbars input::placeholder { color: var(--hb-muted) !important; font-weight: 400 !important; transition: opacity 0.3s ease !important; }
 #searchbars input:focus::placeholder { opacity: 0 !important; }
 
-/* =========================================
-   ADVANCED SEARCH PANEL
-   ========================================= */
 form.search_form, form.search_form > div { background: transparent !important; border: none !important; box-shadow: none !important; }
 
 form.search_form:not(#searchbars form) > .box.filter_torrents {
@@ -187,13 +154,18 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 }
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 
-.filter_torrents table.layout, .filter_torrents table.layout tr, .filter_torrents table.layout tr > td, .filter_torrents table.layout tr:nth-child(n) > td, .filter_torrents table.layout tr:hover > td { 
-  background: transparent !important; border: none !important; box-shadow: none !important; 
+.filter_torrents table.layout, 
+.filter_torrents table.layout tr, 
+.filter_torrents table.layout tr > td, 
+.filter_torrents table.layout tr:nth-child(n) > td,
+.filter_torrents table.layout tr:hover > td { 
+  background: transparent !important; 
+  border: none !important; 
+  box-shadow: none !important; 
 }
 
-/* =========================================
-   🚨 ALERTS & SYSTEM BOXES (RESTORED SYSTEM COLORS) 🚨
-   ========================================= */
+.sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
+
 #alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
 
 .alertbar { 
@@ -209,19 +181,31 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   color: var(--hb-text-strong) !important;
 }
 
-.alertbar.redbox { background: rgba(220, 38, 38, 0.15) !important; border-color: rgba(220, 38, 38, 0.4) !important; color: #fca5a5 !important; }
-.alertbar.greenbox { background: rgba(5, 150, 105, 0.15) !important; border-color: rgba(5, 150, 105, 0.4) !important; color: #6ee7b7 !important; }
-.alertbar.goldbox, .alertbar.yellowbox { background: rgba(217, 119, 6, 0.15) !important; border-color: rgba(217, 119, 6, 0.4) !important; color: #fde047 !important; }
-.alertbar.bluebox { background: rgba(37, 99, 235, 0.15) !important; border-color: rgba(37, 99, 235, 0.4) !important; color: #93c5fd !important; }
+.alertbar.redbox { 
+  background: rgba(220, 38, 38, 0.15) !important; 
+  border-color: rgba(220, 38, 38, 0.4) !important; 
+  color: #fca5a5 !important; 
+}
+.alertbar.greenbox { 
+  background: rgba(5, 150, 105, 0.15) !important; 
+  border-color: rgba(5, 150, 105, 0.4) !important; 
+  color: #6ee7b7 !important; 
+}
+.alertbar.goldbox, .alertbar.yellowbox { 
+  background: rgba(217, 119, 6, 0.15) !important; 
+  border-color: rgba(217, 119, 6, 0.4) !important; 
+  color: #fde047 !important; 
+}
+.alertbar.bluebox { 
+  background: rgba(37, 99, 235, 0.15) !important; 
+  border-color: rgba(37, 99, 235, 0.4) !important; 
+  color: #93c5fd !important; 
+}
 
 .alertbar span { text-shadow: none !important; }
 .alertbar span:not([style*="color"]) { color: inherit !important; }
 .alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
 
-/* =========================================
-   ALL TABLES, PANELS & SIDEBAR UNIFICATION
-   ========================================= */
-/* Ensure all boxes, including sidebar panels, get the sleek design */
 .box, .sidebar .box, .panel__body, table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, #inbox .box { 
   background: var(--hb-panel) !important; 
   border: 1px solid var(--hb-border) !important; 
@@ -230,22 +214,16 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   box-shadow: var(--hb-shadow) !important; 
   margin-bottom: 24px !important; 
   transition: transform 0.2s ease, box-shadow 0.2s ease !important; 
+  color: var(--hb-text) !important; 
   overflow: hidden !important; 
   border-collapse: collapse !important;
 }
 .box:hover, .sidebar .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* 🎨 THE GRAY TEXT FIX: Force bright text color on normal elements inside panels */
-.box, .panel__body, td, th, li, p { color: var(--hb-text) !important; text-shadow: none !important; }
-strong, b, h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; }
-
-/* 📰 NEWS BODY FIX: Ensure announcements have no stray light background */
 .newsbody, .box > .pad { background: transparent !important; color: var(--hb-text) !important; }
 
-/* General Table Cleanup */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
-/* Universal Box Headers */
 .head, .sidebar .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
   background: var(--bg-deep) !important; 
   color: var(--hb-text-strong) !important; 
@@ -260,24 +238,16 @@ table tr.colhead_dark:first-child td, table tr.colhead:first-child td {
   border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
 }
 
-/* Sidebar specific internal padding (Stats Lists) */
-.sidebar ul.stats, .sidebar ul.nobullet { padding: 15px !important; margin: 0 !important; }
-.sidebar ul.stats li, .sidebar ul.nobullet li { padding: 8px 0 !important; border-bottom: 1px solid var(--hb-border-soft) !important; }
-.sidebar ul.stats li:last-child, .sidebar ul.nobullet li:last-child { border-bottom: none !important; }
-
-/* Global Row Backgrounds & Hovers */
 table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
 table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: #111111 !important; border-bottom: 1px solid var(--hb-border) !important; }
 table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-shadow: none !important; }
 table:not(.movies_chart) tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
 
-/* Grouped Torrents Rows */
 tr.group_torrent:nth-child(n) > td { background: #000000 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
 tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; } 
 tr.group_torrent:hover:nth-child(n) > td { background: var(--hb-panel) !important; box-shadow: none !important; }
 tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; } 
 
-/* LATEST TORRENTS CAROUSEL */
 #latest5tor .owl-stage-outer { padding-top: 15px !important; padding-bottom: 20px !important; margin-top: -15px !important; margin-bottom: -20px !important; }
 #latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
 #latest5tor .owl-item { display: flex !important; float: none !important; }
@@ -299,9 +269,7 @@ tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-
 #latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
 #latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
-/* =========================================
-   🌟 MOVIES / SERIES GRID VIEW (DESKTOP) 🌟
-   ========================================= */
+
 table.movies_chart { 
   border-spacing: 15px !important; 
   border-collapse: separate !important; 
@@ -343,19 +311,16 @@ table.movies_chart td.movie-item .movie-item-tags a {
   font-size: 12px !important;
 }
 
-/* =========================================
-   GENERAL ELEMENTS
-   ========================================= */
-/* Protect explicitly styled links from global override */
-a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]) { color: var(--hb-link); }
-a:not([class*="permission_"]):not([href*="user.php?id="]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
-
 a.show_torrents, a.hide_torrents { filter: invert(1) opacity(0.5) !important; transition: all 0.2s ease !important; }
 a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1) !important; transform: scale(1.1); }
 td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: #ffffff !important; text-shadow: none !important; }
 
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
 table.forum_post td.avatar { border-left: none !important; }
+
+.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
+
+.forum_post .body { color: var(--hb-text) !important; }
 
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
@@ -364,25 +329,34 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-mut
 
 blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-a { text-decoration: none !important; transition: color 0.15s ease !important; }
+a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); }
+a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
+
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 500 !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; }
 
-/* PERMISSIONS COLORS */
 a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; }
 a[class*="permission_"]:hover { filter: brightness(1.2) !important; }
-a.permission_staff { font-weight: bold !important; color: #60a5fa !important; }
-a.permission_1000  { font-weight: bold !important; color: #ef4444 !important; } 
-a.permission_900   { font-weight: bold !important; color: #f43f5e !important; } 
-a.permission_800   { font-weight: bold !important; color: #38bdf8 !important; } 
-a.permission_700   { font-weight: bold !important; color: #fb923c !important; } 
-a.permission_600   { font-weight: bold !important; color: #e879f9 !important; } 
-a.permission_450   { font-weight: bold !important; color: #7dd3fc !important; } 
-a.permission_400   { color: #f472b6 !important; } 
-a.permission_205   { color: #4ade80 !important; } 
-a.permission_200   { color: #34d399 !important; } 
-a.permission_150   { font-weight: bold !important; color: #fbbf24 !important; } 
-a.permission_100   { color: #fcd34d !important; } 
+.permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #026ad4 !important; }
+.permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #cd0010 !important; } 
+.permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #F0133F !important; } 
+.permission_800, a.permission_800, span.permission_800   { font-weight: bold !important; color: #026ad4 !important; } 
+.permission_700, a.permission_700, span.permission_700   { font-weight: bold !important; color: #b72b06 !important; } 
+.permission_600, a.permission_600, span.permission_600   { font-weight: bold !important; color: #c46ebd !important; } 
+.permission_450, a.permission_450, span.permission_450   { font-weight: bold !important; color: #66CCFF !important; } 
+.permission_400, a.permission_400, span.permission_400   { color: #FF0099 !important; } 
+.permission_205, a.permission_205, span.permission_205   { color: #00AB22 !important; } 
+.permission_200, a.permission_200, span.permission_200   { color: #00FF99 !important; } 
+.permission_150, a.permission_150, span.permission_150   { font-weight: bold !important; color: #FF9900 !important; } 
+.permission_100, a.permission_100, span.permission_100   { color: #FFF300 !important; } 
+.permission_17, a.permission_17, span.permission_17    { color: #66CC99 !important; } 
+.permission_16, a.permission_16, span.permission_16    { color: #CC9933 !important; } 
+.permission_15, a.permission_15, span.permission_15    { color: #99CC00 !important; } 
+.permission_14, a.permission_14, span.permission_14    { color: #66CC00 !important; } 
+.permission_13, a.permission_13, span.permission_13    { color: #009c00 !important; } 
+.permission_12, a.permission_12, span.permission_12    { color: #006b00 !important; } 
+.permission_11, a.permission_11, span.permission_11    { font-weight: bold !important; color: var(--hb-text-strong) !important; } 
+.permission_10, a.permission_10, span.permission_10    { color: var(--hb-text) !important; } 
 
 #taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 4px !important; padding: 4px 10px !important; font-size: 0.85em !important; font-weight: 500 !important; color: var(--hb-text) !important; transition: all 0.15s ease !important; display: inline-block !important; margin: 2px !important; }
 #taglist tr td a:hover, .tags a:hover, .movie-tooltip__tag:hover, #artist_list a:hover, ul.stats li a:hover, ul.tags li a:hover { background: var(--accent-primary) !important; border-color: var(--accent-primary) !important; color: #fff !important; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.5) !important; }
@@ -399,7 +373,7 @@ svg { fill: var(--hb-text) !important; }
 .report_ic i, .report_ic .fa-exclamation-triangle { color: var(--accent-secondary) !important; }
 .reseed_ic i, .reseed_ic .fa-refresh { color: var(--accent-secondary) !important; } 
 a[href*="action=edit"] i, .fa-pencil-square-o { color: var(--accent-secondary) !important; }
-a[href*="action=delete"] i, .fa-trash { color: var(--accent-secondary) !important; }
+a[href*action="delete"] i, .fa-trash { color: var(--accent-secondary) !important; }
 a[href*="torrentid="] i, .fa-link { color: var(--accent-secondary) !important; } 
 .torrent_icons a:hover i { transform: scale(1.15); color: #ffffff !important; filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) !important; }
 
@@ -430,9 +404,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
 
-/* =========================================
-   📱 MOBILE OVERHAUL (IMDB MAXIMUM SCALE UI) 📱
-   ========================================= */
 @media screen and (max-width: 1100px) {
   
   html, body, #wrapper { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
@@ -440,7 +411,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   
   #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 10px auto !important; box-sizing: border-box !important; }
 
-  /* 🌟 MOBILE MENU - WRAPS SO DROPDOWNS ESCAPE 🌟 */
   #menu ul { 
     display: flex !important; 
     flex-direction: row !important; 
@@ -454,17 +424,17 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #menu ul > li { flex: 0 0 auto !important; }
   #menu ul > li > a { font-size: 18px !important; padding: 16px 24px !important; }
 
-  /* 🌟 MOBILE USERINFO SWIPE 🌟 */
   #userinfo { 
     border-radius: 12px 12px 0 0 !important; 
     padding: 15px 10px !important; 
-    margin-top: 15px !important; 
+    margin: 15px auto 0 auto !important; 
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important;
     overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
     justify-content: flex-start !important; 
+    width: 100% !important;
   }
   #userinfo::-webkit-scrollbar { display: none !important; }
   #userinfo ul { 
@@ -480,11 +450,11 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #userinfo li { flex: 0 0 auto !important; font-size: 16px !important; padding: 10px 20px !important; }
   #userinfo li span.stat, #userinfo li .tooltip { font-size: 18px !important; }
 
-  /* 🌟 MOBILE SEARCHBARS SWIPE 🌟 */
   #searchbars-wrapper { 
     border-radius: 0 0 12px 12px !important; 
     padding: 0 0 15px 0 !important; 
-    margin-bottom: 20px !important;
+    margin: 0 auto 20px auto !important;
+    width: 100% !important;
   }
   #searchbars { 
     display: flex !important; 
@@ -510,7 +480,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
     width: 100% !important; 
   }
 
-  /* 🌟 MOBILE ALERTS SWIPE 🌟 */
   #alerts .alertbar { 
     display: flex !important; 
     flex-direction: row !important; 
@@ -526,13 +495,11 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #alerts .alertbar::-webkit-scrollbar { display: none !important; }
   #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
 
-  /* THE COLUMN FIX */
   .thin { display: flex !important; flex-direction: column !important; width: 100% !important; }
   #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
   .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
   .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
 
-  /* VOD CAROUSEL (HOMEPAGE) */
   #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
   #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; margin: 0 !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
@@ -546,9 +513,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* =========================================
-     🌟 MOBILE FORUMS / IP.BOARD STYLE 🌟
-     ========================================= */
   #latestForums .head { background: transparent !important; border: none !important; padding: 10px 0 !important; display: block !important; text-align: center !important; }
   #latestForums .head > a.tooltip { display: none !important; } 
   #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 6px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
@@ -558,36 +522,25 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
   #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
-  /* Individual Post Cards */
   #latest5posts td, #latest5torrents_p td { 
     display: block !important; width: 100% !important; padding: 24px 20px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
   }
 
-  /* MAGIC HACK */
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
   #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
-  /* Title (IMDB Massive Title) */
   #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
-  /* Category Badge */
   #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(255, 255, 255, 0.1) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 15px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -3px !important; }
 
-  /* Metadata Container */
   #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 18px !important; margin-top: 18px !important; font-size: 17px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
-  /* The Time */
   #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 16px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
   
-  /* The Username Link */
   #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 17px !important; font-weight: 600 !important; }
 
-  /* Show All Link */
   #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
-  /* =========================================
-     🌟 MOBILE MOVIES / SERIES GRID (FLEX-ALIGN) 🌟
-     ========================================= */
   table.movies_chart { 
     display: block !important; 
     width: 100% !important; 
@@ -659,12 +612,6 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.1) !important; color: var(--accent-secondary) !important; padding: 6px 12px !important; border-radius: 6px !important; margin: 3px !important; display: inline-block !important; }
   table.movies_chart td.movie-item .tags { font-size: 14px !important; margin-top: 10px !important; }
 
-  /* 🌟 SIDEBAR MEGA FIX (MOBILE) 🌟 */
-  .sidebar .box { font-size: 20px !important; }
-  .sidebar .head { font-size: 24px !important; padding: 20px !important; }
-  .sidebar ul.stats li, .sidebar ul.nobullet li { padding: 12px 0 !important; }
-
-  /* GENERAL TABLES / POSTS OVERRIDE FOR MOBILE */
   table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table { 
     display: block !important; 
     width: 100% !important; 
@@ -681,5 +628,10 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   table.forum_post td.body { padding: 20px 15px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
 
-/* CRITICAL OVERRIDE: Keep hidden elements hidden! */
 .hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { display: none !important; }
+
+td.cats_col div[class*="cats_"] {
+  transform: scale(2) !important;
+  transform-origin: center center !important;
+  display: inline-block !important;
+}
