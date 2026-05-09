@@ -321,6 +321,7 @@ table.forum_post td.avatar { border-left: none !important; }
 .box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
 
 .forum_post .body { color: var(--hb-text) !important; }
+.user_details { color: #ffffff !important; }
 
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
@@ -366,16 +367,19 @@ a[class*="permission_"]:hover { filter: brightness(1.2) !important; }
 svg { fill: var(--hb-text) !important; }
 .up_polygon, .upload_stat, .good, .goodish, .tl_seeding { fill: var(--hb-success) !important; color: var(--hb-success) !important; filter: none !important; }
 .down_polygon, .down_stat, .bad, .badish, .tl_snatched { fill: var(--hb-danger) !important; color: var(--hb-danger) !important; filter: none !important; }
-.internal-mark, .tl_notice, table#torrent_table strong, .bookmark_ic { color: var(--hb-warn) !important; fill: var(--hb-warn) !important; filter: none !important;}
+.internal-mark, .tl_notice, table#torrent_table strong { color: var(--hb-warn) !important; fill: var(--hb-warn) !important; filter: none !important;}
 
 .torrent_icons i, .torrent_icons .fa { transition: transform 0.15s ease, filter 0.15s ease !important; display: inline-block !important; filter: none !important; }
-.download_ic i, .download_ic .fa-download { color: var(--accent-secondary) !important; }
-.report_ic i, .report_ic .fa-exclamation-triangle { color: var(--accent-secondary) !important; }
-.reseed_ic i, .reseed_ic .fa-refresh { color: var(--accent-secondary) !important; } 
+a.simple-tabs__link--active, .selected_link { color: #88fff2 !important; font-weight: bold !important; }
+.token_ic, .token_ic i, .token_ic .fa { color: #ff7fff !important; }
+.reseed_ic, .reseed_ic i, .reseed_ic .fa { color: burlywood !important; }
+.download_ic, .download_ic i, .download_ic .fa { color: lightgreen !important; }
+.report_ic, .report_ic i, .report_ic .fa { color: lightcoral !important; }
+.bookmark_ic, .bookmark_ic i, .bookmark_ic .fa { color: yellow !important; }
 a[href*="action=edit"] i, .fa-pencil-square-o { color: var(--accent-secondary) !important; }
 a[href*action="delete"] i, .fa-trash { color: var(--accent-secondary) !important; }
 a[href*="torrentid="] i, .fa-link { color: var(--accent-secondary) !important; } 
-.torrent_icons a:hover i { transform: scale(1.15); color: #ffffff !important; filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) !important; }
+.torrent_icons a:hover i { transform: scale(1.15); filter: drop-shadow(0 0 4px rgba(255,255,255,0.4)) !important; }
 
 input[type="radio"], input[type="checkbox"] { accent-color: var(--accent-primary) !important; margin-left: 5px !important; }
 
