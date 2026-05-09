@@ -1,5 +1,5 @@
 @import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   --bg-deep: #f1f5f9; 
@@ -10,7 +10,7 @@
   --hb-text: #334155; 
   --hb-text-strong: #0f172a; 
   --hb-muted: #64748b; 
-  --hb-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --hb-font: "Inter", "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --accent-primary: #3b82f6; 
   --accent-secondary: #2563eb; 
   --accent-hover: #1d4ed8; 
