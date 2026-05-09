@@ -68,11 +68,13 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   box-sizing: border-box !important;
 }
 #userinfo ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; align-items: center !important; }
-#userinfo li { display: inline-flex !important; align-items: center !important; background: var(--bg-deep) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid var(--hb-border) !important; font-size: 13px !important; font-weight: 500 !important; transition: all 0.2s ease !important; white-space: nowrap !important; }
+#userinfo li { display: inline-flex !important; align-items: center !important; background: var(--bg-deep) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid var(--hb-border) !important; font-size: 13px !important; font-weight: 500 !important; transition: all 0.2s ease !important; white-space: nowrap !important; color: var(--hb-text) !important; }
 #userinfo li:hover { border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important; }
 #userinfo li a { color: var(--hb-muted) !important; display: inline-flex !important; align-items: center !important; }
 #userinfo li a:hover { color: var(--hb-text-strong) !important; }
-#userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; color: var(--hb-text-strong) !important; }
+#userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
+#userinfo li span.stat:not([class*="color"]):not([style*="color"]):not([class*="up"]):not([class*="down"]):not([class*="good"]):not([class*="bad"]):not(.r50):not(.r20):not(.r10):not(.r00):not(.upload_stat):not(.down_stat),
+#userinfo li .tooltip:not([class*="color"]):not([style*="color"]):not([class*="up"]):not([class*="down"]):not([class*="good"]):not([class*="bad"]):not(.r50):not(.r20):not(.r10):not(.r00):not(.upload_stat):not(.down_stat) { color: var(--hb-text-strong) !important; }
 #userinfo li svg { margin-left: 6px !important; }
 
 #searchbars-wrapper { 
@@ -320,7 +322,7 @@ table.forum_post td.avatar { border-left: none !important; }
 .box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
 
 .forum_post .body { color: var(--hb-text) !important; }
-.user_details { color: var(--hb-text-strong) !important; }
+.user_details { color: var(--hb-text-strong); }
 
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
