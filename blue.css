@@ -1,130 +1,64 @@
 @import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
-/* --- DARK MODE CORE VARIABLES --- */
 :root {
-  --bg-deep: #0f172a;           /* רקע האתר הכללי */
-  --hb-panel: #1e293b;          /* רקע פאנלים, טבלאות, כרטיסים */
-  --hb-panel-hover: #222f43;    /* רקע במעבר עכבר */
-  --hb-border: #334155;         /* גבולות ראשיים */
-  --hb-border-soft: #475569;    /* גבולות עדינים */
-  --hb-text: #cbd5e1;           /* טקסט רגיל */
-  --hb-text-strong: #f1f5f9;    /* טקסט מודגש/כותרות */
-  --hb-muted: #94a3b8;          /* טקסט עמום/משני */
+  --bg-deep: #0b1120; 
+  --hb-panel: #111827; 
+  --hb-panel-hover: #1e293b; 
+  --hb-border: #1e293b; 
+  --hb-border-soft: #334155; 
+  --hb-text: #cbd5e1; 
+  --hb-text-strong: #f8fafc; 
+  --hb-muted: #94a3b8; 
   --hb-font: "Inter", "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  
-  /* אקסטנט - כחול בהיר יותר לקריאות ב-Dark */
-  --accent-primary: #3b82f6; 
+  --accent-primary: #2563eb; 
   --accent-secondary: #60a5fa; 
-  --accent-hover: #2563eb; 
-  
-  /* קישורים */
-  --hb-link: #60a5fa; 
-  --hb-link-hover: #93c5fd; 
-  
-  /* צבעי סמנטיקה - הותאמו ל-Dark */
-  --hb-success: #4ade80;        /* ירוק יחס טוב */
-  --hb-danger: #f87171;         /* אדום יחס גרוע */
-  --hb-warn: #fbbf24;           /* כתום סימון */
-  
+  --accent-hover: #1d4ed8; 
+  --hb-link: #e2e8f0; 
+  --hb-link-hover: #ffffff; 
+  --hb-success: #10b981;
+  --hb-danger: #ef4444;
+  --hb-warn: #eab308;
   --hb-radius-sm: 6px;
   --hb-radius: 12px;
-  
-  /* צללים מותאמים לכהה */
-  --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2); 
+  --hb-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4); 
 }
 
-/* --- פונטים --- */
 *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
   font-family: var(--hb-font) !important;
 }
 
-/* --- גוף האתר --- */
-body { 
-  background: var(--bg-deep) !important; 
-  color: var(--hb-text) !important; 
-  letter-spacing: 0px !important; 
-  overflow-x: hidden !important; 
-}
+body { background: var(--bg-deep) !important; color: var(--hb-text) !important; letter-spacing: 0px !important; overflow-x: hidden !important; }
 body::before, body::after { display: none !important; }
 html, .body, .tdhack { background: transparent !important; }
 html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; }
 
-/* --- מבנה תוכן --- */
 #content { width: 75% !important; max-width: none !important; margin: 0 auto !important; }
 #header { display: contents !important; }
 
-/* --- תפריט ראשי --- */
-#menu { 
-  position: sticky !important; 
-  top: 0 !important; 
-  z-index: 99999 !important; 
-  background: var(--hb-panel) !important; /* כהה */
-  border-bottom: 1px solid var(--hb-border) !important; 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important; 
-  width: 100% !important; 
-  margin: 0 !important; 
-  overflow: visible !important; 
-}
+#menu { position: sticky !important; top: 0 !important; z-index: 99999 !important; background: #060b14 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.8) !important; width: 100% !important; margin: 0 !important; overflow: visible !important; }
 #menu ul > li { position: relative !important; }
 
-/* תפריט אב */
-#menu ul > li > a { 
-  font-weight: 500 !important; 
-  padding: 14px 20px !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  transition: background-color 0.15s ease, color 0.15s ease !important; 
-  display: inline-block !important; 
-  color: var(--hb-text) !important;
-}
-#menu ul > li > a:hover, #header > #menu ul > li.active > a { 
-  background: var(--bg-deep) !important; 
-  color: var(--hb-text-strong) !important; 
-  box-shadow: inset 0 -3px 0 var(--accent-primary) !important; 
-}
+#menu ul > li > a { font-weight: 500 !important; padding: 14px 20px !important; border-radius: var(--hb-radius-sm) !important; transition: background-color 0.15s ease, color 0.15s ease !important; display: inline-block !important; }
+#menu ul > li > a:not([style*="color"]) { color: var(--hb-link) !important; }
+#menu ul > li > a:not([style*="color"]):hover, #header > #menu ul > li.active > a:not([style*="color"]) { color: var(--hb-text-strong) !important; }
+#menu ul > li > a:hover, #header > #menu ul > li.active > a { background: var(--hb-panel) !important; box-shadow: inset 0 -3px 0 var(--accent-secondary) !important; }
 
-/* תפריט נפתח (Sub-menu) */
-#menu ul > li > ul { 
-  display: none; 
-  position: absolute !important; 
-  top: 100% !important; 
-  right: 0 !important; 
-  background: var(--hb-panel) !important; 
-  border: 1px solid var(--hb-border) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important; 
-  padding: 8px 0 !important; 
-  z-index: 100000 !important; 
-  min-width: 180px !important; 
-}
+#menu ul > li > ul { display: none; position: absolute !important; top: 100% !important; right: 0 !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: var(--hb-radius-sm) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; padding: 8px 0 !important; z-index: 100000 !important; min-width: 180px !important; }
 #menu ul > li:hover > ul { display: flex !important; flex-direction: column !important; }
 #menu ul > li > ul > li { display: block !important; width: 100% !important; }
-#menu ul > li > ul > li > a { 
-  display: block !important; 
-  padding: 12px 20px !important; 
-  font-size: 15px !important; 
-  color: var(--hb-text) !important; 
-  text-align: right !important; 
-  white-space: nowrap !important; 
-  border-radius: 0 !important; 
-  box-shadow: none !important; 
-}
-#menu ul > li > ul > li > a:hover { 
-  background: var(--bg-deep) !important; 
-  color: var(--hb-text-strong) !important; 
-}
+#menu ul > li > ul > li > a { display: block !important; padding: 12px 20px !important; font-size: 15px !important; color: var(--hb-text) !important; text-align: right !important; white-space: nowrap !important; border-radius: 0 !important; box-shadow: none !important; }
+#menu ul > li > ul > li > a:hover { background: var(--hb-border-soft) !important; color: var(--hb-text-strong) !important; }
 
-/* --- בר משתמש (Userinfo Pills) --- */
 #userinfo {
   display: flex !important;
   flex-wrap: wrap !important;
   justify-content: center !important;
   align-items: center !important;
-  background: var(--hb-panel) !important; /* כהה */
+  background: #060b14 !important; 
   backdrop-filter: none !important; 
   -webkit-backdrop-filter: none !important;
   border: none !important; 
-  border-bottom: 1px solid var(--hb-border) !important;
   border-radius: 16px 16px 0 0 !important; 
   padding: 20px 20px 10px 20px !important;
   margin: 60px auto 0 auto !important; 
@@ -133,42 +67,23 @@ html { scroll-padding-top: 90px !important; scroll-behavior: smooth !important; 
   box-sizing: border-box !important;
 }
 #userinfo ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 10px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; align-items: center !important; }
-#userinfo li { 
-  display: inline-flex !important; 
-  align-items: center !important; 
-  background: var(--bg-deep) !important; /* עמוק יותר */
-  padding: 6px 14px !important; 
-  border-radius: 100px !important; 
-  border: 1px solid var(--hb-border) !important; 
-  font-size: 13px !important; 
-  font-weight: 500 !important; 
-  transition: all 0.2s ease !important; 
-  white-space: nowrap !important; 
-  color: var(--hb-text) !important; 
-}
-#userinfo li:hover { 
-  border-color: var(--accent-primary) !important; 
-  transform: translateY(-2px) !important; 
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important; 
-}
+#userinfo li { display: inline-flex !important; align-items: center !important; background: rgba(255, 255, 255, 0.05) !important; padding: 6px 14px !important; border-radius: 100px !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; font-size: 13px !important; font-weight: 500 !important; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important; transition: all 0.2s ease !important; white-space: nowrap !important; color: var(--hb-text) !important; }
+#userinfo li:hover { border-color: var(--accent-primary) !important; transform: translateY(-2px) !important; }
 #userinfo li a { color: var(--hb-muted) !important; display: inline-flex !important; align-items: center !important; }
 #userinfo li a:hover { color: var(--hb-text-strong) !important; }
 #userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin-right: 6px !important; }
 #userinfo li span.stat:not([class*="color"]):not([style*="color"]):not([class*="up"]):not([class*="down"]):not([class*="good"]):not([class*="bad"]):not(.r50):not(.r20):not(.r10):not(.r00):not(.upload_stat):not(.down_stat),
 #userinfo li .tooltip:not([class*="color"]):not([style*="color"]):not([class*="up"]):not([class*="down"]):not([class*="good"]):not([class*="bad"]):not(.r50):not(.r20):not(.r10):not(.r00):not(.upload_stat):not(.down_stat) { color: var(--hb-text-strong) !important; }
-#userinfo li svg { margin-left: 6px !important; fill: var(--hb-text) !important; }
+#userinfo li svg { margin-left: 6px !important; }
 
-/* --- צבעי יחס (UP/DOWN/Warnings) --- */
-.r00 { color: #f87171 !important; } /* Danger */
-.r10 { color: #fb923c !important; } /* Warn strong */
-.r20 { color: #fbbf24 !important; } /* Warn */
-.r50, .r99 { color: #4ade80 !important; } /* Success */
-/* צבע טלאי מיוחד */
-span[style*="#00fff6"], span[style*="rgb(0, 255, 246)"], font[color="#00fff6"] { color: #38bdf8 !important; }
+.r00 { color: #fca5a5 !important; } 
+.r10 { color: #fdba74 !important; } 
+.r20 { color: #fcd34d !important; } 
+.r50, .r99 { color: #86efac !important; } 
+span[style*="#00fff6"], span[style*="rgb(0, 255, 246)"], font[color="#00fff6"] { color: #7dd3fc !important; }
 
-/* --- בר חיפוש (Searchbars Pill) --- */
 #searchbars-wrapper { 
-  background: var(--hb-panel) !important; /* כהה */
+  background: #060b14 !important; 
   backdrop-filter: none !important; 
   -webkit-backdrop-filter: none !important;
   border: none !important; 
@@ -176,32 +91,30 @@ span[style*="#00fff6"], span[style*="rgb(0, 255, 246)"], font[color="#00fff6"] {
   padding: 10px 0 24px 0 !important; 
   margin-bottom: 30px !important;
   width: 100% !important;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important; 
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; 
   box-sizing: border-box !important;
 }
 #searchbars { display: flex !important; flex-wrap: wrap !important; gap: 16px !important; width: 75% !important; max-width: none !important; margin: 0 auto !important; justify-content: center !important; align-items: center !important; }
 #searchbars form.search_form { flex: 1 1 150px !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 
-/* אינפוטים כלליים */
 input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), 
 textarea, select { 
-  background: var(--bg-deep) !important; /* רקע עמוק */
-  border: 1px solid var(--hb-border) !important; 
+  background: var(--bg-deep) !important; 
+  border: 1px solid var(--hb-border-soft) !important; 
   border-radius: var(--hb-radius-sm) !important; 
   color: var(--hb-text-strong) !important; 
   padding: 10px 14px !important; 
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important; 
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important; 
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5) !important; 
 }
 input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus, 
 textarea:focus, select:focus { 
-  background: var(--hb-panel) !important; /* מובהר קצת */
-  border-color: var(--accent-primary) !important; 
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3) !important; 
+  background: var(--hb-panel) !important; 
+  border-color: var(--accent-secondary) !important; 
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25) !important; 
   outline: none !important; 
 }
 
-/* אינפוט חיפוש ספציפי בבר */
 #searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]) { 
   width: 100% !important; 
   border-radius: 100px !important; 
@@ -213,42 +126,42 @@ textarea:focus, select:focus {
 }
 #searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):hover { 
   background: var(--hb-panel) !important; 
-  border-color: var(--accent-secondary) !important; 
+  border-color: var(--accent-primary) !important; 
   transform: translateY(-2px) !important; 
-  box-shadow: 0 6px 14px rgba(0,0,0,0.3) !important; 
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4) !important; 
+}
+#searchbars input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus { 
+  transform: translateY(-3px) !important; 
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25), 0 8px 20px rgba(0,0,0,0.6) !important; 
 }
 #searchbars input::placeholder { color: var(--hb-muted) !important; font-weight: 400 !important; transition: opacity 0.3s ease !important; }
 #searchbars input:focus::placeholder { opacity: 0 !important; }
 
-/* ביטול רקעים לטפסי חיפוש */
 form.search_form, form.search_form > div { background: transparent !important; border: none !important; box-shadow: none !important; }
 
-/* --- פילטרים (Filter Box) --- */
 form.search_form:not(#searchbars form) > .box.filter_torrents {
-  background: var(--hb-panel) !important; 
+  background: #060b14 !important; 
   border: 1px solid var(--hb-border) !important;
   border-top: 4px solid var(--accent-primary) !important; 
   border-radius: var(--hb-radius) !important;
-  box-shadow: var(--hb-shadow) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important;
   padding: 0 !important;
   overflow: hidden !important;
   margin-bottom: 30px !important;
   transition: none !important;
 }
-form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform: none !important; box-shadow: var(--hb-shadow) !important; }
+form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform: none !important; box-shadow: 0 15px 35px rgba(0,0,0,0.5) !important; }
 
 .filter_torrents .head { 
-  background: var(--bg-deep) !important; /* כהה יותר */
+  background: #060b14 !important; 
   border-bottom: 1px solid var(--hb-border) !important; 
   padding: 15px 20px !important; 
   font-size: 16px !important; 
   border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
   border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
-  color: var(--hb-text-strong) !important;
 }
 .filter_torrents .pad { padding: 20px !important; background: transparent !important; }
 
-/* ניקוי טבלת הפילטרים */
 .filter_torrents table.layout, 
 .filter_torrents table.layout tr, 
 .filter_torrents table.layout tr > td, 
@@ -259,74 +172,45 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   box-shadow: none !important; 
 }
 
-/* --- סרגל צד (Sidebar) --- */
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
-/* --- התראות (Alerts) --- */
-#alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
+#alerts { background: transparent !important; padding: 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 8px !important; margin-bottom: 20px !important; }
+
+.alertbar:has(> .alertbar) { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; display: flex !important; justify-content: center !important; }
 
 .alertbar { 
-  border-radius: var(--hb-radius-sm) !important; 
-  box-shadow: var(--hb-shadow) !important; 
-  padding: 14px 20px !important; 
+  border-radius: 100px !important; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4) !important; 
+  padding: 10px 24px !important; 
   text-align: center !important; 
   font-weight: 600 !important; 
   font-size: 15px !important; 
-  margin-bottom: 12px !important;
+  margin: 0 auto 10px auto !important;
   border: 1px solid var(--hb-border) !important;
-  background: var(--hb-panel) !important; /* כהה רגיל להודעות מערכת */
+  background: var(--hb-panel) !important;
   color: var(--hb-text-strong) !important;
+  width: fit-content !important;
+  min-width: 250px !important;
+  max-width: 90% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-/* צבעי קופסאות התראה ב-Dark */
-.alertbar.redbox { 
-  background: #7f1d1d !important; /* אדום כהה עמוק */
-  border-color: #b91c1c !important; 
-  color: #fecaca !important; /* טקסט בהיר */
-}
-.alertbar.greenbox { 
-  background: #064e3b !important; /* ירוק כהה עמוק */
-  border-color: #10b981 !important; 
-  color: #a7f3d0 !important; /* טקסט בהיר */
-}
-.alertbar.goldbox, .alertbar.yellowbox { 
-  background: #713f12 !important; /* זהב/חום כהה */
-  border-color: #f59e0b !important; 
-  color: #fef3c7 !important; /* טקסט בהיר */
-}
-.alertbar.bluebox { 
-  background: #1e3a8a !important; /* כחול כהה עמוק */
-  border-color: #3b82f6 !important; 
-  color: #bfdbfe !important; /* טקסט בהיר */
-}
+.alertbar.redbox { background: rgba(220, 38, 38, 0.15) !important; border-color: rgba(220, 38, 38, 0.4) !important; color: #fca5a5 !important; }
+.alertbar.greenbox { background: rgba(5, 150, 105, 0.15) !important; border-color: rgba(5, 150, 105, 0.4) !important; color: #6ee7b7 !important; }
+.alertbar.goldbox, .alertbar.yellowbox { background: rgba(217, 119, 6, 0.15) !important; border-color: rgba(217, 119, 6, 0.4) !important; color: #fde047 !important; }
+.alertbar.bluebox { background: rgba(37, 99, 235, 0.15) !important; border-color: rgba(37, 99, 235, 0.4) !important; color: #93c5fd !important; }
 
-/* ניקוי עיצוב טקסט בתוך התראות */
 .alertbar span { text-shadow: none !important; }
 .alertbar span:not([style*="color"]) { color: inherit !important; }
 .alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
 
-/* --- התראה ספציפית לכפילות הודעה פרטית (The Fix) --- */
-.alertbar:has(> .globalbox) { 
-  background: transparent !important; 
-  border: none !important; 
-  box-shadow: none !important; 
-  padding: 0 !important; 
-  display: flex !important; 
-  justify-content: center !important; 
-  margin-bottom: 24px !important; 
-}
-.alertbar > .globalbox { 
-  width: fit-content !important; 
-  min-width: 300px !important; 
-  border-radius: 100px !important; /* בועה */
-  margin: 0 !important; 
-  padding: 12px 24px !important; 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important; 
-}
+.alertbar:has(> .globalbox) { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; display: flex !important; justify-content: center !important; margin-bottom: 24px !important; }
+.alertbar > .globalbox { width: fit-content !important; min-width: 300px !important; border-radius: 100px !important; margin: 0 !important; padding: 12px 24px !important; box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important; }
 
-/* --- קופסאות כלליות (Boxes / Tables) --- */
 .box, .sidebar .box, .panel__body, table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, #inbox .box { 
-  background: var(--hb-panel) !important; /* כהה */
+  background: var(--hb-panel) !important; 
   border: 1px solid var(--hb-border) !important; 
   border-top: 3px solid var(--accent-primary) !important; 
   border-radius: var(--hb-radius) !important; 
@@ -337,20 +221,14 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
   overflow: hidden !important; 
   border-collapse: collapse !important;
 }
-.box:hover, .sidebar .box:hover { 
-  transform: translateY(-2px); 
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important; 
-}
+.box:hover, .sidebar .box:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8), 0 4px 6px -2px rgba(0, 0, 0, 0.5) !important; }
 
-/* פאדינג בתוך קופסה */
 .newsbody, .box > .pad { background: transparent !important; color: var(--hb-text) !important; }
 
-/* ניקוי ברירת מחדל של טבלאות */
 table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border-left: none !important; border-right: none !important; } 
 
-/* ראש טבלה / כותרות פאנל */
 .head, .sidebar .head, .colhead_dark, tr.colhead, tr.colhead td, tr.colhead_dark td, thead th, table th, .forum_category_title, #reply_box h3, #reply_box .head { 
-  background: var(--bg-deep) !important; /* כהה יותר */
+  background: var(--bg-deep) !important; 
   color: var(--hb-text-strong) !important; 
   font-weight: 600 !important; 
   border-bottom: 1px solid var(--hb-border) !important; 
@@ -358,153 +236,46 @@ table, tbody, tr, td, th { background-color: transparent !important; background-
   padding: 14px 16px !important; 
   text-shadow: none !important; 
 }
-/* פינות עגולות לכותרת הראשונה */
-table tr.colhead_dark:first-child td, table tr.colhead:first-child td {
-  border-top-left-radius: calc(var(--hb-radius) - 2px) !important;
-  border-top-right-radius: calc(var(--hb-radius) - 2px) !important;
-}
+table tr.colhead_dark:first-child td, table tr.colhead:first-child td { border-top-left-radius: calc(var(--hb-radius) - 2px) !important; border-top-right-radius: calc(var(--hb-radius) - 2px) !important; }
 
-/* --- טבלאות (שורות מתחלפות ב-Dark) --- */
 table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: var(--hb-panel) !important; border-bottom: 1px solid var(--hb-border) !important; }
-table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: #192130 !important; /* כהה קצת יותר */ border-bottom: 1px solid var(--hb-border) !important; }
-/* הובר שורה */
-table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: var(--hb-panel-hover) !important; box-shadow: none !important; }
-/* סימון סוף שורה בהובר */
+table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: #0e1526 !important; border-bottom: 1px solid var(--hb-border) !important; }
+table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: var(--bg-deep) !important; box-shadow: none !important; }
 table:not(.movies_chart) tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; }
 
-/* --- טבלת טורנטים מורחבת (Group Torrents) --- */
-tr.group_torrent:nth-child(n) > td { background: var(--bg-deep) !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
-/* סימון קבוע לקבוצה */
+tr.group_torrent:nth-child(n) > td { background: #060b14 !important; border-bottom: 1px solid var(--hb-border) !important; box-shadow: none !important; }
 tr.group_torrent > td:last-child { box-shadow: inset 3px 0 0 var(--hb-border-soft) !important; } 
-/* הובר לקבוצה */
 tr.group_torrent:hover:nth-child(n) > td { background: var(--hb-panel) !important; box-shadow: none !important; }
-/* סימון הובר לקבוצה */
 tr.group_torrent:hover > td:last-child { box-shadow: inset 4px 0 0 var(--accent-secondary) !important; } 
 
-/* --- נגן טורנטים אחרונים (Owl Carousel) --- */
 #latest5tor .owl-stage-outer { padding-top: 15px !important; padding-bottom: 20px !important; margin-top: -15px !important; margin-bottom: -20px !important; }
 #latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
 #latest5tor .owl-item { display: flex !important; float: none !important; }
-
-/* כרטיס סרט */
-#latest5tor .owl-item > div { 
-  background: var(--hb-panel) !important; /* כהה */
-  border: 1px solid var(--hb-border) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  padding: 10px !important; 
-  box-shadow: var(--hb-shadow) !important; 
-  transition: all 0.2s ease !important; 
-  text-align: center !important; 
-  position: relative !important; 
-  overflow: hidden !important; 
-  box-sizing: border-box !important; 
-  display: flex !important; 
-  flex-direction: column !important; 
-  width: 100% !important; 
-}
-/* הובר כרטיס */
-#latest5tor .owl-item > div:hover { 
-  border-color: var(--accent-secondary) !important; 
-  transform: translateY(-4px) !important; 
-  box-shadow: 0 8px 15px rgba(0,0,0,0.4) !important; 
-}
-
-/* תמונת פוסטר */
-#latest5tor .owl-item a > div[style*="background-image"] { 
-  height: 190px !important; 
-  background-size: cover !important; 
-  background-position: center top !important; 
-  border-radius: 4px !important; 
-  margin-bottom: 12px !important; 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important; 
-  width: 100% !important; 
-  flex-shrink: 0 !important; 
-}
-/* כותרת סרט */
-#latest5tor .owl-item a > span.tooltip { 
-  display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; 
-  font-size: 13px !important; 
-  font-weight: 600 !important; 
-  color: var(--hb-text-strong) !important; /* בהיר */
-  white-space: normal !important; 
-  overflow: hidden !important; 
-  margin-bottom: 6px !important; 
-  line-height: 1.4 !important; 
-}
+#latest5tor .owl-item > div { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; padding: 10px !important; box-shadow: var(--hb-shadow) !important; transition: all 0.2s ease !important; text-align: center !important; position: relative !important; overflow: hidden !important; box-sizing: border-box !important; display: flex !important; flex-direction: column !important; width: 100% !important; }
+#latest5tor .owl-item > div:hover { border-color: var(--accent-secondary) !important; transform: translateY(-4px) !important; box-shadow: 0 8px 15px rgba(0,0,0,0.6) !important; }
+#latest5tor .owl-item a > div[style*="background-image"] { height: 190px !important; background-size: cover !important; background-position: center top !important; border-radius: 4px !important; margin-bottom: 12px !important; box-shadow: 0 2px 6px rgba(0,0,0,0.8) !important; width: 100% !important; flex-shrink: 0 !important; }
+#latest5tor .owl-item a > span.tooltip { display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; font-size: 13px !important; font-weight: 600 !important; color: var(--hb-text-strong) !important; white-space: normal !important; overflow: hidden !important; margin-bottom: 6px !important; line-height: 1.4 !important; }
 #latest5tor .owl-item br { display: none !important; }
-/* תת כותרת */
 #latest5tor .owl-item span[style*="font-size: 90%"] { display: block !important; font-size: 12px !important; color: var(--hb-muted) !important; margin-bottom: 10px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
-/* תחתית כרטיס */
-#latest5tor .owl-item > div > div[style*="font-size: 95%"] { 
-  margin-top: auto !important; 
-  font-size: 12px !important; 
-  color: var(--hb-text-strong) !important; 
-  font-weight: 500 !important; 
-  background: var(--bg-deep) !important; /* עמוק */
-  border-radius: 4px !important; 
-  padding: 6px 0 !important; 
-  border: 1px solid var(--hb-border-soft) !important; 
-  width: 100% !important; 
-}
+#latest5tor .owl-item > div > div[style*="font-size: 95%"] { margin-top: auto !important; font-size: 12px !important; color: var(--hb-text-strong) !important; font-weight: 500 !important; background: var(--bg-deep) !important; border-radius: 4px !important; padding: 6px 0 !important; border: 1px solid var(--hb-border-soft) !important; width: 100% !important; }
 
-/* כפתורי ניווט (Arrows) */
 #latest5tor .owl-nav { margin-top: 20px !important; text-align: center !important; display: flex !important; justify-content: center !important; gap: 12px !important; }
 #latest5tor .owl-dots { margin-top: 15px !important; text-align: center !important; }
 #latest5tor .owl-nav button, #latest5tor .owl-dots button { padding: 0 !important; box-shadow: none !important; background: transparent !important; border: none !important; }
-
-#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next { 
-  display: flex !important; align-items: center !important; justify-content: center !important; 
-  width: 40px !important; height: 40px !important; 
-  background: var(--hb-panel) !important; /* כהה */
-  border: 1px solid var(--hb-border-soft) !important; 
-  border-radius: 50% !important; 
-  color: var(--accent-secondary) !important; /* כחול בהיר */
-  font-size: 24px !important; 
-  line-height: 1 !important; 
-  transition: all 0.2s ease !important; 
-}
+#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next { display: flex !important; align-items: center !important; justify-content: center !important; width: 40px !important; height: 40px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 50% !important; color: var(--accent-secondary) !important; font-size: 24px !important; line-height: 1 !important; transition: all 0.2s ease !important; }
 #latest5tor .owl-nav button.owl-prev span, #latest5tor .owl-nav button.owl-next span { margin-top: -4px !important; }
-/* הובר חצים */
-#latest5tor .owl-nav button.owl-prev:hover, #latest5tor .owl-nav button.owl-next:hover { 
-  background: var(--accent-primary) !important; 
-  color: #fff !important; 
-  border-color: var(--accent-primary) !important; 
-  transform: scale(1.1) !important; 
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5) !important;
-}
-/* נקודות ניווט (Dots) */
+#latest5tor .owl-nav button.owl-prev:hover, #latest5tor .owl-nav button.owl-next:hover { background: var(--accent-primary) !important; color: #fff !important; border-color: var(--accent-secondary) !important; transform: scale(1.1) !important; }
 #latest5tor .owl-dots .owl-dot { display: inline-block !important; margin: 0 5px !important; }
-#latest5tor .owl-dots .owl-dot span { 
-  display: block !important; 
-  width: 8px !important; height: 8px !important; 
-  background: var(--hb-border-soft) !important; /* אפור עמום */
-  border-radius: 50% !important; 
-  transition: background-color 0.2s ease, transform 0.2s ease !important; 
-  margin: 0 !important; 
-}
-/* נקודה פעילה */
-#latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { 
-  background: var(--accent-secondary) !important; /* כחול בהיר */
-  transform: scale(1.2) !important; 
-}
+#latest5tor .owl-dots .owl-dot span { display: block !important; width: 8px !important; height: 8px !important; background: var(--hb-border-soft) !important; border-radius: 50% !important; transition: background-color 0.2s ease !important; margin: 0 !important; }
+#latest5tor .owl-dots .owl-dot.active span, #latest5tor .owl-dots .owl-dot:hover span { background: var(--accent-secondary) !important; transform: scale(1.2) !important; }
 
-/* --- נגן סרטים/מצעדים (Movies Chart Table) --- */
-table.movies_chart { 
-  border-spacing: 15px !important; 
-  border-collapse: separate !important; 
-  background: transparent !important; 
-  border: none !important; 
-  box-shadow: none !important; 
-}
+table.movies_chart { border-spacing: 15px !important; border-collapse: separate !important; background: transparent !important; border: none !important; box-shadow: none !important; }
 table.movies_chart tr, table.movies_chart tbody { background: transparent !important; border: none !important; box-shadow: none !important; }
-
-/* ניקוי שורות כללי */
 table.movies_chart tr:nth-child(n) > td, table.movies_chart tr.rowa > td, table.movies_chart tr.rowb > td { background: transparent !important; border: none !important; box-shadow: none !important; }
 table.movies_chart tr:hover > td { background: transparent !important; box-shadow: none !important; }
 
-/* כרטיס סרט במצעד */
 table.movies_chart td.movie-item {
-  background: var(--hb-panel) !important; /* כהה */
+  background: var(--hb-panel) !important;
   border: 1px solid var(--hb-border) !important;
   border-radius: var(--hb-radius) !important;
   box-shadow: var(--hb-shadow) !important;
@@ -512,285 +283,123 @@ table.movies_chart td.movie-item {
   position: relative !important;
   padding: 12px !important;
 }
-/* פוסטר בתוך מצעד */
 table.movies_chart td.movie-item > a > div[style*="background-image"] { border-radius: 6px !important; background-size: cover !important; }
-
-/* הובר כרטיס מצעד */
-table.movies_chart td.movie-item:hover,
-table.movies_chart tr:hover > td.movie-item:hover {
-  background: var(--hb-panel-hover) !important; /* מובהר */
+table.movies_chart td.movie-item:hover, table.movies_chart tr:hover > td.movie-item:hover {
+  background: var(--hb-panel-hover) !important;
   border-color: var(--hb-border-soft) !important;
   transform: translateY(-6px) !important;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 4px 0 var(--accent-secondary) !important; /* סימון עליון */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.8), inset 0 4px 0 var(--accent-secondary) !important;
   z-index: 50 !important;
 }
 
-/* תגיות סרט במצעד */
 table.movies_chart td.movie-item .movie-item-tags { margin-top: 10px !important; }
-table.movies_chart td.movie-item .movie-item-tags a { 
-  background: rgba(255,255,255,0.1) !important; /* שקוף בהיר על כהה */
-  color: var(--hb-link) !important;
-  padding: 3px 6px !important; 
-  border-radius: 4px !important; 
-  display: inline-block !important; 
-  margin: 2px !important;
-  font-size: 12px !important;
-}
+table.movies_chart td.movie-item .movie-item-tags a { background: rgba(255,255,255,0.05) !important; padding: 3px 6px !important; border-radius: 4px !important; display: inline-block !important; margin: 2px !important; font-size: 12px !important; }
 
-/* --- כפתורי הצג/סתר טורנטים --- */
-a.show_torrents, a.hide_torrents { opacity: 0.6 !important; transition: all 0.2s ease !important; color: var(--hb-text-strong) !important; }
+a.show_torrents, a.hide_torrents { opacity: 0.5 !important; transition: all 0.2s ease !important; color: var(--hb-text-strong) !important; }
 a.show_torrents:hover, a.hide_torrents:hover { opacity: 1 !important; transform: scale(1.1); color: var(--accent-secondary) !important; }
+td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: var(--hb-text-strong) !important; text-shadow: none !important; }
 
-/* סימון פורום לא נקרא */
-td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: var(--hb-text-strong) !important; text-shadow: 0 0 5px rgba(255,255,255,0.5) !important; }
-
-/* --- ניקויי רקעים מיוחדים --- */
 div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; background-color: transparent !important; border: none !important; box-shadow: none !important; }
-/* הפרדה קבועה בין אווטאר לגוף ההודעה */
-table.forum_post td.avatar { border-left: 1px solid var(--hb-border) !important; }
+table.forum_post td.avatar { border-left: none !important; }
 
-/* ביטול גלובלי של צללי טקסט */
 .box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
 
-/* טקסט הודעה בפורום */
-.forum_post .body { color: var(--hb-text) !important; line-height: 1.6 !important; }
-/* פרטי משתמש */
+.forum_post .body { color: var(--hb-text) !important; }
 .user_details { color: var(--hb-text-strong); }
 
-/* --- כותרות (Typography) --- */
 h1, h2, h3, h4, h5, h6 { color: var(--hb-text-strong) !important; font-weight: 600 !important; text-shadow: none !important; margin-top: 0 !important; }
-/* תת-כותרות (למשל "צפה בטורנט") */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--hb-muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
-
-/* גדלי טקסט בסיסיים */
 .forum_post .body, .message_table td, form.search_form label, table td { font-size: 14px !important; }
-/* טקסט קטן/עמום */
 .small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--hb-muted) !important; font-weight: 500 !important; }
 
-/* --- ציטוטים (Blockquote) --- */
-blockquote { 
-  background: var(--bg-deep) !important; /* עמוק */
-  border: 1px solid var(--hb-border) !important; 
-  border-right: 4px solid var(--accent-primary) !important; /* סימון צד */
-  border-radius: var(--hb-radius-sm) !important; 
-  padding: 16px 20px !important; 
-  color: var(--hb-text) !important; 
-  margin: 15px 0 !important; 
-  box-shadow: none !important; 
-}
+blockquote { background: var(--bg-deep) !important; border: 1px solid var(--hb-border) !important; border-right: 4px solid var(--accent-secondary) !important; border-radius: var(--hb-radius-sm) !important; padding: 16px 20px !important; color: var(--hb-text-strong) !important; margin: 15px 0 !important; box-shadow: none !important; }
 
-/* --- קישורים כלליים ב-Dark --- */
 a:not([class*="permission_"]):not([style*="color"]) { color: var(--hb-link); font-weight: 600 !important; }
 a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--hb-link-hover); text-decoration: underline !important; }
 
-/* קישורים בכותרות (שלא יהפכו לכחול) */
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]), .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]), .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--hb-text-strong) !important; font-weight: 600 !important; }
 #inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover, .forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--accent-secondary) !important; text-decoration: none !important; }
 
-/* --- דרגות משתמשים (User Classes) - מותאם ל-Dark --- */
+.permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #026ad4 !important; }
+.permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #cd0010 !important; } 
+.permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #F0133F !important; } 
+.permission_800, a.permission_800, span.permission_800   { font-weight: bold !important; color: #026ad4 !important; } 
+.permission_700, a.permission_700, span.permission_700   { font-weight: bold !important; color: #b72b06 !important; } 
+.permission_600, a.permission_600, span.permission_600   { font-weight: bold !important; color: #c46ebd !important; } 
+.permission_450, a.permission_450, span.permission_450   { font-weight: bold !important; color: #66CCFF !important; } 
+.permission_400, a.permission_400, span.permission_400   { color: #FF0099 !important; } 
+.permission_205, a.permission_205, span.permission_205   { color: #00AB22 !important; } 
+.permission_200, a.permission_200, span.permission_200   { color: #00FF99 !important; } 
+.permission_150, a.permission_150, span.permission_150   { font-weight: bold !important; color: #FF9900 !important; } 
+.permission_100, a.permission_100, span.permission_100   { color: #FFF300 !important; } 
+.permission_17, a.permission_17, span.permission_17    { color: #059669 !important; } 
+.permission_16, a.permission_16, span.permission_16    { color: #b45309 !important; } 
+.permission_15, a.permission_15, span.permission_15    { color: #65a30d !important; } 
+.permission_14, a.permission_14, span.permission_14    { color: #4d7c0f !important; } 
+.permission_13, a.permission_13, span.permission_13    { color: #15803d !important; } 
+.permission_12, a.permission_12, span.permission_12    { color: #166534 !important; } 
+.permission_11, a.permission_11, span.permission_11    { font-weight: bold !important; color: #ffffff !important; } 
+.permission_10, a.permission_10, span.permission_10    { color: #ffffff !important; }
 
-/* הגדרה גלובלית לקישורי דרגות */
 a[class*="permission_"] { text-shadow: none !important; transition: filter 0.15s ease !important; font-weight: 600 !important; }
-a[class*="permission_"]:hover { filter: brightness(1.2) !important; text-decoration: underline !important; } /* הבהרה בהובר */
+a[class*="permission_"]:hover { filter: brightness(1.2) !important; text-decoration: underline !important; }
 
-.permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #3b82f6 !important; } /* כחול בהיר */
-.permission_1000, a.permission_1000, span.permission_1000  { font-weight: bold !important; color: #f87171 !important; } /* אדום פסטל */
-.permission_900, a.permission_900, span.permission_900   { font-weight: bold !important; color: #f87171 !important; } /* אדום פסטל */
-.permission_800, a.permission_800, span.permission_800   { font-weight: bold !important; color: #3b82f6 !important; } /* כחול בהיר */
-.permission_700, a.permission_700, span.permission_700   { font-weight: bold !important; color: #fb923c !important; } /* כתום פסטל */
-.permission_600, a.permission_600, span.permission_600   { font-weight: bold !important; color: #e879f9 !important; } /* ורוד בהיר */
-.permission_450, a.permission_450, span.permission_450   { font-weight: bold !important; color: #38bdf8 !important; } /* תכלת בהיר */
-.permission_400, a.permission_400, span.permission_400   { color: #f472b6 !important; } /* ורוד פסטל */
-.permission_205, a.permission_205, span.permission_205   { color: #4ade80 !important; } /* ירוק פסטל */
-.permission_200, a.permission_200, span.permission_200   { color: #2dd4bf !important; } /* טורקיז פסטל */
-.permission_150, a.permission_150, span.permission_150   { font-weight: bold !important; color: #fbbf24 !important; } /* צהוב/זהב */
-.permission_100, a.permission_100, span.permission_100   { color: #fbbf24 !important; } /* צהוב */
-.permission_17, a.permission_17, span.permission_17    { color: #4ade80 !important; } 
-.permission_16, a.permission_16, span.permission_16    { color: #fbbf24 !important; } 
-.permission_15, a.permission_15, span.permission_15    { color: #a3e635 !important; } /* ירוק ליים */
-.permission_14, a.permission_14, span.permission_14    { color: #a3e635 !important; } 
-.permission_13, a.permission_13, span.permission_13    { color: #4ade80 !important; } 
-.permission_12, a.permission_12, span.permission_12    { color: #22c55e !important; } 
+#taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { background: var(--bg-deep) !important; border: 1px solid var(--hb-border-soft) !important; border-radius: 4px !important; padding: 4px 10px !important; font-size: 0.85em !important; font-weight: 500 !important; color: var(--hb-text) !important; transition: all 0.15s ease !important; display: inline-block !important; margin: 2px !important; }
+#taglist tr td a:hover, .tags a:hover, .movie-tooltip__tag:hover, #artist_list a:hover, ul.stats li a:hover, ul.tags li a:hover { background: var(--accent-primary) !important; border-color: var(--accent-primary) !important; color: #fff !important; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.6) !important; }
+#artist_list .remove a, ul.stats .remove a, ul.tags .remove a, .remove_artist a { border-radius: 4px !important; padding: 0 !important; width: 24px !important; height: 24px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; color: var(--hb-text-strong) !important; background: var(--hb-border-soft) !important; border: 1px solid var(--hb-border-soft) !important; margin-right: 4px !important; }
+#artist_list .remove a:hover, ul.stats .remove a:hover, ul.tags .remove a:hover, .remove_artist a:hover { background: var(--hb-danger) !important; border-color: var(--hb-danger) !important; color: #fff !important; transform: scale(1.05) !important; }
 
-/* **בדיוק לפי הבקשה: צבע לבן לדרגות User ו-Rookie** */
-.permission_11, a.permission_11, span.permission_11    { font-weight: bold !important; color: #ffffff !important; } /* Heb User - לבן מודגש */
-.permission_10, a.permission_10, span.permission_10    { color: #ffffff !important; } /* Heb Rookie - לבן רגיל */
-
-/* --- תגיות (Tags) --- */
-#taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a { 
-  background: var(--bg-deep) !important; /* עמוק */
-  border: 1px solid var(--hb-border) !important; 
-  border-radius: 4px !important; 
-  padding: 4px 10px !important; 
-  font-size: 0.85em !important; 
-  font-weight: 500 !important; 
-  color: var(--hb-text) !important; 
-  transition: all 0.15s ease !important; 
-  display: inline-block !important; 
-  margin: 2px !important; 
-}
-/* הובר תגית */
-#taglist tr td a:hover, .tags a:hover, .movie-tooltip__tag:hover, #artist_list a:hover, ul.stats li a:hover, ul.tags li a:hover { 
-  background: var(--accent-primary) !important; 
-  border-color: var(--accent-primary) !important; 
-  color: #fff !important; 
-  transform: translateY(-1px); 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4) !important; 
-}
-/* כפתור הסרה בתגיות */
-#artist_list .remove a, ul.stats .remove a, ul.tags .remove a, .remove_artist a { 
-  border-radius: 4px !important; padding: 0 !important; width: 24px !important; height: 24px !important; 
-  display: inline-flex !important; align-items: center !important; justify-content: center !important; 
-  color: var(--hb-text-strong) !important; 
-  background: var(--hb-border) !important; /* כהה */
-  border: 1px solid var(--hb-border) !important; 
-  margin-right: 4px !important; 
-}
-#artist_list .remove a:hover, ul.stats .remove a:hover, ul.tags .remove a:hover, .remove_artist a:hover { 
-  background: var(--hb-danger) !important; 
-  border-color: var(--hb-danger) !important; 
-  color: #fff !important; 
-  transform: scale(1.05) !important; 
-}
-
-/* --- אייקונים וגרפיקה --- */
 svg { fill: var(--hb-text) !important; }
-
-/* צבעי יחס UP/DOWN בסמלים */
 .up_polygon, .upload_stat, .good, .goodish, .tl_seeding { fill: var(--hb-success) !important; color: var(--hb-success) !important; filter: none !important; }
 .down_polygon, .down_stat, .bad, .badish, .tl_snatched { fill: var(--hb-danger) !important; color: var(--hb-danger) !important; filter: none !important; }
-/* סימונים מיוחדים */
 .internal-mark, .tl_notice, table#torrent_table strong { color: var(--hb-warn) !important; fill: var(--hb-warn) !important; filter: none !important;}
 
-/* אייקונים של טורנטים */
 .torrent_icons i, .torrent_icons .fa { transition: transform 0.15s ease, filter 0.15s ease !important; display: inline-block !important; filter: none !important; }
-/* טאב פעיל */
 a.simple-tabs__link--active, .selected_link { color: #2dd4bf !important; font-weight: bold !important; text-decoration: underline !important; }
-
-/* צבעי אייקונים ספציפיים - הובהרו מעט */
-.token_ic, .token_ic i, .token_ic .fa { color: #f094f6 !important; } /* ורוד בהיר */
-.reseed_ic, .reseed_ic i, .reseed_ic .fa { color: #fbbf24 !important; } /* זהב */
-.download_ic, .download_ic i, .download_ic .fa { color: #4ade80 !important; } /* ירוק בהיר */
-.report_ic, .report_ic i, .report_ic .fa { color: #f87171 !important; } /* אדום בהיר */
-.bookmark_ic, .bookmark_ic i, .bookmark_ic .fa { color: #fbbf24 !important; } /* זהב */
-/* אייקוני עריכה ומחיקה */
+.token_ic, .token_ic i, .token_ic .fa { color: #f094f6 !important; }
+.reseed_ic, .reseed_ic i, .reseed_ic .fa { color: #fbbf24 !important; }
+.download_ic, .download_ic i, .download_ic .fa { color: #4ade80 !important; }
+.report_ic, .report_ic i, .report_ic .fa { color: #f87171 !important; }
+.bookmark_ic, .bookmark_ic i, .bookmark_ic .fa { color: #fbbf24 !important; }
 a[href*="action=edit"] i, .fa-pencil-square-o { color: var(--accent-secondary) !important; }
 a[href*action="delete"] i, .fa-trash { color: var(--accent-secondary) !important; }
 a[href*="torrentid="] i, .fa-link { color: var(--accent-secondary) !important; } 
-
-/* הובר לאייקוני טורנט */
 .torrent_icons a:hover i { transform: scale(1.15); filter: drop-shadow(0 0 4px rgba(255,255,255,0.3)) !important; }
 
-/* --- פורם אלמנטים (Form Elements) --- */
 input[type="radio"], input[type="checkbox"] { accent-color: var(--accent-primary) !important; margin-left: 5px !important; }
 
-/* כפתורים (Buttons / Submit) */
-input[type="submit"], input[type="button"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] { 
-  background: var(--accent-primary) !important; /* כחול */
-  color: #ffffff !important; 
-  border: 1px solid var(--accent-hover) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  padding: 8px 20px !important; 
-  font-weight: 500 !important; 
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important; 
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important; 
-  cursor: pointer !important; 
-}
-/* הובר כפתור */
-input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover { 
-  background: var(--accent-hover) !important; 
-  transform: translateY(-1px) !important; 
-  box-shadow: 0 4px 6px rgba(0,0,0,0.4) !important; 
-}
-/* תחתית טופס חיפוש (כפתור) */
+input[type="submit"], input[type="button"], button, .btn, .filter_torrents div.submit.ft_submit input[type="submit"] { background: var(--accent-primary) !important; color: #ffffff !important; border: 1px solid var(--accent-hover) !important; border-radius: var(--hb-radius-sm) !important; padding: 8px 20px !important; font-weight: 500 !important; box-shadow: 0 1px 2px rgba(0,0,0,0.6) !important; transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important; cursor: pointer !important; }
+input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover { background: var(--accent-hover) !important; transform: translateY(-1px) !important; box-shadow: 0 4px 6px rgba(0,0,0,0.8) !important; }
 .filter_torrents div.submit.ft_submit { background: transparent !important; border-top: 1px solid var(--hb-border) !important; padding: 15px !important; }
 
-/* --- תמונות קאברים/באנרים --- */
-img.banner, #covers img, .group_image img, .torrent_screenshots > img { 
-  border-radius: var(--hb-radius-sm) !important; 
-  box-shadow: var(--hb-shadow) !important; 
-  border: 1px solid var(--hb-border) !important; 
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important; 
-}
-/* הובר תמונה */
-img.banner:hover, #covers img:hover, .group_image img:hover { 
-  transform: translateY(-4px) !important; 
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4) !important; 
-  border-color: var(--hb-border-soft) !important; 
-}
+img.banner, #covers img, .group_image img, .torrent_screenshots > img { border-radius: var(--hb-radius-sm) !important; box-shadow: var(--hb-shadow) !important; border: 1px solid var(--hb-border) !important; transition: transform 0.2s ease, box-shadow 0.2s ease !important; }
+img.banner:hover, #covers img:hover, .group_image img:hover { transform: translateY(-4px) !important; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.8) !important; border-color: var(--hb-border-soft) !important; }
 
-/* --- סקרולבר (Scrollbar - Dark style) --- */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
-::-webkit-scrollbar-thumb { 
-  background: var(--hb-border); 
-  border-radius: 5px; 
-  border: 2px solid var(--bg-deep); 
-}
+::-webkit-scrollbar-thumb { background: var(--hb-border); border-radius: 5px; border: 2px solid var(--bg-deep); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
 
-/* --- עורך הודעות (WYSIBB Editor) - המרה מלאה ל-Dark --- */
-.wysibb, .wysibb-text, .wysibb-toolbar { 
-  background: var(--hb-panel) !important; /* כהה */
-  border-color: var(--hb-border) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-}
-/* גוף העורך */
-.wysibb-body { 
-  background: var(--bg-deep) !important; /* עמוק */
-  color: var(--hb-text-strong) !important; 
-  font-family: var(--hb-font) !important; 
-  border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; 
-}
-/* כפתורי בר כלים */
+.wysibb, .wysibb-text, .wysibb-toolbar { background: var(--hb-panel) !important; border-color: var(--hb-border) !important; border-radius: var(--hb-radius-sm) !important; }
+.wysibb-body { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-family: var(--hb-font) !important; border-radius: 0 0 var(--hb-radius-sm) var(--hb-radius-sm) !important; }
 .wysibb-toolbar-btn { color: var(--hb-text) !important; transition: background-color 0.15s ease !important; border-radius: 4px !important; }
-
-/* היפוך צבעי אייקונים בבר הכלים (מלילה ליום) */
-.wysibb-toolbar-btn img { 
-  filter: brightness(0) invert(1) !important; /* הופך ללבן */
-}
-/* תיקון ספציפי לאייקונים שהיו פילטר שחור */
-.wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img, .wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { 
-  filter: brightness(0) invert(1) !important; 
-}
-
-/* כותרות בעורך */
+.wysibb-toolbar-btn img { filter: brightness(0) invert(1) !important; }
+.wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img, .wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { filter: brightness(0) invert(1) !important; }
 .wbb-h1, .wbb-h2, .wbb-h3, .wbb-h1 *, .wbb-h2 *, .wbb-h3 * { color: var(--hb-text-strong) !important; }
-/* פיקר צבע */
 .wbb-cp .fonticon, .wbb-cp ins.fonticon { color: var(--hb-text) !important; text-shadow: none !important; }
-/* הובר כפתור בר כלים */
 .wysibb-toolbar-btn:hover, .wysibb-toolbar-btn.on { background: var(--hb-border-soft) !important; }
-/* רשימות נפתחות בעורך */
-.wbb-list { 
-  background: var(--hb-panel) !important; 
-  border: 1px solid var(--hb-border) !important; 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  padding: 8px !important; 
-}
+.wbb-list { background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important; border-radius: var(--hb-radius-sm) !important; padding: 8px !important; }
 .wbb-list .option, .wbb-list .nc { color: var(--hb-text) !important; padding: 6px 12px !important; border-radius: 4px !important; }
-.wbb-list .option:hover, .wbb-list .option.selected { 
-  background: var(--bg-deep) !important; 
-  color: var(--hb-text-strong) !important; 
-}
-/* דוגמאות צבע */
+.wbb-list .option:hover, .wbb-list .option.selected { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; }
 .wbb-list .sc { border: 1px solid var(--hb-border) !important; border-radius: 4px !important; }
-
-/* ==========================================================================
-   --- התאמות לנייד (Responsive / Media Queries) - מותאם ל-Dark ---
-   ========================================================================== */
 
 @media screen and (max-width: 1100px) {
   
-  /* --- הגדרות בסיס לנייד --- */
   html, body, #wrapper { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
-  /* תיקון לוגו */
   #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
   
-  /* תוכן ראשי בנייד */
   #content { width: 100% !important; padding: 0 10px 10px 10px !important; margin: 10px auto !important; box-sizing: border-box !important; }
 
-  /* --- תפריט נייד (Pills horizontal scroll) --- */
   #menu ul { 
     display: flex !important; 
     flex-direction: row !important; 
@@ -802,10 +411,8 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
   }
   #menu ul::-webkit-scrollbar { display: none !important; } 
   #menu ul > li { flex: 0 0 auto !important; }
-  /* הגדלת טקסט לתפריט נייד */
   #menu ul > li > a { font-size: 18px !important; padding: 16px 24px !important; }
 
-  /* --- בר משתמש נייד (Pills horizontal scroll) --- */
   #userinfo { 
     border-radius: 12px 12px 0 0 !important; 
     padding: 15px 10px !important; 
@@ -813,7 +420,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important;
-    overflow-x: auto !important; /* גלילה אופקית */
+    overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
     justify-content: flex-start !important; 
     width: 100% !important;
@@ -829,11 +436,9 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
     justify-content: flex-start !important; 
     gap: 10px !important; 
   }
-  /* הגדלת אלמנטים בבר משתמש */
   #userinfo li { flex: 0 0 auto !important; font-size: 16px !important; padding: 10px 20px !important; }
   #userinfo li span.stat, #userinfo li .tooltip { font-size: 18px !important; }
 
-  /* --- ברחיפוש נייד (Pills) --- */
   #searchbars-wrapper { 
     border-radius: 0 0 12px 12px !important; 
     padding: 0 0 15px 0 !important; 
@@ -844,7 +449,7 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
     display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important; 
-    overflow-x: auto !important; /* גלילה אופקית */
+    overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
     width: 100% !important; 
     padding: 5px 15px !important; 
@@ -858,331 +463,107 @@ img.banner:hover, #covers img:hover, .group_image img:hover {
     min-width: 180px !important; 
     margin: 0 !important; 
   }
-  /* הגדלת אינפוט חיפוש */
   #searchbars input[type="text"] { 
     padding: 16px 20px !important; 
     font-size: 18px !important; 
     width: 100% !important; 
   }
 
-  /* --- התראות נייד (Horizontal Scroll) --- */
   #alerts .alertbar { 
-    display: flex !important; 
+    display: inline-flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important; 
     overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
-    padding: 16px 20px !important; 
-    justify-content: flex-start !important; 
+    padding: 12px 20px !important; 
+    justify-content: center !important; 
     align-items: center !important; 
-    font-size: 18px !important; 
+    font-size: 17px !important; 
     gap: 15px !important;
+    width: fit-content !important;
+    margin: 0 auto 10px auto !important;
   }
   #alerts .alertbar::-webkit-scrollbar { display: none !important; }
   #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
 
-  /* תיקון גובה התראת הודעות פרטיות בנייד (הגדרת המחשב נשמרת) */
-  #alerts .alertbar:has(> .globalbox) { justify-content: center !important; }
-
-  /* --- סידור מחדש של דף הבית בנייד (Order) --- */
   .thin { display: flex !important; flex-direction: column !important; width: 100% !important; }
-  /* 1. טורנטים אחרונים */
   #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
-  /* 2. עמודה מרכזית */
   .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px 0 !important; float: none !important; display: block !important; box-sizing: border-box !important; }
-  /* 3. סרגל צד (עובר למטה) */
   .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; box-sizing: border-box !important; }
+  
+  .sidebar.settings_sidebar, #settings_sections, .sidebar .box.fixed { position: relative !important; top: auto !important; width: 100% !important; display: block !important; box-shadow: var(--hb-shadow) !important; }
 
-  /* --- נגן טורנטים אחרונים - המרה ל-Grid ידני בנייד --- */
-  /* ביטול לוגיקת ה-JS של Owl */
   #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
-  
-  /* הגדרת גלילה אופקית ידנית לקונטיינר החיצוני */
-  #latest5tor .owl-stage-outer { 
-    width: 100% !important; 
-    max-width: 100vw !important; 
-    overflow-x: scroll !important; /* גלילה ידנית */
-    overflow-y: visible !important; 
-    -webkit-overflow-scrolling: touch !important; 
-    padding: 15px 0 !important; 
-    scroll-snap-type: x mandatory !important; /* היצמדות */
-    touch-action: pan-x !important; 
-    transform: none !important; 
-    height: auto !important; 
-    position: relative !important; 
-    margin: 0 !important; 
-  }
+  #latest5tor .owl-stage-outer { width: 100% !important; max-width: 100vw !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; padding: 15px 0 !important; scroll-snap-type: x mandatory !important; touch-action: pan-x !important; transform: none !important; height: auto !important; position: relative !important; margin: 0 !important; }
   #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
-  
-  /* הפיכת ה-Stage לשורת Flex ארוכה */
-  #latest5tor .owl-stage { 
-    display: flex !important; 
-    flex-wrap: nowrap !important; 
-    width: max-content !important; /* רוחב לפי התוכן */
-    min-width: 100% !important; 
-    transform: none !important; 
-    transition: none !important; 
-    padding: 0 10px !important; 
-    touch-action: pan-x !important; 
-    pointer-events: none !important; /* מונע בעיות גרירה */
-  }
-  
-  /* הגדרת גודל קבוע לכל אייטם בנייד */
-  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { 
-    width: 40vw !important; /* 40% מרוחב המסך */
-    flex: 0 0 40vw !important; 
-    max-width: none !important; 
-    min-width: 0 !important; 
-    margin: 0 2vw !important; /* רווח */
-    scroll-snap-align: center !important; /* היצמדות למרכז */
-    float: none !important; 
-    touch-action: pan-x !important; 
-    pointer-events: auto !important; /* מחזיר לחיצה */
-  }
-  /* תיקון פאדינג פנימי */
+  #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; transform: none !important; transition: none !important; padding: 0 10px !important; touch-action: pan-x !important; pointer-events: none !important; }
+  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { width: 40vw !important; flex: 0 0 40vw !important; max-width: none !important; min-width: 0 !important; margin: 0 2vw !important; scroll-snap-align: center !important; float: none !important; touch-action: pan-x !important; pointer-events: auto !important; }
   #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; pointer-events: auto !important; box-sizing: border-box !important; }
   #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
-  
-  /* התאמת תמונה בנייד בתוך הנגן */
-  #latest5tor .owl-item a > div[style*="background-image"] { 
-    height: 60vw !important; /* פרופורציה */
-    max-height: none !important; min-height: 0 !important; width: 100% !important; 
-    background-size: contain !important; /* מציג תמונה מלאה */
-    background-repeat: no-repeat !important; 
-    background-position: center !important; 
-    background-color: transparent !important; 
-    border-radius: 4px !important; 
-  }
-  /* הגדלת טקסטים בנייד בנגן */
+  #latest5tor .owl-item a > div[style*="background-image"] { height: 60vw !important; max-height: none !important; min-height: 0 !important; width: 100% !important; background-size: contain !important; background-repeat: no-repeat !important; background-position: center !important; background-color: transparent !important; border-radius: 4px !important; }
   #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; line-height: 1.4 !important; margin-bottom: 8px !important;} 
   #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
   #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
-  
-  /* הסתרת כפתורי ניווט בנייד */
   #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
 
-  /* --- טאבים של פורומים/פוסטים אחרונים בנייד --- */
   #latestForums .head { background: transparent !important; border: none !important; padding: 10px 0 !important; display: block !important; text-align: center !important; }
-  #latestForums .head > a.tooltip { display: none !important; } /* הסתרת אייקון */
-  /* קונטיינר הטאבים */
-  #latestForums .head > span { 
-    background: var(--bg-deep) !important; /* עמוק */
-    border-radius: 12px !important; 
-    padding: 6px !important; 
-    display: flex !important; 
-    border: 1px solid var(--hb-border) !important; 
-    width: 100% !important; 
-    box-sizing: border-box !important; 
-    font-size: 0 !important; 
-  }
-  /* כפתורי טאב */
-  #latestForums .head > span a { 
-    padding: 16px !important; 
-    border-radius: 8px !important; 
-    color: var(--hb-muted) !important; 
-    font-size: 18px !important; 
-    font-weight: 500 !important; 
-    text-align: center !important; 
-    flex: 1 !important; 
-    display: inline-block !important; 
-  }
-  /* טאב פעיל בנייד */
-  #latestForums .head > span a.simple-tabs__link--active { 
-    background: var(--hb-panel) !important; /* מובהר */
-    color: var(--hb-text-strong) !important; 
-    font-weight: 600 !important; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important; 
-  }
+  #latestForums .head > a.tooltip { display: none !important; } 
+  #latestForums .head > span { background: var(--bg-deep) !important; border-radius: 12px !important; padding: 6px !important; display: flex !important; border: 1px solid var(--hb-border) !important; width: 100% !important; box-sizing: border-box !important; font-size: 0 !important; }
+  #latestForums .head > span a { padding: 16px !important; border-radius: 8px !important; color: var(--hb-muted) !important; font-size: 18px !important; font-weight: 500 !important; text-align: center !important; flex: 1 !important; display: inline-block !important; }
+  #latestForums .head > span a.simple-tabs__link--active { background: var(--bg-deep) !important; color: var(--hb-text-strong) !important; font-weight: 600 !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; }
 
-  /* --- רשימות פורומים/טורנטים אחרונים - המרה לכרטיסים בנייד --- */
   #latest5forums_p, #latest5torrents_p { background: transparent !important; border: none !important; width: 100% !important; display: block !important; }
   #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
 
-  /* הפיכת כל שורה לכרטיס כהה */
   #latest5posts td, #latest5torrents_p td { 
-    display: block !important; 
-    width: 100% !important; 
-    padding: 24px 20px !important; 
-    background: var(--hb-panel) !important; /* כהה */
-    border: 1px solid var(--hb-border) !important; 
-    border-radius: 12px !important; 
-    margin-bottom: 12px !important; 
-    box-sizing: border-box !important; 
-    text-align: right !important; 
-    box-shadow: var(--hb-shadow) !important; 
+    display: block !important; width: 100% !important; padding: 24px 20px !important; background: var(--hb-panel) !important; border: 1px solid var(--hb-border) !important; border-radius: 12px !important; margin-bottom: 12px !important; box-sizing: border-box !important; text-align: right !important; box-shadow: var(--hb-shadow) !important; 
   }
 
-  /* סידור טקסט בתוך הכרטיס */
   #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
   #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--hb-text) !important; }
 
-  /* כותרת ראשית בכרטיס */
-  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { 
-    display: inline !important; 
-    font-size: 21px !important; 
-    font-weight: 700 !important; 
-    color: var(--hb-text-strong) !important; /* בהיר */
-    line-height: 1.4 !important; 
-    margin-left: 8px !important; 
-  }
+  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; font-size: 21px !important; font-weight: 700 !important; color: var(--hb-text-strong) !important; line-height: 1.4 !important; margin-left: 8px !important; }
 
-  /* תגית קטגוריה (כפתור קטן) */
-  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { 
-    display: inline-block !important; 
-    background: rgba(255, 255, 255, 0.1) !important; /* בהיר שקוף */
-    color: var(--accent-secondary) !important; /* כחול בהיר */
-    padding: 6px 14px !important; 
-    border-radius: 6px !important; 
-    font-size: 15px !important; 
-    font-weight: 600 !important; 
-    vertical-align: middle !important; 
-    position: relative !important; top: -3px !important; 
-  }
+  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong { display: inline-block !important; background: rgba(0, 0, 0, 0.05) !important; color: var(--accent-secondary) !important; padding: 6px 14px !important; border-radius: 6px !important; font-size: 15px !important; font-weight: 600 !important; vertical-align: middle !important; position: relative !important; top: -3px !important; }
 
-  /* שורת תחתית בכרטיס (מפריד) */
-  #latest5posts td > span > span, #latest5torrents_p td > span > span { 
-    display: block !important; 
-    width: 100% !important; 
-    border-top: 1px solid var(--hb-border-soft) !important; /* גבול עדין */
-    padding-top: 18px !important; 
-    margin-top: 18px !important; 
-    font-size: 17px !important; 
-    color: var(--hb-muted) !important; 
-    float: none !important; text-align: right !important; clear: both !important; 
-  }
+  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; width: 100% !important; border-top: 1px solid var(--hb-border-soft) !important; padding-top: 18px !important; margin-top: 18px !important; font-size: 17px !important; color: var(--hb-muted) !important; float: none !important; text-align: right !important; clear: both !important; }
 
-  /* זמן (צף לשמאל) */
-  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { 
-    float: left !important; 
-    font-size: 16px !important; 
-    margin-top: 2px !important; 
-    color: var(--accent-secondary) !important; 
-  }
+  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; font-size: 16px !important; margin-top: 2px !important; color: var(--accent-secondary) !important; }
   
-  /* קישורים בשורת התחתית */
   #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 17px !important; font-weight: 600 !important; }
 
-  /* כפתור "טען עוד" בנייד */
-  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { 
-    text-align: center !important; 
-    background: transparent !important; 
-    border: 1px dashed var(--hb-border-soft) !important; 
-    color: var(--accent-secondary) !important; 
-    font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; 
-  }
+  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { text-align: center !important; background: transparent !important; border: 1px dashed var(--hb-border-soft) !important; color: var(--accent-secondary) !important; font-size: 18px !important; padding: 20px !important; font-weight: 600 !important; }
   
-  /* --- נגן מצעדים (Movies) - המרה ל-Grid בנייד --- */
-  table.movies_chart { 
-    display: block !important; 
-    width: 100% !important; 
-    background: transparent !important; 
-    border: none !important; 
-    box-shadow: none !important; 
-    margin-top: 15px !important;
+  table.movies_chart, table.movies_chart tbody {
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)) !important;
+    gap: 12px !important;
   }
-  /* הגדרת גריד 2 עמודות */
-  table.movies_chart tbody {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* 2 עמודות שוות */
-    gap: 15px !important;
-    width: 100% !important;
-    align-items: stretch !important; 
-  }
-  table.movies_chart tr { display: contents !important; } /* מבטל השפעת שורה */
-  
-  /* כרטיס סרט בגריד נייד */
-  table.movies_chart td.movie-item {
-    display: flex !important;
-    flex-direction: column !important;
-    background: var(--hb-panel) !important; /* כהה */
-    border: 1px solid var(--hb-border) !important;
-    border-radius: 12px !important;
-    padding: 15px !important; 
-    box-shadow: var(--hb-shadow) !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    margin: 0 !important;
-    height: 100% !important; 
-  }
-  
-  table.movies_chart td.movie-item > a { flex-shrink: 0 !important; }
-  
-  /* התאמת פוסטר בגריד */
   table.movies_chart td.movie-item > a > div[style*="background-image"] {
-    height: 60vw !important; /* פרופורציה */
-    width: 100% !important;
-    border-radius: 8px !important;
-    background-size: contain !important; /* תמונה מלאה */
-    background-repeat: no-repeat !important; 
-    background-position: center top !important; 
-    background-color: transparent !important; 
+    height: 200px !important;
   }
-  
-  /* כותרת סרט בגריד */
-  table.movies_chart td.movie-item > a > span.tooltip {
-    font-size: 19px !important; 
-    font-weight: 700 !important;
-    color: var(--hb-text-strong) !important; /* בהיר */
-    text-align: center !important;
-    display: block !important;
-    margin-top: 15px !important;
-    line-height: 1.4 !important;
-  }
-  
-  /* תיאור/תחתית כרטיס בגריד */
-  table.movies_chart td.movie-item .desc { 
-    flex-grow: 1 !important; 
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-end !important;
-    margin-top: 15px !important; 
-    text-align: center !important; 
-    border-top: 1px solid var(--hb-border-soft) !important; 
-    padding-top: 15px !important; 
-  }
-  /* קישורים בתיאור */
-  table.movies_chart td.movie-item .desc a { display: inline-block !important; font-size: 17px !important; margin: 5px !important; color: var(--hb-text-strong) !important; font-weight: 600 !important;}
-  
-  /* תגיות מצעד בנייד */
-  table.movies_chart td.movie-item .movie-item-tags { font-size: 15px !important; margin-top: 12px !important; }
-  table.movies_chart td.movie-item .movie-item-tags a { 
-    background: rgba(255, 255, 255, 0.1) !important; /* בהיר שקוף */
-    color: var(--accent-secondary) !important; /* כחול בהיר */
-    padding: 6px 12px !important; 
-    border-radius: 6px !important; 
-    margin: 3px !important; 
-    display: inline-block !important; 
-  }
-  table.movies_chart td.movie-item .tags { font-size: 14px !important; margin-top: 10px !important; }
+  table.movies_chart td.movie-item > a > span.tooltip { font-size: 15px !important; }
 
-  /* --- טבלאות נתונים נייד (Scroll אופקי) --- */
   table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table { 
     display: block !important; 
     width: 100% !important; 
-    overflow-x: auto !important; /* גלילה אופקית לתכנים רחבים */
+    overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
     border-left: none !important; 
     border-right: none !important; 
   }
   
-  /* הגדלה כללית של טקסט בנייד לקריאות */
   .box, .panel__body, table td, .forum_post .body { font-size: 19px !important; line-height: 1.6 !important; } 
   input, select, textarea { font-size: 18px !important; }
 
-  /* --- פורום נייד --- */
-  /* הסתרת אווטאר בנייד לפוסטים */
   table.forum_post td.avatar { display: none !important; } 
-  /* הרחבת גוף ההודעה */
   table.forum_post td.body { padding: 20px 15px !important; display: block !important; width: 100% !important; box-sizing: border-box !important; }
 }
 
-/* --- פקדים מוסתרים --- */
 .hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { display: none !important; }
 
-/* --- אייקוני קטגוריות בטורנטים - הגדלה כפולה (כמו בבהיר) --- */
 td.cats_col div[class*="cats_"] {
   transform: scale(2) !important;
   transform-origin: center center !important;
   display: inline-block !important;
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)) !important; /* הוספת הילה עדינה ב-Dark */
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)) !important;
 }
