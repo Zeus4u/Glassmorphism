@@ -175,36 +175,19 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 
 .sidebar { position: -webkit-sticky !important; position: sticky !important; top: 85px !important; align-self: flex-start !important; margin-bottom: 24px !important; }
 
-#alerts { background: transparent !important; padding: 0 !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 8px !important; margin-bottom: 20px !important; }
-
-.alertbar:has(> .alertbar) {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  width: 100% !important;
-  display: flex !important;
-  justify-content: center !important;
-}
+#alerts { background: transparent !important; padding: 0 0 10px 0 !important; }
 
 .alertbar { 
-  border-radius: 100px !important; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06) !important; 
-  padding: 10px 24px !important; 
+  border-radius: var(--hb-radius-sm) !important; 
+  box-shadow: var(--hb-shadow) !important; 
+  padding: 14px 20px !important; 
   text-align: center !important; 
   font-weight: 600 !important; 
   font-size: 15px !important; 
-  margin: 0 auto 10px auto !important;
+  margin-bottom: 12px !important;
   border: 1px solid var(--hb-border) !important;
   background: var(--hb-panel) !important;
   color: var(--hb-text-strong) !important;
-  width: fit-content !important;
-  min-width: 250px !important;
-  max-width: 90% !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
 }
 
 .alertbar.redbox { background: #fef2f2 !important; border-color: #f87171 !important; color: #b91c1c !important; }
@@ -215,6 +198,9 @@ form.search_form:not(#searchbars form) > .box.filter_torrents:hover { transform:
 .alertbar span { text-shadow: none !important; }
 .alertbar span:not([style*="color"]) { color: inherit !important; }
 .alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; }
+
+.alertbar:has(> .globalbox) { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; display: flex !important; justify-content: center !important; margin-bottom: 24px !important; }
+.alertbar > .globalbox { width: fit-content !important; min-width: 300px !important; border-radius: 100px !important; margin: 0 !important; padding: 12px 24px !important; box-shadow: var(--hb-shadow) !important; }
 
 .box, .sidebar .box, .panel__body, table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, #inbox .box { 
   background: var(--hb-panel) !important; 
@@ -496,18 +482,16 @@ img.banner:hover, #covers img:hover, .group_image img:hover { transform: transla
   }
 
   #alerts .alertbar { 
-    display: inline-flex !important; 
+    display: flex !important; 
     flex-direction: row !important; 
     flex-wrap: nowrap !important; 
     overflow-x: auto !important; 
     -webkit-overflow-scrolling: touch !important; 
-    padding: 12px 20px !important; 
-    justify-content: center !important; 
+    padding: 16px 20px !important; 
+    justify-content: flex-start !important; 
     align-items: center !important; 
-    font-size: 17px !important; 
+    font-size: 18px !important; 
     gap: 15px !important;
-    width: fit-content !important;
-    margin: 0 auto 10px auto !important;
   }
   #alerts .alertbar::-webkit-scrollbar { display: none !important; }
   #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
