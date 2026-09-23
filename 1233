@@ -1,0 +1,280 @@
+/* =========================================================
+   Hebits V2: Next-Gen Glassmorphism & Deep Blue Theme
+   Upgraded & Optimized 
+========================================================= */
+
+@import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  /* מניפת צבעים מודרנית - חלל וכחול נאון */
+  --bg-deep: #0b0f19; /* רקע כללי - כחול עמוק כמעט שחור */
+  --hb-panel: rgba(21, 28, 44, 0.65); /* תיבות שקופות למחצה */
+  --hb-panel-hover: rgba(30, 41, 59, 0.85);
+  
+  /* גבולות עדינים להשלמת אפקט הזכוכית */
+  --hb-border: rgba(255, 255, 255, 0.08); 
+  --hb-border-soft: rgba(255, 255, 255, 0.04); 
+  
+  /* טיפוגרפיה */
+  --hb-text: #94a3b8; 
+  --hb-text-strong: #f8fafc; 
+  --hb-muted: #64748b; 
+  --hb-font: "Inter", "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  
+  /* צבעי דגש (Accent) - כחול ותכלת */
+  --accent-primary: #3b82f6; 
+  --accent-secondary: #0ea5e9; 
+  --accent-glow: rgba(59, 130, 246, 0.4);
+  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
+  
+  /* קישורים וצבעי סטטוס חדים יותר */
+  --hb-link: #38bdf8; 
+  --hb-link-hover: #bae6fd; 
+  --hb-success: #10b981;
+  --hb-danger: #ef4444;
+  --hb-warn: #f59e0b;
+  
+  /* מבנה והצללות מתקדמות (Layered Shadows) */
+  --hb-radius-sm: 8px;
+  --hb-radius: 16px;
+  --hb-shadow-soft: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.3);
+  --hb-shadow-float: 0 20px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.5);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* =========================================
+   Global & Typography
+========================================= */
+*:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
+  font-family: var(--hb-font) !important;
+}
+
+body { 
+  background: var(--bg-deep) url('https://i.imgur.com/G5gEptp.png') fixed top center !important; 
+  /* הוספתי רקע גרדיאנט חלש מאוד של רעש/חלל כדי לתת טקסטורה */
+  background-size: cover !important;
+  color: var(--hb-text) !important; 
+  letter-spacing: 0.3px !important; 
+}
+body::before, body::after { display: none !important; }
+html { scroll-padding-top: 100px !important; scroll-behavior: smooth !important; }
+#content { width: 78% !important; max-width: 1400px !important; margin: 0 auto !important; }
+
+/* =========================================
+   Header & Menu (Glassmorphism Magic)
+========================================= */
+#header { display: contents !important; }
+
+#menu { 
+  position: sticky !important; 
+  top: 0 !important; 
+  z-index: 99999 !important; 
+  background: rgba(11, 15, 25, 0.75) !important; 
+  backdrop-filter: blur(16px) saturate(180%) !important; 
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border-bottom: 1px solid var(--hb-border) !important; 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; 
+  width: 100% !important; 
+}
+
+#menu ul > li > a { 
+  font-weight: 500 !important; 
+  padding: 16px 22px !important; 
+  transition: var(--transition-smooth) !important; 
+  display: inline-block !important; 
+  position: relative !important;
+}
+#menu ul > li > a:not([style*="color"]) { color: var(--hb-text) !important; }
+
+/* אפקט גלייד מודרני בתפריט */
+#menu ul > li > a::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 0; height: 3px; background: var(--accent-gradient);
+  transition: var(--transition-smooth); border-radius: 3px 3px 0 0;
+}
+#menu ul > li > a:hover::after, #header > #menu ul > li.active > a::after { width: 80%; }
+#menu ul > li > a:hover, #header > #menu ul > li.active > a { color: var(--hb-text-strong) !important; background: rgba(255,255,255,0.03) !important; }
+
+/* תפריט נפתח (Dropdown) צף */
+#menu ul > li > ul { 
+  background: rgba(21, 28, 44, 0.95) !important; 
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--hb-border) !important; 
+  border-radius: var(--hb-radius-sm) !important; 
+  box-shadow: var(--hb-shadow-float) !important; 
+  padding: 8px !important; gap: 4px;
+}
+#menu ul > li > ul > li > a { 
+  border-radius: 6px !important; padding: 10px 18px !important; transition: var(--transition-smooth) !important; 
+}
+#menu ul > li > ul > li > a:hover { 
+  background: var(--accent-primary) !important; color: #fff !important; transform: translateX(-4px); 
+}
+
+/* =========================================
+   User Info Bar (Pill Design)
+========================================= */
+#userinfo {
+  background: transparent !important;
+  padding: 20px !important;
+  margin: 40px auto 0 auto !important; 
+}
+#userinfo ul { gap: 12px !important; }
+#userinfo li { 
+  background: var(--hb-panel) !important; 
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--hb-border) !important; 
+  padding: 8px 18px !important; 
+  border-radius: 30px !important; 
+  box-shadow: var(--hb-shadow-soft) !important;
+  transition: var(--transition-smooth) !important; 
+}
+#userinfo li:hover { 
+  border-color: var(--accent-secondary) !important; 
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 15px var(--accent-glow) !important;
+}
+
+/* =========================================
+   Search Bars (Spotlight Style)
+========================================= */
+#searchbars-wrapper { background: transparent !important; margin-bottom: 40px !important; }
+input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), textarea, select { 
+  background: rgba(0,0,0,0.4) !important; 
+  border: 1px solid var(--hb-border) !important; 
+  border-radius: var(--hb-radius-sm) !important; 
+  color: var(--hb-text-strong) !important; 
+  padding: 12px 16px !important; 
+  transition: var(--transition-smooth) !important; 
+}
+input:focus, textarea:focus, select:focus { 
+  background: rgba(15, 23, 42, 0.8) !important; 
+  border-color: var(--accent-secondary) !important; 
+  box-shadow: 0 0 0 4px var(--accent-glow) !important; 
+  outline: none !important; 
+}
+
+#searchbars input[type="text"] { 
+  border-radius: 50px !important; 
+  padding: 16px 28px !important; 
+  font-size: 15px !important; 
+  background: var(--hb-panel) !important;
+  backdrop-filter: blur(10px) !important;
+}
+#searchbars input[type="text"]:hover { border-color: var(--hb-border-soft) !important; background: rgba(30, 41, 59, 0.7) !important; }
+
+/* =========================================
+   Panels, Boxes & Tables (Neumorphic Cards)
+========================================= */
+.box, .sidebar .box, .panel__body, table.torrent_table, table.forum_index, table.message_table { 
+  background: var(--hb-panel) !important; 
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--hb-border) !important; 
+  border-top: 4px solid var(--accent-primary) !important; 
+  border-radius: var(--hb-radius) !important; 
+  box-shadow: var(--hb-shadow-soft) !important; 
+  margin-bottom: 30px !important; 
+  transition: var(--transition-smooth) !important; 
+}
+.box:hover, table.torrent_table:hover { box-shadow: var(--hb-shadow-float) !important; border-color: rgba(255,255,255,0.1) !important; }
+
+.head, .colhead_dark, tr.colhead, thead th, .forum_category_title { 
+  background: rgba(0, 0, 0, 0.3) !important; 
+  color: var(--hb-text-strong) !important; 
+  border-bottom: 1px solid var(--hb-border) !important; 
+  padding: 16px !important; 
+}
+
+table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: rgba(255,255,255,0.02) !important; }
+table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: transparent !important; }
+table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: rgba(56, 189, 248, 0.05) !important; }
+table:not(.movies_chart) tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-primary) !important; }
+
+/* =========================================
+   Buttons (Gradient & Glow)
+========================================= */
+input[type="submit"], input[type="button"], button, .btn { 
+  background: var(--accent-gradient) !important; 
+  border: none !important;
+  color: #ffffff !important; 
+  border-radius: 8px !important; 
+  padding: 10px 24px !important; 
+  font-weight: 600 !important; 
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px var(--accent-glow) !important; 
+  transition: var(--transition-smooth) !important; 
+}
+input[type="submit"]:hover, button:hover, .btn:hover { 
+  transform: translateY(-2px) scale(1.02) !important; 
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6) !important; 
+  filter: brightness(1.1) !important;
+}
+
+/* =========================================
+   Alert Bars (Status Messages)
+========================================= */
+.alertbar { 
+  border-radius: 50px !important; 
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid !important;
+  padding: 12px 28px !important; 
+}
+.alertbar.redbox { background: rgba(239, 68, 68, 0.1) !important; border-color: rgba(239, 68, 68, 0.3) !important; color: #fca5a5 !important; }
+.alertbar.greenbox { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.3) !important; color: #6ee7b7 !important; }
+
+/* =========================================
+   Movies Chart & Posters (3D Hover)
+========================================= */
+table.movies_chart td.movie-item {
+  background: var(--hb-panel) !important;
+  border: 1px solid var(--hb-border) !important;
+  border-radius: var(--hb-radius) !important;
+  transition: var(--transition-smooth) !important;
+}
+table.movies_chart td.movie-item:hover {
+  transform: translateY(-8px) scale(1.03) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 0 1px var(--accent-secondary) !important;
+}
+
+/* =========================================
+   Icons & Badges
+========================================= */
+.torrent_icons i, .torrent_icons .fa { transition: var(--transition-smooth) !important; }
+.torrent_icons a:hover i { transform: scale(1.2) translateY(-2px) !important; filter: drop-shadow(0 4px 8px var(--accent-glow)) !important; }
+.download_ic, .download_ic i { color: #10b981 !important; }
+.reseed_ic, .reseed_ic i { color: #f59e0b !important; }
+
+#taglist tr td a, .tags a { 
+  background: rgba(255,255,255,0.05) !important; 
+  border: 1px solid var(--hb-border) !important; 
+  border-radius: 6px !important; 
+  transition: var(--transition-smooth) !important; 
+}
+#taglist tr td a:hover, .tags a:hover { 
+  background: var(--accent-primary) !important; 
+  border-color: var(--accent-secondary) !important; 
+  box-shadow: 0 4px 10px var(--accent-glow) !important; 
+}
+
+/* =========================================
+   Mobile Optimization (Refined Layout)
+========================================= */
+@media screen and (max-width: 1100px) {
+  #content { width: 95% !important; padding: 0 !important; }
+  
+  #menu ul { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding: 10px !important; justify-content: flex-start !important; }
+  #menu ul::-webkit-scrollbar { display: none !important; } 
+  
+  #userinfo { margin: 20px auto 0 auto !important; overflow-x: auto !important; justify-content: flex-start !important; padding: 10px !important;}
+  #userinfo ul { flex-wrap: nowrap !important; }
+  
+  #latest5posts td, #latest5torrents_p td { 
+    background: var(--hb-panel) !important; 
+    border-radius: var(--hb-radius) !important; 
+    box-shadow: var(--hb-shadow-soft) !important;
+  }
+  
+  table.movies_chart { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; gap: 16px !important; }
+  table.forum_post td.body { padding: 24px 20px !important; }
+}
