@@ -1,280 +1,1042 @@
-/* =========================================================
-   Hebits V2: Next-Gen Glassmorphism & Deep Blue Theme
-   Upgraded & Optimized 
-========================================================= */
-
+/* ==========================================================================
+   Hebits — Aurora theme (Lovable / Base44 style)
+   ========================================================================== */
 @import url("https://hebits.net/static/styles/base/style.css?v=1772894811");
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
 
+/* ---------- 1. Tokens ---------- */
 :root {
-  /* מניפת צבעים מודרנית - חלל וכחול נאון */
-  --bg-deep: #0b0f19; /* רקע כללי - כחול עמוק כמעט שחור */
-  --hb-panel: rgba(21, 28, 44, 0.65); /* תיבות שקופות למחצה */
-  --hb-panel-hover: rgba(30, 41, 59, 0.85);
-  
-  /* גבולות עדינים להשלמת אפקט הזכוכית */
-  --hb-border: rgba(255, 255, 255, 0.08); 
-  --hb-border-soft: rgba(255, 255, 255, 0.04); 
-  
-  /* טיפוגרפיה */
-  --hb-text: #94a3b8; 
-  --hb-text-strong: #f8fafc; 
-  --hb-muted: #64748b; 
-  --hb-font: "Inter", "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  
-  /* צבעי דגש (Accent) - כחול ותכלת */
-  --accent-primary: #3b82f6; 
-  --accent-secondary: #0ea5e9; 
-  --accent-glow: rgba(59, 130, 246, 0.4);
-  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
-  
-  /* קישורים וצבעי סטטוס חדים יותר */
-  --hb-link: #38bdf8; 
-  --hb-link-hover: #bae6fd; 
-  --hb-success: #10b981;
-  --hb-danger: #ef4444;
-  --hb-warn: #f59e0b;
-  
-  /* מבנה והצללות מתקדמות (Layered Shadows) */
-  --hb-radius-sm: 8px;
-  --hb-radius: 16px;
-  --hb-shadow-soft: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.3);
-  --hb-shadow-float: 0 20px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.5);
-  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  color-scheme: dark;
+  --container: 75%;
+
+  --bg: #09090b;
+  --bg-sunken: #0c0c0f;
+  --surface: #111114;
+  --surface-2: #18181b;
+  --surface-3: #232328;
+  --glass: rgba(17, 17, 20, 0.72);
+
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.18);
+
+  --text: #d4d4d8;
+  --text-soft: #a1a1aa;
+  --text-strong: #fafafa;
+  --muted: #8b8b94;
+  --link: #e4e4e7;
+
+  --primary: #8b5cf6;
+  --primary-600: #7c3aed;
+  --primary-300: #c4b5fd;
+  --primary-soft: rgba(139, 92, 246, 0.12);
+  --ring: rgba(139, 92, 246, 0.35);
+  --gradient: linear-gradient(120deg, #8b5cf6 0%, #d946ef 50%, #fb923c 100%);
+
+  --success: #34d399;
+  --danger: #f87171;
+  --warn: #fbbf24;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-full: 999px;
+
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -10px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 48px -16px rgba(0, 0, 0, 0.75);
+  --shadow-glow: 0 0 0 1px rgba(139, 92, 246, 0.4), 0 18px 40px -14px rgba(139, 92, 246, 0.45);
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font: "Inter", "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
 }
 
-/* =========================================
-   Global & Typography
-========================================= */
-*:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path) {
-  font-family: var(--hb-font) !important;
+/* ---------- 2. Base ---------- */
+*:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not([class*="icon"]):not(.fonticon):not(i):not(svg):not(path):not(code):not(pre):not(kbd) {
+  font-family: var(--font) !important;
 }
 
-body { 
-  background: var(--bg-deep) url('https://i.imgur.com/G5gEptp.png') fixed top center !important; 
-  /* הוספתי רקע גרדיאנט חלש מאוד של רעש/חלל כדי לתת טקסטורה */
-  background-size: cover !important;
-  color: var(--hb-text) !important; 
-  letter-spacing: 0.3px !important; 
+html {
+  background: transparent !important;
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 80px !important;
+  scrollbar-color: #2a2a30 var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-body::before, body::after { display: none !important; }
-html { scroll-padding-top: 100px !important; scroll-behavior: smooth !important; }
-#content { width: 78% !important; max-width: 1400px !important; margin: 0 auto !important; }
 
-/* =========================================
-   Header & Menu (Glassmorphism Magic)
-========================================= */
+body {
+  background:
+    radial-gradient(1100px 520px at 85% -8%, rgba(139, 92, 246, 0.16), transparent 60%),
+    radial-gradient(800px 460px at 8% -4%, rgba(217, 70, 239, 0.09), transparent 60%),
+    radial-gradient(700px 420px at 50% 110%, rgba(251, 146, 60, 0.05), transparent 60%),
+    var(--bg) !important;
+  background-attachment: fixed !important;
+  color: var(--text) !important;
+  letter-spacing: 0 !important;
+  overflow-x: hidden !important;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Dot grid that fades out from the top */
+body::before {
+  content: "" !important;
+  display: block !important;
+  position: fixed !important;
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  background: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 22px 22px !important;
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
+          mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 20%, transparent 75%);
+}
+body::after { display: none !important; }
+
+.body, .tdhack { background: transparent !important; }
+
+::selection { background: rgba(139, 92, 246, 0.35); color: #fff; }
+:focus-visible { outline: 2px solid var(--primary) !important; outline-offset: 2px !important; }
+
+#content { width: var(--container) !important; max-width: none !important; margin: 0 auto !important; }
 #header { display: contents !important; }
 
-#menu { 
-  position: sticky !important; 
-  top: 0 !important; 
-  z-index: 99999 !important; 
-  background: rgba(11, 15, 25, 0.75) !important; 
-  backdrop-filter: blur(16px) saturate(180%) !important; 
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border-bottom: 1px solid var(--hb-border) !important; 
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; 
-  width: 100% !important; 
+/* ---------- 3. Top nav (glass) ---------- */
+#menu {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  background: rgba(9, 9, 11, 0.7) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+          backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.8) !important;
+}
+#menu ul > li { position: relative !important; }
+
+#menu ul > li > a {
+  display: inline-block !important;
+  margin: 10px 2px !important;
+  padding: 9px 14px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: var(--radius-sm) !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+#menu ul > li > a:not([style*="color"]) { color: var(--text-soft) !important; }
+#menu ul > li > a:not([style*="color"]):hover,
+#menu ul > li.active > a:not([style*="color"]) { color: var(--text-strong) !important; }
+#menu ul > li > a:hover { background: rgba(255, 255, 255, 0.05) !important; text-decoration: none !important; }
+#menu ul > li.active > a {
+  background:
+    linear-gradient(90deg, #8b5cf6, #d946ef) center bottom / 50% 2px no-repeat,
+    rgba(255, 255, 255, 0.07) !important;
+  box-shadow: inset 0 0 0 1px var(--border) !important;
 }
 
-#menu ul > li > a { 
-  font-weight: 500 !important; 
-  padding: 16px 22px !important; 
-  transition: var(--transition-smooth) !important; 
-  display: inline-block !important; 
-  position: relative !important;
+/* Dropdown */
+#menu ul > li > ul {
+  display: none;
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  z-index: 1001 !important;
+  min-width: 200px !important;
+  padding: 6px !important;
+  background: rgba(24, 24, 27, 0.94) !important;
+  -webkit-backdrop-filter: blur(16px);
+          backdrop-filter: blur(16px);
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-lg) !important;
 }
-#menu ul > li > a:not([style*="color"]) { color: var(--hb-text) !important; }
-
-/* אפקט גלייד מודרני בתפריט */
-#menu ul > li > a::after {
-  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 0; height: 3px; background: var(--accent-gradient);
-  transition: var(--transition-smooth); border-radius: 3px 3px 0 0;
+#menu ul > li:hover > ul {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  animation: hb-pop 0.16s var(--ease);
 }
-#menu ul > li > a:hover::after, #header > #menu ul > li.active > a::after { width: 80%; }
-#menu ul > li > a:hover, #header > #menu ul > li.active > a { color: var(--hb-text-strong) !important; background: rgba(255,255,255,0.03) !important; }
-
-/* תפריט נפתח (Dropdown) צף */
-#menu ul > li > ul { 
-  background: rgba(21, 28, 44, 0.95) !important; 
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid var(--hb-border) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  box-shadow: var(--hb-shadow-float) !important; 
-  padding: 8px !important; gap: 4px;
-}
-#menu ul > li > ul > li > a { 
-  border-radius: 6px !important; padding: 10px 18px !important; transition: var(--transition-smooth) !important; 
-}
-#menu ul > li > ul > li > a:hover { 
-  background: var(--accent-primary) !important; color: #fff !important; transform: translateX(-4px); 
-}
-
-/* =========================================
-   User Info Bar (Pill Design)
-========================================= */
-#userinfo {
+#menu ul > li > ul > li { display: block !important; width: 100% !important; }
+#menu ul > li > ul > li > a {
+  display: block !important;
+  margin: 0 !important;
+  padding: 9px 12px !important;
+  font-size: 14px !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+  color: var(--text) !important;
   background: transparent !important;
-  padding: 20px !important;
-  margin: 40px auto 0 auto !important; 
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
 }
-#userinfo ul { gap: 12px !important; }
-#userinfo li { 
-  background: var(--hb-panel) !important; 
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid var(--hb-border) !important; 
-  padding: 8px 18px !important; 
-  border-radius: 30px !important; 
-  box-shadow: var(--hb-shadow-soft) !important;
-  transition: var(--transition-smooth) !important; 
-}
-#userinfo li:hover { 
-  border-color: var(--accent-secondary) !important; 
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 15px var(--accent-glow) !important;
+#menu ul > li > ul > li > a:hover { background: rgba(255, 255, 255, 0.06) !important; color: var(--text-strong) !important; }
+
+@keyframes hb-pop {
+  from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* =========================================
-   Search Bars (Spotlight Style)
-========================================= */
-#searchbars-wrapper { background: transparent !important; margin-bottom: 40px !important; }
-input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), textarea, select { 
-  background: rgba(0,0,0,0.4) !important; 
-  border: 1px solid var(--hb-border) !important; 
-  border-radius: var(--hb-radius-sm) !important; 
-  color: var(--hb-text-strong) !important; 
-  padding: 12px 16px !important; 
-  transition: var(--transition-smooth) !important; 
+/* ---------- 4. User bar + search = one glass card ---------- */
+#userinfo {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: var(--container) !important;
+  margin: 32px auto 0 !important;
+  padding: 18px 20px 10px !important;
+  box-sizing: border-box !important;
+  background: var(--glass) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+          backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--border) !important;
+  border-bottom: none !important;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  box-shadow: var(--highlight) !important;
 }
-input:focus, textarea:focus, select:focus { 
-  background: rgba(15, 23, 42, 0.8) !important; 
-  border-color: var(--accent-secondary) !important; 
-  box-shadow: 0 0 0 4px var(--accent-glow) !important; 
-  outline: none !important; 
+#userinfo ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
-
-#searchbars input[type="text"] { 
-  border-radius: 50px !important; 
-  padding: 16px 28px !important; 
-  font-size: 15px !important; 
-  background: var(--hb-panel) !important;
-  backdrop-filter: blur(10px) !important;
+#userinfo li {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 12px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  color: var(--text) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: none !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
 }
-#searchbars input[type="text"]:hover { border-color: var(--hb-border-soft) !important; background: rgba(30, 41, 59, 0.7) !important; }
-
-/* =========================================
-   Panels, Boxes & Tables (Neumorphic Cards)
-========================================= */
-.box, .sidebar .box, .panel__body, table.torrent_table, table.forum_index, table.message_table { 
-  background: var(--hb-panel) !important; 
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid var(--hb-border) !important; 
-  border-top: 4px solid var(--accent-primary) !important; 
-  border-radius: var(--hb-radius) !important; 
-  box-shadow: var(--hb-shadow-soft) !important; 
-  margin-bottom: 30px !important; 
-  transition: var(--transition-smooth) !important; 
+#userinfo li:hover { background: rgba(255, 255, 255, 0.06) !important; border-color: var(--border-hover) !important; }
+#userinfo li a { display: inline-flex !important; align-items: center !important; color: var(--text-soft) !important; }
+#userinfo li a:hover { color: var(--text-strong) !important; text-decoration: none !important; }
+#userinfo li span.stat, #userinfo li .tooltip { font-weight: 700 !important; margin: 0 !important; }
+#userinfo li span.stat:not([class*="color"]):not([style*="color"]):not([class*="up"]):not([class*="down"]):not([class*="good"]):not([class*="bad"]):not(.r50):not(.r20):not(.r10):not(.r00):not(.upload_stat):not(.down_stat),
+#userinfo li .tooltip:not([class*="color"]):not([style*="color"]):not([class*="up"]):not([class*="down"]):not([class*="good"]):not([class*="bad"]):not(.r50):not(.r20):not(.r10):not(.r00):not(.upload_stat):not(.down_stat) {
+  color: var(--text-strong) !important;
 }
-.box:hover, table.torrent_table:hover { box-shadow: var(--hb-shadow-float) !important; border-color: rgba(255,255,255,0.1) !important; }
+#userinfo li svg { margin: 0 !important; }
 
-.head, .colhead_dark, tr.colhead, thead th, .forum_category_title { 
-  background: rgba(0, 0, 0, 0.3) !important; 
-  color: var(--hb-text-strong) !important; 
-  border-bottom: 1px solid var(--hb-border) !important; 
-  padding: 16px !important; 
+#searchbars-wrapper {
+  width: var(--container) !important;
+  margin: 0 auto 32px !important;
+  padding: 10px 20px 20px !important;
+  box-sizing: border-box !important;
+  background: var(--glass) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+          backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--border) !important;
+  border-top: none !important;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
 }
-
-table:not(.movies_chart) tr:nth-child(odd) > td, table:not(.movies_chart) tr.rowa > td { background: rgba(255,255,255,0.02) !important; }
-table:not(.movies_chart) tr:nth-child(even) > td, table:not(.movies_chart) tr.rowb > td { background: transparent !important; }
-table:not(.movies_chart) tr:hover > td:not(.tdhack) { background: rgba(56, 189, 248, 0.05) !important; }
-table:not(.movies_chart) tr:hover > td:last-child:not(.tdhack) { box-shadow: inset 4px 0 0 var(--accent-primary) !important; }
-
-/* =========================================
-   Buttons (Gradient & Glow)
-========================================= */
-input[type="submit"], input[type="button"], button, .btn { 
-  background: var(--accent-gradient) !important; 
+#searchbars {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+#searchbars form.search_form {
+  flex: 1 1 150px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
   border: none !important;
-  color: #ffffff !important; 
-  border-radius: 8px !important; 
-  padding: 10px 24px !important; 
-  font-weight: 600 !important; 
-  letter-spacing: 0.5px !important;
-  box-shadow: 0 4px 15px var(--accent-glow) !important; 
-  transition: var(--transition-smooth) !important; 
+  box-shadow: none !important;
 }
-input[type="submit"]:hover, button:hover, .btn:hover { 
-  transform: translateY(-2px) scale(1.02) !important; 
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6) !important; 
+
+/* ---------- 5. Form controls ---------- */
+input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):not([type="file"]):not([type="image"]),
+textarea, select {
+  color: var(--text-strong) !important;
+  background: var(--bg-sunken) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 9px 12px !important;
+  box-shadow: none !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):not([type="file"]):not([type="image"]):hover,
+textarea:hover, select:hover { border-color: var(--border-hover) !important; }
+input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):not([type="file"]):not([type="image"]):focus,
+textarea:focus, select:focus {
+  background: var(--surface) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--ring) !important;
+  outline: none !important;
+}
+::placeholder { color: #5f5f68 !important; opacity: 1; }
+select { cursor: pointer !important; }
+
+/* Search pills with icon (RTL: icon on the right) */
+#searchbars input:is([type="text"], [type="search"], :not([type])) {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 11px 42px 11px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-align: right !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b8b94' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 15px center !important;
+  background-size: 16px !important;
+  border-radius: var(--radius-full) !important;
+}
+#searchbars input:is([type="text"], [type="search"], :not([type])):hover { background-color: rgba(255, 255, 255, 0.05) !important; }
+#searchbars input:is([type="text"], [type="search"], :not([type])):focus {
+  background-color: var(--bg-sunken) !important;
+  box-shadow: 0 0 0 4px var(--ring) !important;
+}
+#searchbars input::placeholder { font-weight: 400 !important; transition: opacity 0.2s ease !important; }
+#searchbars input:focus::placeholder { opacity: 0 !important; }
+
+input[type="radio"], input[type="checkbox"] { accent-color: var(--primary) !important; margin-left: 5px !important; }
+
+/* Buttons: primary */
+input[type="submit"], button, .btn,
+.filter_torrents div.submit.ft_submit input[type="submit"] {
+  color: #fff !important;
+  background: linear-gradient(180deg, #8b5cf6, #7c3aed) !important;
+  border: 1px solid rgba(124, 58, 237, 0.9) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 18px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 16px -6px rgba(139, 92, 246, 0.5) !important;
+  transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+input[type="submit"]:hover, button:hover, .btn:hover {
   filter: brightness(1.1) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5), 0 10px 24px -8px rgba(139, 92, 246, 0.65) !important;
 }
 
-/* =========================================
-   Alert Bars (Status Messages)
-========================================= */
-.alertbar { 
-  border-radius: 50px !important; 
-  backdrop-filter: blur(8px) !important;
-  border: 1px solid !important;
-  padding: 12px 28px !important; 
+/* Buttons: secondary */
+input[type="button"], input[type="reset"] {
+  color: var(--text-strong) !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  box-shadow: var(--highlight) !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
 }
-.alertbar.redbox { background: rgba(239, 68, 68, 0.1) !important; border-color: rgba(239, 68, 68, 0.3) !important; color: #fca5a5 !important; }
-.alertbar.greenbox { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.3) !important; color: #6ee7b7 !important; }
+input[type="button"]:hover, input[type="reset"]:hover { background: var(--surface-3) !important; border-color: var(--border-hover) !important; }
 
-/* =========================================
-   Movies Chart & Posters (3D Hover)
-========================================= */
+input[type="submit"]:active, input[type="button"]:active, button:active, .btn:active { transform: scale(0.98) !important; }
+input:disabled, button:disabled { opacity: 0.5 !important; cursor: not-allowed !important; transform: none !important; filter: none !important; }
+
+/* ---------- 6. Cards & panels ---------- */
+.box, .sidebar .box, .panel__body, #inbox .box,
+table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, table.forum_post {
+  color: var(--text) !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--highlight), var(--shadow) !important;
+  margin-bottom: 20px !important;
+  overflow: hidden !important;
+  transition: border-color 0.2s ease !important;
+}
+table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table, table.forum_post {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+.box:hover, .sidebar .box:hover { border-color: var(--border-strong) !important; }
+.newsbody, .box > .pad { background: transparent !important; color: var(--text) !important; }
+
+/* Torrent filter panel — the one place with the gradient line */
+form.search_form, form.search_form > div { background: transparent !important; border: none !important; box-shadow: none !important; }
+form.search_form:not(#searchbars form) > .box.filter_torrents {
+  padding: 0 !important;
+  margin-bottom: 28px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--highlight), var(--shadow-lg) !important;
+}
+form.search_form:not(#searchbars form) > .box.filter_torrents::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--gradient);
+}
+.filter_torrents .pad { padding: 20px !important; background: transparent !important; }
+.filter_torrents table.layout, .filter_torrents table.layout tr,
+.filter_torrents table.layout tr > td, .filter_torrents table.layout tr:hover > td {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.filter_torrents div.submit.ft_submit { background: transparent !important; border-top: 1px solid var(--border) !important; padding: 16px !important; }
+
+/* Sticky sidebar that can't get stuck below the fold */
+.sidebar {
+  position: sticky !important;
+  top: 76px !important;
+  align-self: flex-start !important;
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  margin-bottom: 24px !important;
+}
+
+/* ---------- 7. Headers ---------- */
+.head, .sidebar .head, .forum_category_title, #reply_box h3, #reply_box .head, .filter_torrents .head {
+  color: var(--text-strong) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 13px 16px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  text-shadow: none !important;
+}
+
+tr.colhead td, tr.colhead_dark td, .colhead_dark, thead th, table th {
+  color: var(--text-soft) !important;
+  background: var(--surface-2) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 11px 14px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  text-shadow: none !important;
+}
+
+/* ---------- 8. Tables ---------- */
+table, tbody, tr, td, th {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+table:not(.movies_chart) tr:not(.colhead):not(.colhead_dark) > td {
+  background: var(--row-bg, var(--surface)) !important;
+  border-bottom: 1px solid var(--border) !important;
+  transition: background-color 0.12s ease;
+}
+table:not(.movies_chart) tr:not(.colhead):not(.colhead_dark):last-child > td { border-bottom: none !important; }
+table:not(.movies_chart) tr:not(.colhead):not(.colhead_dark):hover { --row-bg: var(--row-hover, #17171b); }
+table:not(.movies_chart) tr:not(.colhead):not(.colhead_dark):hover > td:first-child:not(.tdhack) {
+  box-shadow: inset -2px 0 0 var(--primary) !important;
+}
+
+tr.group_torrent { --row-bg: var(--bg-sunken); --row-hover: #141418; }
+
+/* ---------- 9. Latest torrents carousel ---------- */
+#latest5tor .owl-stage-outer { padding-top: 15px !important; padding-bottom: 24px !important; margin-top: -15px !important; margin-bottom: -24px !important; }
+#latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
+#latest5tor .owl-item { display: flex !important; float: none !important; }
+#latest5tor .owl-item > div {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 10px !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--highlight), var(--shadow) !important;
+  transition: transform 0.25s var(--ease), border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+#latest5tor .owl-item > div:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(139, 92, 246, 0.45) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+#latest5tor .owl-item a > div[style*="background-image"] {
+  width: 100% !important;
+  height: 190px !important;
+  flex-shrink: 0 !important;
+  margin-bottom: 12px !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 0 0 1px var(--border), 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+#latest5tor .owl-item a > span.tooltip {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  margin-bottom: 6px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  color: var(--text-strong) !important;
+}
+#latest5tor .owl-item br { display: none !important; }
+#latest5tor .owl-item span[style*="font-size: 90%"] {
+  display: block !important;
+  margin-bottom: 10px !important;
+  font-size: 12px !important;
+  color: var(--muted) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+#latest5tor .owl-item > div > div[style*="font-size: 95%"] {
+  width: 100% !important;
+  margin-top: auto !important;
+  padding: 6px 0 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-strong) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-full) !important;
+}
+
+#latest5tor .owl-nav { display: flex !important; justify-content: center !important; gap: 10px !important; margin-top: 20px !important; }
+#latest5tor .owl-dots { margin-top: 14px !important; text-align: center !important; }
+#latest5tor .owl-nav button, #latest5tor .owl-dots button {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+#latest5tor .owl-nav button.owl-prev, #latest5tor .owl-nav button.owl-next {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  color: var(--text-soft) !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+#latest5tor .owl-nav button.owl-prev span, #latest5tor .owl-nav button.owl-next span { margin-top: -3px !important; }
+#latest5tor .owl-nav button.owl-prev:hover, #latest5tor .owl-nav button.owl-next:hover {
+  color: #fff !important;
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  transform: none !important;
+  box-shadow: 0 6px 18px -6px rgba(139, 92, 246, 0.7) !important;
+}
+#latest5tor .owl-dots .owl-dot { display: inline-block !important; margin: 0 4px !important; }
+#latest5tor .owl-dots .owl-dot span {
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  margin: 0 !important;
+  background: var(--surface-3) !important;
+  border-radius: var(--radius-full) !important;
+  transition: width 0.25s var(--ease), background-color 0.2s ease !important;
+}
+#latest5tor .owl-dots .owl-dot.active span { width: 20px !important; background: var(--primary) !important; }
+#latest5tor .owl-dots .owl-dot:hover span { background: var(--primary-300) !important; }
+
+/* ---------- 10. Movie grid ---------- */
+table.movies_chart { border-spacing: 16px !important; border-collapse: separate !important; background: transparent !important; border: none !important; box-shadow: none !important; }
+table.movies_chart tr, table.movies_chart tbody,
+table.movies_chart tr > td, table.movies_chart tr:hover > td { background: transparent !important; border: none !important; box-shadow: none !important; }
+
 table.movies_chart td.movie-item {
-  background: var(--hb-panel) !important;
-  border: 1px solid var(--hb-border) !important;
-  border-radius: var(--hb-radius) !important;
-  transition: var(--transition-smooth) !important;
+  position: relative !important;
+  padding: 10px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--highlight), var(--shadow) !important;
+  transition: transform 0.25s var(--ease), border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
-table.movies_chart td.movie-item:hover {
-  transform: translateY(-8px) scale(1.03) !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 0 1px var(--accent-secondary) !important;
+table.movies_chart td.movie-item > a > div[style*="background-image"] {
+  background-size: cover !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 0 0 1px var(--border) !important;
+}
+table.movies_chart td.movie-item:hover, table.movies_chart tr:hover > td.movie-item:hover {
+  z-index: 50 !important;
+  transform: translateY(-5px) !important;
+  background: var(--surface) !important;
+  border-color: rgba(139, 92, 246, 0.45) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+table.movies_chart td.movie-item .movie-item-tags { margin-top: 10px !important; }
+table.movies_chart td.movie-item .movie-item-tags a {
+  display: inline-block !important;
+  margin: 2px !important;
+  padding: 2px 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  color: var(--text-soft) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-full) !important;
 }
 
-/* =========================================
-   Icons & Badges
-========================================= */
-.torrent_icons i, .torrent_icons .fa { transition: var(--transition-smooth) !important; }
-.torrent_icons a:hover i { transform: scale(1.2) translateY(-2px) !important; filter: drop-shadow(0 4px 8px var(--accent-glow)) !important; }
-.download_ic, .download_ic i { color: #10b981 !important; }
-.reseed_ic, .reseed_ic i { color: #f59e0b !important; }
-
-#taglist tr td a, .tags a { 
-  background: rgba(255,255,255,0.05) !important; 
-  border: 1px solid var(--hb-border) !important; 
-  border-radius: 6px !important; 
-  transition: var(--transition-smooth) !important; 
+/* ---------- 11. Alerts (toast pills) ---------- */
+#alerts {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+  background: transparent !important;
 }
-#taglist tr td a:hover, .tags a:hover { 
-  background: var(--accent-primary) !important; 
-  border-color: var(--accent-secondary) !important; 
-  box-shadow: 0 4px 10px var(--accent-glow) !important; 
+.alertbar:has(> .alertbar) {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.alertbar {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: fit-content !important;
+  min-width: 250px !important;
+  max-width: 90% !important;
+  margin: 0 auto 10px !important;
+  padding: 9px 20px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  color: var(--text-strong) !important;
+  background: var(--glass) !important;
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: var(--shadow) !important;
+}
+.alertbar:not(:has(> .alertbar)):not(:has(> .globalbox))::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+.alertbar.redbox { color: #fca5a5 !important; background: rgba(239, 68, 68, 0.1) !important; border-color: rgba(239, 68, 68, 0.3) !important; }
+.alertbar.greenbox { color: #6ee7b7 !important; background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.3) !important; }
+.alertbar.goldbox, .alertbar.yellowbox { color: #fde68a !important; background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.3) !important; }
+.alertbar.bluebox { color: #93c5fd !important; background: rgba(59, 130, 246, 0.1) !important; border-color: rgba(59, 130, 246, 0.3) !important; }
+.alertbar span { text-shadow: none !important; }
+.alertbar span:not([style*="color"]) { color: inherit !important; }
+.alertbar a:not([style*="color"]) { margin: 0 6px !important; font-weight: 700 !important; color: inherit !important; text-decoration: underline !important; text-underline-offset: 3px !important; }
+
+.alertbar:has(> .globalbox) {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin-bottom: 24px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.alertbar > .globalbox {
+  width: fit-content !important;
+  min-width: 300px !important;
+  margin: 0 !important;
+  padding: 12px 24px !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: var(--shadow-lg) !important;
 }
 
-/* =========================================
-   Mobile Optimization (Refined Layout)
-========================================= */
+/* ---------- 12. Typography ---------- */
+.box, .panel__body, td, th, div, span, p, label { text-shadow: none !important; }
+
+h1, h2, h3, h4, h5, h6 { color: var(--text-strong) !important; font-weight: 700 !important; text-shadow: none !important; margin-top: 0 !important; }
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { color: var(--muted) !important; font-size: 0.75em !important; font-weight: 500 !important; margin-right: 8px !important; }
+
+/* Page titles: soft white→zinc gradient */
+#content .header > h2 {
+  background: linear-gradient(180deg, #ffffff 25%, #a1a1aa 120%) !important;
+  -webkit-background-clip: text !important;
+          background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+#content .header > h2 a, #content .header > h2 span[style*="color"] { -webkit-text-fill-color: currentColor !important; }
+
+.forum_post .body, .message_table td, form.search_form label, table td { font-size: 14px !important; }
+.forum_post .body { color: var(--text) !important; line-height: 1.7 !important; }
+.user_details { color: var(--text-strong); }
+.small, .desc, .poll, .news_post, .time, span[style*="color: grey"] { color: var(--muted) !important; font-weight: 500 !important; }
+
+a:not([class*="permission_"]):not([style*="color"]) { color: var(--link); font-weight: 500 !important; transition: color 0.15s ease; }
+a:not([class*="permission_"]):not([style*="color"]):hover {
+  color: #fff;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(139, 92, 246, 0.7) !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 3px !important;
+}
+
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]),
+.box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]),
+.forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]),
+.forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]) { color: var(--text-strong) !important; font-weight: 600 !important; }
+#inbox .box .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover,
+.box.filter_torrents .head a:not([class*="permission_"]):not([href*="user.php?id="]):hover,
+.forum_post .colhead a:not([class*="permission_"]):not([href*="user.php?id="]):hover,
+.forum_post .colhead_dark a:not([class*="permission_"]):not([href*="user.php?id="]):hover { color: var(--primary-300) !important; text-decoration: none !important; }
+
+a.simple-tabs__link--active, .selected_link {
+  color: var(--primary-300) !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--primary) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 6px !important;
+}
+
+blockquote {
+  margin: 15px 0 !important;
+  padding: 14px 18px !important;
+  color: var(--text-strong) !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-inline-start: 3px solid var(--primary) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
+}
+
+code, pre, kbd { font-family: var(--font-mono) !important; font-size: 0.9em !important; }
+code, kbd { padding: 2px 6px !important; background: var(--surface-2) !important; border: 1px solid var(--border) !important; border-radius: 6px !important; }
+pre { padding: 14px !important; background: var(--bg-sunken) !important; border: 1px solid var(--border) !important; border-radius: var(--radius-sm) !important; overflow-x: auto !important; }
+pre code { padding: 0 !important; background: none !important; border: none !important; }
+
+/* ---------- 13. Forum ---------- */
+a.show_torrents, a.hide_torrents { opacity: 0.5 !important; color: var(--text-strong) !important; transition: all 0.2s ease !important; }
+a.show_torrents:hover, a.hide_torrents:hover { opacity: 1 !important; transform: scale(1.1); color: var(--primary-300) !important; }
+td.unread:before, td.unread_locked:before, td.unread_locked_sticky:before, td.unread_sticky:before { color: var(--primary-300) !important; text-shadow: none !important; }
+
+div.movie-item, #threadpoll, div#quickreplytext, table.ft_cat_list td { background: transparent !important; border: none !important; box-shadow: none !important; }
+table.forum_post td.avatar { border-left: none !important; }
+table.forum_post td.avatar img { border-radius: var(--radius) !important; box-shadow: 0 0 0 1px var(--border) !important; }
+
+/* ---------- 14. User classes (site identity — unchanged) ---------- */
+.permission_staff, a.permission_staff, span.permission_staff { font-weight: bold !important; color: #026ad4 !important; }
+.permission_1000, a.permission_1000, span.permission_1000 { font-weight: bold !important; color: #cd0010 !important; }
+.permission_900, a.permission_900, span.permission_900 { font-weight: bold !important; color: #F0133F !important; }
+.permission_800, a.permission_800, span.permission_800 { font-weight: bold !important; color: #026ad4 !important; }
+.permission_700, a.permission_700, span.permission_700 { font-weight: bold !important; color: #b72b06 !important; }
+.permission_600, a.permission_600, span.permission_600 { font-weight: bold !important; color: #c46ebd !important; }
+.permission_450, a.permission_450, span.permission_450 { font-weight: bold !important; color: #66CCFF !important; }
+.permission_400, a.permission_400, span.permission_400 { color: #FF0099 !important; }
+.permission_205, a.permission_205, span.permission_205 { color: #00AB22 !important; }
+.permission_200, a.permission_200, span.permission_200 { color: #00FF99 !important; }
+.permission_150, a.permission_150, span.permission_150 { font-weight: bold !important; color: #FF9900 !important; }
+.permission_100, a.permission_100, span.permission_100 { color: #FFF300 !important; }
+.permission_17, a.permission_17, span.permission_17 { color: #059669 !important; }
+.permission_16, a.permission_16, span.permission_16 { color: #b45309 !important; }
+.permission_15, a.permission_15, span.permission_15 { color: #65a30d !important; }
+.permission_14, a.permission_14, span.permission_14 { color: #4d7c0f !important; }
+.permission_13, a.permission_13, span.permission_13 { color: #15803d !important; }
+.permission_12, a.permission_12, span.permission_12 { color: #166534 !important; }
+.permission_11, a.permission_11, span.permission_11 { font-weight: bold !important; color: #ffffff !important; }
+.permission_10, a.permission_10, span.permission_10 { color: #ffffff !important; }
+
+a[class*="permission_"] { text-shadow: none !important; font-weight: 600 !important; transition: filter 0.15s ease !important; }
+a[class*="permission_"]:hover { filter: brightness(0.8) !important; text-decoration: underline !important; text-underline-offset: 3px !important; }
+
+/* ---------- 15. Tags / chips ---------- */
+#taglist tr td a, .tags a, .movie-tooltip__tag, #artist_list a, ul.stats li a, ul.tags li a {
+  display: inline-block !important;
+  margin: 2px !important;
+  padding: 3px 10px !important;
+  font-size: 0.85em !important;
+  font-weight: 500 !important;
+  color: var(--text) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-full) !important;
+  transition: all 0.15s ease !important;
+}
+#taglist tr td a:hover, .tags a:hover, .movie-tooltip__tag:hover, #artist_list a:hover, ul.stats li a:hover, ul.tags li a:hover {
+  color: #ede9fe !important;
+  background: var(--primary-soft) !important;
+  border-color: rgba(139, 92, 246, 0.45) !important;
+  text-decoration: none !important;
+}
+#artist_list .remove a, ul.stats .remove a, ul.tags .remove a, .remove_artist a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  margin-right: 4px !important;
+  color: var(--text-soft) !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 50% !important;
+}
+#artist_list .remove a:hover, ul.stats .remove a:hover, ul.tags .remove a:hover, .remove_artist a:hover {
+  color: #fff !important;
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+/* ---------- 16. Stats, icons, images ---------- */
+.r00 { color: #fca5a5 !important; }
+.r10 { color: #fdba74 !important; }
+.r20 { color: #fcd34d !important; }
+.r50, .r99 { color: #86efac !important; }
+span[style*="#00fff6"], span[style*="rgb(0, 255, 246)"], font[color="#00fff6"] { color: #7dd3fc !important; }
+
+svg { fill: var(--text) !important; }
+.up_polygon, .upload_stat, .good, .goodish, .tl_seeding { fill: var(--success) !important; color: var(--success) !important; filter: none !important; }
+.down_polygon, .down_stat, .bad, .badish, .tl_snatched { fill: var(--danger) !important; color: var(--danger) !important; filter: none !important; }
+.internal-mark, .tl_notice, table#torrent_table strong { fill: var(--warn) !important; color: var(--warn) !important; filter: none !important; }
+
+.torrent_icons i, .torrent_icons .fa { display: inline-block !important; filter: none !important; transition: transform 0.15s ease, filter 0.15s ease !important; }
+.torrent_icons a:hover i { transform: scale(1.15); filter: drop-shadow(0 0 6px currentColor) !important; }
+.token_ic, .token_ic i, .token_ic .fa { color: #e879f9 !important; }
+.reseed_ic, .reseed_ic i, .reseed_ic .fa { color: #fbbf24 !important; }
+.download_ic, .download_ic i, .download_ic .fa { color: #4ade80 !important; }
+.report_ic, .report_ic i, .report_ic .fa { color: #f87171 !important; }
+.bookmark_ic, .bookmark_ic i, .bookmark_ic .fa { color: #facc15 !important; }
+a[href*="action=edit"] i, .fa-pencil-square-o,
+a[href*="action=delete"] i, .fa-trash,
+a[href*="torrentid="] i, .fa-link { color: var(--text-soft) !important; }
+
+td.cats_col div[class*="cats_"] {
+  display: inline-block !important;
+  transform: scale(2) !important;
+  transform-origin: center center !important;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)) !important;
+}
+
+img.banner, #covers img, .group_image img, .torrent_screenshots > img {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow) !important;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+#covers img:hover, .group_image img:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(139, 92, 246, 0.45) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+
+/* ---------- 17. Scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a2a30; border-radius: 10px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+/* ---------- 18. WYSIBB editor ---------- */
+.wysibb, .wysibb-text, .wysibb-toolbar { background: var(--surface) !important; border-color: var(--border) !important; border-radius: var(--radius-sm) !important; }
+.wysibb-toolbar { border-bottom: 1px solid var(--border) !important; }
+.wysibb-body { color: var(--text-strong) !important; background: var(--bg-sunken) !important; font-family: var(--font) !important; border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important; }
+.wysibb-toolbar-btn { color: var(--text) !important; border-radius: 6px !important; transition: background-color 0.15s ease !important; }
+.wysibb-toolbar-btn img { filter: brightness(0) invert(1) !important; opacity: 0.85; }
+.wbb-h1, .wbb-h2, .wbb-h3, .wbb-h1 *, .wbb-h2 *, .wbb-h3 * { color: var(--text-strong) !important; }
+.wbb-cp .fonticon, .wbb-cp ins.fonticon { color: var(--text) !important; text-shadow: none !important; }
+.wysibb-toolbar-btn:hover, .wysibb-toolbar-btn.on { background: rgba(255, 255, 255, 0.07) !important; }
+.wysibb-toolbar-btn.on { box-shadow: inset 0 0 0 1px rgba(139, 92, 246, 0.5) !important; }
+.wbb-list { padding: 6px !important; background: var(--surface-2) !important; border: 1px solid var(--border-strong) !important; border-radius: var(--radius) !important; box-shadow: var(--shadow-lg) !important; }
+.wbb-list .option, .wbb-list .nc { padding: 6px 12px !important; color: var(--text) !important; border-radius: 6px !important; }
+.wbb-list .option:hover, .wbb-list .option.selected { color: var(--text-strong) !important; background: rgba(255, 255, 255, 0.06) !important; }
+.wbb-list .sc { border: 1px solid var(--border) !important; border-radius: 4px !important; }
+
+/* ---------- 19. Tooltips (tooltipster v3/v4) ---------- */
+.tooltipster-default, .tooltipster-sidetip .tooltipster-box {
+  color: var(--text) !important;
+  background: rgba(24, 24, 27, 0.96) !important;
+  border: 1px solid var(--border-strong) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* ==========================================================================
+   Mobile / tablet
+   ========================================================================== */
 @media screen and (max-width: 1100px) {
-  #content { width: 95% !important; padding: 0 !important; }
-  
-  #menu ul { flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; padding: 10px !important; justify-content: flex-start !important; }
-  #menu ul::-webkit-scrollbar { display: none !important; } 
-  
-  #userinfo { margin: 20px auto 0 auto !important; overflow-x: auto !important; justify-content: flex-start !important; padding: 10px !important;}
-  #userinfo ul { flex-wrap: nowrap !important; }
-  
-  #latest5posts td, #latest5torrents_p td { 
-    background: var(--hb-panel) !important; 
-    border-radius: var(--hb-radius) !important; 
-    box-shadow: var(--hb-shadow-soft) !important;
+  :root { --container: 100%; }
+
+  html, body, #wrapper { width: 100vw !important; max-width: 100vw !important; min-width: 320px !important; overflow-x: hidden !important; padding: 0 !important; margin: 0 !important; }
+  #header img, #logo a img, .logo img { max-width: 100% !important; height: auto !important; object-fit: contain !important; }
+  #content { width: 100% !important; padding: 0 12px 12px !important; margin: 12px auto !important; box-sizing: border-box !important; }
+
+  /* Nav */
+  #menu ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 6px !important; padding: 8px 6px !important; overflow: visible !important; }
+  #menu ul > li { flex: 0 0 auto !important; }
+  #menu ul > li > a { margin: 0 !important; padding: 14px 20px !important; font-size: 18px !important; }
+  #menu ul ul { display: none !important; }
+  #menu ul > li:hover > ul { display: flex !important; flex-direction: column !important; flex-wrap: nowrap !important; gap: 2px !important; padding: 6px !important; }
+  #menu ul > li > ul > li > a { padding: 14px 16px !important; font-size: 17px !important; }
+
+  /* User bar */
+  #userinfo {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    margin: 12px auto 0 !important;
+    padding: 14px 12px 8px !important;
+    border-radius: 16px 16px 0 0 !important;
   }
-  
-  table.movies_chart { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; gap: 16px !important; }
-  table.forum_post td.body { padding: 24px 20px !important; }
+  #userinfo::-webkit-scrollbar { display: none !important; }
+  #userinfo ul { flex-wrap: nowrap !important; justify-content: flex-start !important; width: auto !important; }
+  #userinfo li { flex: 0 0 auto !important; padding: 10px 18px !important; font-size: 16px !important; }
+  #userinfo li span.stat, #userinfo li .tooltip { font-size: 18px !important; }
+
+  /* Search */
+  #searchbars-wrapper { width: 100% !important; margin: 0 auto 20px !important; padding: 4px 0 16px !important; border-radius: 0 0 16px 16px !important; }
+  #searchbars {
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 10px !important;
+    padding: 4px 12px !important;
+    box-sizing: border-box !important;
+  }
+  #searchbars::-webkit-scrollbar { display: none !important; }
+  #searchbars form.search_form { flex: 0 0 200px !important; width: 200px !important; min-width: 200px !important; }
+  #searchbars input:is([type="text"], [type="search"], :not([type])) { padding: 14px 44px 14px 16px !important; font-size: 17px !important; }
+
+  /* Alerts */
+  #alerts .alertbar {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    padding: 12px 20px !important;
+    font-size: 17px !important;
+  }
+  #alerts .alertbar::-webkit-scrollbar { display: none !important; }
+  #alerts .alertbar a { flex: 0 0 auto !important; white-space: nowrap !important; }
+
+  /* Layout order */
+  .thin { display: flex !important; flex-direction: column !important; width: 100% !important; }
+  #latest_torrents { order: 1 !important; width: 100% !important; float: none !important; display: block !important; }
+  .main_column { order: 2 !important; width: 100% !important; margin: 0 0 20px !important; float: none !important; display: block !important; box-sizing: border-box !important; }
+  .sidebar { order: 3 !important; width: 100% !important; margin: 0 !important; float: none !important; display: block !important; position: relative !important; top: auto !important; max-height: none !important; overflow: visible !important; box-sizing: border-box !important; }
+  .sidebar.settings_sidebar, #settings_sections, .sidebar .box.fixed { position: relative !important; top: auto !important; width: 100% !important; display: block !important; }
+
+  /* Carousel → native swipe */
+  #latest5tor .owl-carousel, #latest5tor .owl-carousel.owl-loaded, #latest5tor .owl-carousel.owl-drag, #latest5tor .owl-carousel.owl-grab { display: block !important; width: 100% !important; overflow: visible !important; touch-action: pan-x !important; cursor: default !important; }
+  #latest5tor .owl-stage-outer { position: relative !important; width: 100% !important; max-width: 100vw !important; height: auto !important; margin: 0 !important; padding: 15px 0 !important; overflow-x: scroll !important; overflow-y: visible !important; -webkit-overflow-scrolling: touch !important; scroll-snap-type: x mandatory !important; scrollbar-width: none !important; touch-action: pan-x !important; transform: none !important; }
+  #latest5tor .owl-stage-outer::-webkit-scrollbar { display: none !important; }
+  #latest5tor .owl-stage { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; min-width: 100% !important; padding: 0 10px !important; transform: none !important; transition: none !important; touch-action: pan-x !important; pointer-events: none !important; }
+  #latest5tor .owl-item, #latest5tor .owl-item.active, #latest5tor .owl-item.cloned { float: none !important; flex: 0 0 40vw !important; width: 40vw !important; min-width: 0 !important; max-width: none !important; margin: 0 2vw !important; scroll-snap-align: center !important; touch-action: pan-x !important; pointer-events: auto !important; }
+  #latest5tor .owl-item > div { width: 100% !important; height: auto !important; padding: 12px !important; box-sizing: border-box !important; pointer-events: auto !important; }
+  #latest5tor .owl-item > div:hover { transform: none !important; }
+  #latest5tor .owl-item a, #latest5tor .owl-item a *, #latest5tor .owl-item span, #latest5tor .owl-item div { touch-action: pan-x pan-y !important; pointer-events: auto !important; }
+  #latest5tor .owl-item a > div[style*="background-image"] { width: 100% !important; height: 60vw !important; min-height: 0 !important; max-height: none !important; background-size: contain !important; background-repeat: no-repeat !important; background-position: center !important; background-color: transparent !important; box-shadow: none !important; }
+  #latest5tor .owl-item a > span.tooltip { font-size: 16px !important; margin-bottom: 8px !important; }
+  #latest5tor .owl-item span[style*="font-size: 90%"] { font-size: 13px !important; margin-bottom: 12px !important; }
+  #latest5tor .owl-item > div > div[style*="font-size: 95%"] { font-size: 13px !important; padding: 10px 0 !important; }
+  #latest5tor .owl-nav, #latest5tor .owl-dots { display: none !important; }
+
+  /* Forums / torrents tabs → segmented control */
+  #latestForums .head { display: block !important; padding: 10px 0 !important; text-align: center !important; background: transparent !important; border: none !important; }
+  #latestForums .head > a.tooltip { display: none !important; }
+  #latestForums .head > span { display: flex !important; gap: 4px !important; width: 100% !important; box-sizing: border-box !important; padding: 4px !important; font-size: 0 !important; background: var(--surface-2) !important; border: 1px solid var(--border) !important; border-radius: 14px !important; }
+  #latestForums .head > span a { flex: 1 !important; display: inline-block !important; padding: 14px !important; font-size: 18px !important; font-weight: 500 !important; text-align: center !important; color: var(--muted) !important; border-radius: 10px !important; text-decoration: none !important; }
+  #latestForums .head > span a.simple-tabs__link--active { color: var(--text-strong) !important; font-weight: 600 !important; background: var(--surface-3) !important; box-shadow: var(--highlight), 0 2px 8px rgba(0, 0, 0, 0.5) !important; text-decoration: none !important; }
+
+  /* Latest posts / torrents → cards */
+  #latest5forums_p, #latest5torrents_p { display: block !important; width: 100% !important; background: transparent !important; border: none !important; }
+  #latest5posts tbody, #latest5torrents_p tbody, #latest5posts tr, #latest5torrents_p tr { display: block !important; width: 100% !important; }
+  #latest5posts td, #latest5torrents_p td {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 12px !important;
+    padding: 20px 18px !important;
+    text-align: right !important;
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--highlight), var(--shadow) !important;
+  }
+  #latest5posts td > span, #latest5torrents_p td > span { display: block !important; width: 100% !important; font-size: 0 !important; color: transparent !important; }
+  #latest5posts td > span > *, #latest5torrents_p td > span > * { font-size: 18px !important; color: var(--text) !important; }
+  #latest5posts td > span > a:first-child, #latest5torrents_p td > span > a:first-child { display: inline !important; margin-left: 8px !important; font-size: 20px !important; font-weight: 700 !important; line-height: 1.4 !important; color: var(--text-strong) !important; }
+  #latest5posts td > span > a:nth-child(2), #latest5torrents_p td > span > strong {
+    position: relative !important;
+    top: -2px !important;
+    display: inline-block !important;
+    padding: 5px 12px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    vertical-align: middle !important;
+    color: var(--primary-300) !important;
+    background: var(--primary-soft) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    border-radius: var(--radius-full) !important;
+  }
+  #latest5posts td > span > span, #latest5torrents_p td > span > span { display: block !important; clear: both !important; float: none !important; width: 100% !important; margin-top: 16px !important; padding-top: 16px !important; font-size: 16px !important; text-align: right !important; color: var(--muted) !important; border-top: 1px solid var(--border) !important; }
+  #latest5posts td > span > span .time, #latest5torrents_p td > span > span .time { float: left !important; margin-top: 2px !important; font-size: 15px !important; color: var(--text-soft) !important; }
+  #latest5posts td > span > span a, #latest5torrents_p td > span > span a { font-size: 16px !important; font-weight: 600 !important; }
+  #latest5posts td[style*="text-align: center"], #latest5torrents_p td[style*="text-align: center"] { padding: 20px !important; font-size: 18px !important; font-weight: 600 !important; text-align: center !important; color: var(--text-soft) !important; background: transparent !important; border: 1px dashed var(--border-strong) !important; box-shadow: none !important; }
+
+  /* Movie grid (actual grid this time) */
+  table.movies_chart { display: block !important; border-spacing: 0 !important; }
+  table.movies_chart tbody { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(min(160px, 45%), 1fr)) !important; gap: 12px !important; }
+  table.movies_chart tr { display: contents !important; }
+  table.movies_chart td.movie-item { display: block !important; width: auto !important; }
+  table.movies_chart td.movie-item > a > div[style*="background-image"] { height: 200px !important; width: 100% !important; }
+  table.movies_chart td.movie-item > a > span.tooltip { font-size: 15px !important; }
+
+  /* Wide tables scroll inside their card */
+  table.torrent_table, table.forum_index, table.user_options, table.message_table, table.invite_table { display: block !important; width: 100% !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
+
+  .box, .panel__body, table td, .forum_post .body { font-size: 18px !important; line-height: 1.6 !important; }
+  input, select, textarea { font-size: 18px !important; }
+
+  table.forum_post td.avatar { display: none !important; }
+  table.forum_post td.body { display: block !important; width: 100% !important; box-sizing: border-box !important; padding: 20px 15px !important; }
+}
+
+.hidden, #latest5torrents_p.hidden, #latest5forums_p.hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
