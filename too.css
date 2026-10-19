@@ -1,273 +1,558 @@
-/* ==========================================================
-   HeBits — "Screening Room" skin by Zeus
-   External stylesheet for Gazelle. Override-only: skins the
-   existing structure without changing the site's layout.
-   ========================================================== */
+@import url("https://hebits.net/static/styles/base/style.css");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@500;600;700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@500;700&display=swap');
+/* =========================================================
+   HEBITS — CINEMATHEQUE  v2.0  (by Zeus)
+   Ink-blue screening room, projector-amber light.
+   Posters are the hero; everything else stays quiet.
+   Hebrew-native type: Rubik (headings) + Assistant (body).
+   ========================================================= */
 
 :root {
-  --bg:        #141a24;
-  --surface:   #1b2330;
-  --surface-2: #222c3b;
-  --border:    #2a3445;
-  --text:      #e6e9ef;
-  --muted:     #8b96a8;
-  --link:      #6cb4ee;
-  --link-h:    #a5d2f7;
-  --marquee:   #f2b544;   /* freeleech / highlights */
+  --bg:        #10141b;
+  --bg-deep:   #0b0e13;
+  --surface:   #161b24;
+  --surface-2: #1d2430;
+  --line:      #252c39;
+  --line-2:    #323b4b;
+  --text:      #d9dee7;
+  --strong:    #f4f6fa;
+  --muted:     #8790a1;
+  --accent:    #f0b54a;              /* projector amber */
+  --accent-dim: rgba(240,181,74,.14);
+  --link:      #8ec5f5;
   --up:        #4cc38a;
-  --down:      #e8706a;
-  --radius:    10px;
-  --radius-sm: 6px;
-  --font:      'Assistant', 'Segoe UI', Arial, sans-serif;
-  --font-head: 'Rubik', 'Assistant', 'Segoe UI', Arial, sans-serif;
+  --down:      #ef6f6c;
+  --r-sm: 6px;
+  --r:    10px;
+  --r-lg: 14px;
+  --font: "Assistant", "Segoe UI", Arial, sans-serif;
+  --font-head: "Rubik", "Assistant", "Segoe UI", Arial, sans-serif;
+  --page: min(1440px, 92%);
 }
 
-/* ---------- Base ---------- */
+/* =========================================================
+   BASE
+   ========================================================= */
 html, body {
   background: var(--bg) !important;
   color: var(--text) !important;
   font-family: var(--font) !important;
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 15px !important;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-#wrapper { background: transparent !important; }
+html { scroll-padding-top: 80px; }
+body::before, body::after { display: none !important; }
+#wrapper, .body, .tdhack { background: transparent !important; }
+.hidden { display: none !important; }
 
-a { color: var(--link) !important; text-decoration: none !important; transition: color .15s; }
-a:hover { color: var(--link-h) !important; }
+div, span, p, td, th, li, label, input, textarea, select, button { font-family: var(--font) !important; text-shadow: none !important; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head) !important;
+  color: var(--strong) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.01em;
+  text-shadow: none !important;
+}
 
-::selection { background: var(--link); color: #0d1219; }
+a { text-decoration: none !important; transition: color .15s ease; }
+a:not([class*="permission_"]) { color: var(--link) !important; }
+a:not([class*="permission_"]):hover { color: var(--strong) !important; }
+a[class*="permission_"]:hover { filter: brightness(1.25); }
 
-* { scrollbar-width: thin; scrollbar-color: var(--border) var(--bg); }
+::selection { background: var(--accent); color: var(--bg-deep); }
+:focus-visible { outline: 2px solid var(--accent) !important; outline-offset: 2px; }
+
+* { scrollbar-width: thin; scrollbar-color: var(--line-2) var(--bg-deep); }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 10px; border: 2px solid var(--bg-deep); }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-/* ---------- Top menu ---------- */
+#content { width: var(--page) !important; max-width: none !important; margin: 0 auto !important; }
+
+/* =========================================================
+   TOP MENU — sticky
+   ========================================================= */
+#header { display: contents !important; }
 #menu {
-  background: rgba(20, 26, 36, .92) !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  background: var(--bg-deep) !important;
+  border-bottom: 1px solid var(--line) !important;
 }
 #menu > ul > li > a {
   font-family: var(--font-head) !important;
-  font-weight: 500;
+  font-weight: 500 !important;
+  font-size: 14.5px !important;
   color: var(--text) !important;
-  padding: 10px 14px !important;
-  border-radius: var(--radius-sm);
+  padding: 15px 18px !important;
+  transition: color .15s ease, box-shadow .15s ease !important;
 }
-#menu > ul > li > a:hover { background: var(--surface-2) !important; }
-#menu .username { color: var(--marquee) !important; }
+#menu > ul > li > a:hover,
+#menu > ul > li.active > a {
+  color: var(--strong) !important;
+  background: transparent !important;
+  box-shadow: inset 0 -2px 0 var(--accent) !important;
+}
+#menu #nav_user > a.username { color: var(--accent) !important; font-weight: 600 !important; }
 
-/* dropdowns */
 #menu .nav_dropdown > div {
   background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, .45) !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: var(--r) !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,.55) !important;
   padding: 6px !important;
+  min-width: 190px;
 }
 #menu .nav_dropdown > div a {
-  display: block;
-  padding: 7px 12px !important;
-  border-radius: var(--radius-sm);
+  display: block !important;
+  padding: 8px 12px !important;
+  border-radius: var(--r-sm) !important;
   color: var(--text) !important;
+  font-size: 14px !important;
 }
-#menu .nav_dropdown > div a:hover { background: var(--surface-2) !important; color: var(--link-h) !important; }
+#menu .nav_dropdown > div a:hover { background: var(--surface-2) !important; color: var(--strong) !important; }
 
-/* ---------- Banner + user stats ---------- */
-#banner {
-  background-color: var(--surface) !important;
-  border-bottom: 1px solid var(--border) !important;
-  position: relative;
-}
+/* =========================================================
+   BANNER + PERSONAL STATS
+   ========================================================= */
+#banner { background-color: var(--bg-deep) !important; border-bottom: 1px solid var(--line) !important; }
+
 #userinfo ul li {
-  background: rgba(20, 26, 36, .78) !important;
-  border: 1px solid var(--border) !important;
+  background: rgba(11,14,19,.86) !important;
+  border: 1px solid var(--line-2) !important;
   border-radius: 999px !important;
-  padding: 3px 12px !important;
+  padding: 4px 13px !important;
   margin: 3px !important;
-  font-size: 13px;
+  font-size: 13px !important;
+  color: var(--muted) !important;
 }
 #userinfo ul li a { color: var(--muted) !important; }
-#userinfo .upload_stat { color: var(--up) !important; font-weight: 700; }
-#userinfo .down_stat   { color: var(--down) !important; font-weight: 700; }
-#stats_ratio .stat span { color: var(--marquee) !important; font-weight: 700; }
+#userinfo ul li a:hover { color: var(--strong) !important; }
+#userinfo .stat { font-variant-numeric: tabular-nums; font-weight: 700; }
+#userinfo .upload_stat { color: var(--up) !important; }
+#userinfo .down_stat   { color: var(--down) !important; }
+#stats_ratio .stat span { color: var(--accent) !important; }
+#bonus_points a { color: var(--accent) !important; }
 
-svg .up_polygon   { fill: var(--up) !important; }
-svg .down_polygon { fill: var(--down) !important; }
+svg .up_polygon, .up_polygon     { fill: var(--up) !important; }
+svg .down_polygon, .down_polygon { fill: var(--down) !important; }
 
-/* ---------- Search bars ---------- */
+/* =========================================================
+   SEARCH BARS
+   ========================================================= */
 #searchbars-wrapper {
-  background: var(--bg) !important;
-  border-bottom: 1px solid var(--border) !important;
-  padding: 10px 0 !important;
+  background: var(--bg-deep) !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding: 14px 0 !important;
+  margin-bottom: 26px !important;
+}
+#searchbars {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  width: var(--page) !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+}
+#searchbars form.search_form {
+  flex: 1 1 140px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
 }
 #searchbars input[type="text"] {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: 40px !important;
+  padding: 0 14px !important;
   background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text) !important;
-  padding: 7px 10px !important;
-  font-family: var(--font) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r) !important;
+  color: var(--strong) !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+  transition: border-color .15s ease, background-color .15s ease !important;
 }
-
-/* ---------- Generic form controls ---------- */
-input[type="text"], input[type="password"], input[type="email"], input[type="number"],
-input[type="search"], textarea, select {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--text) !important;
-  font-family: var(--font) !important;
-}
-input:focus, textarea:focus, select:focus {
+#searchbars input[type="text"]::placeholder { color: var(--muted) !important; }
+#searchbars input[type="text"]:hover { border-color: var(--line-2) !important; }
+#searchbars input[type="text"]:focus {
   outline: none !important;
-  border-color: var(--link) !important;
-  box-shadow: 0 0 0 3px rgba(108, 180, 238, .18) !important;
+  background: var(--surface-2) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-dim) !important;
 }
-input[type="submit"], input[type="button"], button {
-  background: var(--link) !important;
-  color: #0d1219 !important;
-  border: 0 !important;
-  border-radius: var(--radius-sm) !important;
-  padding: 6px 14px !important;
-  font-family: var(--font-head) !important;
-  font-weight: 500;
-  cursor: pointer;
-}
-input[type="submit"]:hover, input[type="button"]:hover, button:hover { background: var(--link-h) !important; }
-:focus-visible { outline: 2px solid var(--link) !important; outline-offset: 2px; }
+#searchbars #torrentssearch { border-color: var(--line-2) !important; }
 
-/* ---------- Staff alert bar ---------- */
+/* =========================================================
+   STAFF ALERT BAR
+   ========================================================= */
+#alerts { background: transparent !important; padding: 0 0 18px !important; width: var(--page); margin: 0 auto; }
 #alerts .alertbar {
   background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r) !important;
+  padding: 10px 18px !important;
   color: var(--muted) !important;
-  padding: 8px 14px !important;
+  font-size: 13.5px !important;
+  text-align: center !important;
 }
+#alerts .alertbar a { margin: 0 6px !important; font-weight: 600 !important; }
 
-/* ---------- Boxes / panels ---------- */
-.box, #more_news {
+/* =========================================================
+   BOXES / PANELS
+   ========================================================= */
+.box, #more_news, .panel__body, .filter_torrents, table.forum_post, table.message_table {
   background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-lg) !important;
   box-shadow: none !important;
-  overflow: hidden;
-  margin-bottom: 16px !important;
-}
-.box .head, .colhead_dark, .colhead, tr.colhead td, #more_news .head {
-  background: var(--surface-2) !important;
+  overflow: hidden !important;
+  margin-bottom: 20px !important;
   color: var(--text) !important;
+}
+
+.head, .colhead_dark, .colhead, tr.colhead td, tr.colhead_dark td, thead th, table th,
+.forum_category_title, #reply_box .head {
+  background: transparent !important;
   border: 0 !important;
-  border-bottom: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding: 14px 18px !important;
   font-family: var(--font-head) !important;
-  font-weight: 500;
-  padding: 10px 14px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--strong) !important;
 }
-.head strong { font-weight: 500; }
-.pad { padding: 14px !important; }
+.head strong { font-weight: 500 !important; }
+.head a:not([class*="permission_"]) { color: var(--strong) !important; }
+.pad { padding: 16px 18px !important; }
 
-/* tabs inside box heads */
-.head span > a { color: var(--muted) !important; }
-.head .simple-tabs__link--active { color: var(--text) !important; border-bottom: 2px solid var(--marquee); padding-bottom: 2px; }
+/* tabs in panel heads */
+.head span > a[onclick] { color: var(--muted) !important; padding-bottom: 4px; }
+.head span > a[onclick]:hover { color: var(--strong) !important; }
+.head .simple-tabs__link--active { color: var(--strong) !important; box-shadow: inset 0 -2px 0 var(--accent); }
+.head .fa-eye, .head .fa-eye-slash { color: var(--muted) !important; }
 
-/* sidebar stats */
-.sidebar ul.stats li {
-  padding: 5px 0 !important;
-  border-bottom: 1px dashed var(--border);
-  color: var(--muted);
+/* =========================================================
+   LATEST RELEASES — the poster wall
+   ========================================================= */
+#latest_torrents { background: transparent !important; border: 0 !important; overflow: visible !important; }
+#latest_torrents > .head { padding: 0 2px 14px !important; border-bottom: 0 !important; }
+#latest_torrents.pad, #latest_torrents { padding: 0 !important; }
+
+#latest5tor .owl-stage { display: flex !important; align-items: stretch !important; }
+#latest5tor .owl-item  { display: flex !important; float: none !important; }
+
+#latest5tor .owl-item > div {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  background: none !important;
+  border: 0 !important;
+  padding: 0 0 4px !important;
+  text-align: right !important;
 }
-.sidebar ul.stats li:last-child { border-bottom: 0; }
-
-/* poll bars */
-.poll .graph .center_poll {
-  display: inline-block;
-  height: 6px !important;
-  background: var(--link) !important;
-  border-radius: 99px;
+#latest5tor .owl-item > div > a {
+  position: relative !important;
+  display: block !important;
+  border-radius: var(--r) !important;
+  overflow: hidden !important;
+  background: var(--surface-2);
+  box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  transition: box-shadow .2s ease !important;
 }
-
-/* ---------- News ---------- */
-.news_post .newsbody { font-size: 15.5px; line-height: 1.7; max-width: 75ch; }
-.news_post .head .time { color: var(--muted) !important; font-size: 13px; }
-
-/* ---------- Tables ---------- */
-table { background: transparent !important; border-collapse: collapse !important; }
-td, th { border-color: var(--border) !important; }
-tr.rowa, .rowa { background: var(--surface) !important; }
-tr.rowb, .rowb { background: #1e2735 !important; }
-#latestForums td, .torrent_table td { border-bottom: 1px solid var(--border) !important; padding: 10px 12px !important; }
-#latestForums tr:hover td, .torrent_table tr:hover td { background: var(--surface-2) !important; }
-
-/* ---------- Latest releases carousel (the hero) ---------- */
-.last_torrent_table a > div.tooltip {
+#latest5tor .owl-item > div > a > div[style*="background-image"] {
   height: auto !important;
   aspect-ratio: 2 / 3;
+  width: 100% !important;
+  margin: 0 !important;
   background-size: cover !important;
-  border-radius: var(--radius) !important;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, .45);
-  transition: transform .2s ease, box-shadow .2s ease;
+  background-position: center !important;
+  transition: transform .4s ease !important;
 }
-.last_torrent_table a:hover > div.tooltip {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, .55), 0 0 0 2px var(--marquee);
+#latest5tor .owl-item > div > a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,10,14,.96) 0%, rgba(8,10,14,.65) 26%, rgba(8,10,14,0) 52%);
+  pointer-events: none;
 }
-.last_torrent_table a > span { font-weight: 600; color: var(--text) !important; }
-.last_torrent_table .time, .last_torrent_table span[style] { color: var(--muted) !important; }
-.owl-theme .owl-dots .owl-dot span { background: var(--border) !important; }
-.owl-theme .owl-dots .owl-dot.active span { background: var(--marquee) !important; }
+#latest5tor .owl-item > div > a > span.tooltip {
+  position: absolute !important;
+  right: 12px; left: 12px; bottom: 11px;
+  z-index: 1;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden !important;
+  white-space: normal !important;
+  font-family: var(--font-head) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  color: #fff !important;
+}
+#latest5tor .owl-item > div > a:hover { box-shadow: 0 14px 30px rgba(0,0,0,.6), 0 0 0 2px var(--accent); }
+#latest5tor .owl-item > div > a:hover > div[style*="background-image"] { transform: scale(1.05); }
 
-/* ---------- Hot / staff-pick torrents ---------- */
-.torrent_table .rec_img { width: 64px; }
-.torrent_table .rec_img img { border-radius: var(--radius-sm); }
-.torrent_name { font-weight: 700; color: var(--text) !important; }
-.torrent_name:hover { color: var(--link-h) !important; }
-.torrent_info { color: var(--muted); font-size: 13px; direction: ltr; text-align: right; }
-.torrent_table td.sign { color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
-
-/* tags as chips */
-.tags a {
-  display: inline-block;
-  background: var(--bg) !important;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 1px 9px;
-  margin: 3px 0 0 4px;
-  font-size: 12px;
+#latest5tor .owl-item br { display: none !important; }
+#latest5tor .owl-item span[style*="font-size: 90%"] {
+  display: block !important;
+  margin-top: 9px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  color: var(--accent) !important;
+}
+#latest5tor .owl-item > div > div[style*="font-size: 95%"] {
+  margin-top: 3px !important;
+  font-size: 12px !important;
   color: var(--muted) !important;
 }
-.tags a:hover { border-color: var(--link); color: var(--link-h) !important; }
+#latest5tor .owl-item > div > a + div[style*="font-size: 95%"] { margin-top: 9px !important; }
+#latest5tor .owl-item .time { color: var(--muted) !important; }
+
+/* carousel controls */
+.owl-nav { display: flex !important; justify-content: center !important; gap: 8px !important; margin-top: 18px !important; }
+.owl-nav button.owl-prev, .owl-nav button.owl-next {
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  width: 34px !important; height: 34px !important; padding: 0 !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: 50% !important;
+  color: var(--text) !important;
+  font-size: 18px !important;
+  box-shadow: none !important;
+}
+.owl-nav button.owl-prev:hover, .owl-nav button.owl-next:hover { border-color: var(--accent) !important; color: var(--accent) !important; transform: none !important; }
+.owl-dots { margin-top: 14px !important; text-align: center !important; }
+.owl-dots button { background: none !important; border: 0 !important; padding: 0 !important; box-shadow: none !important; }
+.owl-dots .owl-dot { display: inline-block !important; margin: 0 3px !important; }
+.owl-dots .owl-dot span {
+  display: block !important; width: 6px !important; height: 6px !important; margin: 0 !important;
+  background: var(--line-2) !important; border-radius: 99px !important;
+  transition: width .2s ease, background-color .2s ease !important;
+}
+.owl-dots .owl-dot.active span { width: 20px !important; background: var(--accent) !important; }
+
+/* =========================================================
+   SIDEBAR — sticky
+   ========================================================= */
+.sidebar {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 72px !important;
+  align-self: flex-start !important;
+}
+.sidebar ul.stats { padding: 6px 18px 12px !important; }
+.sidebar ul.stats li {
+  padding: 7px 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  font-size: 14px !important;
+  color: var(--muted) !important;
+  font-variant-numeric: tabular-nums;
+}
+.sidebar ul.stats li:last-child { border-bottom: 0 !important; }
+.sidebar ul.stats li strong { color: var(--strong) !important; font-family: var(--font-head) !important; font-weight: 500 !important; }
+
+.poll li { color: var(--text) !important; }
+.poll .graph { margin: 4px 0 10px !important; }
+.poll .graph .center_poll {
+  display: inline-block !important;
+  height: 6px !important;
+  background: var(--accent) !important;
+  border-radius: 99px !important;
+}
+
+/* =========================================================
+   NEWS
+   ========================================================= */
+.news_post .head .time { color: var(--muted) !important; font-size: 13px !important; font-family: var(--font) !important; }
+.news_post .newsbody {
+  font-size: 15.5px !important;
+  line-height: 1.8 !important;
+  color: var(--text) !important;
+}
+.news_post .newsbody img { border-radius: var(--r) !important; max-width: 100% !important; }
+#more_news .head { border-bottom: 0 !important; font-size: 13.5px !important; color: var(--muted) !important; }
+#more_news em { font-style: normal !important; }
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border: 0 !important; }
+td { color: var(--text) !important; }
+tr.rowa > td, tr:nth-child(odd) > td  { background: var(--surface) !important; }
+tr.rowb > td, tr:nth-child(even) > td { background: #181e28 !important; }
+tr > td { border-bottom: 1px solid var(--line) !important; }
+tr:hover > td:not(.tdhack) { background: var(--surface-2) !important; }
+
+#latestForums td { padding: 11px 18px !important; }
+#latestForums td span[style*="float: left"] { color: var(--muted) !important; }
+
+/* torrent tables (browse, hot, staff picks) */
+table.torrent_table { background: var(--surface) !important; border: 1px solid var(--line) !important; border-radius: var(--r-lg) !important; overflow: hidden !important; }
+.box table.torrent_table { border: 0 !important; border-radius: 0 !important; margin: 0 !important; }
+.torrent_table td { padding: 12px 14px !important; vertical-align: middle !important; }
+.torrent_table td.rec_img { width: 54px !important; padding-left: 0 !important; }
+.torrent_table td.rec_img img {
+  width: 54px !important; height: 81px !important;
+  object-fit: cover; border-radius: var(--r-sm) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,.4);
+}
+a.torrent_name { font-family: var(--font-head) !important; font-weight: 600 !important; color: var(--strong) !important; }
+a.torrent_name:hover { color: var(--accent) !important; }
+.torrent_info { margin-top: 3px; font-size: 12.5px !important; color: var(--muted) !important; line-height: 1.55 !important; }
+.torrent_table td.sign {
+  text-align: center !important;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px !important;
+  color: var(--muted) !important;
+  width: 56px;
+}
+.torrent_table td.seeders { color: var(--up) !important; font-weight: 700; }
+
+tr.group_torrent > td { background: var(--bg-deep) !important; }
+tr.group_torrent:hover > td { background: var(--surface-2) !important; }
+tr.group_torrent > td:first-child { box-shadow: inset -3px 0 0 var(--line-2) !important; }
+tr.group_torrent:hover > td:first-child { box-shadow: inset -3px 0 0 var(--accent) !important; }
+
+a.show_torrents, a.hide_torrents { filter: invert(1) opacity(.5); }
+a.show_torrents:hover, a.hide_torrents:hover { filter: invert(1) opacity(1); }
+
+.torrent_icons i, .torrent_icons .fa { color: var(--muted) !important; transition: color .15s ease !important; }
+.torrent_icons a:hover i { color: var(--accent) !important; }
 
 /* status labels */
 .torrent_label {
-  display: inline-block;
-  border-radius: 4px;
-  padding: 0 6px;
-  font-size: 12px;
-  font-weight: 700;
+  display: inline-block !important;
+  padding: 0 7px !important;
+  border-radius: 4px !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.7 !important;
 }
-.tl_notice     { background: rgba(242, 181, 68, .15); color: var(--marquee) !important; }
-.tl_seeding    { background: rgba(76, 195, 138, .15); color: var(--up) !important; }
-.tl_snatched   { background: rgba(108, 180, 238, .15); color: var(--link) !important; }
-.internal-mark { background: rgba(232, 112, 106, .15); color: var(--down) !important; }
+.tl_notice     { background: var(--accent-dim) !important; color: var(--accent) !important; }
+.tl_seeding    { background: rgba(76,195,138,.14) !important; color: var(--up) !important; }
+.tl_snatched   { background: rgba(142,197,245,.14) !important; color: var(--link) !important; }
+.internal-mark { background: rgba(239,111,108,.14) !important; color: var(--down) !important; }
 
-/* ---------- Tooltips ---------- */
-.tooltipster-base .tooltipster-box, .tooltipster-default {
-  background: var(--surface-2) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
+/* tags */
+.tags a, #taglist tr td a, ul.tags li a, .movie-tooltip__tag {
+  display: inline-block !important;
+  margin: 5px 0 0 4px !important;
+  padding: 1px 9px !important;
+  background: transparent !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  color: var(--muted) !important;
+}
+.tags a:hover, #taglist tr td a:hover, ul.tags li a:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+.tags a[title*="IMDb"] { border-color: transparent !important; background: var(--accent-dim) !important; color: var(--accent) !important; font-weight: 700 !important; }
+
+/* =========================================================
+   FORUMS / INBOX
+   ========================================================= */
+table.forum_post td, table.message_table td { background: transparent !important; }
+table.forum_post td.avatar { border-left: 1px solid var(--line) !important; }
+.forum_post .body, .message_table td { font-size: 15px !important; line-height: 1.75 !important; }
+td.unread:before, td.unread_sticky:before, td.unread_locked:before, td.unread_locked_sticky:before { color: var(--accent) !important; }
+
+blockquote {
+  background: var(--bg-deep) !important;
+  border: 1px solid var(--line) !important;
+  border-right: 3px solid var(--accent) !important;
+  border-radius: var(--r-sm) !important;
+  padding: 14px 18px !important;
+  margin: 14px 0 !important;
   color: var(--text) !important;
 }
 
-/* ---------- Footer ---------- */
-#footer { color: var(--muted) !important; font-size: 13px; border-top: 1px solid var(--border); margin-top: 24px; }
-#footer a { color: var(--muted) !important; }
+/* =========================================================
+   FORMS
+   ========================================================= */
+input[type="text"]:not(#searchbars input), input[type="search"], input[type="password"],
+input[type="email"], input[type="number"], textarea, select {
+  background: var(--bg-deep) !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: var(--r-sm) !important;
+  color: var(--strong) !important;
+  padding: 8px 12px !important;
+  box-shadow: none !important;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-dim) !important;
+}
+input[type="submit"], input[type="button"], button, .btn {
+  background: var(--accent) !important;
+  color: var(--bg-deep) !important;
+  border: 0 !important;
+  border-radius: var(--r-sm) !important;
+  padding: 8px 18px !important;
+  font-family: var(--font-head) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  transition: filter .15s ease !important;
+}
+input[type="submit"]:hover, input[type="button"]:hover, button:hover, .btn:hover { filter: brightness(1.1); }
+input[type="radio"], input[type="checkbox"] { accent-color: var(--accent) !important; }
+.filter_torrents td, .filter_torrents tr, .filter_torrents div, table.layout td, #searchbox, #searchbox > div { background: transparent !important; border: 0 !important; }
+.filter_torrents div.submit.ft_submit { border-top: 1px solid var(--line) !important; padding: 14px !important; }
 
-/* ---------- Reduced motion ---------- */
+/* =========================================================
+   BBCODE EDITOR
+   ========================================================= */
+.wysibb, .wysibb-text, .wysibb-toolbar { background: var(--surface) !important; border-color: var(--line) !important; border-radius: var(--r-sm) !important; }
+.wysibb-body { background: var(--bg-deep) !important; color: var(--strong) !important; }
+.wysibb-toolbar-btn { color: var(--text) !important; border-radius: 4px !important; }
+.wysibb-toolbar-btn:hover, .wysibb-toolbar-btn.on { background: var(--surface-2) !important; }
+.wbb-removeformat img, .wbb-bold img, .wbb-italic img, .wbb-underline img, .wbb-strike img,
+.wbb-justifyleft img, .wbb-justifycenter img, .wbb-justifyright img { filter: invert(1) brightness(.85) !important; }
+.wbb-cp .fonticon, .wbb-h1, .wbb-h2, .wbb-h3 { color: var(--text) !important; }
+.wbb-list { background: var(--surface) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r-sm) !important; padding: 6px !important; }
+.wbb-list .option { color: var(--text) !important; border-radius: 4px !important; }
+.wbb-list .option:hover, .wbb-list .option.selected { background: var(--surface-2) !important; }
+
+/* =========================================================
+   IMAGES, TOOLTIPS, FOOTER
+   ========================================================= */
+#covers img, .group_image img, .torrent_screenshots > img, img.banner {
+  border-radius: var(--r) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.4) !important;
+}
+
+.tooltipster-base .tooltipster-box, .tooltipster-default {
+  background: var(--surface-2) !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: var(--r-sm) !important;
+  color: var(--strong) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.5) !important;
+}
+
+#footer { color: var(--muted) !important; font-size: 13px !important; border-top: 1px solid var(--line); margin-top: 30px; padding-bottom: 20px; }
+#footer a, #footer strong { color: var(--muted) !important; }
+#disclaimer_container { color: #5f6878 !important; font-size: 12.5px !important; line-height: 1.7 !important; }
+#totop { opacity: .5; transition: opacity .15s ease; }
+#totop:hover { opacity: 1; }
+
+/* =========================================================
+   RESPONSIVE + MOTION
+   ========================================================= */
+@media (max-width: 1100px) {
+  :root { --page: 96%; }
+  .sidebar { position: static !important; }
+}
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }
