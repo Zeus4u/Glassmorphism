@@ -611,75 +611,67 @@ td.cats_col div[class*="cats_"] {
 }
 
 /* ==========================================================================
-   אזור עליון (דסקטופ בלבד): פס נתונים, חיפוש, כלי צוות
-   מוסיפים בסוף הקובץ כדי לדרוס את הכללים הקודמים. המובייל לא נוגע.
+   אזור עליון (דסקטופ בלבד): פס נתונים + חיפוש + כלי צוות
+   גרסה 2: פס רחב-מסך אחד מתחת לבאנר, בלי תלות במיקום/רוחב של הקונטיינר.
    ========================================================================== */
 @media screen and (min-width: 1101px) {
 
-  /* שני הבלוקים נעולים לרוחב התוכן ונראים ככרטיס אחד */
+  /* איפוס גיאומטריה: זורם רגיל, רוחב מלא, ממורכז */
   #userinfo, #searchbars-wrapper {
-    width: min(92%, 1500px) !important;
-    margin-left: auto !important; margin-right: auto !important;
-    box-sizing: border-box !important;
+    position: relative !important; float: none !important; clear: both !important;
+    inset: auto !important; transform: none !important;
+    width: 100% !important; max-width: none !important; box-sizing: border-box !important;
+    margin-left: 0 !important; margin-right: 0 !important;
     background: var(--bg-raise) !important;
-    border: 1px solid var(--hb-border) !important;
-  }
-  #userinfo {
-    margin-top: 28px !important;
-    padding: 16px 16px 8px !important;
-    border-bottom: none !important;
-    border-radius: 14px 14px 0 0 !important;
-    box-shadow: inset 0 1px 0 var(--accent-line) !important;
-  }
-  #searchbars-wrapper {
-    border-top: none !important;
-    border-radius: 0 0 14px 14px !important;
-    padding: 8px 16px 18px !important;
-    margin-bottom: 26px !important;
-  }
-  #searchbars { width: 100% !important; gap: 12px !important; }
-
-  /* פס נתונים אחד מחולק, במקום 10 כדורים נפרדים */
-  #userinfo ul {
-    width: 100% !important; flex-wrap: wrap !important; justify-content: stretch !important;
-    gap: 1px !important;
-    background: var(--hb-border) !important;
-    border: 1px solid var(--hb-border) !important; border-radius: 10px !important;
-    overflow: hidden !important;
-  }
-  #userinfo li {
-    flex: 1 1 auto !important; justify-content: center !important;
-    background: var(--bg-deep) !important;
     border: none !important; border-radius: 0 !important; box-shadow: none !important;
-    padding: 11px 16px !important;
-    font-size: 12.5px !important; color: var(--hb-muted) !important;
   }
-  #userinfo li:hover { background: var(--hb-panel) !important; border: none !important; }
-  #userinfo li span.stat, #userinfo li .tooltip { font-size: 15px !important; }
 
-  /* שלושת הנתונים החשובים (העלאה, הורדה, יחס) בולטים יותר */
-  #userinfo li:nth-child(-n+3) { flex-grow: 2 !important; padding: 14px 22px !important; font-size: 13px !important; }
-  #userinfo li:nth-child(-n+3) span.stat, #userinfo li:nth-child(-n+3) .tooltip { font-size: 19px !important; }
+  /* פס נתונים: קו פליז דק מתחת לבאנר, נתונים שטוחים עם מפרידים */
+  #userinfo {
+    display: flex !important; flex-wrap: wrap !important;
+    justify-content: center !important; align-items: stretch !important;
+    margin-top: 0 !important; margin-bottom: 0 !important;
+    padding: 6px 4% !important; gap: 0 !important;
+    border-top: 1px solid var(--accent-line) !important;
+  }
+  #userinfo ul { display: contents !important; }
+  #userinfo li {
+    display: inline-flex !important; align-items: center !important; justify-content: center !important;
+    background: transparent !important; border: none !important; border-radius: 0 !important; box-shadow: none !important;
+    border-inline-start: 1px solid var(--hb-border) !important;
+    padding: 9px 18px !important; margin: 0 !important;
+    font-size: 12.5px !important; font-weight: 400 !important; color: var(--hb-muted) !important;
+    white-space: nowrap !important; transform: none !important;
+  }
+  #userinfo ul:first-of-type li:first-child { border-inline-start: none !important; }
+  #userinfo li:hover { background: var(--accent-glow) !important; border-color: var(--hb-border) !important; }
+  #userinfo li span.stat, #userinfo li .tooltip { font-size: 14.5px !important; font-weight: 600 !important; }
 
-  /* שדות חיפוש: נראים כשדות חיפוש ולא ככפתורים */
+  /* שלושת הנתונים הראשונים (העלאה, הורדה, יחס) בולטים */
+  #userinfo ul:first-of-type li:nth-child(-n+3) { padding: 9px 26px !important; font-size: 13px !important; }
+  #userinfo ul:first-of-type li:nth-child(-n+3) span.stat,
+  #userinfo ul:first-of-type li:nth-child(-n+3) .tooltip { font-size: 19px !important; }
+
+  /* חיפוש */
+  #searchbars-wrapper {
+    padding: 14px 0 18px !important; margin-bottom: 26px !important;
+    border-top: 1px solid var(--hb-border) !important; border-bottom: 1px solid var(--hb-border) !important;
+  }
+  #searchbars { width: min(92%, 1500px) !important; margin: 0 auto !important; gap: 12px !important; }
+  #searchbars form.search_form { flex: 1 1 0 !important; min-width: 140px !important; width: auto !important; }
   #searchbars-wrapper #searchbars form input[type="text"] {
-    text-align: right !important;
-    padding: 11px 42px 11px 16px !important;
-    border-radius: 10px !important;
+    width: 100% !important; text-align: right !important;
+    padding: 11px 42px 11px 16px !important; border-radius: 10px !important;
     font-size: 13.5px !important; font-weight: 400 !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237f8f9c' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 14px center !important;
-    background-size: 16px !important;
+    background-repeat: no-repeat !important; background-position: right 14px center !important; background-size: 16px !important;
     transform: none !important;
   }
-  #searchbars-wrapper #searchbars form input[type="text"]:hover,
-  #searchbars-wrapper #searchbars form input[type="text"]:focus { transform: none !important; }
-  #searchbars-wrapper #searchbars form input[type="text"]:focus { border-color: var(--accent-primary) !important; }
+  #searchbars-wrapper #searchbars form input[type="text"]:focus { border-color: var(--accent-primary) !important; transform: none !important; }
 
-  /* כלי צוות: פס שקט, בלי קו תחתון על כל לינק */
+  /* כלי צוות: פס שקט */
   #alerts { margin-bottom: 28px !important; }
-  .alertbar { padding: 8px 20px !important; font-size: 13.5px !important; min-width: 0 !important; background: var(--bg-raise) !important; }
+  .alertbar { padding: 8px 20px !important; font-size: 13.5px !important; min-width: 0 !important; background: var(--bg-raise) !important; border-inline-start-width: 1px !important; }
   .alertbar a:not([style*="color"]) { text-decoration: none !important; color: var(--hb-muted) !important; font-weight: 500 !important; margin: 0 8px !important; }
-  .alertbar a:not([style*="color"]):hover { color: var(--accent-secondary) !important; text-decoration: none !important; }
+  .alertbar a:not([style*="color"]):hover { color: var(--accent-secondary) !important; }
 }
