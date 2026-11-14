@@ -99,7 +99,7 @@ img { max-width: 100%; }
   margin-top: 10px !important;
   margin-bottom: var(--gap) !important;
   padding: 6px !important;
-  background: rgba(16, 19, 26, .82) !important;
+  background: var(--bg) !important;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border: 1px solid var(--line) !important;
@@ -234,42 +234,71 @@ img { max-width: 100%; }
 #menu > ul > li#nav_user:hover > a { background: linear-gradient(135deg, #8b6dff, #6b9bff) !important; }
 
 /* ---------- banner + personal stats ---------- */
+/* the banner art and logo stay untouched; stats live in their own bar below */
 #banner {
   position: relative !important;
   display: grid !important;
-  grid-template-columns: 240px minmax(0, 1fr) !important;
-  align-items: center !important;
-  gap: 28px !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: clamp(170px, 15vw, 250px) auto !important;
+  row-gap: var(--gap) !important;
   height: auto !important;
-  min-height: 150px !important;
-  padding: 22px 26px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
   margin-bottom: var(--gap) !important;
-  border: 1px solid var(--line) !important;
-  border-radius: var(--r-lg) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-size: 0 0 !important;       /* the picture is drawn by ::before */
+  background-repeat: no-repeat !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+#banner::before {
+  content: "" !important;
+  display: block !important;
+  position: static !important;
+  grid-area: 1 / 1 !important;
+  background-image: inherit !important;
   background-color: var(--surface) !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  overflow: hidden !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .35) !important;
 }
-#banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(270deg, rgba(7, 9, 13, .35) 0%, rgba(7, 9, 13, .74) 42%, rgba(7, 9, 13, .92) 100%);
-  pointer-events: none;
+#banner > a {
+  grid-area: 1 / 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  float: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 18px 40px !important;
 }
-#banner > * { position: relative !important; z-index: 1; }
-#banner > a { display: block !important; float: none !important; margin: 0 !important; }
 #logo, .sitelogo {
   position: static !important;
   float: none !important;
-  width: 100% !important;
-  height: 96px !important;
+  width: min(340px, 70%) !important;
+  height: 100% !important;
+  max-height: 150px !important;
   margin: 0 !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .55));
+}
+#banner > #userinfo {
+  grid-area: 2 / 1 !important;
+  padding: 14px !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25) !important;
 }
 #userinfo {
   position: static !important;
@@ -300,7 +329,7 @@ img { max-width: 100%; }
   margin: 0 !important;
   padding: 0 12px !important;
   list-style: none !important;
-  background: rgba(16, 19, 26, .72) !important;
+  background: var(--surface-2) !important;
   border: 1px solid var(--line) !important;
   border-radius: 999px !important;
   color: var(--muted) !important;
@@ -329,7 +358,7 @@ img { max-width: 100%; }
   min-width: 0 !important;
   height: 78px !important;
   padding: 0 14px !important;
-  background: rgba(16, 19, 26, .82) !important;
+  background: var(--bg) !important;
   border-color: var(--line-2) !important;
   border-radius: var(--r) !important;
 }
@@ -1131,7 +1160,6 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 1280px) {
-  #banner { grid-template-columns: 190px minmax(0, 1fr) !important; gap: 20px !important; }
   #userinfo li { padding: 0 9px !important; font-size: 12.5px !important; }
   .thin:has(> .sidebar) { grid-template-columns: minmax(0, 1fr) 300px !important; }
 }
@@ -1142,8 +1170,7 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   #menu { border-radius: var(--r-lg) !important; }
   #menu > ul { flex-wrap: wrap !important; justify-content: center !important; }
   #menu #nav_user { margin-inline-start: 0 !important; }
-  #banner { grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; padding: 18px !important; }
-  #logo, .sitelogo { height: 70px !important; }
+  #banner { grid-template-rows: 170px auto !important; }
   #searchbars { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
   .thin:has(> .sidebar) { grid-template-columns: minmax(0, 1fr) !important; }
   .thin:has(> .sidebar) > .main_column { grid-column: 1 !important; order: 2 !important; }
@@ -1172,8 +1199,10 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   #menu .nav_dropdown > div a { break-inside: avoid; }
 
   /* banner: logo, three key numbers, then chips */
-  #banner { min-height: 0 !important; padding: 14px !important; gap: 12px !important; border-radius: var(--r) !important; }
-  #logo, .sitelogo { height: 52px !important; }
+  #banner { grid-template-rows: 120px auto !important; }
+  #banner::before, #banner > #userinfo { border-radius: var(--r) !important; }
+  #banner > a { padding: 12px 16px !important; }
+  #banner > #userinfo { padding: 10px !important; }
   #userinfo { gap: 6px !important; }
   #userinfo #stats_seeding,
   #userinfo #stats_leeching,
