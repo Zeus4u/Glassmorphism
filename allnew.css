@@ -27,7 +27,7 @@
   --r-lg: 20px;
   --gap: 18px;
   --page: min(1480px, 94vw);
-  --banner-ratio: 4 / 1;   /* width / height of the banner picture - change this one line if the art has another shape */
+  --banner-ratio: 2000 / 300;   /* the home banners are 2000x300 */
   --font: "Heebo", "Segoe UI", Arial, sans-serif;
 }
 
