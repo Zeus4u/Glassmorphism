@@ -441,6 +441,40 @@ img { max-width: 100%; }
 }
 .alertbar a { margin: 0 8px !important; font-weight: 600 !important; }
 
+/* system announcements: keep their colours, sit centred */
+#alerts { display: flex !important; flex-direction: column !important; align-items: stretch !important; }
+.alertbar:has(> .globalbox), .alertbar:has(> .alertbar), .alertbar:has(> .greenbox), .alertbar:has(> .goldbox),
+.alertbar:has(> .bluebox), .alertbar:has(> .redbox), .alertbar:has(> .yellowbox) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.globalbox, .greenbox, .goldbox, .yellowbox, .bluebox, .redbox, .alertbar > .alertbar {
+  position: static !important;
+  inset: auto !important;
+  float: none !important;
+  transform: none !important;
+  display: block !important;
+  align-self: center !important;
+  box-sizing: border-box !important;
+  width: fit-content !important;
+  min-width: min(560px, 100%) !important;
+  max-width: 100% !important;
+  margin: 0 auto 8px !important;
+  padding: 11px 24px !important;
+  border-radius: var(--r) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
+  text-align: center !important;
+}
+.alertbar > .globalbox:last-child, .alertbar > .alertbar:last-child { margin-bottom: 0 !important; }
+
 /* ---------- page layout ---------- */
 #content { padding: 0 !important; background: none !important; border: 0 !important; }
 .thin { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
