@@ -32,11 +32,20 @@
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: 90px; }
+html {
+  scroll-padding-top: 90px;
+  min-height: 100%;
+  background:
+    radial-gradient(900px 480px at 88% -8%, rgba(124, 92, 255, .20), transparent 62%),
+    radial-gradient(760px 420px at 6% -4%, rgba(56, 189, 248, .11), transparent 62%),
+    var(--bg) !important;
+  background-attachment: fixed !important;
+}
 html, body {
   margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
   direction: rtl;
-  background: var(--bg) !important;
   color: var(--text) !important;
   font-family: var(--font) !important;
   font-size: 15px !important;
@@ -44,16 +53,15 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  background:
-    radial-gradient(900px 480px at 88% -8%, rgba(124, 92, 255, .20), transparent 62%),
-    radial-gradient(760px 420px at 6% -4%, rgba(56, 189, 248, .11), transparent 62%),
-    var(--bg) !important;
-  background-attachment: fixed !important;
+  position: static !important;
+  top: auto !important;
+  min-height: 100vh;
+  background: transparent !important;
   overflow-x: hidden;
 }
 body::before, body::after { display: none !important; }
 #wrapper, .body, .tdhack { background: transparent !important; }
-#wrapper { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 0 24px !important; }
+#wrapper { position: static !important; top: auto !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 0 24px !important; border: 0 !important; }
 .hidden { display: none !important; }
 
 div, span, p, td, th, li, label, a, strong, em, input, textarea, select, button,
@@ -61,8 +69,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font) !important; text-shadow: none 
 h1, h2, h3, h4, h5, h6 { color: var(--strong) !important; font-weight: 700 !important; letter-spacing: -.01em; }
 
 a { text-decoration: none !important; transition: color .15s ease; }
-a:not([class*="permission_"]):not([style*="color"]) { color: var(--accent-2); }
-a:not([class*="permission_"]):not([style*="color"]):hover { color: var(--strong); }
+a:not([class*="permission_"]):not([style*="color"]):not(.torrent_icons a) { color: var(--accent-2); }
+a:not([class*="permission_"]):not([style*="color"]):not(.torrent_icons a):hover { color: var(--strong); }
 a[class*="permission_"]:hover { filter: brightness(1.25); }
 img { max-width: 100%; }
 ::selection { background: var(--accent); color: #fff; }
@@ -474,9 +482,27 @@ div.head {
   cursor: pointer;
 }
 
-/* tabs inside a head: one segmented control, centred */
-div.head:has(> span > a[onclick]) { position: relative !important; justify-content: center !important; }
-div.head:has(> span > a[onclick]) > a[data-toggle-target] {
+/* tabs inside a head: one segmented control, centred both ways */
+div.head::before, div.head::after { content: none !important; display: none !important; }
+div.head:has(> span > a[onclick] ~ a[onclick]) {
+  position: relative !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-content: center !important;
+  height: 68px !important;
+  min-height: 0 !important;
+  padding-block: 0 !important;
+  line-height: 1 !important;
+}
+div.head:has(> span > a[onclick] ~ a[onclick]) > span {
+  position: static !important;
+  float: none !important;
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  vertical-align: middle !important;
+  transform: none !important;
+}
+div.head:has(> span > a[onclick] ~ a[onclick]) > a[data-toggle-target] {
   position: absolute !important;
   top: 50% !important;
   left: 20px !important;
@@ -485,7 +511,7 @@ div.head:has(> span > a[onclick]) > a[data-toggle-target] {
   transform: translateY(-50%) !important;
   line-height: 1 !important;
 }
-.head > span:has(> a[onclick]) {
+.head > span:has(> a[onclick] ~ a[onclick]) {
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
@@ -499,7 +525,7 @@ div.head:has(> span > a[onclick]) > a[data-toggle-target] {
   line-height: 0 !important;
   color: transparent !important;
 }
-.head > span > a[onclick] {
+.head > span:has(> a[onclick] ~ a[onclick]) > a[onclick] {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -518,8 +544,12 @@ div.head:has(> span > a[onclick]) > a[data-toggle-target] {
   white-space: nowrap !important;
   transition: background-color .15s ease, color .15s ease !important;
 }
-.head > span > a[onclick]:hover { color: var(--strong) !important; }
-.head > span > a.simple-tabs__link--active { background: var(--accent) !important; color: #fff !important; }
+.head > span:has(> a[onclick] ~ a[onclick]) > a[onclick]:hover { color: var(--strong) !important; }
+.head > span:has(> a[onclick] ~ a[onclick]) > a.simple-tabs__link--active {
+  background: linear-gradient(135deg, var(--accent), #5b8cff) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(124, 92, 255, .35) !important;
+}
 
 /* ---------- latest releases carousel ---------- */
 #latest5tor { padding: 18px 20px 14px !important; }
@@ -893,6 +923,160 @@ blockquote {
 }
 #totop:hover { opacity: 1; }
 
+/* ---------- finishing touches ---------- */
+/* accent tick before every panel title */
+div.head > strong:first-child,
+div.head > a[href="#"]:first-child + strong { position: relative; padding-inline-start: 14px !important; }
+div.head > strong:first-child::before,
+div.head > a[href="#"]:first-child + strong::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  width: 4px;
+  height: 16px;
+  margin-top: -8px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+}
+div.head > a[href="#"]:first-child { order: 8; color: var(--muted) !important; }
+/* key stats: thin glowing top edge */
+#userinfo #stats_seeding, #userinfo #stats_leeching, #userinfo #stats_ratio { position: relative !important; overflow: hidden !important; }
+#userinfo #stats_seeding::after, #userinfo #stats_leeching::after, #userinfo #stats_ratio::after {
+  content: "" !important;
+  position: absolute;
+  top: 0; right: 14%; left: 14%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--up), transparent);
+  opacity: .8;
+}
+#userinfo #stats_leeching::after { background: linear-gradient(90deg, transparent, var(--down), transparent); }
+#userinfo #stats_ratio::after { background: linear-gradient(90deg, transparent, var(--accent-2), transparent); }
+/* posters brighten instead of moving */
+#latest5tor .owl-item > div > a > div { transition: filter .2s ease !important; filter: saturate(.92) brightness(.94); }
+#latest5tor .owl-item > div:hover > a > div { filter: saturate(1.08) brightness(1.06); }
+#latest5tor .owl-item > div:hover { box-shadow: 0 0 0 1px var(--accent), 0 14px 34px rgba(124, 92, 255, .22) !important; }
+/* rows: accent edge on hover */
+.torrent_table tr:hover > td:first-child { box-shadow: inset -3px 0 0 var(--accent) !important; }
+.torrent_table tr.colhead:hover > td, .torrent_table tr.colhead_dark:hover > td,
+tr.torrentdetails:hover > td { background-color: transparent !important; box-shadow: none !important; }
+.torrent_table tr.colhead:hover > td, .torrent_table tr.colhead_dark:hover > td { background: var(--surface-2) !important; }
+@media (prefers-reduced-motion: no-preference) {
+  #content { animation: nova-in .35s ease both; }
+  @keyframes nova-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---------- action icons: each keeps its own colour ---------- */
+.torrent_icons {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  float: none !important;
+  white-space: nowrap !important;
+  letter-spacing: 0 !important;
+}
+td:has(> .torrent_icons) { width: 1% !important; white-space: nowrap !important; text-align: center !important; }
+.torrent_icons a { display: inline-flex !important; color: var(--muted); transition: transform .12s ease, filter .12s ease !important; }
+.torrent_icons a i, .torrent_icons a .fa { font-size: 16px !important; color: inherit !important; }
+.torrent_icons a:hover { transform: scale(1.18); filter: brightness(1.25); }
+.torrent_icons a.download_ic { color: #4ade80 !important; }
+.torrent_icons a.token_ic { color: #e879f9 !important; }
+.torrent_icons a.report_ic { color: #f87171 !important; }
+.torrent_icons a.reseed_ic { color: #fbbf24 !important; }
+.torrent_icons a.bookmark_ic, .torrent_icons a.add_bookmark, .torrent_icons a.remove_bookmark { color: #facc15 !important; }
+.torrent_icons a[href*="action=edit"] { color: #60a5fa !important; }
+.torrent_icons a[href*="action=delete"] { color: #fb7185 !important; }
+.torrent_icons a[href*="torrentid="]:not([class*="_ic"]):not([href*="action="]) { color: #94a3b8 !important; }
+
+/* ---------- torrent page ---------- */
+.thin > .header { margin: 0 0 var(--gap) !important; padding: 0 !important; background: none !important; border: 0 !important; }
+.header h2 {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 6px 12px !important;
+  margin: 4px 0 14px !important;
+  font-size: 26px !important;
+  line-height: 1.3 !important;
+  color: var(--muted) !important;
+}
+.header h2 a { color: var(--strong) !important; }
+.header h2 a:hover { color: var(--accent-2) !important; }
+.header .linkbox { justify-content: flex-start !important; margin: 0 !important; }
+.linkbox .brackets::before, .linkbox .brackets::after { content: none !important; }
+td .linkbox { justify-content: flex-start !important; margin: 10px 0 !important; }
+
+.box > .body, .box > div.body { padding: 16px 20px !important; line-height: 1.85 !important; }
+.torrent_description .body { font-size: 15.5px !important; }
+#covers, #covers > div, #covers > div > div { padding: 0 !important; margin: 0 !important; }
+#covers img { display: block !important; width: 100% !important; height: auto !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+#add_cover_div > div { padding: 10px 16px !important; }
+#add_cover_div .body:has(form:only-child) { padding: 0 !important; }
+.additional_add_artists { float: none !important; }
+.flex_input_container { display: flex !important; gap: 8px !important; align-items: center !important; }
+.flex_input_container input[type="text"] { flex: 1 1 auto !important; min-width: 0 !important; width: auto !important; }
+.box_tags ul.stats li, #artist_list li { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 10px !important; }
+.box_tags ul.stats li > a { float: none !important; font-weight: 600 !important; }
+.edit_tags_votes { display: inline-flex !important; align-items: center !important; gap: 10px !important; letter-spacing: 0 !important; }
+.edit_tags_votes a { color: var(--muted) !important; }
+.edit_tags_votes a:hover { color: var(--strong) !important; }
+.edit_tags_votes .remove a:hover { color: var(--down) !important; }
+.head > .edit_artists a { color: var(--muted) !important; cursor: pointer; }
+
+#torrent_details td { padding: 13px 16px !important; }
+#torrent_details tr.colhead_dark td { font-size: 13.5px !important; color: var(--text) !important; }
+#torrent_details tr.colhead_dark td.sign { width: 64px !important; min-width: 64px !important; }
+#torrent_details tr.colhead_dark td.sign svg { margin: 0 auto !important; }
+.torrent_link_name { color: var(--text) !important; font-weight: 500 !important; line-height: 1.7 !important; word-break: break-word; }
+.torrent_link_name:hover { color: var(--accent-2) !important; }
+td.number_column { text-align: center !important; white-space: nowrap !important; font-variant-numeric: tabular-nums; font-size: 13.5px !important; }
+td.number_column.upload_stat { color: var(--up) !important; font-weight: 700 !important; }
+td.number_column.down_stat { color: var(--down) !important; font-weight: 700 !important; }
+tr.torrentdetails > td { padding: 16px 20px 20px !important; background-color: rgba(7, 9, 13, .45) !important; }
+.release-name { margin-bottom: 4px; color: var(--strong); word-break: break-word; }
+img.thanks { height: 34px !important; width: auto !important; margin-inline-end: 12px; }
+.float_left { float: left !important; }
+.spoilerButton { max-width: 100% !important; white-space: normal !important; word-break: break-word; }
+blockquote.spoiler {
+  max-height: 420px;
+  overflow: auto !important;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  white-space: pre-wrap;
+}
+table.mediainfo, table.mediainfo table, table.filelist_table { width: auto !important; }
+table.mediainfo { width: 100% !important; margin-top: 12px !important; }
+table.mediainfo td, #torrent_details table.mediainfo td { padding: 3px 10px !important; border: 0 !important; vertical-align: top !important; font-size: 13px !important; }
+table.mediainfo > tbody > tr > td, #torrent_details table.mediainfo > tbody > tr > td { padding: 0 12px !important; }
+table.mediainfo br { display: none; }
+table.mediainfo table + table, table.mediainfo br + table { margin-top: 12px !important; }
+#torrent_details table.filelist_table td { padding: 8px 12px !important; }
+table.mediainfo tr:hover > td { background-color: transparent !important; }
+table.mediainfo caption { padding: 0 10px 6px !important; color: var(--accent-2) !important; font-weight: 700 !important; text-align: right !important; }
+table.mediainfo td:first-child { color: var(--muted) !important; white-space: nowrap; }
+table.filelist_table { width: 100% !important; border: 1px solid var(--line) !important; border-radius: var(--r-sm) !important; }
+table.filelist_table td { padding: 8px 12px !important; font-size: 13px !important; word-break: break-all; }
+iframe.youtube-player { display: block; border-radius: var(--r) !important; }
+
+#reply_box h3 { margin: 0 0 10px !important; padding: 0 !important; background: none !important; border: 0 !important; font-size: 18px !important; }
+#reply_box .box.pad { padding: 18px 20px !important; }
+.comment_rules { display: block !important; margin-bottom: 10px !important; text-align: center !important; }
+.comment_rules a { cursor: pointer; font-weight: 600 !important; }
+#commentrules { margin-bottom: 16px; padding: 14px 18px; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); font-size: 13.5px; }
+#commentrules strong { font-weight: 600 !important; }
+ul.postlist { margin: 8px 0 0 !important; padding-inline-start: 20px !important; }
+ul.postlist li { margin: 4px 0 !important; color: var(--text) !important; }
+textarea { width: 100% !important; max-width: 100% !important; }
+.preview_submit { display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 8px 12px !important; margin-top: 12px !important; }
+.preview_submit label { margin-inline-end: 10px; color: var(--text) !important; }
+table.forum_post td.avatar { width: 170px !important; vertical-align: top !important; }
+table.forum_post td.avatar img { border-radius: var(--r) !important; }
+table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !important; }
+table.forum_post tr.colhead_dark td > div { float: none !important; display: inline-block; margin-inline-end: 14px; }
+
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
@@ -970,8 +1154,8 @@ blockquote {
   .alertbar { padding: 8px 12px !important; line-height: 2 !important; }
   .box, #more_news { border-radius: var(--r) !important; }
   div.head { min-height: 50px !important; padding-inline: 14px !important; }
-  .head > span:has(> a[onclick]) { display: flex !important; width: 100% !important; }
-  .head > span > a[onclick] { flex: 1 1 0 !important; padding: 0 4px !important; font-size: 12.5px !important; text-align: center !important; white-space: nowrap !important; overflow: hidden; }
+  .head > span:has(> a[onclick] ~ a[onclick]) { display: flex !important; flex: 1 1 auto !important; width: 100% !important; }
+  .head > span:has(> a[onclick] ~ a[onclick]) > a[onclick] { flex: 1 1 0 !important; padding: 0 4px !important; font-size: 12.5px !important; text-align: center !important; white-space: nowrap !important; overflow: hidden; }
   #menu .nav_dropdown > div a { min-width: 0 !important; }
   .head > a[data-toggle-target], .head > span[style*="float"] { display: none !important; }
   .pad { padding: 14px !important; }
@@ -990,6 +1174,18 @@ blockquote {
   .torrent_table td.sign { width: 38px !important; min-width: 38px !important; font-size: 11.5px !important; }
   .torrent_table td.snatches { display: none !important; }
   ul.stats { padding-inline: 14px !important; }
+  .header h2 { font-size: 20px !important; }
+  .box > .body, .box > div.body { padding: 14px !important; }
+  #torrent_details td { padding: 10px 8px !important; }
+  #torrent_details td.number_column { padding: 10px 4px !important; font-size: 12px !important; }
+  .torrent_link_name { font-size: 13px !important; overflow-wrap: anywhere; }
+  .torrent_icons { gap: 9px !important; flex-wrap: wrap !important; justify-content: center !important; max-width: 84px; }
+  td:has(> .torrent_icons) { white-space: normal !important; }
+  tr.torrentdetails > td { padding: 12px !important; }
+  table.mediainfo, table.mediainfo > tbody, table.mediainfo > tbody > tr, table.mediainfo > tbody > tr > td { display: block !important; width: 100% !important; }
+  table.mediainfo > tbody > tr > td { padding: 0 0 12px !important; }
+  table.forum_post td.avatar { display: none !important; }
+  div.head:has(> span > a[onclick] ~ a[onclick]) { height: 60px !important; }
   .linkbox a, .linkbox strong, .linkbox span { height: 32px !important; padding: 0 11px !important; font-size: 12.5px !important; }
   #disclaimer_container { font-size: 11.5px !important; }
   #totop { bottom: 14px !important; left: 14px !important; }
