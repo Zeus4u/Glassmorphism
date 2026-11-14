@@ -27,6 +27,7 @@
   --r-lg: 20px;
   --gap: 18px;
   --page: min(1480px, 94vw);
+  --banner-ratio: 4 / 1;   /* width / height of the banner picture - change this one line if the art has another shape */
   --font: "Heebo", "Segoe UI", Arial, sans-serif;
 }
 
@@ -239,7 +240,7 @@ img { max-width: 100%; }
   position: relative !important;
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) !important;
-  grid-template-rows: 200px auto !important;
+  grid-template-rows: auto auto !important;
   row-gap: var(--gap) !important;
   height: auto !important;
   min-height: 0 !important;
@@ -260,7 +261,10 @@ img { max-width: 100%; }
   grid-area: 1 / 1 !important;
   background-image: inherit !important;
   background-color: #05070a !important;
-  background-size: auto !important;        /* native pixels: no upscaling, no blur */
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: var(--banner-ratio) !important;   /* the box takes the picture's shape... */
+  background-size: contain !important;            /* ...so the whole picture fits, uncropped and unstretched */
   background-position: center !important;
   background-repeat: no-repeat !important;
   border: 1px solid var(--line) !important;
@@ -275,17 +279,18 @@ img { max-width: 100%; }
   align-items: center !important;
   justify-content: center !important;
   float: none !important;
+  align-self: stretch !important;
   width: 100% !important;
-  height: 100% !important;
+  height: auto !important;
   margin: 0 !important;
-  padding: 18px 28px !important;
+  padding: 0 28px !important;
 }
 #logo, .sitelogo {
   position: static !important;
   float: none !important;
-  width: min(340px, 70%) !important;
-  height: 100% !important;
-  max-height: 150px !important;
+  width: min(420px, 60%) !important;
+  height: clamp(56px, 10vw, 170px) !important;
+  max-height: 60% !important;
   margin: 0 !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
@@ -1208,8 +1213,6 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   #menu { border-radius: var(--r-lg) !important; }
   #menu > ul { flex-wrap: wrap !important; justify-content: center !important; }
   #menu #nav_user { margin-inline-start: 0 !important; }
-  #banner { grid-template-rows: 170px auto !important; }
-  #banner::before { background-size: auto 100% !important; }
   #searchbars { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
   .thin:has(> .sidebar) { grid-template-columns: minmax(0, 1fr) !important; }
   .thin:has(> .sidebar) > .main_column { grid-column: 1 !important; order: 2 !important; }
@@ -1238,9 +1241,8 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   #menu .nav_dropdown > div a { break-inside: avoid; }
 
   /* banner: logo, three key numbers, then chips */
-  #banner { grid-template-rows: 120px auto !important; }
   #banner::before, #banner > #userinfo { border-radius: var(--r) !important; }
-  #banner > a { padding: 12px 16px !important; }
+  #banner > a { padding: 0 16px !important; }
   #banner > #userinfo { padding: 10px !important; }
   #userinfo { gap: 6px !important; }
   #userinfo #stats_seeding,
