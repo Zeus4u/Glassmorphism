@@ -239,7 +239,7 @@ img { max-width: 100%; }
   position: relative !important;
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) !important;
-  grid-template-rows: clamp(170px, 15vw, 250px) auto !important;
+  grid-template-rows: 200px auto !important;
   row-gap: var(--gap) !important;
   height: auto !important;
   min-height: 0 !important;
@@ -259,8 +259,8 @@ img { max-width: 100%; }
   position: static !important;
   grid-area: 1 / 1 !important;
   background-image: inherit !important;
-  background-color: var(--surface) !important;
-  background-size: cover !important;
+  background-color: #05070a !important;
+  background-size: auto !important;        /* native pixels: no upscaling, no blur */
   background-position: center !important;
   background-repeat: no-repeat !important;
   border: 1px solid var(--line) !important;
@@ -273,12 +273,12 @@ img { max-width: 100%; }
   z-index: 1 !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   float: none !important;
   width: 100% !important;
   height: 100% !important;
   margin: 0 !important;
-  padding: 18px 40px !important;
+  padding: 18px 28px !important;
 }
 #logo, .sitelogo {
   position: static !important;
@@ -1073,6 +1073,8 @@ td.calendar-day-np { background: var(--surface-2) !important; }
 .header h2 {
   display: flex !important;
   align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
   flex-wrap: wrap !important;
   gap: 6px 12px !important;
   margin: 4px 0 14px !important;
@@ -1082,7 +1084,8 @@ td.calendar-day-np { background: var(--surface-2) !important; }
 }
 .header h2 a { color: var(--strong) !important; }
 .header h2 a:hover { color: var(--accent-2) !important; }
-.header .linkbox { justify-content: flex-start !important; margin: 0 !important; }
+.header .linkbox { justify-content: center !important; margin: 0 !important; }
+.thin > h2, #content > h2, .thin > h3, #reply_box h3 { text-align: center !important; }
 .linkbox .brackets::before, .linkbox .brackets::after { content: none !important; }
 td .linkbox { justify-content: flex-start !important; margin: 10px 0 !important; }
 
@@ -1095,12 +1098,47 @@ td .linkbox { justify-content: flex-start !important; margin: 10px 0 !important;
 .additional_add_artists { float: none !important; }
 .flex_input_container { display: flex !important; gap: 8px !important; align-items: center !important; }
 .flex_input_container input[type="text"] { flex: 1 1 auto !important; min-width: 0 !important; width: auto !important; }
-.box_tags ul.stats li, #artist_list li { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 10px !important; }
-.box_tags ul.stats li > a { float: none !important; font-weight: 600 !important; }
-.edit_tags_votes { display: inline-flex !important; align-items: center !important; gap: 10px !important; letter-spacing: 0 !important; }
-.edit_tags_votes a { color: var(--muted) !important; }
-.edit_tags_votes a:hover { color: var(--strong) !important; }
-.edit_tags_votes .remove a:hover { color: var(--down) !important; }
+ul.stats li a { background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; box-shadow: none !important; transform: none !important; }
+.box_tags ul.stats, #artist_list { padding: 10px 16px 12px !important; }
+.box_tags ul.stats li, #artist_list li {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 7px 0 !important;
+  border-bottom: 0 !important;
+}
+.box_tags ul.stats li > a, #artist_list li > a {
+  float: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 30px !important;
+  padding: 0 14px !important;
+  background: var(--accent-soft) !important;
+  border: 1px solid rgba(124, 92, 255, .35) !important;
+  border-radius: 99px !important;
+  color: #cfc4ff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+.box_tags ul.stats li > a:hover, #artist_list li > a:hover { background: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; }
+.edit_tags_votes { display: inline-flex !important; align-items: center !important; gap: 6px !important; letter-spacing: 0 !important; }
+.edit_tags_votes a, .edit_tags_votes .remove a, ul.stats .remove a, #artist_list .remove a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  color: var(--muted) !important;
+  font-size: 13px !important;
+}
+.edit_tags_votes a i, .edit_tags_votes a .fa { color: inherit !important; }
+.edit_tags_votes a:hover { background: var(--surface-3) !important; border-color: var(--line-2) !important; color: var(--strong) !important; }
+.edit_tags_votes .remove a:hover, ul.stats .remove a:hover, #artist_list .remove a:hover { background: rgba(248, 113, 113, .14) !important; border-color: rgba(248, 113, 113, .4) !important; color: var(--down) !important; }
+.edit_tags_votes .remove { display: inline-flex !important; }
 .head > .edit_artists a { color: var(--muted) !important; cursor: pointer; }
 
 #torrent_details td { padding: 13px 16px !important; }
@@ -1171,6 +1209,7 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   #menu > ul { flex-wrap: wrap !important; justify-content: center !important; }
   #menu #nav_user { margin-inline-start: 0 !important; }
   #banner { grid-template-rows: 170px auto !important; }
+  #banner::before { background-size: auto 100% !important; }
   #searchbars { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
   .thin:has(> .sidebar) { grid-template-columns: minmax(0, 1fr) !important; }
   .thin:has(> .sidebar) > .main_column { grid-column: 1 !important; order: 2 !important; }
