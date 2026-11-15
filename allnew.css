@@ -1455,7 +1455,8 @@ form.create_form.box.pad { padding: 8px 0 !important; }
 }
 
 /* ---------- forum / comment posts ---------- */
-table.forum_post { border-collapse: separate !important; border-spacing: 0 !important; table-layout: auto !important; width: 100% !important; }
+table.forum_post { border-collapse: separate !important; border-spacing: 0 !important; table-layout: auto !important; width: 100% !important; padding: 0 !important; overflow: hidden !important; }
+table.forum_post > tbody, table.forum_post > tbody > tr { margin: 0 !important; padding: 0 !important; }
 table.forum_post td.body { overflow-wrap: anywhere; }
 table.forum_post td.body pre, table.forum_post td.body code { white-space: pre-wrap; overflow-wrap: anywhere; }
 /* code blocks: dark, like the rest of the theme */
@@ -1480,17 +1481,23 @@ table.forum_post tr.colhead_dark > td {
   padding: 10px 18px !important;
   color: var(--muted) !important;
   font-size: 13.5px !important;
+  /* follows the card's rounded top, so the bar never looks like a box inside a box */
+  border-radius: calc(var(--r-lg) - 1px) calc(var(--r-lg) - 1px) 0 0 !important;
 }
 table.forum_post tr.colhead_dark > td::after { content: "" !important; display: block !important; clear: both !important; }
 table.forum_post tr.colhead_dark > td > div {
   display: flex !important;
   align-items: center !important;
   flex-wrap: wrap !important;
-  gap: 4px 10px !important;
+  gap: 2px !important;
   min-height: 32px !important;
   margin: 0 !important;
   white-space: normal !important;
+  font-size: 0 !important;          /* drops the stray spacer characters between the icons */
 }
+table.forum_post tr.colhead_dark > td > div > * { margin: 0 !important; font-size: 13.5px !important; }
+table.forum_post tr.colhead_dark > td > div > strong, table.forum_post tr.colhead_dark > td > div > span.time, table.forum_post tr.colhead_dark > td > div > a.post_id { margin-inline-end: 10px !important; }
+table.forum_post tr.colhead_dark > td > div > span.time { margin-inline-end: 14px !important; }
 table.forum_post tr.colhead_dark > td > div:first-child { float: right !important; }
 table.forum_post tr.colhead_dark > td > div[id^="bar"] { float: left !important; }
 table.forum_post tr.colhead_dark a.post_id, table.forum_post tr.colhead_dark a.postid { color: var(--muted) !important; font-weight: 600 !important; }
