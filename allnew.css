@@ -955,13 +955,42 @@ blockquote:not(.gz-editor-card *) blockquote { background: rgba(255, 255, 255, .
 .wbb-list .option { color: var(--text) !important; }
 .wbb-list .option:hover, .wbb-list .option.selected { background: var(--surface-3) !important; }
 
-.tooltipster-base .tooltipster-box, .tooltipster-default {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--line-2) !important;
-  border-radius: var(--r-sm) !important;
-  color: var(--strong) !important;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .5) !important;
+/* tooltips: readable, sized to their text */
+.tooltipster-base, .tooltipster-base * { box-sizing: content-box !important; }
+.tooltipster-base {
+  width: max-content !important;
+  max-width: min(340px, 90vw) !important;
+  height: auto !important;
+  z-index: 100000 !important;
 }
+.tooltipster-base .tooltipster-box, .tooltipster-default {
+  background: #262c3d !important;
+  border: 1px solid rgba(149, 124, 255, .6) !important;
+  border-radius: var(--r-sm) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .6) !important;
+}
+.tooltipster-base .tooltipster-content {
+  padding: 7px 12px !important;
+  color: #fff !important;
+  font-family: var(--font) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  overflow: visible !important;
+}
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-background { border-top-color: #262c3d !important; }
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-border { border-top-color: rgba(149, 124, 255, .6) !important; }
+.tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-background { border-bottom-color: #262c3d !important; }
+.tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-border { border-bottom-color: rgba(149, 124, 255, .6) !important; }
+.tooltipster-sidetip.tooltipster-left .tooltipster-arrow-background { border-left-color: #262c3d !important; }
+.tooltipster-sidetip.tooltipster-left .tooltipster-arrow-border { border-left-color: rgba(149, 124, 255, .6) !important; }
+.tooltipster-sidetip.tooltipster-right .tooltipster-arrow-background { border-right-color: #262c3d !important; }
+.tooltipster-sidetip.tooltipster-right .tooltipster-arrow-border { border-right-color: rgba(149, 124, 255, .6) !important; }
 
 /* ---------- footer ---------- */
 #footer {
@@ -1425,6 +1454,101 @@ form.create_form.box.pad { padding: 8px 0 !important; }
   font-variant-numeric: tabular-nums;
 }
 
+/* ---------- forum / comment posts ---------- */
+table.forum_post { border-collapse: separate !important; border-spacing: 0 !important; table-layout: auto !important; width: 100% !important; }
+table.forum_post td.body { overflow-wrap: anywhere; }
+table.forum_post td.body pre, table.forum_post td.body code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* code blocks: dark, like the rest of the theme */
+pre:not(.gz-editor-card *), code:not(.gz-editor-card *), .code_block, .codebox {
+  background: #0b0d13 !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: var(--r-sm) !important;
+  color: #a5d8ff !important;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  direction: ltr;
+  text-align: left;
+}
+pre:not(.gz-editor-card *), .code_block, .codebox { display: block; max-width: 100%; margin: 6px 0 !important; padding: 12px 14px !important; overflow: auto; }
+/* the site forces a light background inline on code blocks: paint the dark colour over it */
+pre.code_block { width: auto !important; max-width: 100% !important; box-shadow: inset 0 0 0 9999px #0b0d13 !important; }
+code:not(.gz-editor-card *) { padding: 1px 6px !important; }
+pre code { padding: 0 !important; border: 0 !important; background: none !important; }
+table.forum_post > colgroup > col.col_avatar { width: 200px !important; }
+table.forum_post tr.colhead_dark > td {
+  padding: 10px 18px !important;
+  color: var(--muted) !important;
+  font-size: 13.5px !important;
+}
+table.forum_post tr.colhead_dark > td::after { content: "" !important; display: block !important; clear: both !important; }
+table.forum_post tr.colhead_dark > td > div {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 4px 10px !important;
+  min-height: 32px !important;
+  margin: 0 !important;
+  white-space: normal !important;
+}
+table.forum_post tr.colhead_dark > td > div:first-child { float: right !important; }
+table.forum_post tr.colhead_dark > td > div[id^="bar"] { float: left !important; }
+table.forum_post tr.colhead_dark a.post_id, table.forum_post tr.colhead_dark a.postid { color: var(--muted) !important; font-weight: 600 !important; }
+table.forum_post tr.colhead_dark strong { color: var(--muted) !important; font-weight: 600 !important; }
+/* action icons: always clearly visible, brighter on hover - never darker */
+table.forum_post tr.colhead_dark a:has(> i), table.forum_post tr.colhead_dark a.brackets, table.forum_post tr.colhead_dark a[href="#"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  color: var(--accent-2) !important;
+  font-size: 14px !important;
+  cursor: pointer;
+  opacity: 1 !important;
+  filter: none !important;
+  transition: background-color .12s ease, border-color .12s ease, color .12s ease !important;
+}
+table.forum_post tr.colhead_dark a.brackets::before, table.forum_post tr.colhead_dark a.brackets::after { content: none !important; }
+table.forum_post tr.colhead_dark a > i { color: inherit !important; font-size: 15px !important; opacity: 1 !important; filter: none !important; }
+table.forum_post tr.colhead_dark a:has(> i):hover, table.forum_post tr.colhead_dark a.brackets:hover, table.forum_post tr.colhead_dark a[href="#"]:hover {
+  background: var(--surface-3) !important;
+  border-color: var(--line-2) !important;
+  color: #fff !important;
+}
+table.forum_post tr.colhead_dark a:has(> .fa-trash-o), table.forum_post tr.colhead_dark a:has(> .fa-trash) { color: #fb7185 !important; }
+table.forum_post tr.colhead_dark a:has(> .fa-warning), table.forum_post tr.colhead_dark a:has(> .fa-exclamation-triangle) { color: lightcoral !important; }
+table.forum_post tr.colhead_dark a:has(> .fa-gavel) { color: #fbbf24 !important; }
+table.forum_post tr.colhead_dark a:has(> .fa-trash-o):hover, table.forum_post tr.colhead_dark a:has(> .fa-warning):hover { background: rgba(248, 113, 113, .16) !important; border-color: rgba(248, 113, 113, .45) !important; color: #fecaca !important; }
+table.forum_post tr.colhead_dark a:has(> .fa-gavel):hover { background: rgba(251, 191, 36, .16) !important; border-color: rgba(251, 191, 36, .45) !important; color: #fde68a !important; }
+table.forum_post tr.row > td, table.forum_post tr:not(.colhead_dark) > td { border-bottom: 0 !important; }
+table.forum_post tr:hover > td { background-color: transparent !important; }
+table.forum_post td.avatar { width: 200px !important; padding: 16px !important; text-align: center !important; }
+table.forum_post td.avatar img { display: block; max-width: 100%; height: auto; margin: 0 auto 10px; }
+table.forum_post .user_details { color: var(--muted) !important; font-size: 12.5px !important; line-height: 1.8 !important; text-align: right !important; }
+table.forum_post td.body { padding: 18px 20px !important; font-size: 15px !important; }
+table.forum_post td.body img { max-width: 100% !important; height: auto !important; border-radius: var(--r-sm); }
+.quoteheader { color: var(--accent-2) !important; }
+a[data-quote-jump] { color: var(--muted) !important; font-size: 13px !important; cursor: pointer; }
+.react-con {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-top: 6px !important;
+  background: var(--surface-2) !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: 99px !important;
+  color: var(--text) !important;
+  font-size: 13px !important;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+.react-con:hover { border-color: var(--accent) !important; color: #fff !important; }
+.all-reaction { background: var(--surface-3) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; box-shadow: 0 12px 28px rgba(0, 0, 0, .55) !important; }
+
 /* ---------- torrent page ---------- */
 .thin > .header { margin: 0 0 var(--gap) !important; padding: 0 !important; background: none !important; border: 0 !important; }
 .header h2 {
@@ -1548,7 +1672,7 @@ textarea:not(.gz-raw-textarea) { width: 100% !important; max-width: 100% !import
 table.forum_post td.avatar { width: 170px !important; vertical-align: top !important; }
 table.forum_post td.avatar img { border-radius: var(--r) !important; }
 table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !important; }
-table.forum_post tr.colhead_dark td > div { float: none !important; display: inline-block; margin-inline-end: 14px; }
+
 
 
 /* ==========================================================================
@@ -1685,6 +1809,11 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   table.mediainfo, table.mediainfo > tbody, table.mediainfo > tbody > tr, table.mediainfo > tbody > tr > td { display: block !important; width: 100% !important; }
   table.mediainfo > tbody > tr > td { padding: 0 0 12px !important; }
   table.forum_post td.avatar { display: none !important; }
+  table.forum_post, table.forum_post > tbody, table.forum_post tr, table.forum_post td.body { display: block !important; width: auto !important; }
+  table.forum_post > colgroup { display: none !important; }
+  table.forum_post tr.colhead_dark > td { display: block !important; width: auto !important; padding: 10px 12px !important; }
+  table.forum_post tr.colhead_dark { padding: 0 !important; border: 0 !important; }
+  table.forum_post td.body { padding: 14px !important; }
   div.head:has(> span > a[class*="simple-tabs"]) { height: 60px !important; }
   .linkbox a, .linkbox strong, .linkbox span { height: 32px !important; padding: 0 11px !important; font-size: 12.5px !important; }
   #disclaimer_container { font-size: 11.5px !important; }
