@@ -910,12 +910,15 @@ input[type="radio"], input[type="checkbox"] { accent-color: var(--accent) !impor
 blockquote:not(.gz-editor-card *) {
   margin: 14px 0 !important;
   padding: 14px 18px !important;
-  background: var(--bg) !important;
-  border: 1px solid var(--line) !important;
-  border-right: 3px solid var(--accent) !important;
+  background: linear-gradient(0deg, rgba(124, 92, 255, .12), rgba(124, 92, 255, .12)), var(--surface-3) !important;
+  border: 1.5px dashed rgba(149, 124, 255, .7) !important;
+  border-right: 4px solid var(--accent) !important;
   border-radius: var(--r-sm) !important;
-  color: var(--text) !important;
+  color: var(--strong) !important;
+  box-shadow: none !important;
 }
+/* a quote inside a quote steps one shade lighter again */
+blockquote:not(.gz-editor-card *) blockquote { background: rgba(255, 255, 255, .05) !important; }
 .linkbox {
   display: flex !important;
   flex-wrap: wrap !important;
