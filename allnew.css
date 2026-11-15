@@ -65,17 +65,18 @@ body::before, body::after { display: none !important; }
 #wrapper { position: static !important; top: auto !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 0 24px !important; border: 0 !important; }
 .hidden { display: none !important; }
 
-div, span, p, td, th, li, label, a, strong, em, input, textarea, select, button,
-h1, h2, h3, h4, h5, h6 { font-family: var(--font) !important; text-shadow: none !important; }
-h1, h2, h3, h4, h5, h6 { color: var(--strong) !important; font-weight: 700 !important; letter-spacing: -.01em; }
+/* the live BBCode editor (.gz-editor-card) brings its own styles: every global rule below skips it */
+:is(div, span, p, td, th, li, label, a, strong, em, input, textarea, select, button,
+h1, h2, h3, h4, h5, h6):not(.gz-editor-card, .gz-editor-card *) { font-family: var(--font) !important; text-shadow: none !important; }
+:is(h1, h2, h3, h4, h5, h6):not(.gz-editor-card, .gz-editor-card *) { color: var(--strong) !important; font-weight: 700 !important; letter-spacing: -.01em; }
 
-a { text-decoration: none !important; transition: color .15s ease; }
-a:not([class*="permission_"]):not([style*="color"]):not(.torrent_icons a) { color: var(--accent-2); }
-a:not([class*="permission_"]):not([style*="color"]):not(.torrent_icons a):hover { color: var(--strong); }
+a:not(.gz-editor-card *) { text-decoration: none !important; transition: color .15s ease; }
+a:not([class*="permission_"]):not([style*="color"]):not(.torrent_icons a):not(.gz-editor-card *) { color: var(--accent-2); }
+a:not([class*="permission_"]):not([style*="color"]):not(.torrent_icons a):not(.gz-editor-card *):hover { color: var(--strong); }
 a[class*="permission_"]:hover { filter: brightness(1.25); }
 img { max-width: 100%; }
 ::selection { background: var(--accent); color: #fff; }
-:focus-visible { outline: 2px solid var(--accent) !important; outline-offset: 2px; }
+:focus-visible:not(.gz-editor-card, .gz-editor-card *) { outline: 2px solid var(--accent) !important; outline-offset: 2px; }
 
 * { scrollbar-width: thin; scrollbar-color: var(--line-2) var(--bg); }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -871,8 +872,8 @@ a.torrent_name:hover { color: var(--accent-2) !important; }
 .torrent_table td.leechers { color: var(--down) !important; }
 
 /* ---------- forms ---------- */
-input[type="text"], input[type="search"], input[type="password"], input[type="email"],
-input[type="number"], input[type="url"], textarea, select {
+:is(input[type="text"], input[type="search"], input[type="password"], input[type="email"],
+input[type="number"], input[type="url"], textarea, select):not(.gz-editor-card, .gz-editor-card *) {
   background: var(--bg) !important;
   border: 1px solid var(--line-2) !important;
   border-radius: var(--r-sm) !important;
@@ -881,13 +882,13 @@ input[type="number"], input[type="url"], textarea, select {
   box-shadow: none !important;
   transition: border-color .15s ease, box-shadow .15s ease !important;
 }
-input:focus, textarea:focus, select:focus,
+:is(input:focus, textarea:focus, select:focus):not(.gz-editor-card, .gz-editor-card *),
 #searchbars input[type="text"]:focus {
   outline: none !important;
   border-color: var(--accent) !important;
   box-shadow: 0 0 0 3px var(--accent-soft) !important;
 }
-input[type="submit"], input[type="button"], button:not([class*="owl"]), .btn {
+input[type="submit"], input[type="button"], button:not([class*="owl"]):not([class*="gz-"]), .btn {
   background: linear-gradient(135deg, var(--accent), #5b8cff) !important;
   color: #fff !important;
   border: 0 !important;
@@ -898,12 +899,12 @@ input[type="submit"], input[type="button"], button:not([class*="owl"]), .btn {
   box-shadow: none !important;
   transition: filter .15s ease !important;
 }
-input[type="submit"]:hover, input[type="button"]:hover, button:not([class*="owl"]):hover, .btn:hover { filter: brightness(1.12); }
+input[type="submit"]:hover, input[type="button"]:hover, button:not([class*="owl"]):not([class*="gz-"]):hover, .btn:hover { filter: brightness(1.12); }
 input[type="radio"], input[type="checkbox"] { accent-color: var(--accent) !important; }
 .filter_torrents td, .filter_torrents tr, table.layout td { border: 0 !important; }
 .filter_torrents tr:hover > td, table.layout tr:hover > td { background: transparent !important; }
 
-blockquote {
+blockquote:not(.gz-editor-card *) {
   margin: 14px 0 !important;
   padding: 14px 18px !important;
   background: var(--bg) !important;
@@ -1224,7 +1225,7 @@ iframe.youtube-player { display: block; border-radius: var(--r) !important; }
 #commentrules strong { font-weight: 600 !important; }
 ul.postlist { margin: 8px 0 0 !important; padding-inline-start: 20px !important; }
 ul.postlist li { margin: 4px 0 !important; color: var(--text) !important; }
-textarea { width: 100% !important; max-width: 100% !important; }
+textarea:not(.gz-raw-textarea) { width: 100% !important; max-width: 100% !important; }
 .preview_submit { display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 8px 12px !important; margin-top: 12px !important; }
 .preview_submit label { margin-inline-end: 10px; color: var(--text) !important; }
 table.forum_post td.avatar { width: 170px !important; vertical-align: top !important; }
