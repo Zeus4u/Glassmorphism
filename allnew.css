@@ -1241,11 +1241,22 @@ form.create_form.box.pad { padding: 8px 0 !important; }
 #content form.search_form:has(> .head) > .box { margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
 #content form.search_form > .head.center { justify-content: flex-start !important; }
 #content form.search_form .box.filter_torrents { margin-bottom: var(--gap) !important; }
-#content #ft_container, #content form.search_form:has(> .head) > .box.pad {
-  padding: 22px 24px !important;
+/* the glow belongs to the whole card, so it follows the rounded frame exactly */
+#content .box.filter_torrents, #content form.search_form:has(> .head) {
   background:
-    radial-gradient(620px 220px at 100% 0, rgba(124, 92, 255, .13), transparent 70%),
-    radial-gradient(520px 200px at 0 100%, rgba(56, 189, 248, .07), transparent 70%) !important;
+    radial-gradient(620px 240px at 100% 0, rgba(124, 92, 255, .13), transparent 70%),
+    radial-gradient(520px 220px at 0 100%, rgba(56, 189, 248, .07), transparent 70%),
+    var(--surface) !important;
+  overflow: hidden !important;
+}
+#content #ft_container, #content form.search_form:has(> .head) > .box.pad {
+  width: auto !important;
+  margin: 0 !important;
+  padding: 22px 24px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 /* each option row: label + controls on one line, fields fill the width */
