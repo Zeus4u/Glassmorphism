@@ -553,7 +553,7 @@ div.head {
 
 /* tabs inside a head: one segmented control, centred both ways */
 div.head::before, div.head::after { content: none !important; display: none !important; }
-div.head:has(> span > a[onclick] ~ a[onclick]) {
+div.head:has(> span > a[class*="simple-tabs"]) {
   position: relative !important;
   flex-wrap: nowrap !important;
   justify-content: center !important;
@@ -563,7 +563,7 @@ div.head:has(> span > a[onclick] ~ a[onclick]) {
   padding-block: 0 !important;
   line-height: 1 !important;
 }
-div.head:has(> span > a[onclick] ~ a[onclick]) > span {
+div.head:has(> span > a[class*="simple-tabs"]) > span {
   position: static !important;
   float: none !important;
   flex: 0 0 auto !important;
@@ -571,7 +571,7 @@ div.head:has(> span > a[onclick] ~ a[onclick]) > span {
   vertical-align: middle !important;
   transform: none !important;
 }
-div.head:has(> span > a[onclick] ~ a[onclick]) > a[data-toggle-target] {
+div.head:has(> span > a[class*="simple-tabs"]) > a[data-toggle-target] {
   position: absolute !important;
   top: 50% !important;
   left: 20px !important;
@@ -580,7 +580,7 @@ div.head:has(> span > a[onclick] ~ a[onclick]) > a[data-toggle-target] {
   transform: translateY(-50%) !important;
   line-height: 1 !important;
 }
-.head > span:has(> a[onclick] ~ a[onclick]) {
+.head > span:has(> a[class*="simple-tabs"]) {
   display: inline-flex !important;
   align-items: center !important;
   gap: 4px !important;
@@ -594,7 +594,7 @@ div.head:has(> span > a[onclick] ~ a[onclick]) > a[data-toggle-target] {
   line-height: 0 !important;
   color: transparent !important;
 }
-.head > span:has(> a[onclick] ~ a[onclick]) > a[onclick] {
+.head > span:has(> a[class*="simple-tabs"]) > a[onclick] {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -613,8 +613,8 @@ div.head:has(> span > a[onclick] ~ a[onclick]) > a[data-toggle-target] {
   white-space: nowrap !important;
   transition: background-color .15s ease, color .15s ease !important;
 }
-.head > span:has(> a[onclick] ~ a[onclick]) > a[onclick]:hover { color: var(--strong) !important; }
-.head > span:has(> a[onclick] ~ a[onclick]) > a.simple-tabs__link--active {
+.head > span:has(> a[class*="simple-tabs"]) > a[onclick]:hover { color: var(--strong) !important; }
+.head > span:has(> a[class*="simple-tabs"]) > a.simple-tabs__link--active {
   background: linear-gradient(135deg, var(--accent), #5b8cff) !important;
   color: #fff !important;
   box-shadow: 0 4px 14px rgba(124, 92, 255, .35) !important;
@@ -1025,7 +1025,8 @@ div.head > a[href="#"]:first-child { order: 8; color: var(--muted) !important; }
 /* posters brighten instead of moving */
 #latest5tor .owl-item > div > a > div { transition: filter .2s ease !important; filter: saturate(.92) brightness(.94); }
 #latest5tor .owl-item > div:hover > a > div { filter: saturate(1.08) brightness(1.06); }
-#latest5tor .owl-item > div:hover { box-shadow: 0 0 0 1px var(--accent), 0 14px 34px rgba(124, 92, 255, .22) !important; }
+#latest5tor .owl-item > div:hover { box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 22px rgba(124, 92, 255, .14) !important; }
+#latest5tor .owl-stage-outer { padding: 4px 0 !important; margin: -4px 0 !important; }
 /* rows: accent edge on hover */
 .torrent_table tr:hover > td:first-child { box-shadow: inset -3px 0 0 var(--accent) !important; }
 .torrent_table tr.colhead:hover > td, .torrent_table tr.colhead_dark:hover > td,
@@ -1107,6 +1108,44 @@ ul.bbcode_bar, .bbcode_bar .emoji_box, .bbcode_bar .size_box { background: var(-
 .tab button:hover, .tab button.active { background: var(--surface-3) !important; color: var(--strong) !important; filter: none !important; }
 div.movie-item:hover { border-color: var(--accent) !important; }
 td.calendar-day-np { background: var(--surface-2) !important; }
+
+/* ---------- message heads: id, author, time on the right; actions at the far end ---------- */
+.head > a.postid { color: var(--muted) !important; font-weight: 600 !important; font-variant-numeric: tabular-nums; }
+.head > a.postid:hover { color: var(--strong) !important; }
+.head > strong:has(> a[class*="permission_"]) { padding: 0 !important; font-weight: 600 !important; color: var(--muted) !important; }
+.head > strong:has(> a[class*="permission_"])::before { content: none !important; }
+.head img.donor_icon { height: 15px !important; width: auto !important; margin: 0 4px !important; vertical-align: -2px; }
+.head > span[id^="bar"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-inline-start: auto !important;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  font-size: 0 !important;
+}
+.head > span[id^="bar"]:empty { display: none !important; }
+.head > span[id^="bar"] > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 30px !important;
+  padding: 0 14px !important;
+  background: var(--bg) !important;
+  border: 1px solid var(--line-2) !important;
+  border-radius: 99px !important;
+  color: var(--text) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+}
+.head > span[id^="bar"] > a::before, .head > span[id^="bar"] > a::after { content: none !important; }
+.head > span[id^="bar"] > a:hover { border-color: var(--accent) !important; color: var(--strong) !important; }
+.head > span[id^="bar"] > a[href*="action=delete"]:hover { border-color: rgba(248, 113, 113, .6) !important; color: var(--down) !important; }
+#inbox .box > .body { word-break: break-word; }
+#inbox > h3 { margin: 6px 0 12px !important; font-size: 18px !important; }
+#reply_box #buttons form { display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 10px !important; }
+#reply_box #buttons form > br { display: none !important; }
+.thin > br { display: none !important; }
 
 /* ---------- torrent page ---------- */
 .thin > .header { margin: 0 0 var(--gap) !important; padding: 0 !important; background: none !important; border: 0 !important; }
@@ -1309,8 +1348,8 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   .alertbar { padding: 8px 12px !important; line-height: 2 !important; }
   .box, #more_news { border-radius: var(--r) !important; }
   div.head { min-height: 50px !important; padding-inline: 14px !important; }
-  .head > span:has(> a[onclick] ~ a[onclick]) { display: flex !important; flex: 1 1 auto !important; width: 100% !important; }
-  .head > span:has(> a[onclick] ~ a[onclick]) > a[onclick] { flex: 1 1 0 !important; padding: 0 4px !important; font-size: 12.5px !important; text-align: center !important; white-space: nowrap !important; overflow: hidden; }
+  .head > span:has(> a[class*="simple-tabs"]) { display: flex !important; flex: 1 1 auto !important; width: 100% !important; }
+  .head > span:has(> a[class*="simple-tabs"]) > a[onclick] { flex: 1 1 0 !important; padding: 0 4px !important; font-size: 12.5px !important; text-align: center !important; white-space: nowrap !important; overflow: hidden; }
   #menu .nav_dropdown > div a { min-width: 0 !important; }
   .head > a[data-toggle-target], .head > span[style*="float"] { display: none !important; }
   .pad { padding: 14px !important; }
@@ -1340,7 +1379,7 @@ table.forum_post tr.colhead_dark td > div { float: none !important; display: inl
   table.mediainfo, table.mediainfo > tbody, table.mediainfo > tbody > tr, table.mediainfo > tbody > tr > td { display: block !important; width: 100% !important; }
   table.mediainfo > tbody > tr > td { padding: 0 0 12px !important; }
   table.forum_post td.avatar { display: none !important; }
-  div.head:has(> span > a[onclick] ~ a[onclick]) { height: 60px !important; }
+  div.head:has(> span > a[class*="simple-tabs"]) { height: 60px !important; }
   .linkbox a, .linkbox strong, .linkbox span { height: 32px !important; padding: 0 11px !important; font-size: 12.5px !important; }
   #disclaimer_container { font-size: 11.5px !important; }
   #totop { bottom: 14px !important; left: 14px !important; }
