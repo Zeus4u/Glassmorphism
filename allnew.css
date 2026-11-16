@@ -2430,3 +2430,29 @@ div.head:has(> span > a[class*="simple-tabs"]) > span{ margin:0!important; }
 .tooltipster-base{ max-width:min(360px,92vw)!important; }
 .tooltipster-base .tooltipster-box{ max-width:inherit!important; }
 .tooltipster-base .tooltipster-content{ max-width:336px!important; box-sizing:border-box!important; overflow-wrap:anywhere!important; word-break:break-word!important; white-space:normal!important; direction:ltr; unicode-bidi:plaintext; }
+
+/* ================= forum thread: staff "edit thread" box (scoped to this form only) ================= */
+body#forums form.edit_form[name="forum_thread"]{ background:var(--surface)!important; border:1px solid var(--line-2)!important; border-radius:var(--r-lg)!important; overflow:hidden!important; box-shadow:0 10px 32px rgba(0,0,0,.3)!important; margin:0 0 var(--gap,16px)!important; padding:0!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout, body#forums form.edit_form[name="forum_thread"] table.layout > tbody{ display:block!important; width:100%!important; margin:0!important; border:0!important; background:none!important; box-shadow:none!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden){ display:grid!important; grid-template-columns:230px minmax(0,1fr)!important; column-gap:20px!important; align-items:center!important; padding:14px 24px!important; border:0!important; border-bottom:1px solid var(--line)!important; background:none!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout tr.hidden{ display:none!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout tr:last-child{ border-bottom:0!important; background:var(--surface-2)!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout td{ display:block!important; width:auto!important; min-width:0!important; padding:0!important; border:0!important; background:none!important; }
+body#forums form.edit_form[name="forum_thread"] td.label, body#forums form.edit_form[name="forum_thread"] td.label label{ font-size:14px!important; font-weight:600!important; color:var(--text,#e8ebf4)!important; line-height:1.5!important; }
+body#forums form.edit_form[name="forum_thread"] td input[type="text"]{ width:100%!important; max-width:560px!important; box-sizing:border-box!important; }
+body#forums form.edit_form[name="forum_thread"] td select{ width:100%!important; max-width:360px!important; }
+body#forums form.edit_form[name="forum_thread"] td.center{ grid-column:1 / -1!important; display:flex!important; flex-wrap:wrap!important; align-items:center!important; gap:10px!important; text-align:start!important; }
+body#forums form.edit_form[name="forum_thread"] td.center > input[type="submit"]{ order:1!important; height:44px!important; min-width:140px!important; padding:0 28px!important; }
+body#forums form.edit_form[name="forum_thread"] td.center > span{ float:none!important; order:2!important; margin-inline-start:auto!important; display:flex!important; flex-wrap:wrap!important; gap:8px!important; }
+body#forums form.edit_form[name="forum_thread"] td.center > span input[type="submit"]{ height:40px!important; padding:0 16px!important; background:rgba(255,90,105,.08)!important; color:#ff7a85!important; border:1px solid rgba(255,90,105,.35)!important; box-shadow:none!important; }
+body#forums form.edit_form[name="forum_thread"] td.center > span input[type="submit"]:hover{ background:rgba(255,90,105,.18)!important; border-color:#ff5a69!important; }
+@media (max-width:760px){
+  body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden){ grid-template-columns:minmax(0,1fr)!important; row-gap:8px!important; padding:14px 16px!important; }
+  body#forums form.edit_form[name="forum_thread"] td.center > span{ margin-inline-start:0!important; width:100%!important; }
+  body#forums form.edit_form[name="forum_thread"] td.center > span input[type="submit"]{ flex:1 1 auto!important; }
+  body#forums form.edit_form[name="forum_thread"] td.center > input[type="submit"]{ width:100%!important; }
+}
+body#forums form.edit_form[name="forum_thread"] td input[type="checkbox"]{ margin:0!important; vertical-align:middle!important; display:block!important; }
+body#forums form.edit_form[name="forum_thread"] td.label label{ margin:0!important; padding:0!important; display:block!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td{ align-self:center!important; }
+body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td.label{ padding:0!important; margin:0!important; }
