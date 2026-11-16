@@ -2457,20 +2457,20 @@ body#forums form.edit_form[name="forum_thread"] td.label label{ margin:0!importa
 body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td{ align-self:center!important; }
 body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td.label{ padding:0!important; margin:0!important; }
 
-/* ---------- forum search: category columns (scoped to #forum_search_cat_list only) ---------- */
-#forum_search_cat_list, #forum_search_cat_list > tbody { display: block !important; width: 100% !important; margin: 10px 0 0 !important; }
-#forum_search_cat_list > tbody > tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important; align-items: start !important; gap: 14px !important; padding: 0 !important; }
-#forum_search_cat_list > tbody > tr > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; align-self: start !important; }
-#forum_search_cat_list > tbody > tr > td > table, #forum_search_cat_list > tbody > tr > td > table > tbody { display: block !important; width: 100% !important; }
-#forum_search_cat_list > tbody > tr > td > table { background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r) !important; padding: 8px 12px 10px !important; }
-#forum_search_cat_list table table tr { display: flex !important; align-items: center !important; padding: 0 !important; gap: 0 !important; }
-#forum_search_cat_list table table td { display: flex !important; align-items: center !important; gap: 10px !important; width: 100% !important; padding: 7px 0 !important; border: 0 !important; background: transparent !important; }
-#forum_search_cat_list table table tr:first-child td { padding: 4px 0 8px !important; margin-bottom: 4px !important; border-bottom: 1px solid var(--line) !important; }
-#forum_search_cat_list a.forum_category { color: var(--accent-2) !important; font-weight: 700 !important; }
-#forum_search_cat_list input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; flex: 0 0 20px !important; width: 20px !important; height: 20px !important; margin: 0 !important; padding: 0 !important; background: var(--surface-3) center / 13px no-repeat !important; border: 1.5px solid var(--line-2) !important; border-radius: 6px !important; cursor: pointer; transition: background-color .15s, border-color .15s; }
-#forum_search_cat_list input[type="checkbox"]:hover { border-color: var(--accent) !important; }
-#forum_search_cat_list input[type="checkbox"]:checked { background-color: var(--accent) !important; border-color: var(--accent) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; }
-#forum_search_cat_list label { margin: 0 !important; font-size: 14px !important; font-weight: 600 !important; white-space: normal !important; cursor: pointer; }
+/* ---------- forum search: category columns (scoped to #content #forum_search_cat_list only) ---------- */
+#content #forum_search_cat_list, #content #forum_search_cat_list > tbody { display: block !important; width: 100% !important; margin: 10px 0 0 !important; }
+#content #forum_search_cat_list > tbody > tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important; align-items: start !important; gap: 14px !important; padding: 0 !important; }
+#content #forum_search_cat_list > tbody > tr > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; align-self: start !important; }
+#content #forum_search_cat_list > tbody > tr > td > table, #content #forum_search_cat_list > tbody > tr > td > table > tbody { display: block !important; width: 100% !important; }
+#content #forum_search_cat_list > tbody > tr > td > table { background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r) !important; padding: 8px 12px 10px !important; }
+#content #forum_search_cat_list table table tr { display: flex !important; align-items: center !important; padding: 0 !important; gap: 0 !important; }
+#content #forum_search_cat_list table table td { display: flex !important; align-items: center !important; gap: 10px !important; width: 100% !important; padding: 7px 0 !important; border: 0 !important; background: transparent !important; }
+#content #forum_search_cat_list table table tr:first-child td { padding: 4px 0 8px !important; margin-bottom: 4px !important; border-bottom: 1px solid var(--line) !important; }
+#content #forum_search_cat_list a.forum_category { color: var(--accent-2) !important; font-weight: 700 !important; }
+#content #forum_search_cat_list input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; flex: 0 0 20px !important; width: 20px !important; height: 20px !important; margin: 0 !important; padding: 0 !important; background: var(--surface-3) center / 13px no-repeat !important; border: 1.5px solid var(--line-2) !important; border-radius: 6px !important; cursor: pointer; transition: background-color .15s, border-color .15s; }
+#content #forum_search_cat_list input[type="checkbox"]:hover { border-color: var(--accent) !important; }
+#content #forum_search_cat_list input[type="checkbox"]:checked { background-color: var(--accent) !important; border-color: var(--accent) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; }
+#content #forum_search_cat_list label { margin: 0 !important; font-size: 14px !important; font-weight: 600 !important; white-space: normal !important; cursor: pointer; }
 
 @media (max-width: 760px) {
   body#forums table.forum_list, body#forums table.forum_list > tbody { display: block !important; width: 100% !important; }
@@ -2482,3 +2482,43 @@ body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > t
   body#forums table.forum_list tr.row > td:nth-child(3) { display: none !important; }
   body#forums table.forum_list tr.row > td:nth-child(4) { grid-row: 1 !important; grid-column: 2 !important; font-size: 12px !important; color: var(--muted) !important; }
 }
+
+/* ---------- forum search form: same layout language as the other forms (scoped via #content #forum_search_cat_list) ---------- */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout { display: block !important; width: 100% !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody { display: block !important; width: 100% !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:not(.hidden):not(:has(> td[colspan])) { display: grid !important; grid-template-columns: 210px minmax(0, 1fr) !important; column-gap: 24px !important; align-items: start !important; padding: 16px 24px !important; border-bottom: 1px solid var(--line) !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:last-child { border-bottom: 0 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:first-child:not([colspan]) { flex: none !important; width: auto !important; padding: 12px 0 0 !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; line-height: 1.4 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:first-child strong { font-weight: 600 !important; color: inherit !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:nth-child(2) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 10px 14px !important; width: auto !important; min-width: 0 !important; color: var(--muted) !important; font-size: 14px !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td > input[type="search"] { flex: 1 1 100% !important; width: 100% !important; max-width: none !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td > input.date_picker { flex: 0 1 220px !important; width: 220px !important; min-width: 0 !important; text-align: center !important; }
+/* radio -> chips */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"] { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"] + label { display: inline-flex !important; align-items: center !important; height: 38px !important; padding: 0 18px !important; margin: 0 !important; background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: 999px !important; color: var(--muted) !important; font-size: 13.5px !important; font-weight: 600 !important; cursor: pointer !important; user-select: none !important; transition: .15s !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"] + label:hover { border-color: var(--accent) !important; color: var(--strong) !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"]:checked + label { background: linear-gradient(135deg, var(--accent), #5b7cff) !important; border-color: transparent !important; color: #fff !important; box-shadow: 0 4px 14px rgba(124, 92, 255, .35) !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"]:focus-visible + label { outline: 2px solid var(--accent-2) !important; outline-offset: 2px !important; }
+/* categories */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > span { flex: 1 1 100% !important; font-size: 12.5px !important; color: var(--muted) !important; }
+#content #forum_search_cat_list { margin: 0 !important; }
+#content #forum_search_cat_list > tbody > tr { display: block !important; column-width: 220px !important; column-gap: 14px !important; }
+#content #forum_search_cat_list > tbody > tr > td > table { box-sizing: border-box !important; }
+#content #forum_search_cat_list table table tr:not(:first-child):hover > td { color: var(--strong) !important; }
+#content #forum_search_cat_list input[type="checkbox"]:checked + label { color: var(--strong) !important; }
+/* submit row */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:has(> td[colspan]) { display: flex !important; justify-content: center !important; border-bottom: 0 !important; padding-top: 6px !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td[colspan] { display: block !important; width: auto !important; padding: 0 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) input[type="submit"] { height: 46px !important; min-width: 200px !important; font-size: 15px !important; }
+@media (max-width: 760px) {
+  #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:not(.hidden):not(:has(> td[colspan])) { grid-template-columns: minmax(0, 1fr) !important; row-gap: 8px !important; padding: 14px 14px !important; }
+  #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:first-child:not([colspan]) { padding: 0 !important; }
+  #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td > input.date_picker { flex: 1 1 140px !important; width: auto !important; }
+  #content #forum_search_cat_list > tbody > tr { column-width: auto !important; column-count: 1 !important; }
+}
+
+#content #forum_search_cat_list table table td { flex-wrap: nowrap !important; flex: 0 0 auto !important; }
+#content #forum_search_cat_list table table td label { flex: 1 1 auto !important; min-width: 0 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:has(> td[colspan]) { border-top: 1px solid var(--line) !important; padding: 18px 24px !important; }
+#content #forum_search_cat_list { flex: 1 1 100% !important; max-width: 100% !important; }
+#content #forum_search_cat_list > tbody > tr > td { break-inside: avoid !important; margin: 0 0 14px !important; }
