@@ -1333,44 +1333,44 @@ body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-
 }
 
 /* ---------- edit pages (edit group, edit torrent): rows = label + field, cards, toggle tabs ---------- */
-#content .tabcontent table.layout,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout {display:block!important;width:100%!important;margin:0!important;background:transparent!important;border:0!important;}
-#content .tabcontent table.layout > tbody,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout > tbody {display:block!important;width:100%!important;}
-#content .tabcontent table.layout tr:not(.hidden):not([style*="display: none"]),
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:not(.hidden):not([style*="display: none"]) {display:grid!important;grid-template-columns:230px minmax(0,1fr)!important;align-items:start!important;gap:8px 22px!important;padding:14px 4px!important;border-bottom:1px solid var(--line)!important;}
-#content .tabcontent table.layout tr:last-child,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:last-child {border-bottom:0!important;}
-#content .tabcontent table.layout tr > td,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr > td {display:block!important;width:auto!important;min-width:0!important;padding:0!important;border:0!important;background:transparent!important;}
-#content .tabcontent table.layout td.label,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td.label {padding-top:11px!important;color:var(--text)!important;font-size:14px!important;font-weight:600!important;line-height:1.5!important;text-align:right!important;}
-#content .tabcontent table.layout tr > td:not(.label),
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr > td:not(.label) {display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px 10px!important;color:var(--text)!important;font-size:14px!important;}
-#content .tabcontent table.layout td[colspan="2"],
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td[colspan="2"] {grid-column:1/-1!important;justify-content:center!important;text-align:center!important;}
-#content .tabcontent table.layout td > input[type="text"],
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="text"] {flex:1 1 260px!important;width:auto!important;max-width:640px!important;min-width:0!important;height:42px!important;}
-#content .tabcontent table.layout td > input[size="5"], table.layout td > input[size="10"], table.layout td > input[name="year"],
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[size="5"], table.layout td > input[size="10"], table.layout td > input[name="year"] {flex:0 0 140px!important;}
-#content .tabcontent table.layout td > select,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > select {flex:0 1 auto!important;width:auto!important;min-width:160px!important;max-width:100%!important;height:42px!important;}
-#content .tabcontent table.layout td > textarea,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > textarea {flex:1 1 100%!important;width:100%!important;max-width:none!important;min-width:0!important;}
-#content .tabcontent table.layout td > .textarea_wrap, table.layout td > .preview_wrap:not(.hidden),
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > .textarea_wrap, table.layout td > .preview_wrap:not(.hidden) {flex:1 1 100%!important;width:100%!important;min-width:0!important;margin:0!important;}
-#content .tabcontent table.layout td > p.min_padding,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > p.min_padding {flex:1 1 100%!important;margin:0!important;color:var(--muted)!important;font-size:13px!important;}
-#content .tabcontent table.layout td > input[type="button"],
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="button"] {height:42px!important;padding:0 18px!important;background:var(--surface-3)!important;border:1px solid var(--line-2)!important;color:var(--text)!important;box-shadow:none!important;}
-#content .tabcontent table.layout td > input[type="checkbox"],
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="checkbox"] {-webkit-appearance:none!important;appearance:none!important;flex:0 0 auto!important;width:20px!important;height:20px!important;margin:0!important;background:var(--surface-3) center / 13px no-repeat!important;border:1.5px solid var(--line-2)!important;border-radius:6px!important;cursor:pointer;}
-#content .tabcontent table.layout td > input[type="checkbox"]:checked,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="checkbox"]:checked {background-color:var(--accent)!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;border-color:var(--accent)!important;}
-#content .tabcontent table.layout td > label.label,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > label.label {padding:0!important;color:var(--muted)!important;font-size:13.5px!important;font-weight:600!important;}
-#content .tabcontent table.layout td.center > input[type="submit"], table.layout td[colspan="2"] > input[type="submit"],
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td.center > input[type="submit"], table.layout td[colspan="2"] > input[type="submit"] {min-width:200px!important;height:46px!important;}
+#content .tabcontent table.layout:not(.user_options),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) {display:block!important;width:100%!important;margin:0!important;background:transparent!important;border:0!important;}
+#content .tabcontent table.layout:not(.user_options) > tbody,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) > tbody {display:block!important;width:100%!important;}
+#content .tabcontent table.layout:not(.user_options) tr:not(.hidden):not([style*="display: none"]),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) tr:not(.hidden):not([style*="display: none"]) {display:grid!important;grid-template-columns:230px minmax(0,1fr)!important;align-items:start!important;gap:8px 22px!important;padding:14px 4px!important;border-bottom:1px solid var(--line)!important;}
+#content .tabcontent table.layout:not(.user_options) tr:last-child,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) tr:last-child {border-bottom:0!important;}
+#content .tabcontent table.layout:not(.user_options) tr > td,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) tr > td {display:block!important;width:auto!important;min-width:0!important;padding:0!important;border:0!important;background:transparent!important;}
+#content .tabcontent table.layout:not(.user_options) td.label,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td.label {padding-top:11px!important;color:var(--text)!important;font-size:14px!important;font-weight:600!important;line-height:1.5!important;text-align:right!important;}
+#content .tabcontent table.layout:not(.user_options) tr > td:not(.label),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) tr > td:not(.label) {display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px 10px!important;color:var(--text)!important;font-size:14px!important;}
+#content .tabcontent table.layout:not(.user_options) td[colspan="2"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td[colspan="2"] {grid-column:1/-1!important;justify-content:center!important;text-align:center!important;}
+#content .tabcontent table.layout:not(.user_options) td > input[type="text"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > input[type="text"] {flex:1 1 260px!important;width:auto!important;max-width:640px!important;min-width:0!important;height:42px!important;}
+#content .tabcontent table.layout:not(.user_options) td > input[size="5"], table.layout:not(.user_options) td > input[size="10"], table.layout:not(.user_options) td > input[name="year"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > input[size="5"], table.layout:not(.user_options) td > input[size="10"], table.layout:not(.user_options) td > input[name="year"] {flex:0 0 140px!important;}
+#content .tabcontent table.layout:not(.user_options) td > select,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > select {flex:0 1 auto!important;width:auto!important;min-width:160px!important;max-width:100%!important;height:42px!important;}
+#content .tabcontent table.layout:not(.user_options) td > textarea,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > textarea {flex:1 1 100%!important;width:100%!important;max-width:none!important;min-width:0!important;}
+#content .tabcontent table.layout:not(.user_options) td > .textarea_wrap, table.layout:not(.user_options) td > .preview_wrap:not(.hidden),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > .textarea_wrap, table.layout:not(.user_options) td > .preview_wrap:not(.hidden) {flex:1 1 100%!important;width:100%!important;min-width:0!important;margin:0!important;}
+#content .tabcontent table.layout:not(.user_options) td > p.min_padding,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > p.min_padding {flex:1 1 100%!important;margin:0!important;color:var(--muted)!important;font-size:13px!important;}
+#content .tabcontent table.layout:not(.user_options) td > input[type="button"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > input[type="button"] {height:42px!important;padding:0 18px!important;background:var(--surface-3)!important;border:1px solid var(--line-2)!important;color:var(--text)!important;box-shadow:none!important;}
+#content .tabcontent table.layout:not(.user_options) td > input[type="checkbox"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > input[type="checkbox"] {-webkit-appearance:none!important;appearance:none!important;flex:0 0 auto!important;width:20px!important;height:20px!important;margin:0!important;background:var(--surface-3) center / 13px no-repeat!important;border:1.5px solid var(--line-2)!important;border-radius:6px!important;cursor:pointer;}
+#content .tabcontent table.layout:not(.user_options) td > input[type="checkbox"]:checked,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > input[type="checkbox"]:checked {background-color:var(--accent)!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;border-color:var(--accent)!important;}
+#content .tabcontent table.layout:not(.user_options) td > label.label,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td > label.label {padding:0!important;color:var(--muted)!important;font-size:13.5px!important;font-weight:600!important;}
+#content .tabcontent table.layout:not(.user_options) td.center > input[type="submit"], table.layout:not(.user_options) td[colspan="2"] > input[type="submit"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td.center > input[type="submit"], table.layout:not(.user_options) td[colspan="2"] > input[type="submit"] {min-width:200px!important;height:46px!important;}
 #content .box.pad > form:is(.edit_form, .merge_form) > div > h3 { display: flex !important; align-items: center !important; flex-wrap: wrap !important; gap: 10px 14px !important; margin: 18px 0 8px !important; padding: 0 !important; background: none !important; border: 0 !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; text-align: right !important; }
 #content .box.pad > form:is(.edit_form, .merge_form) > div > h3:first-of-type { margin-top: 0 !important; }
 #content .box.pad > form:is(.edit_form, .merge_form) > div > br { display: none !important; }
@@ -1393,19 +1393,59 @@ body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-
 #content .tabcontent form.create_form.box.pad, #content .tabcontent .box.pad { margin: 0 0 18px !important; padding: 8px 24px !important; }
 #content .tabcontent .box.pad > h2 { margin: 10px 0 0 !important; font-size: 17px !important; text-align: right !important; }
 #content .tabcontent form.create_form h3.important_text { margin: 12px 0 !important; padding: 12px 16px !important; background: rgba(255, 99, 99, .08) !important; border: 1px solid rgba(255, 99, 99, .3) !important; border-radius: var(--r-sm) !important; color: #ff8a8a !important; font-size: 14px !important; text-align: center !important; }
-#content .tabcontent table.layout tr:not(.hidden):not([style*="display: none"]):last-child,
-#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:not(.hidden):not([style*="display: none"]):last-child { border-bottom: 0 !important; }
-#content .tabcontent table.layout tr:has(> td > p) { grid-template-columns: 1fr !important; }
-#content .tabcontent table.layout td[colspan="2"] > p { flex: 1 1 100% !important; margin: 0 0 12px !important; color: var(--text) !important; font-size: 14px !important; text-align: center !important; }
+#content .tabcontent table.layout:not(.user_options) tr:not(.hidden):not([style*="display: none"]):last-child,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) tr:not(.hidden):not([style*="display: none"]):last-child { border-bottom: 0 !important; }
+#content .tabcontent table.layout:not(.user_options) tr:has(> td > p) { grid-template-columns: 1fr !important; }
+#content .tabcontent table.layout:not(.user_options) td[colspan="2"] > p { flex: 1 1 100% !important; margin: 0 0 12px !important; color: var(--text) !important; font-size: 14px !important; text-align: center !important; }
 @media (max-width: 760px) {
-  #content .tabcontent table.layout tr:not(.hidden):not([style*="display: none"]),
-  #content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:not(.hidden):not([style*="display: none"]) {grid-template-columns:minmax(0,1fr)!important;gap:8px!important;padding:12px 0!important;}
-  #content .tabcontent table.layout td.label,
-  #content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td.label {padding-top:0!important;text-align:right!important;}
+  #content .tabcontent table.layout:not(.user_options) tr:not(.hidden):not([style*="display: none"]),
+  #content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) tr:not(.hidden):not([style*="display: none"]) {grid-template-columns:minmax(0,1fr)!important;gap:8px!important;padding:12px 0!important;}
+  #content .tabcontent table.layout:not(.user_options) td.label,
+  #content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout:not(.user_options) td.label {padding-top:0!important;text-align:right!important;}
   #content .tabcontent form.create_form.box.pad, #content .tabcontent .box.pad { padding: 6px 14px !important; }
   #content div.tab { width: 100% !important; flex-wrap: nowrap !important; }
   #content div.tab > button.tablinks { flex: 1 1 auto !important; padding: 0 8px !important; font-size: 12.5px !important; white-space: nowrap !important; }
   #content .box.pad > form:is(.edit_form, .merge_form) > div > h3 > input[type="text"] { width: 100% !important; flex: 1 1 100% !important; }
+}
+
+/* ---------- profile settings: aligned rows, toggle chips, custom boxes ---------- */
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) { display: grid !important; grid-template-columns: 250px minmax(0, 1fr) !important; align-items: center !important; gap: 8px 22px !important; padding: 15px 24px !important; border-bottom: 1px solid var(--line) !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]):last-child { border-bottom: 0 !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]):has(> td > :is(p, ul:not(.nobullet):not(.options_list), .textarea_wrap, .field_div, .setting_description)) { align-items: start !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]):has(> td > :is(p, ul:not(.nobullet):not(.options_list), .textarea_wrap, .field_div, .setting_description)) > td.label { padding-top: 9px !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]):hover { background: rgba(255, 255, 255, .02) !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; border: 0 !important; background: transparent !important; line-height: 1.6 !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) > td.label { padding-top: 0 !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; text-align: right !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) > td:not(.label) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 10px 14px !important; color: var(--text) !important; font-size: 14px !important; }
+#content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) > td:not(.label) > :is(.field_div, .option_group, p, ul, div, .textarea_wrap, .preview_wrap:not(.hidden), .setting_description) { flex: 1 1 100% !important; min-width: 0 !important; margin: 0 !important; }
+#content table.user_options td > p.min_padding, #content table.user_options td .setting_description { color: var(--muted) !important; font-size: 13px !important; }
+#content table.user_options td ul:not(.options_list):not(.nobullet) { margin: 6px 0 0 !important; padding: 0 18px 0 0 !important; color: var(--muted) !important; font-size: 13px !important; }
+#content table.user_options td ul.options_list, #content table.user_options td ul.nobullet { display: flex !important; flex-wrap: wrap !important; gap: 10px 12px !important; margin: 0 !important; padding: 0 !important; list-style: none !important; }
+#content table.user_options td ul.options_list li, #content table.user_options td ul.nobullet li { display: flex !important; align-items: center !important; margin: 0 !important; padding: 0 !important; }
+#content table.user_options td input:is([type="text"], [type="email"], [type="password"]) { width: 100% !important; max-width: 560px !important; height: 42px !important; }
+#content table.user_options td label:has(> input[type="password"]) { display: block !important; margin: 0 0 4px !important; color: var(--muted) !important; font-size: 13.5px !important; font-weight: 600 !important; }
+#content table.user_options td .field_div { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px 14px !important; }
+#content table.user_options td .field_div > div[style*="float"] { float: none !important; }
+#content table.user_options td select { width: auto !important; min-width: 150px !important; max-width: 100% !important; height: 42px !important; }
+#content table.user_options td input[type="button"] { height: 40px !important; padding: 0 18px !important; background: var(--surface-3) !important; border: 1px solid var(--line-2) !important; color: var(--text) !important; box-shadow: none !important; }
+#content table.user_options td input[type="button"]:hover { border-color: var(--accent) !important; color: var(--strong) !important; filter: none !important; }
+#content table.user_options td input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; flex: 0 0 auto !important; width: 20px !important; height: 20px !important; margin: 0 !important; padding: 0 !important; background: var(--surface-3) center / 13px no-repeat !important; border: 1.5px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; cursor: pointer; }
+#content table.user_options td input[type="checkbox"]:hover { border-color: var(--accent) !important; }
+#content table.user_options td input[type="checkbox"]:checked { background-color: var(--accent) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; border-color: var(--accent) !important; }
+#content table.user_options td label:has(> input[type="checkbox"]) { display: inline-flex !important; align-items: center !important; gap: 10px !important; cursor: pointer; }
+#content table.user_options td input:is([type="checkbox"], [type="radio"]):has(+ label) { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
+#content table.user_options td input[type="checkbox"] + label { display: inline-flex !important; align-items: center !important; gap: 10px !important; cursor: pointer; }
+#content table.user_options td input[type="checkbox"] + label::before { content: ""; flex: 0 0 20px; width: 20px; height: 20px; box-sizing: border-box; background: var(--surface-3) center / 13px no-repeat; border: 1.5px solid var(--line-2); border-radius: 6px; transition: border-color .15s, background-color .15s; }
+#content table.user_options td input[type="checkbox"] + label:hover::before { border-color: var(--accent); }
+#content table.user_options td input[type="checkbox"]:checked + label::before { background-color: var(--accent); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); border-color: var(--accent); }
+#content table.user_options td input[type="radio"] + label { display: inline-flex !important; align-items: center !important; padding: 9px 20px !important; background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer; transition: border-color .15s, background-color .15s; }
+#content table.user_options td input[type="radio"] + label:hover { border-color: var(--accent) !important; }
+#content table.user_options td input[type="radio"]:checked + label { background: rgba(124, 92, 255, .16) !important; border-color: var(--accent) !important; color: var(--strong) !important; }
+#content table.user_options td input:is([type="checkbox"], [type="radio"]):focus-visible + label { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+@media (max-width: 760px) {
+  #content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; padding: 13px 14px !important; }
+  #content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) > td.label { padding-top: 0 !important; }
+  #content table.user_options td input:is([type="text"], [type="email"], [type="password"]), #content table.user_options td select { width: 100% !important; max-width: none !important; }
 }
 
 /* ---------- settings page: sections menu sits right next to the options ---------- */
