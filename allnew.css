@@ -781,7 +781,7 @@ ul.poll .center_poll {
 
 /* ---------- tables ---------- */
 table { width: 100% !important; border-collapse: collapse !important; border-spacing: 0 !important; margin: 0 !important; }
-table, tbody, tr, td, th { background-color: transparent !important; background-image: none !important; border: 0 !important; }
+table, tbody, tr, td:not(#remoteImage), th { background-color: transparent !important; background-image: none !important; border: 0 !important; }
 td { padding: 12px 16px; color: var(--text) !important; vertical-align: middle !important; }
 tr > td { border-bottom: 1px solid var(--line) !important; }
 tr:last-child > td { border-bottom: 0 !important; }
@@ -2267,8 +2267,8 @@ body#upload #content .header.center{ display:flex!important; flex-direction:colu
 body#upload #content .box.pad > table#remoteTable{ display:block!important; width:100%!important; border:0!important; background:none!important; box-shadow:none!important; }
 body#upload #remoteTable > tbody{ display:grid!important; grid-template-columns:200px minmax(0,1fr) 280px!important; column-gap:0!important; align-items:stretch!important; }
 body#upload #remoteTable > tbody > tr{ display:contents!important; }
-body#upload #remoteTable > tbody > tr > td{ display:block!important; width:auto!important; min-width:0!important; padding:14px 0!important; margin:0!important; border:0!important; border-bottom:1px solid var(--line)!important; background:none!important; box-shadow:none!important; }
-body#upload #remoteTable > tbody > tr > td:first-child{ display:flex!important; align-items:center!important; grid-column:1!important; font-weight:600!important; font-size:14px!important; color:var(--text,#e8ebf4)!important; }
+body#upload #remoteTable > tbody > tr > td:not(#remoteImage){ display:block!important; width:auto!important; min-width:0!important; padding:14px 0!important; margin:0!important; border:0!important; border-bottom:1px solid var(--line)!important; background:none!important; box-shadow:none!important; }
+body#upload #remoteTable > tbody > tr > td:first-child:not(#remoteImage){ display:flex!important; align-items:center!important; grid-column:1!important; font-weight:600!important; font-size:14px!important; color:var(--text,#e8ebf4)!important; }
 body#upload #remoteTable > tbody > tr > td:nth-child(2){ grid-column:2!important; }
 body#upload #remoteTable > tbody > tr > td:nth-child(n+2){ padding-inline:0 0!important; }
 body#upload #remoteTable > tbody > tr > td[colspan]:not([colspan="3"]){ align-items:center!important; }
@@ -2283,8 +2283,10 @@ body#upload #remoteTable td:has(> input[type="button"]) > input[type="file"]{ fl
 body#upload #remoteTable td:has(> input[type="button"]) > input[type="button"]{ flex:none!important; }
 body#upload #remoteTable label.radio-inline{ display:inline-flex!important; align-items:center!important; gap:8px!important; margin-inline-end:20px!important; cursor:pointer!important; }
 /* poster: always visible, fixed in its own column beside the fields */
-body#upload #remoteTable > tbody > tr > td#remoteImage{ grid-column:3!important; padding-inline:20px 0!important; grid-row:2 / span 7!important; align-self:start!important; padding:14px 0!important; border:0!important; position:relative!important; z-index:1!important; opacity:1!important; visibility:visible!important; }
-body#upload #remoteTable > tbody > tr > td#remoteImage:empty{ display:none!important; }
+body#upload #remoteTable > tbody > tr > td#remoteImage{ display:block!important; width:auto!important; margin-block:0!important; box-shadow:none!important; grid-column:3!important; padding-inline:20px 0!important; grid-row:2 / span 7!important; align-self:start!important; padding:14px 0!important; border:0!important; position:relative!important; z-index:1!important; opacity:1!important; visibility:visible!important; }
+body#upload #remoteTable > tbody > tr > td#remoteImage:empty:not([style*="background"]){ visibility:hidden!important; }
+body#upload #remoteTable > tbody > tr > td#remoteImage[style*="background"]{ min-height:420px!important; background-size:contain!important; background-repeat:no-repeat!important; background-position:center top!important; border-radius:var(--r)!important; }
+body#upload #remoteTable > tbody > tr > td#remoteImage :is(img,div,a,figure){ opacity:1!important; visibility:visible!important; }
 body#upload #remoteTable #remoteImage img{ display:block!important; width:100%!important; max-width:280px!important; height:auto!important; margin:0 auto!important; border:1px solid var(--line-2)!important; border-radius:var(--r)!important; box-shadow:0 14px 40px rgba(0,0,0,.5)!important; opacity:1!important; visibility:visible!important; position:static!important; transform:none!important; }
 @media (max-width:1100px){
   body#upload #remoteTable > tbody{ grid-template-columns:150px minmax(0,1fr) 200px!important; column-gap:14px!important; }
@@ -2300,3 +2302,4 @@ body#upload #remoteTable #remoteImage img{ display:block!important; width:100%!i
 }
 body#upload #remoteTable > tbody > tr > td#remoteImage{ margin-inline-start:24px!important; }
 @media (max-width:760px){ body#upload #remoteTable > tbody > tr > td#remoteImage{ margin-inline-start:0!important; } }
+body#upload #remoteTable > tbody > tr > td#remoteImage[style*="background"]{ margin-top:14px!important; min-height:440px!important; border:1px solid var(--line-2)!important; box-shadow:0 14px 40px rgba(0,0,0,.5)!important; background-size:cover!important; background-position:center!important; padding:0!important; }
