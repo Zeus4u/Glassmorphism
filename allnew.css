@@ -1303,6 +1303,35 @@ table.layout.box tr > td > input[type="submit"] { height: 46px !important; min-w
   #content .thin > form.search_form[name="users"] table.layout td.center > input[type="submit"] { width: 100% !important; }
 }
 
+/* ---------- wiki search: one card, search field on top, radios as toggle chips ---------- */
+body#wiki form:has(input[name="nojump"]) { margin: 0 0 18px !important; padding: 22px 24px !important; background: var(--surface) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r-lg) !important; box-shadow: 0 10px 28px rgba(0, 0, 0, .28) !important; }
+body#wiki form:has(input[name="nojump"]) table.layout { display: block !important; width: 100% !important; margin: 0 !important; background: transparent !important; border: 0 !important; }
+body#wiki form:has(input[name="nojump"]) table.layout > tbody { display: grid !important; grid-template-columns: max-content minmax(0, 1fr) max-content minmax(0, 1fr) !important; align-items: center !important; gap: 16px 18px !important; width: 100% !important; }
+body#wiki form:has(input[name="nojump"]) table.layout tr:not(.hidden) { display: contents !important; }
+body#wiki form:has(input[name="nojump"]) table.layout td { min-width: 0 !important; width: auto !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
+body#wiki form:has(input[name="nojump"]) table.layout td.label { display: block !important; flex: none !important; width: auto !important; color: var(--muted) !important; font-size: 13.5px !important; font-weight: 600 !important; text-align: right !important; white-space: nowrap !important; }
+body#wiki form:has(input[name="nojump"]) table.layout td.label strong, body#wiki form:has(input[name="nojump"]) table.layout td.label label { color: inherit !important; font-weight: 600 !important; }
+body#wiki form:has(input[name="nojump"]) table.layout td:not(.label) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px 10px !important; flex: none !important; }
+body#wiki form:has(input[name="nojump"]) table.layout td[colspan="3"] { grid-column: span 3 !important; }
+body#wiki form:has(input[name="nojump"]) table.layout td.center { grid-column: 1 / -1 !important; justify-content: center !important; margin-top: 4px !important; padding-top: 16px !important; border-top: 1px solid var(--line) !important; }
+body#wiki form:has(input[name="nojump"]) input[type="search"] { flex: 1 1 100% !important; width: 100% !important; height: 46px !important; }
+body#wiki form:has(input[name="nojump"]) select { flex: 0 1 auto !important; width: auto !important; min-width: 120px !important; max-width: 100% !important; height: 42px !important; }
+body#wiki form:has(input[name="nojump"]) td.center > input[type="submit"] { height: 46px !important; min-width: 200px !important; }
+body#wiki form:has(input[name="nojump"]) td:not(.label) > label { position: relative !important; display: inline-flex !important; align-items: center !important; padding: 9px 20px !important; background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer; transition: border-color .15s, background-color .15s, color .15s; }
+body#wiki form:has(input[name="nojump"]) td:not(.label) > label:hover { border-color: var(--accent) !important; }
+body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:checked) { background: rgba(124, 92, 255, .16) !important; border-color: var(--accent) !important; color: var(--strong) !important; }
+body#wiki form:has(input[name="nojump"]) td:not(.label) > label > input[type="radio"] { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
+body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-visible) { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+@media (max-width: 760px) {
+  body#wiki form:has(input[name="nojump"]) { padding: 16px !important; }
+  body#wiki form:has(input[name="nojump"]) table.layout > tbody { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; }
+  body#wiki form:has(input[name="nojump"]) table.layout td[colspan="3"] { grid-column: auto !important; }
+  body#wiki form:has(input[name="nojump"]) table.layout td.label { margin-top: 8px !important; }
+  body#wiki form:has(input[name="nojump"]) table.layout td.label:first-child { margin-top: 0 !important; }
+  body#wiki form:has(input[name="nojump"]) td.center > input[type="submit"] { width: 100% !important; }
+  body#wiki form:has(input[name="nojump"]) select { flex: 1 1 calc(50% - 5px) !important; }
+}
+
 /* ---------- settings page: sections menu sits right next to the options ---------- */
 .thin > form:has(> .settings_sidebar) { grid-template-columns: 260px minmax(0, 1fr) !important; }
 .thin > form:has(> .settings_sidebar) > .settings_sidebar { grid-column: 1 !important; position: sticky !important; top: 84px !important; }
