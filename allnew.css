@@ -1635,10 +1635,10 @@ form.create_form.box.pad { padding: 8px 0 !important; }
 #content .ft_internal_groups > div label { font-weight: 600 !important; font-size: 13.5px !important; }
 
 /* categories: a row of toggle tiles */
-#content form.search_form table.cat_list:not(#taglist), #content form.search_form table.cat_list:not(#taglist) > tbody { display: block !important; width: 100% !important; }
-#content form.search_form table.cat_list:not(#taglist):not(.hidden) { margin: 16px 0 0 !important; }
-#content form.search_form table.cat_list:not(#taglist) tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)) !important; gap: 10px !important; }
-#content form.search_form table.cat_list:not(#taglist) td:not(.label) {
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list), #content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) > tbody { display: block !important; width: 100% !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list):not(.hidden) { margin: 16px 0 0 !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)) !important; gap: 10px !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td:not(.label) {
   display: grid !important;
   grid-template-columns: auto auto !important;
   justify-content: center !important;
@@ -1652,18 +1652,18 @@ form.create_form.box.pad { padding: 8px 0 !important; }
   border-radius: var(--r) !important;
   transition: border-color .15s ease, background-color .15s ease !important;
 }
-#content form.search_form table.cat_list:not(#taglist) td:not(.label):has(h3) { min-height: 92px !important; }
-#content form.search_form table.cat_list:not(#taglist) td:not(.label):hover { border-color: var(--accent) !important; background: var(--surface-3) !important; }
-#content form.search_form table.cat_list:not(#taglist) td:not(.label):has(input:checked) {
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td:not(.label):has(h3) { min-height: 92px !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td:not(.label):hover { border-color: var(--accent) !important; background: var(--surface-3) !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td:not(.label):has(input:checked) {
   background: var(--accent-soft) !important;
   border-color: var(--accent) !important;
   box-shadow: 0 0 0 1px var(--accent) inset !important;
 }
-#content form.search_form table.cat_list:not(#taglist) td:not(.label) > a { grid-column: 1 / -1 !important; justify-self: center !important; display: block !important; line-height: 0 !important; }
-#content form.search_form table.cat_list:not(#taglist) tr:has(> td.label) { display: block !important; }
-#content form.search_form table.cat_list:not(#taglist) td h3 { margin: 0 !important; padding: 0 !important; background-color: transparent !important; border: 0 !important; }
-#content form.search_form table.cat_list:not(#taglist) td label { font-size: 13.5px !important; font-weight: 600 !important; white-space: nowrap; }
-#content form.search_form table.cat_list:not(#taglist) td.label { display: block !important; width: auto !important; padding: 0 !important; background: none !important; border: 0 !important; text-align: right !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td:not(.label) > a { grid-column: 1 / -1 !important; justify-self: center !important; display: block !important; line-height: 0 !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) tr:has(> td.label) { display: block !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td h3 { margin: 0 !important; padding: 0 !important; background-color: transparent !important; border: 0 !important; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td label { font-size: 13.5px !important; font-weight: 600 !important; white-space: nowrap; }
+#content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td.label { display: block !important; width: auto !important; padding: 0 !important; background: none !important; border: 0 !important; text-align: right !important; }
 #content form.search_form table.cat_list td.label a.brackets {
   display: inline-flex !important;
   align-items: center !important;
@@ -2120,8 +2120,8 @@ table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !imp
   #content form.search_form table.layout:not(.cat_list) tr:has(input[type="checkbox"]:only-child) td.label { flex: 1 1 auto !important; }
   #content form.search_form table.layout:not(.cat_list) tr:has(input[type="checkbox"]:only-child) td:not(.label) { flex: 0 0 auto !important; }
   #content form.search_form input[type="search"], #content form.search_form input.inputtext { flex: 1 1 100% !important; }
-  #content form.search_form table.cat_list:not(#taglist) tr { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
-  #content form.search_form table.cat_list:not(#taglist) td label { font-size: 12.5px !important; white-space: normal; text-align: center; }
+  #content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) tr { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
+  #content form.search_form table.cat_list:not(#taglist):not(#forum_search_cat_list) td label { font-size: 12.5px !important; white-space: normal; text-align: center; }
   #content .ft_submit { flex-wrap: wrap !important; }
   #content .ft_submit input[type="submit"] { flex: 1 1 auto !important; min-width: 0 !important; }
   #content .ft_submit > span { flex: 1 1 100% !important; margin: 0 !important; text-align: center !important; }
@@ -2456,3 +2456,29 @@ body#forums form.edit_form[name="forum_thread"] td input[type="checkbox"]{ margi
 body#forums form.edit_form[name="forum_thread"] td.label label{ margin:0!important; padding:0!important; display:block!important; }
 body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td{ align-self:center!important; }
 body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td.label{ padding:0!important; margin:0!important; }
+
+/* ---------- forum search: category columns (scoped to #forum_search_cat_list only) ---------- */
+#forum_search_cat_list, #forum_search_cat_list > tbody { display: block !important; width: 100% !important; margin: 10px 0 0 !important; }
+#forum_search_cat_list > tbody > tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important; align-items: start !important; gap: 14px !important; padding: 0 !important; }
+#forum_search_cat_list > tbody > tr > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; align-self: start !important; }
+#forum_search_cat_list > tbody > tr > td > table, #forum_search_cat_list > tbody > tr > td > table > tbody { display: block !important; width: 100% !important; }
+#forum_search_cat_list > tbody > tr > td > table { background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r) !important; padding: 8px 12px 10px !important; }
+#forum_search_cat_list table table tr { display: flex !important; align-items: center !important; padding: 0 !important; gap: 0 !important; }
+#forum_search_cat_list table table td { display: flex !important; align-items: center !important; gap: 10px !important; width: 100% !important; padding: 7px 0 !important; border: 0 !important; background: transparent !important; }
+#forum_search_cat_list table table tr:first-child td { padding: 4px 0 8px !important; margin-bottom: 4px !important; border-bottom: 1px solid var(--line) !important; }
+#forum_search_cat_list a.forum_category { color: var(--accent-2) !important; font-weight: 700 !important; }
+#forum_search_cat_list input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; flex: 0 0 20px !important; width: 20px !important; height: 20px !important; margin: 0 !important; padding: 0 !important; background: var(--surface-3) center / 13px no-repeat !important; border: 1.5px solid var(--line-2) !important; border-radius: 6px !important; cursor: pointer; transition: background-color .15s, border-color .15s; }
+#forum_search_cat_list input[type="checkbox"]:hover { border-color: var(--accent) !important; }
+#forum_search_cat_list input[type="checkbox"]:checked { background-color: var(--accent) !important; border-color: var(--accent) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; }
+#forum_search_cat_list label { margin: 0 !important; font-size: 14px !important; font-weight: 600 !important; white-space: normal !important; cursor: pointer; }
+
+@media (max-width: 760px) {
+  body#forums table.forum_list, body#forums table.forum_list > tbody { display: block !important; width: 100% !important; }
+  body#forums table.forum_list tr.colhead { display: none !important; }
+  body#forums table.forum_list tr.row { display: grid !important; grid-template-columns: minmax(0, 1fr) auto !important; gap: 4px 12px !important; padding: 12px 14px !important; }
+  body#forums table.forum_list tr.row > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; }
+  body#forums table.forum_list tr.row > td:nth-child(2) { grid-column: 1 / -1 !important; grid-row: 2 !important; overflow-wrap: anywhere !important; word-break: break-word !important; }
+  body#forums table.forum_list tr.row > td:nth-child(1) { grid-row: 1 !important; font-size: 12.5px !important; }
+  body#forums table.forum_list tr.row > td:nth-child(3) { display: none !important; }
+  body#forums table.forum_list tr.row > td:nth-child(4) { grid-row: 1 !important; grid-column: 2 !important; font-size: 12px !important; color: var(--muted) !important; }
+}
