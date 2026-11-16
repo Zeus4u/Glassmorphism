@@ -2261,3 +2261,42 @@ body#inbox form.send_form input[type="submit"]{ height:42px!important; padding:0
   body#inbox form.send_form select, body#inbox form.send_form input[type="submit"]{ flex:1 1 100%!important; }
   body#inbox form.manage_form:not(#messageform) table.layout td.label-to-left{ margin-inline-start:18px!important; }
 }
+
+/* ================= remote upload page ================= */
+body#upload #content .header.center{ display:flex!important; flex-direction:column!important; align-items:center!important; gap:12px!important; }
+body#upload #content .box.pad > table#remoteTable{ display:block!important; width:100%!important; border:0!important; background:none!important; box-shadow:none!important; }
+body#upload #remoteTable > tbody{ display:grid!important; grid-template-columns:200px minmax(0,1fr) 280px!important; column-gap:0!important; align-items:stretch!important; }
+body#upload #remoteTable > tbody > tr{ display:contents!important; }
+body#upload #remoteTable > tbody > tr > td{ display:block!important; width:auto!important; min-width:0!important; padding:14px 0!important; margin:0!important; border:0!important; border-bottom:1px solid var(--line)!important; background:none!important; box-shadow:none!important; }
+body#upload #remoteTable > tbody > tr > td:first-child{ display:flex!important; align-items:center!important; grid-column:1!important; font-weight:600!important; font-size:14px!important; color:var(--text,#e8ebf4)!important; }
+body#upload #remoteTable > tbody > tr > td:nth-child(2){ grid-column:2!important; }
+body#upload #remoteTable > tbody > tr > td:nth-child(n+2){ padding-inline:0 0!important; }
+body#upload #remoteTable > tbody > tr > td[colspan]:not([colspan="3"]){ align-items:center!important; }
+body#upload #remoteTable > tbody > tr > td[colspan="2"]{ grid-column:2 / -1!important; }
+body#upload #remoteTable > tbody > tr > td[colspan="3"]{ grid-column:1 / -1!important; border-bottom:0!important; text-align:start!important; }
+body#upload #remoteTable td input[type="text"], body#upload #remoteTable td select, body#upload #remoteTable td textarea{ width:100%!important; max-width:none!important; box-sizing:border-box!important; }
+body#upload #remoteTable td textarea{ min-height:200px!important; }
+body#upload #remoteTable td input[disabled]{ opacity:.55!important; }
+body#upload #remoteTable td:has(> input[type="button"]){ display:flex!important; flex-wrap:wrap!important; align-items:center!important; gap:10px!important; }
+body#upload #remoteTable td:has(> input[type="button"]) > input[type="text"]{ flex:1 1 180px!important; min-width:0!important; width:auto!important; }
+body#upload #remoteTable td:has(> input[type="button"]) > input[type="file"]{ flex:1 1 180px!important; min-width:0!important; width:auto!important; }
+body#upload #remoteTable td:has(> input[type="button"]) > input[type="button"]{ flex:none!important; }
+body#upload #remoteTable label.radio-inline{ display:inline-flex!important; align-items:center!important; gap:8px!important; margin-inline-end:20px!important; cursor:pointer!important; }
+/* poster: always visible, fixed in its own column beside the fields */
+body#upload #remoteTable > tbody > tr > td#remoteImage{ grid-column:3!important; padding-inline:20px 0!important; grid-row:2 / span 7!important; align-self:start!important; padding:14px 0!important; border:0!important; position:relative!important; z-index:1!important; opacity:1!important; visibility:visible!important; }
+body#upload #remoteTable > tbody > tr > td#remoteImage:empty{ display:none!important; }
+body#upload #remoteTable #remoteImage img{ display:block!important; width:100%!important; max-width:280px!important; height:auto!important; margin:0 auto!important; border:1px solid var(--line-2)!important; border-radius:var(--r)!important; box-shadow:0 14px 40px rgba(0,0,0,.5)!important; opacity:1!important; visibility:visible!important; position:static!important; transform:none!important; }
+@media (max-width:1100px){
+  body#upload #remoteTable > tbody{ grid-template-columns:150px minmax(0,1fr) 200px!important; column-gap:14px!important; }
+}
+@media (max-width:760px){
+  body#upload #remoteTable > tbody{ grid-template-columns:minmax(0,1fr)!important; }
+  body#upload #remoteTable > tbody > tr > td:is(:first-child,:nth-child(2),[colspan="2"],[colspan="3"],#remoteImage){ grid-column:1!important; grid-row:auto!important; }
+  body#upload #remoteTable > tbody > tr > td:first-child:not([colspan]){ padding:14px 0 4px!important; border-bottom:0!important; }
+  body#upload #remoteTable > tbody > tr > td#remoteImage{ padding-inline:0!important; }
+  body#upload #remoteTable > tbody > tr > td:nth-child(2), body#upload #remoteTable > tbody > tr > td[colspan="2"]{ padding-top:0!important; }
+  body#upload #remoteTable > tbody > tr > td#remoteImage{ order:-1!important; }
+  body#upload #remoteTable #remoteImage img{ max-width:220px!important; }
+}
+body#upload #remoteTable > tbody > tr > td#remoteImage{ margin-inline-start:24px!important; }
+@media (max-width:760px){ body#upload #remoteTable > tbody > tr > td#remoteImage{ margin-inline-start:0!important; } }
