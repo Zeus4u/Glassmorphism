@@ -1332,6 +1332,82 @@ body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-
   body#wiki form:has(input[name="nojump"]) select { flex: 1 1 calc(50% - 5px) !important; }
 }
 
+/* ---------- edit pages (edit group, edit torrent): rows = label + field, cards, toggle tabs ---------- */
+#content .tabcontent table.layout,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout {display:block!important;width:100%!important;margin:0!important;background:transparent!important;border:0!important;}
+#content .tabcontent table.layout > tbody,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout > tbody {display:block!important;width:100%!important;}
+#content .tabcontent table.layout tr:not(.hidden):not([style*="display: none"]),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:not(.hidden):not([style*="display: none"]) {display:grid!important;grid-template-columns:230px minmax(0,1fr)!important;align-items:start!important;gap:8px 22px!important;padding:14px 4px!important;border-bottom:1px solid var(--line)!important;}
+#content .tabcontent table.layout tr:last-child,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:last-child {border-bottom:0!important;}
+#content .tabcontent table.layout tr > td,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr > td {display:block!important;width:auto!important;min-width:0!important;padding:0!important;border:0!important;background:transparent!important;}
+#content .tabcontent table.layout td.label,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td.label {padding-top:11px!important;color:var(--text)!important;font-size:14px!important;font-weight:600!important;line-height:1.5!important;text-align:right!important;}
+#content .tabcontent table.layout tr > td:not(.label),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr > td:not(.label) {display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:8px 10px!important;color:var(--text)!important;font-size:14px!important;}
+#content .tabcontent table.layout td[colspan="2"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td[colspan="2"] {grid-column:1/-1!important;justify-content:center!important;text-align:center!important;}
+#content .tabcontent table.layout td > input[type="text"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="text"] {flex:1 1 260px!important;width:auto!important;max-width:640px!important;min-width:0!important;height:42px!important;}
+#content .tabcontent table.layout td > input[size="5"], table.layout td > input[size="10"], table.layout td > input[name="year"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[size="5"], table.layout td > input[size="10"], table.layout td > input[name="year"] {flex:0 0 140px!important;}
+#content .tabcontent table.layout td > select,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > select {flex:0 1 auto!important;width:auto!important;min-width:160px!important;max-width:100%!important;height:42px!important;}
+#content .tabcontent table.layout td > textarea,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > textarea {flex:1 1 100%!important;width:100%!important;max-width:none!important;min-width:0!important;}
+#content .tabcontent table.layout td > .textarea_wrap, table.layout td > .preview_wrap:not(.hidden),
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > .textarea_wrap, table.layout td > .preview_wrap:not(.hidden) {flex:1 1 100%!important;width:100%!important;min-width:0!important;margin:0!important;}
+#content .tabcontent table.layout td > p.min_padding,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > p.min_padding {flex:1 1 100%!important;margin:0!important;color:var(--muted)!important;font-size:13px!important;}
+#content .tabcontent table.layout td > input[type="button"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="button"] {height:42px!important;padding:0 18px!important;background:var(--surface-3)!important;border:1px solid var(--line-2)!important;color:var(--text)!important;box-shadow:none!important;}
+#content .tabcontent table.layout td > input[type="checkbox"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="checkbox"] {-webkit-appearance:none!important;appearance:none!important;flex:0 0 auto!important;width:20px!important;height:20px!important;margin:0!important;background:var(--surface-3) center / 13px no-repeat!important;border:1.5px solid var(--line-2)!important;border-radius:6px!important;cursor:pointer;}
+#content .tabcontent table.layout td > input[type="checkbox"]:checked,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > input[type="checkbox"]:checked {background-color:var(--accent)!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;border-color:var(--accent)!important;}
+#content .tabcontent table.layout td > label.label,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td > label.label {padding:0!important;color:var(--muted)!important;font-size:13.5px!important;font-weight:600!important;}
+#content .tabcontent table.layout td.center > input[type="submit"], table.layout td[colspan="2"] > input[type="submit"],
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td.center > input[type="submit"], table.layout td[colspan="2"] > input[type="submit"] {min-width:200px!important;height:46px!important;}
+#content .box.pad > form:is(.edit_form, .merge_form) > div > h3 { display: flex !important; align-items: center !important; flex-wrap: wrap !important; gap: 10px 14px !important; margin: 18px 0 8px !important; padding: 0 !important; background: none !important; border: 0 !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; text-align: right !important; }
+#content .box.pad > form:is(.edit_form, .merge_form) > div > h3:first-of-type { margin-top: 0 !important; }
+#content .box.pad > form:is(.edit_form, .merge_form) > div > br { display: none !important; }
+#content .box.pad > form:is(.edit_form, .merge_form) > div > input[type="text"], #content .box.pad > form:is(.edit_form, .merge_form) > div > textarea { display: block !important; width: 100% !important; max-width: none !important; }
+#content .box.pad > form:is(.edit_form, .merge_form) > div > textarea { min-height: 240px !important; line-height: 1.7 !important; resize: vertical; }
+#content .box.pad > form:is(.edit_form, .merge_form) > div > h3 > input[type="text"] { width: 160px !important; flex: 0 0 auto !important; }
+#content .box.pad form:is(.edit_form, .rename_form, .merge_form, .split_form) div[style*="text-align: center"] { margin-top: 20px !important; padding-top: 18px !important; border-top: 1px solid var(--line) !important; }
+#content .box.pad > form > input[type="submit"] { display: block !important; margin: 18px auto 0 !important; min-width: 170px !important; height: 44px !important; }
+#content .box.pad form:is(.edit_form, .rename_form, .merge_form, .split_form) div[style*="text-align: center"] > input[type="submit"] { min-width: 170px !important; height: 44px !important; }
+#content .thin > h3, #content .thin > h3#screenshots_section { position: relative !important; margin: 26px 4px 12px !important; padding: 0 16px 0 0 !important; background: none !important; border: 0 !important; color: var(--strong) !important; font-size: 17px !important; font-weight: 700 !important; text-align: right !important; }
+#content .thin > h3::before { content: ""; position: absolute; right: 0; top: 50%; width: 4px; height: 18px; margin-top: -9px; border-radius: 4px; background: linear-gradient(180deg, var(--accent-2), var(--accent)); }
+#content .box.pad > p > strong.important_text { display: block; margin-bottom: 10px; padding: 10px 14px; background: rgba(255, 99, 99, .08); border: 1px solid rgba(255, 99, 99, .28); border-radius: var(--r-sm); font-size: 13.5px; }
+#content #screenshots { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px !important; }
+#screenshots .brackets, #content form.create_form .brackets[onclick] { float: none !important; display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 30px; background: var(--surface-3); border: 1px solid var(--line-2); border-radius: 8px; color: var(--strong) !important; font-weight: 700; cursor: pointer; }
+#screenshots .brackets::before, #screenshots .brackets::after, #content form.create_form .brackets[onclick]::before, #content form.create_form .brackets[onclick]::after { content: none !important; }
+#content div.tab { display: flex !important; justify-content: center !important; flex-wrap: wrap !important; gap: 4px !important; width: fit-content !important; max-width: 100% !important; margin: 4px auto 18px !important; padding: 4px !important; background: var(--surface) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; }
+#content div.tab > button.tablinks { height: 40px !important; padding: 0 20px !important; background: transparent !important; border: 0 !important; border-radius: 99px !important; box-shadow: none !important; color: var(--muted) !important; font-size: 14px !important; font-weight: 600 !important; }
+#content div.tab > button.tablinks:hover { color: var(--strong) !important; background: var(--surface-3) !important; filter: none !important; }
+#content div.tab > button.tablinks.active { background: linear-gradient(135deg, var(--accent), #5b8cff) !important; color: #fff !important; box-shadow: 0 4px 14px rgba(124, 92, 255, .35) !important; }
+#content .tabcontent form.create_form.box.pad, #content .tabcontent .box.pad { margin: 0 0 18px !important; padding: 8px 24px !important; }
+#content .tabcontent .box.pad > h2 { margin: 10px 0 0 !important; font-size: 17px !important; text-align: right !important; }
+#content .tabcontent form.create_form h3.important_text { margin: 12px 0 !important; padding: 12px 16px !important; background: rgba(255, 99, 99, .08) !important; border: 1px solid rgba(255, 99, 99, .3) !important; border-radius: var(--r-sm) !important; color: #ff8a8a !important; font-size: 14px !important; text-align: center !important; }
+#content .tabcontent table.layout tr:not(.hidden):not([style*="display: none"]):last-child,
+#content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:not(.hidden):not([style*="display: none"]):last-child { border-bottom: 0 !important; }
+#content .tabcontent table.layout tr:has(> td > p) { grid-template-columns: 1fr !important; }
+#content .tabcontent table.layout td[colspan="2"] > p { flex: 1 1 100% !important; margin: 0 0 12px !important; color: var(--text) !important; font-size: 14px !important; text-align: center !important; }
+@media (max-width: 760px) {
+  #content .tabcontent table.layout tr:not(.hidden):not([style*="display: none"]),
+  #content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout tr:not(.hidden):not([style*="display: none"]) {grid-template-columns:minmax(0,1fr)!important;gap:8px!important;padding:12px 0!important;}
+  #content .tabcontent table.layout td.label,
+  #content form:is(.edit_form, .rename_form, .merge_form, .split_form) table.layout td.label {padding-top:0!important;text-align:right!important;}
+  #content .tabcontent form.create_form.box.pad, #content .tabcontent .box.pad { padding: 6px 14px !important; }
+  #content div.tab { width: 100% !important; flex-wrap: nowrap !important; }
+  #content div.tab > button.tablinks { flex: 1 1 auto !important; padding: 0 8px !important; font-size: 12.5px !important; white-space: nowrap !important; }
+  #content .box.pad > form:is(.edit_form, .merge_form) > div > h3 > input[type="text"] { width: 100% !important; flex: 1 1 100% !important; }
+}
+
 /* ---------- settings page: sections menu sits right next to the options ---------- */
 .thin > form:has(> .settings_sidebar) { grid-template-columns: 260px minmax(0, 1fr) !important; }
 .thin > form:has(> .settings_sidebar) > .settings_sidebar { grid-column: 1 !important; position: sticky !important; top: 84px !important; }
@@ -2060,3 +2136,6 @@ table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !imp
 /* hidden always wins, whatever else matched */
 .hidden, tr.hidden, td.hidden,
 #wrapper#wrapper#wrapper .hidden { display: none !important; }
+
+/* inline-hidden rows (toggled by site JS) stay hidden at every width */
+#content tr[style*="display: none"], #content tr[style*="display:none"] { display: none !important; }
