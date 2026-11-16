@@ -2362,31 +2362,3 @@ form#filter_form td input[type="submit"]{ height:46px!important; padding:0 32px!
   form#filter_form td input[type="submit"]{ width:100%!important; }
 }
 form#filter_form td textarea{ display:block!important; }
-
-/* ================= donate button: live wave fill =================
-   The fill level comes from --p. Default 35%.
-   To follow the real value, put it inline in the menu markup, e.g.:
-   <a href="/donate.php" style="color:#ff807b; --p:35%">  (print the same number you show in the label) */
-#menu #nav_donate > a{
-  --p:35%; --wave:rgba(255,90,105,.38); --wave2:rgba(255,128,123,.26);
-  position:relative!important; overflow:hidden!important; isolation:isolate!important;
-  border-color:rgba(255,128,123,.5)!important; background:rgba(255,90,105,.05)!important;
-}
-#menu #nav_donate > a::before{
-  content:""!important; position:absolute!important; inset:auto 0 0 0!important; height:clamp(0%,var(--p),100%)!important;
-  background:linear-gradient(180deg,rgba(255,90,105,.38),rgba(255,90,105,.5))!important; z-index:-1!important; border:0!important; margin:0!important; transform:none!important; opacity:1!important;
-  transition:height 1.2s cubic-bezier(.22,1,.36,1)!important;
-}
-#menu #nav_donate > a::after{
-  content:""!important; position:absolute!important; inset-inline:0!important; bottom:clamp(0%,var(--p),100%)!important; height:9px!important; z-index:-1!important; border:0!important; margin:0!important; transform:none!important; opacity:1!important;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 9' preserveAspectRatio='none'%3E%3Cpath d='M0 5 Q10 0 20 5 T40 5 V9 H0Z' fill='%23ff5a69' fill-opacity='.38'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 9' preserveAspectRatio='none'%3E%3Cpath d='M0 4 Q15 9 30 4 T60 4 V9 H0Z' fill='%23ff807b' fill-opacity='.28'/%3E%3C/svg%3E")!important;
-  background-size:40px 9px,60px 9px!important; background-repeat:repeat-x!important; background-position:0 0,0 0!important;
-  animation:don-wave 4.5s linear infinite!important;
-  transition:bottom 1.2s cubic-bezier(.22,1,.36,1)!important;
-}
-@keyframes don-wave{ to{ background-position:120px 0,-120px 0; } }
-#menu #nav_donate > a i{ animation:don-beat 2.4s ease-in-out infinite; }
-@keyframes don-beat{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.15); } }
-@media (prefers-reduced-motion:reduce){ #menu #nav_donate > a::after, #menu #nav_donate > a i{ animation:none!important; } }
