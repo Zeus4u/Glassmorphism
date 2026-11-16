@@ -1178,8 +1178,30 @@ td.calendar-day-np { background: var(--surface-2) !important; }
 .head > span[id^="bar"] > a[href*="action=delete"]:hover { border-color: rgba(248, 113, 113, .6) !important; color: var(--down) !important; }
 #inbox .box > .body { word-break: break-word; }
 #inbox > h3 { margin: 6px 0 12px !important; font-size: 18px !important; }
-#reply_box #buttons form { display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 10px !important; }
+/* staff PM reply: editor on its own full-width row, then a management row, then a send row */
+#reply_box #buttons { text-align: right !important; }
+#reply_box #buttons form.manage_form { display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: flex-start !important; gap: 12px 10px !important; margin: 0 !important; }
 #reply_box #buttons form > br { display: none !important; }
+#reply_box #buttons form > .preview_wrap:not(.hidden) { order: 1 !important; flex: 0 0 100% !important; margin: 0 !important; }
+#reply_box #buttons form > .textarea_wrap { order: 2 !important; flex: 0 0 100% !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; margin: 0 0 6px !important; }
+#reply_box #buttons form > select#assign_to { order: 3 !important; flex: 0 1 230px !important; min-width: 0 !important; width: auto !important; height: 42px !important; margin: 0 !important; }
+#reply_box #buttons form > input[type="button"] { order: 4 !important; height: 42px !important; min-width: 0 !important; padding: 0 18px !important; background: var(--surface-3) !important; border: 1px solid var(--line-2) !important; color: var(--text) !important; font-size: 13.5px !important; box-shadow: none !important; }
+#reply_box #buttons form > input[type="button"]:hover { border-color: var(--accent) !important; color: var(--strong) !important; filter: none !important; }
+#reply_box #buttons form > input[type="button"].hidden { display: none !important; }
+#reply_box #buttons form > #previewbtn:not(.hidden) { order: 11 !important; margin-inline-start: auto !important; }
+#reply_box #buttons form.manage_form::after { content: "" !important; display: block !important; order: 8 !important; flex: 0 0 100% !important; height: 0 !important; border-top: 1px solid var(--line) !important; margin: 2px 0 !important; }
+#reply_box #buttons form > #anonymousbox { order: 9 !important; flex: 0 0 auto !important; margin: 0 !important; }
+#reply_box #buttons form > label[for="anonymousbox"] { order: 10 !important; flex: 0 0 auto !important; margin: 0 !important; color: var(--text) !important; font-size: 14px !important; }
+#reply_box #buttons form > input[type="submit"] { order: 12 !important; margin-inline-start: auto !important; height: 46px !important; min-width: 170px !important; padding: 0 28px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(124, 92, 255, .32) !important; }
+#reply_box #buttons form > #previewbtn:not(.hidden) ~ input[type="submit"] { margin-inline-start: 0 !important; }
+@media (max-width: 640px) {
+  #reply_box .box.pad, #reply_box.box.pad { padding: 12px !important; }
+  #reply_box #buttons form > select#assign_to { flex: 1 1 100% !important; }
+  #reply_box #buttons form > input[type="button"]:not(.hidden) { flex: 1 1 calc(50% - 5px) !important; padding: 0 10px !important; }
+  #reply_box #buttons form > #anonymousbox, #reply_box #buttons form > label[for="anonymousbox"] { flex: 0 0 auto !important; }
+  #reply_box #buttons form > label[for="anonymousbox"] { flex: 1 1 auto !important; }
+  #reply_box #buttons form > input[type="submit"] { flex: 1 1 100% !important; margin-inline-start: 0 !important; }
+}
 .thin > br { display: none !important; }
 
 /* ---------- settings page: sections menu sits right next to the options ---------- */
