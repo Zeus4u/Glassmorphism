@@ -2421,3 +2421,12 @@ body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:nth-child(4)
   #torrent_table tr > td:nth-child(n+4):nth-child(-n+6){ display:none!important; }
   #torrent_table td.big_info{ width:auto!important; }
 }
+
+/* tabs head: true vertical centring */
+div.head:has(> span > a[class*="simple-tabs"]){ display:flex!important; align-items:center!important; justify-content:center!important; box-sizing:border-box!important; }
+div.head:has(> span > a[class*="simple-tabs"]) > span{ margin:0!important; }
+
+/* tooltips: long unbroken names wrap inside the box */
+.tooltipster-base{ max-width:min(360px,92vw)!important; }
+.tooltipster-base .tooltipster-box{ max-width:inherit!important; }
+.tooltipster-base .tooltipster-content{ max-width:336px!important; box-sizing:border-box!important; overflow-wrap:anywhere!important; word-break:break-word!important; white-space:normal!important; direction:ltr; unicode-bidi:plaintext; }
