@@ -2522,3 +2522,27 @@ body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > t
 #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:has(> td[colspan]) { border-top: 1px solid var(--line) !important; padding: 18px 24px !important; }
 #content #forum_search_cat_list { flex: 1 1 100% !important; max-width: 100% !important; }
 #content #forum_search_cat_list > tbody > tr > td { break-inside: avoid !important; margin: 0 0 14px !important; }
+
+/* ---------- reports v2: a report opens on click (jQuery .toggle() sets inline display on a .hidden table) ---------- */
+body#reportsv2 #wrapper#wrapper#wrapper#wrapper table.layout.hidden[style*="display"]:not([style*="none"]) { display: table !important; }
+body#reportsv2 #all_reports { width: 100% !important; max-width: 1100px !important; margin-inline: auto !important; }
+body#reportsv2 #content form.manage_form table.layout { width: 100% !important; table-layout: auto !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden) { display: grid !important; grid-template-columns: 200px minmax(0, 1fr) !important; align-items: start !important; gap: 8px 20px !important; padding: 14px 4px !important; border-bottom: 1px solid var(--line) !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:has(> td:nth-child(4)) { grid-template-columns: 200px minmax(0, 1fr) 150px minmax(0, 1fr) !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:last-child { border-bottom: 0 !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td { display: block !important; min-width: 0 !important; width: auto !important; padding: 0 !important; border: 0 !important; background: none !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="3"] { grid-column: 2 / -1 !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px 12px !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="4"] { grid-column: 1 / -1 !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 8px 12px !important; padding-top: 6px !important; }
+body#reportsv2 #content form.manage_form table.layout td > br { display: none !important; }
+body#reportsv2 #content form.manage_form table.layout td > div { flex: 1 1 100% !important; text-align: start !important; }
+body#reportsv2 #content form.manage_form table.layout input[type="text"] { flex: 1 1 260px !important; width: auto !important; min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; }
+body#reportsv2 #content form.manage_form table.layout td:not([colspan]) input[type="text"] { width: 100% !important; }
+body#reportsv2 #content form.manage_form table.layout textarea { flex: 1 1 100% !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; min-height: 90px !important; box-sizing: border-box !important; }
+body#reportsv2 #content form.manage_form table.layout td.label { color: var(--muted) !important; font-weight: 600 !important; }
+body#reportsv2 #content form.manage_form table.layout td.label select { margin-inline-start: 6px !important; }
+@media (max-width: 760px) {
+  body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden), body#reportsv2 #content form.manage_form table.layout > tbody > tr:has(> td:nth-child(4)) { grid-template-columns: minmax(0, 1fr) !important; }
+  body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="3"], body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="4"] { grid-column: 1 / -1 !important; }
+}
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] { display: block !important; line-height: 1.8 !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] > br { display: inline !important; }
