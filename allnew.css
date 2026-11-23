@@ -29,6 +29,7 @@
   --page: min(1480px, 94vw);
   --banner-ratio: 2000 / 300;   /* the home banners are 2000x300 */
   --font: "Heebo", "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
 }
 
 /* ---------- base ---------- */
@@ -63,7 +64,7 @@ body {
 body::before, body::after { display: none !important; }
 #wrapper, .body, .tdhack { background: transparent !important; }
 #wrapper { position: static !important; top: auto !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 0 24px !important; border: 0 !important; }
-.hidden { display: none !important; }
+.hidden:not([style*="display"]) { display: none !important; }
 
 /* the live BBCode editor (.gz-editor-card) brings its own styles: every global rule below skips it */
 :is(div, span, p, td, th, li, label, a, strong, em, input, textarea, select, button,
@@ -2174,8 +2175,8 @@ table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !imp
 }
 
 /* hidden always wins, whatever else matched */
-.hidden, tr.hidden, td.hidden,
-#wrapper#wrapper#wrapper .hidden { display: none !important; }
+.hidden:not([style*="display"]), tr.hidden:not([style*="display"]), td.hidden:not([style*="display"]),
+#wrapper#wrapper#wrapper .hidden:not([style*="display"]) { display: none !important; }
 
 /* inline-hidden rows (toggled by site JS) stay hidden at every width */
 #content tr[style*="display: none"], #content tr[style*="display:none"] { display: none !important; }
@@ -2524,7 +2525,6 @@ body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > t
 #content #forum_search_cat_list > tbody > tr > td { break-inside: avoid !important; margin: 0 0 14px !important; }
 
 /* ---------- reports v2: a report opens on click (jQuery .toggle() sets inline display on a .hidden table) ---------- */
-body#reportsv2 #wrapper#wrapper#wrapper#wrapper table.layout.hidden[style*="display"]:not([style*="none"]) { display: table !important; }
 body#reportsv2 #all_reports { width: 100% !important; max-width: 1100px !important; margin-inline: auto !important; }
 body#reportsv2 #content form.manage_form table.layout { width: 100% !important; table-layout: auto !important; }
 body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden) { display: grid !important; grid-template-columns: 200px minmax(0, 1fr) !important; align-items: start !important; gap: 8px 20px !important; padding: 14px 4px !important; border-bottom: 1px solid var(--line) !important; }
