@@ -2768,12 +2768,14 @@ body#torrents .box:has(> table.torrent_table) { overflow: clip !important; }
 @supports (animation-timeline: view()) and (timeline-scope: --a) {
   @media (min-width: 1400px) and (prefers-reduced-motion: no-preference) {
     #wrapper { timeline-scope: --bn; }
+    html, body { overflow-anchor: none; }   /* the bar changes height while docking; do not let the browser compensate the scroll */
 
     /* the banner stops being a grid wrapper so the stats bar can stick for the whole page */
     #banner { display: contents !important; }
     #banner::before { display: none !important; }
     #banner > a {
       view-timeline: --bn block;
+      view-timeline-inset: 58px 0;   /* the bar docks when the banner's bottom edge reaches this line */
       box-sizing: border-box !important;
       width: var(--page) !important;
       height: auto !important;
@@ -2808,13 +2810,13 @@ body#torrents .box:has(> table.torrent_table) { overflow: clip !important; }
       box-shadow: 0 calc(10px + 4px * var(--dh)) calc(30px + 4px * var(--dh)) rgba(0, 0, 0, calc(.25 + .15 * var(--dh))) !important;
       animation: dockUp linear both, dockSize linear both;
       animation-timeline: --bn, --bn;
-      animation-range: exit 42% exit 82%;
+      animation-range: exit 78% exit 100%;
     }
     #userinfo li {
       height: calc(38px - 6px * var(--dock)) !important;
       animation: dockFade linear both;
       animation-timeline: --bn;
-      animation-range: exit 42% exit 82%;
+      animation-range: exit 78% exit 100%;
     }
     #userinfo #stats_seeding, #userinfo #stats_leeching, #userinfo #stats_ratio {
       height: calc(78px - 46px * var(--dock)) !important;
@@ -2822,7 +2824,7 @@ body#torrents .box:has(> table.torrent_table) { overflow: clip !important; }
       gap: calc(8px - 2px * var(--dock)) !important;
       animation: dockFade linear both, dockFlip linear both;
       animation-timeline: --bn, --bn;
-      animation-range: exit 42% exit 82%;
+      animation-range: exit 78% exit 100%;
     }
     #userinfo #stats_seeding .stat, #userinfo #stats_leeching .stat,
     #userinfo #stats_ratio .stat, #userinfo #stats_ratio .stat span { font-size: calc(22px - 8px * var(--dock)) !important; }
