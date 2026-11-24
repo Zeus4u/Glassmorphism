@@ -493,10 +493,10 @@ img { max-width: 100%; }
 
 /* ---------- panels ---------- */
 .box, #more_news, .panel__body, table.forum_post, table.message_table {
-  background: var(--surface) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, 0) 120px), var(--surface) !important;
   border: 1px solid var(--line) !important;
   border-radius: var(--r-lg) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .25) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 1px 2px rgba(0, 0, 0, .4), 0 14px 34px rgba(0, 0, 0, .28) !important;
   margin: 0 0 var(--gap) !important;
   color: var(--text) !important;
   overflow: hidden !important;
@@ -2649,4 +2649,47 @@ body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child >
   #latest5tor .owl-item > div:hover > a > div::after { transform: translateX(130%); transition: transform .85s ease; }
   /* 9. spotlight: the hovered poster stays bright, the rest step back */
   #latest5tor .owl-stage:has(.owl-item:hover) .owl-item:not(:hover) > div { opacity: .55; }
+}
+
+/* ---------- quotes inside quotes: every level gets its own colour ---------- */
+blockquote:not(.gz-editor-card *) blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(56, 189, 248, .10), rgba(56, 189, 248, .10)), var(--surface-3) !important;
+  border-color: rgba(56, 189, 248, .55) !important; border-right-color: var(--accent-2) !important;
+}
+blockquote:not(.gz-editor-card *) blockquote blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(236, 72, 153, .10), rgba(236, 72, 153, .10)), var(--surface-3) !important;
+  border-color: rgba(236, 72, 153, .55) !important; border-right-color: #ec4899 !important;
+}
+blockquote:not(.gz-editor-card *) blockquote blockquote blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(245, 190, 50, .10), rgba(245, 190, 50, .10)), var(--surface-3) !important;
+  border-color: rgba(245, 190, 50, .55) !important; border-right-color: #f5be32 !important;
+}
+
+/* ---------- forum thread list: unread / pinned / locked each read at a glance ---------- */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:first-child { position: relative !important; }
+/* unread: cyan edge + a pulsing dot */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) {
+  box-shadow: inset -3px 0 0 var(--accent-2) !important;
+  background: linear-gradient(270deg, rgba(56, 189, 248, .08), transparent 40%) !important;
+}
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) h4 a,
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) .last_topic a { color: var(--strong) !important; font-weight: 700 !important; }
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)::after {
+  content: ""; position: absolute; top: 9px; inset-inline-end: 9px; width: 8px; height: 8px; border-radius: 50%; pointer-events: none;
+  background: var(--accent-2); box-shadow: 0 0 0 0 rgba(56, 189, 248, .7);
+}
+/* pinned: gold edge and a warm wash */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread_sticky, .read_sticky, .read_locked_sticky, .unread_locked_sticky)) {
+  box-shadow: inset -3px 0 0 #f5be32 !important;
+  background: linear-gradient(270deg, rgba(245, 190, 50, .10), transparent 45%) !important;
+}
+/* locked: quieter, with a fine diagonal hatch on the status cell */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.read_locked, .unread_locked, .read_locked_sticky, .unread_locked_sticky)) { opacity: .78; }
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.read_locked, .unread_locked, .read_locked_sticky, .unread_locked_sticky) {
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 4px, transparent 4px 9px) !important; border-radius: var(--r-sm);
+}
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:hover { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)::after { animation: threadPulse 1.9s ease-out infinite; }
+  @keyframes threadPulse { 0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, .7); } 70%, 100% { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0); } }
 }
