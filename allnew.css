@@ -2546,3 +2546,35 @@ body#reportsv2 #content form.manage_form table.layout td.label select { margin-i
 }
 body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] { display: block !important; line-height: 1.8 !important; }
 body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] > br { display: inline !important; }
+
+/* ---------- notification banners (new quote / PM / etc.): clear, glowing, whole card is the link ---------- */
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) {
+  --nb: 34, 197, 94;
+  position: relative !important;
+  display: flex !important; align-items: center !important; justify-content: center !important; gap: 14px !important;
+  min-width: min(520px, 100%) !important; width: fit-content !important; max-width: 100% !important;
+  margin: 0 auto 10px !important; padding: 15px 30px !important;
+  background: linear-gradient(135deg, rgba(var(--nb), .30), rgba(var(--nb), .10)) !important;
+  border: 1px solid rgba(var(--nb), .75) !important;
+  border-radius: var(--r) !important;
+  box-shadow: 0 0 0 4px rgba(var(--nb), .08), 0 12px 32px rgba(var(--nb), .22) !important;
+  color: #fff !important; font-size: 15.5px !important; font-weight: 700 !important; line-height: 1.5 !important;
+  transition: transform .15s ease, border-color .15s ease !important;
+}
+#alerts .alertbar.goldbox, #alerts .alertbar.yellowbox { --nb: 245, 190, 50; }
+#alerts .alertbar.bluebox { --nb: 59, 130, 246; }
+#alerts .alertbar.redbox { --nb: 239, 68, 68; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox):hover { transform: translateY(-2px) !important; border-color: rgba(var(--nb), 1) !important; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox)::before {
+  content: ""; flex: 0 0 11px; width: 11px; height: 11px; border-radius: 50%;
+  background: rgb(var(--nb)); box-shadow: 0 0 0 0 rgba(var(--nb), .7);
+  animation: nbPulse 1.8s ease-out infinite;
+}
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox)::after {
+  content: "←"; font-size: 18px; line-height: 1; color: rgb(var(--nb)); transition: transform .15s ease;
+}
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox):hover::after { transform: translateX(-4px); }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) a { position: static !important; margin: 0 !important; color: #fff !important; text-decoration: none !important; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) a::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+@keyframes nbPulse { 0% { box-shadow: 0 0 0 0 rgba(var(--nb), .65); } 70%, 100% { box-shadow: 0 0 0 11px rgba(var(--nb), 0); } }
+@media (prefers-reduced-motion: reduce) { #alerts .alertbar::before { animation: none !important; } }
