@@ -557,6 +557,8 @@ div.head {
 
 /* tabs inside a head: one segmented control, centred both ways */
 div.head::before, div.head::after { content: none !important; display: none !important; }
+/* the site's own clearfix pseudo-elements on the home tab boxes can push the tabs off-centre */
+#latest_torrents::before, #latest_torrents::after, #latestForums::before, #latestForums::after, #recommended::before, #recommended::after { content: none !important; display: none !important; }
 div.head:has(> span > a[class*="simple-tabs"]) {
   position: relative !important;
   display: grid !important;
