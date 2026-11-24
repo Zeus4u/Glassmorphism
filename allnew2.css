@@ -559,9 +559,10 @@ div.head {
 div.head::before, div.head::after { content: none !important; display: none !important; }
 div.head:has(> span > a[class*="simple-tabs"]) {
   position: relative !important;
-  flex-wrap: nowrap !important;
-  justify-content: center !important;
-  align-content: center !important;
+  display: grid !important;
+  place-items: center !important;
+  box-sizing: border-box !important;
+  float: none !important;
   height: 68px !important;
   min-height: 0 !important;
   padding-block: 0 !important;
@@ -572,8 +573,12 @@ div.head:has(> span > a[class*="simple-tabs"]) > span {
   float: none !important;
   flex: 0 0 auto !important;
   align-self: center !important;
+  justify-self: center !important;
   vertical-align: middle !important;
   transform: none !important;
+  top: auto !important;
+  bottom: auto !important;
+  inset-block: auto !important;
 }
 div.head:has(> span > a[class*="simple-tabs"]) > a[data-toggle-target] {
   position: absolute !important;
