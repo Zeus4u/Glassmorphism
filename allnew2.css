@@ -360,7 +360,7 @@ img { max-width: 100%; }
 #userinfo #stats_leeching,
 #userinfo #stats_ratio {
   flex: 1 1 calc(33.333% - 8px) !important;
-  flex-direction: column !important;
+  flex-direction: column;
   gap: 8px !important;
   min-width: 0 !important;
   height: 78px !important;
@@ -2749,3 +2749,72 @@ body#torrents table.torrent_table > tbody > tr.colhead_dark > td {
 }
 /* sticky needs a non-scrolling clip: "clip" keeps the rounded corners but lets heads stick */
 body#torrents .box:has(> table.torrent_table) { overflow: clip !important; }
+
+
+/* =====================================================================
+   Docking stats bar: after the banner scrolls away, the personal stats
+   (upload / download / ratio / seeding / leeching / H&R / points ...)
+   stay under the menu as one slim glass strip, and expand back on the way up.
+   Desktop + modern browsers only; everything else keeps the static bar.
+   ===================================================================== */
+@property --dock { syntax: "<number>"; inherits: true; initial-value: 0; }
+@keyframes dockUp   { from { --dock: 0; } to { --dock: 1; } }
+@keyframes dockFlip { from { flex-direction: column; } to { flex-direction: row; } }
+
+@supports (animation-timeline: view()) and (timeline-scope: --a) {
+  @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+    #wrapper { timeline-scope: --bn; }
+
+    /* the banner stops being a grid wrapper so the stats bar can stick for the whole page */
+    #banner { display: contents !important; }
+    #banner::before { display: none !important; }
+    #banner > a {
+      view-timeline: --bn block;
+      box-sizing: border-box !important;
+      width: var(--page) !important;
+      height: auto !important;
+      margin: 0 auto var(--gap) !important;
+      aspect-ratio: var(--banner-ratio) !important;
+      background-image: inherit !important;
+      background-color: #05070a !important;
+      background-size: contain !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border: 1px solid var(--line) !important;
+      border-radius: var(--r-lg) !important;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .35) !important;
+    }
+
+    #banner > #userinfo {
+      position: sticky !important;
+      top: 76px !important;
+      z-index: 9000 !important;
+      box-sizing: border-box !important;
+      width: var(--page) !important;
+      margin: 0 auto var(--gap) !important;
+      padding: calc(14px - 8px * var(--dock)) calc(14px - 4px * var(--dock)) !important;
+      gap: calc(8px - 2px * var(--dock)) !important;
+      border-radius: calc(20px + 8px * var(--dock)) !important;
+      background: color-mix(in srgb, var(--surface) calc(100% - 38% * var(--dock)), transparent) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      backdrop-filter: blur(18px) saturate(150%);
+      box-shadow: 0 calc(10px + 4px * var(--dock)) calc(30px + 4px * var(--dock)) rgba(0, 0, 0, calc(.25 + .15 * var(--dock))) !important;
+      animation: dockUp linear both;
+      animation-timeline: --bn;
+      animation-range: exit 40% exit 80%;
+    }
+    #userinfo li { height: calc(38px - 6px * var(--dock)) !important; }
+    #userinfo #stats_seeding, #userinfo #stats_leeching, #userinfo #stats_ratio {
+      height: calc(78px - 46px * var(--dock)) !important;
+      flex-basis: calc((33.333% - 8px) * (1 - var(--dock)) + 190px * var(--dock)) !important;
+      gap: calc(8px - 2px * var(--dock)) !important;
+      border-radius: calc(var(--r) + (999px - var(--r)) * var(--dock) * 0) !important;
+      animation: dockFlip linear both;
+      animation-timeline: --bn;
+      animation-range: exit 40% exit 80%;
+    }
+    #userinfo #stats_seeding .stat, #userinfo #stats_leeching .stat,
+    #userinfo #stats_ratio .stat, #userinfo #stats_ratio .stat span { font-size: calc(22px - 8px * var(--dock)) !important; }
+    #userinfo #stats_seeding > a, #userinfo #stats_leeching > a, #userinfo #stats_ratio > a { font-size: calc(12.5px - .5px * var(--dock)) !important; }
+  }
+}
