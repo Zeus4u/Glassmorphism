@@ -2617,3 +2617,36 @@ body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child >
     @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
   }
 }
+
+/* ---------- home: poster cards (hover only; scoped to #latest5tor) ---------- */
+#latest5tor .owl-stage-outer { padding: 16px 0 !important; margin: -16px 0 !important; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #latest5tor .owl-item > div { position: relative !important; overflow: hidden !important; isolation: isolate; transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .28s ease, border-color .15s ease, background-color .15s ease, opacity .25s ease !important; }
+  /* 1. lift + tilt */
+  #latest5tor .owl-item > div:hover {
+    transform: perspective(800px) translateY(-8px) rotateX(3deg) scale(1.03) !important;
+    box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 22px rgba(124, 92, 255, .14), 0 20px 40px rgba(0, 0, 0, .55), 0 0 30px rgba(124, 92, 255, .22) !important;
+    z-index: 3 !important;
+  }
+  /* 3. rotating gradient ring: a big spinning conic square clipped by the card, covered by an inner face */
+  #latest5tor .owl-item > div::before {
+    content: ""; position: absolute; z-index: -2; left: 50%; top: 50%; width: 220%; aspect-ratio: 1; translate: -50% -50%;
+    background: conic-gradient(from 0deg, transparent 0 55%, var(--accent) 72%, var(--accent-2) 86%, transparent 100%);
+    opacity: 0; transition: opacity .25s ease; animation: posterRing 3.2s linear infinite; pointer-events: none;
+  }
+  #latest5tor .owl-item > div::after {
+    content: ""; position: absolute; z-index: -1; inset: 2px; border-radius: calc(var(--r) - 2px);
+    background: var(--surface-3); pointer-events: none; opacity: 0; transition: opacity .25s ease;
+  }
+  #latest5tor .owl-item > div:hover::before, #latest5tor .owl-item > div:hover::after { opacity: 1; }
+  @keyframes posterRing { to { rotate: 360deg; } }
+  /* 2. light sweep across the poster */
+  #latest5tor .owl-item > div > a > div { position: relative !important; overflow: hidden !important; }
+  #latest5tor .owl-item > div > a > div::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; transform: translateX(-130%);
+    background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .30) 50%, transparent 62%);
+  }
+  #latest5tor .owl-item > div:hover > a > div::after { transform: translateX(130%); transition: transform .85s ease; }
+  /* 9. spotlight: the hovered poster stays bright, the rest step back */
+  #latest5tor .owl-stage:has(.owl-item:hover) .owl-item:not(:hover) > div { opacity: .55; }
+}
