@@ -16,9 +16,13 @@
   --text: #dfe3ec;
   --strong: #ffffff;
   --muted: #8a92a6;
-  --accent: #7c5cff;
-  --accent-2: #38bdf8;
-  --accent-soft: rgba(124, 92, 255, .16);
+  --accent-rgb: 124, 92, 255;
+  --accent-2-rgb: 56, 189, 248;
+  --accent: rgb(var(--accent-rgb));
+  --accent-2: rgb(var(--accent-2-rgb));
+  --accent-3: #5b8cff;
+  --accent-4-rgb: 236, 72, 153;
+  --accent-soft: rgba(var(--accent-rgb), .16);
   --up: #34d399;
   --down: #f87171;
   --warn: #fbbf24;
@@ -29,6 +33,7 @@
   --page: min(1480px, 94vw);
   --banner-ratio: 2000 / 300;   /* the home banners are 2000x300 */
   --font: "Heebo", "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
 }
 
 /* ---------- base ---------- */
@@ -37,8 +42,8 @@ html {
   scroll-padding-top: 90px;
   min-height: 100%;
   background:
-    radial-gradient(900px 480px at 88% -8%, rgba(124, 92, 255, .20), transparent 62%),
-    radial-gradient(760px 420px at 6% -4%, rgba(56, 189, 248, .11), transparent 62%),
+    radial-gradient(900px 480px at 88% -8%, rgba(var(--accent-rgb), .20), transparent 62%),
+    radial-gradient(760px 420px at 6% -4%, rgba(var(--accent-2-rgb), .11), transparent 62%),
     var(--bg) !important;
   background-attachment: fixed !important;
 }
@@ -63,7 +68,7 @@ body {
 body::before, body::after { display: none !important; }
 #wrapper, .body, .tdhack { background: transparent !important; }
 #wrapper { position: static !important; top: auto !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 0 24px !important; border: 0 !important; }
-.hidden { display: none !important; }
+.hidden:not([style*="display"]) { display: none !important; }
 
 /* the live BBCode editor (.gz-editor-card) brings its own styles: every global rule below skips it */
 :is(div, span, p, td, th, li, label, a, strong, em, input, textarea, select, button,
@@ -101,9 +106,9 @@ img { max-width: 100%; }
   margin-top: 10px !important;
   margin-bottom: var(--gap) !important;
   padding: 6px !important;
-  background: var(--bg) !important;
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  background: rgba(10, 12, 18, .66) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
   border: 1px solid var(--line) !important;
   border-radius: 999px !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, .4) !important;
@@ -171,7 +176,7 @@ img { max-width: 100%; }
 #menu #nav_donate > a { border: 1px solid rgba(255, 128, 123, .35) !important; }
 #menu #nav_user > a {
   color: #fff !important;
-  background: linear-gradient(135deg, var(--accent), #5b8cff) !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3)) !important;
 }
 
 #menu .nav_dropdown > div {
@@ -377,7 +382,7 @@ img { max-width: 100%; }
 #userinfo #stats_ratio .stat span { font-size: 22px !important; font-weight: 800 !important; letter-spacing: -.01em; }
 #userinfo .upload_stat { color: var(--up) !important; }
 #userinfo .down_stat { color: var(--down) !important; }
-#userinfo #bonus_points { border-color: rgba(124, 92, 255, .55) !important; background: var(--accent-soft) !important; }
+#userinfo #bonus_points { border-color: rgba(var(--accent-rgb), .55) !important; background: var(--accent-soft) !important; }
 .up_polygon { fill: var(--up) !important; }
 .down_polygon { fill: var(--down) !important; }
 .r00 { color: #fca5a5 !important; }
@@ -492,10 +497,10 @@ img { max-width: 100%; }
 
 /* ---------- panels ---------- */
 .box, #more_news, .panel__body, table.forum_post, table.message_table {
-  background: var(--surface) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, 0) 120px), var(--surface) !important;
   border: 1px solid var(--line) !important;
   border-radius: var(--r-lg) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .25) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 1px 2px rgba(0, 0, 0, .4), 0 14px 34px rgba(0, 0, 0, .28) !important;
   margin: 0 0 var(--gap) !important;
   color: var(--text) !important;
   overflow: hidden !important;
@@ -618,9 +623,9 @@ div.head:has(> span > a[class*="simple-tabs"]) > a[data-toggle-target] {
 }
 .head > span:has(> a[class*="simple-tabs"]) > a[onclick]:hover { color: var(--strong) !important; }
 .head > span:has(> a[class*="simple-tabs"]) > a.simple-tabs__link--active {
-  background: linear-gradient(135deg, var(--accent), #5b8cff) !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3)) !important;
   color: #fff !important;
-  box-shadow: 0 4px 14px rgba(124, 92, 255, .35) !important;
+  box-shadow: 0 4px 14px rgba(var(--accent-rgb), .35) !important;
 }
 
 /* ---------- latest releases carousel ---------- */
@@ -785,7 +790,7 @@ table, tbody, tr, td:where(:not(#remoteImage)), th { background-color: transpare
 td { padding: 12px 16px; color: var(--text) !important; vertical-align: middle !important; }
 tr > td { border-bottom: 1px solid var(--line) !important; }
 tr:last-child > td { border-bottom: 0 !important; }
-tr:hover > td:not(.tdhack) { background-color: rgba(124, 92, 255, .055) !important; box-shadow: none !important; }
+tr:hover > td:not(.tdhack) { background-color: rgba(var(--accent-rgb), .055) !important; box-shadow: none !important; }
 tr.group_torrent > td { background-color: rgba(7, 9, 13, .5) !important; }
 
 /* latest forum / torrent comments */
@@ -840,7 +845,7 @@ a.torrent_name:hover { color: var(--accent-2) !important; }
   font-weight: 700 !important;
   line-height: 1.75 !important;
 }
-.internal-mark { background: rgba(56, 189, 248, .14) !important; color: var(--accent-2) !important; }
+.internal-mark { background: rgba(var(--accent-2-rgb), .14) !important; color: var(--accent-2) !important; }
 .tl_seeding, .tl_snatched { background: rgba(52, 211, 153, .14) !important; color: var(--up) !important; }
 .tl_notice, .tl_free { background: rgba(251, 191, 36, .14) !important; color: var(--warn) !important; }
 .tags { display: flex !important; flex-wrap: wrap !important; gap: 6px !important; margin-top: 9px !important; }
@@ -892,7 +897,7 @@ input[type="number"], input[type="url"], textarea, select):not(.gz-editor-card, 
   box-shadow: 0 0 0 3px var(--accent-soft) !important;
 }
 input[type="submit"], input[type="button"], button:not([class*="owl"]):not([class*="gz-"]), .btn {
-  background: linear-gradient(135deg, var(--accent), #5b8cff) !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3)) !important;
   color: #fff !important;
   border: 0 !important;
   border-radius: var(--r-sm) !important;
@@ -910,7 +915,7 @@ input[type="radio"], input[type="checkbox"] { accent-color: var(--accent) !impor
 blockquote:not(.gz-editor-card *) {
   margin: 14px 0 !important;
   padding: 14px 18px !important;
-  background: linear-gradient(0deg, rgba(124, 92, 255, .12), rgba(124, 92, 255, .12)), var(--surface-3) !important;
+  background: linear-gradient(0deg, rgba(var(--accent-rgb), .12), rgba(var(--accent-rgb), .12)), var(--surface-3) !important;
   border: 1.5px dashed rgba(149, 124, 255, .7) !important;
   border-right: 4px solid var(--accent) !important;
   border-radius: var(--r-sm) !important;
@@ -1060,7 +1065,7 @@ div.head > a[href="#"]:first-child { order: 8; color: var(--muted) !important; }
 /* posters brighten instead of moving */
 #latest5tor .owl-item > div > a > div { transition: filter .2s ease !important; filter: saturate(.92) brightness(.94); }
 #latest5tor .owl-item > div:hover > a > div { filter: saturate(1.08) brightness(1.06); }
-#latest5tor .owl-item > div:hover { box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 22px rgba(124, 92, 255, .14) !important; }
+#latest5tor .owl-item > div:hover { box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 22px rgba(var(--accent-rgb), .14) !important; }
 #latest5tor .owl-stage-outer { padding: 4px 0 !important; margin: -4px 0 !important; }
 /* rows: accent edge on hover */
 .torrent_table tr:hover > td:first-child { box-shadow: inset -3px 0 0 var(--accent) !important; }
@@ -1192,7 +1197,7 @@ td.calendar-day-np { background: var(--surface-2) !important; }
 #reply_box #buttons form.manage_form::after { content: "" !important; display: block !important; order: 8 !important; flex: 0 0 100% !important; height: 0 !important; border-top: 1px solid var(--line) !important; margin: 2px 0 !important; }
 #reply_box #buttons form > #anonymousbox { order: 9 !important; flex: 0 0 auto !important; margin: 0 !important; }
 #reply_box #buttons form > label[for="anonymousbox"] { order: 10 !important; flex: 0 0 auto !important; margin: 0 !important; color: var(--text) !important; font-size: 14px !important; }
-#reply_box #buttons form > input[type="submit"] { order: 12 !important; margin-inline-start: auto !important; height: 46px !important; min-width: 170px !important; padding: 0 28px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(124, 92, 255, .32) !important; }
+#reply_box #buttons form > input[type="submit"] { order: 12 !important; margin-inline-start: auto !important; height: 46px !important; min-width: 170px !important; padding: 0 28px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(var(--accent-rgb), .32) !important; }
 #reply_box #buttons form > #previewbtn:not(.hidden) ~ input[type="submit"] { margin-inline-start: 0 !important; }
 @media (max-width: 640px) {
   #reply_box .box.pad, #reply_box.box.pad { padding: 12px !important; }
@@ -1242,7 +1247,7 @@ table.layout.box td a { white-space: normal; }
 table.layout.box tr:not(.colhead):not(.hidden) > td:has(> input[type="checkbox"] + label):not(:has(> select, > a, > button, > input:not([type="checkbox"]))) { font-size: 0 !important; gap: 14px 28px !important; }
 table.layout.box tr > td:has(> input[type="checkbox"] + label):not(:has(> select, > a, > button, > input:not([type="checkbox"]))) label { font-size: 14px !important; }
 table.layout.box tr:has(> td > input[type="submit"]) { display: flex !important; justify-content: flex-end !important; border-bottom: 0 !important; }
-table.layout.box tr > td > input[type="submit"] { height: 46px !important; min-width: 190px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(124, 92, 255, .32) !important; }
+table.layout.box tr > td > input[type="submit"] { height: 46px !important; min-width: 190px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(var(--accent-rgb), .32) !important; }
 @media (max-width: 640px) {
   table.layout.box { border-radius: var(--r) !important; }
   table.layout.box tr:not(.colhead):not(.hidden) { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; padding: 12px 14px !important; }
@@ -1319,7 +1324,7 @@ body#wiki form:has(input[name="nojump"]) select { flex: 0 1 auto !important; wid
 body#wiki form:has(input[name="nojump"]) td.center > input[type="submit"] { height: 46px !important; min-width: 200px !important; }
 body#wiki form:has(input[name="nojump"]) td:not(.label) > label { position: relative !important; display: inline-flex !important; align-items: center !important; padding: 9px 20px !important; background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer; transition: border-color .15s, background-color .15s, color .15s; }
 body#wiki form:has(input[name="nojump"]) td:not(.label) > label:hover { border-color: var(--accent) !important; }
-body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:checked) { background: rgba(124, 92, 255, .16) !important; border-color: var(--accent) !important; color: var(--strong) !important; }
+body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:checked) { background: rgba(var(--accent-rgb), .16) !important; border-color: var(--accent) !important; color: var(--strong) !important; }
 body#wiki form:has(input[name="nojump"]) td:not(.label) > label > input[type="radio"] { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
 body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-visible) { outline: 2px solid var(--accent-2); outline-offset: 2px; }
 @media (max-width: 760px) {
@@ -1389,7 +1394,7 @@ body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-
 #content div.tab { display: flex !important; justify-content: center !important; flex-wrap: wrap !important; gap: 4px !important; width: fit-content !important; max-width: 100% !important; margin: 4px auto 18px !important; padding: 4px !important; background: var(--surface) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; }
 #content div.tab > button.tablinks { height: 40px !important; padding: 0 20px !important; background: transparent !important; border: 0 !important; border-radius: 99px !important; box-shadow: none !important; color: var(--muted) !important; font-size: 14px !important; font-weight: 600 !important; }
 #content div.tab > button.tablinks:hover { color: var(--strong) !important; background: var(--surface-3) !important; filter: none !important; }
-#content div.tab > button.tablinks.active { background: linear-gradient(135deg, var(--accent), #5b8cff) !important; color: #fff !important; box-shadow: 0 4px 14px rgba(124, 92, 255, .35) !important; }
+#content div.tab > button.tablinks.active { background: linear-gradient(135deg, var(--accent), var(--accent-3)) !important; color: #fff !important; box-shadow: 0 4px 14px rgba(var(--accent-rgb), .35) !important; }
 #content .tabcontent form.create_form.box.pad, #content .tabcontent .box.pad { margin: 0 0 18px !important; padding: 8px 24px !important; }
 #content .tabcontent .box.pad > h2 { margin: 10px 0 0 !important; font-size: 17px !important; text-align: right !important; }
 #content .tabcontent form.create_form h3.important_text { margin: 12px 0 !important; padding: 12px 16px !important; background: rgba(255, 99, 99, .08) !important; border: 1px solid rgba(255, 99, 99, .3) !important; border-radius: var(--r-sm) !important; color: #ff8a8a !important; font-size: 14px !important; text-align: center !important; }
@@ -1440,7 +1445,7 @@ body#wiki form:has(input[name="nojump"]) td:not(.label) > label:has(input:focus-
 #content table.user_options td input[type="checkbox"]:checked + label::before { background-color: var(--accent); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); border-color: var(--accent); }
 #content table.user_options td input[type="radio"] + label { display: inline-flex !important; align-items: center !important; padding: 9px 20px !important; background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: 99px !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer; transition: border-color .15s, background-color .15s; }
 #content table.user_options td input[type="radio"] + label:hover { border-color: var(--accent) !important; }
-#content table.user_options td input[type="radio"]:checked + label { background: rgba(124, 92, 255, .16) !important; border-color: var(--accent) !important; color: var(--strong) !important; }
+#content table.user_options td input[type="radio"]:checked + label { background: rgba(var(--accent-rgb), .16) !important; border-color: var(--accent) !important; color: var(--strong) !important; }
 #content table.user_options td input:is([type="checkbox"], [type="radio"]):focus-visible + label { outline: 2px solid var(--accent-2); outline-offset: 2px; }
 @media (max-width: 760px) {
   #content table.user_options tr:not(.colhead_dark):not(.hidden):not([style*="display: none"]) { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; padding: 13px 14px !important; }
@@ -1542,8 +1547,8 @@ form.create_form.box.pad { padding: 8px 0 !important; }
 /* the glow belongs to the whole card, so it follows the rounded frame exactly */
 #content .box.filter_torrents, #content form.search_form:has(> .head) {
   background:
-    radial-gradient(620px 240px at 100% 0, rgba(124, 92, 255, .13), transparent 70%),
-    radial-gradient(520px 220px at 0 100%, rgba(56, 189, 248, .07), transparent 70%),
+    radial-gradient(620px 240px at 100% 0, rgba(var(--accent-rgb), .13), transparent 70%),
+    radial-gradient(520px 220px at 0 100%, rgba(var(--accent-2-rgb), .07), transparent 70%),
     var(--surface) !important;
   overflow: hidden !important;
 }
@@ -1696,7 +1701,7 @@ form.create_form.box.pad { padding: 8px 0 !important; }
   border-top: 1px solid var(--line) !important;
   font-size: 0 !important;
 }
-#content .ft_submit input[type="submit"], #content form.search_form td.center input[type="submit"] { height: 46px !important; min-width: 170px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(124, 92, 255, .32) !important; }
+#content .ft_submit input[type="submit"], #content form.search_form td.center input[type="submit"] { height: 46px !important; min-width: 170px !important; font-size: 15px !important; box-shadow: 0 6px 18px rgba(var(--accent-rgb), .32) !important; }
 #content .ft_submit input[type="button"] {
   height: 46px !important;
   min-width: 100px !important;
@@ -1712,7 +1717,7 @@ form.create_form.box.pad { padding: 8px 0 !important; }
   margin-inline-start: auto !important;
   padding: 7px 16px !important;
   background: var(--accent-soft) !important;
-  border: 1px solid rgba(124, 92, 255, .35) !important;
+  border: 1px solid rgba(var(--accent-rgb), .35) !important;
   border-radius: 99px !important;
   color: #cfc4ff !important;
   font-size: 13.5px !important;
@@ -1771,7 +1776,7 @@ table.forum_index thead th:nth-child(n+4) { text-align: center !important; }
 table.forum_index td { padding: 14px 16px !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; background-color: transparent !important; }
 table.forum_index tr:last-child > td { border-bottom: 0 !important; }
 table.forum_index tbody tr:nth-child(even) td { background-color: rgba(255, 255, 255, .018) !important; }
-table.forum_index tr:hover > td { background-color: rgba(124, 92, 255, .07) !important; }
+table.forum_index tr:hover > td { background-color: rgba(var(--accent-rgb), .07) !important; }
 table.forum_index tr:hover > td:first-child { box-shadow: inset -3px 0 0 var(--accent) !important; }
 table.forum_index td:first-child { width: 46px !important; text-align: center !important; }
 table.forum_index h4 { margin: 0 !important; padding: 0 !important; font-size: 15px !important; font-weight: 700 !important; }
@@ -1934,7 +1939,7 @@ ul.stats li a { background: none !important; border: 0 !important; padding: 0 !i
   height: 30px !important;
   padding: 0 14px !important;
   background: var(--accent-soft) !important;
-  border: 1px solid rgba(124, 92, 255, .35) !important;
+  border: 1px solid rgba(var(--accent-rgb), .35) !important;
   border-radius: 99px !important;
   color: #cfc4ff !important;
   font-size: 13px !important;
@@ -2174,8 +2179,8 @@ table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !imp
 }
 
 /* hidden always wins, whatever else matched */
-.hidden, tr.hidden, td.hidden,
-#wrapper#wrapper#wrapper .hidden { display: none !important; }
+.hidden:not([style*="display"]), tr.hidden:not([style*="display"]), td.hidden:not([style*="display"]),
+#wrapper#wrapper#wrapper .hidden:not([style*="display"]) { display: none !important; }
 
 /* inline-hidden rows (toggled by site JS) stay hidden at every width */
 #content tr[style*="display: none"], #content tr[style*="display:none"] { display: none !important; }
@@ -2220,7 +2225,7 @@ body#inbox table.message_table{ display:block!important; width:100%!important; b
 body#inbox table.message_table > tbody{ display:block!important; }
 body#inbox table.message_table tr{ display:grid!important; grid-template-columns:48px minmax(0,1fr) 170px 190px 110px!important; align-items:center!important; border:0!important; border-bottom:1px solid var(--line)!important; background:transparent!important; transition:background .15s!important; }
 body#inbox table.message_table tr:last-child{ border-bottom:0!important; }
-body#inbox table.message_table tr.row:hover{ background:rgba(124,92,255,.07)!important; }
+body#inbox table.message_table tr.row:hover{ background:rgba(var(--accent-rgb),.07)!important; }
 body#inbox table.message_table td{ display:block!important; width:auto!important; padding:13px 12px!important; border:0!important; background:none!important; font-size:14px!important; min-width:0!important; overflow-wrap:anywhere; }
 body#inbox table.message_table td:first-child{ padding-inline:14px!important; display:flex!important; justify-content:center!important; }
 body#inbox table.message_table tr.colhead{ background:var(--surface-2)!important; }
@@ -2318,7 +2323,7 @@ body#tools .permission_subcontainer tr.row td{ display:block!important; padding:
 body#tools .permission_subcontainer tr.row + tr.row{ border-top:1px solid var(--line)!important; }
 body#tools .permission_subcontainer tr.row a{ display:flex!important; align-items:center!important; gap:10px!important; padding:11px 18px!important; font-size:14px!important; transition:background .15s,padding .15s!important; }
 body#tools .permission_subcontainer tr.row a::before{ content:""!important; flex:none!important; width:6px!important; height:6px!important; border-radius:50%!important; background:var(--line-2)!important; transition:background .15s!important; }
-body#tools .permission_subcontainer tr.row:hover a{ background:rgba(124,92,255,.09)!important; padding-inline-start:22px!important; }
+body#tools .permission_subcontainer tr.row:hover a{ background:rgba(var(--accent-rgb),.09)!important; padding-inline-start:22px!important; }
 body#tools .permission_subcontainer tr.row:hover a::before{ background:var(--accent)!important; }
 @media (max-width:700px){
   body#tools .permission_container{ grid-template-columns:minmax(0,1fr)!important; }
@@ -2334,7 +2339,7 @@ form#filter_form table.layout td{ display:block!important; width:auto!important;
 form#filter_form table.layout td.label{ padding-top:10px!important; color:var(--text,#e8ebf4)!important; font-size:14px!important; line-height:1.5!important; }
 form#filter_form table.layout td.label strong{ font-weight:600!important; }
 form#filter_form table.layout td[colspan="2"]{ grid-column:1 / -1!important; }
-form#filter_form table.layout tr:has(> td.center strong:only-child){ background:rgba(124,92,255,.07)!important; padding-block:12px!important; }
+form#filter_form table.layout tr:has(> td.center strong:only-child){ background:rgba(var(--accent-rgb),.07)!important; padding-block:12px!important; }
 form#filter_form table.layout td.center{ text-align:start!important; }
 form#filter_form table.layout td.center strong{ font-weight:600!important; font-size:13px!important; color:var(--accent-2)!important; }
 form#filter_form td input[type="text"], form#filter_form td textarea{ width:100%!important; max-width:none!important; box-sizing:border-box!important; }
@@ -2349,7 +2354,7 @@ form#filter_form td:has(input[type="checkbox"]) br{ display:none!important; }
 form#filter_form td input[type="checkbox"]{ position:absolute!important; width:1px!important; height:1px!important; opacity:0!important; pointer-events:none!important; }
 form#filter_form td input[type="checkbox"] + label{ display:inline-flex!important; align-items:center!important; height:34px!important; padding:0 14px!important; background:var(--surface-2)!important; border:1px solid var(--line-2)!important; border-radius:999px!important; color:var(--text-2,#aab2c5)!important; font-size:13px!important; font-weight:500!important; cursor:pointer!important; user-select:none!important; transition:.15s!important; margin:0!important; }
 form#filter_form td input[type="checkbox"] + label:hover{ border-color:var(--accent)!important; color:var(--text,#e8ebf4)!important; }
-form#filter_form td input[type="checkbox"]:checked + label{ background:linear-gradient(135deg,var(--accent),#5b7cff)!important; border-color:transparent!important; color:#fff!important; box-shadow:0 4px 14px rgba(124,92,255,.35)!important; }
+form#filter_form td input[type="checkbox"]:checked + label{ background:linear-gradient(135deg,var(--accent),var(--accent-3))!important; border-color:transparent!important; color:#fff!important; box-shadow:0 4px 14px rgba(var(--accent-rgb),.35)!important; }
 form#filter_form td input[type="checkbox"]:focus-visible + label{ outline:2px solid var(--accent-2)!important; outline-offset:2px!important; }
 form#filter_form td strong.float_right{ float:none!important; flex:0 0 100%!important; margin:0!important; font-size:12px!important; font-weight:700!important; letter-spacing:.04em!important; color:var(--text-3,#8b93a8)!important; }
 form#filter_form td hr{ flex:0 0 100%!important; width:100%!important; height:0!important; margin:8px 0 2px!important; border:0!important; border-top:1px solid var(--line)!important; }
@@ -2382,8 +2387,8 @@ body#forums table.forum_index:has(> tbody > tr.colhead) .last_topic strong{ font
 body#forums table.forum_index:has(> tbody > tr.colhead) .last_topic .float_left{ float:none!important; font-size:12px!important; color:var(--text-3,#8b93a8)!important; }
 body#forums table.forum_index:has(> tbody > tr.colhead) .last_topic .float_left a{ display:inline-block!important; min-width:18px!important; padding:0 5px!important; margin-inline:1px!important; text-align:center!important; border:1px solid var(--line-2)!important; border-radius:6px!important; font-size:11px!important; line-height:18px!important; }
 body#forums table.forum_index:has(> tbody > tr.colhead) .last_poster{ order:2!important; flex:0 0 auto!important; font-size:12.5px!important; white-space:nowrap!important; }
-body#forums table.forum_index:has(> tbody > tr.colhead) a.last_read{ order:3!important; flex:none!important; display:inline-flex!important; align-items:center!important; justify-content:center!important; width:28px!important; height:28px!important; margin:0!important; border-radius:8px!important; background:rgba(56,189,248,.1)!important; opacity:1!important; }
-body#forums table.forum_index:has(> tbody > tr.colhead) a.last_read:hover{ background:rgba(56,189,248,.22)!important; }
+body#forums table.forum_index:has(> tbody > tr.colhead) a.last_read{ order:3!important; flex:none!important; display:inline-flex!important; align-items:center!important; justify-content:center!important; width:28px!important; height:28px!important; margin:0!important; border-radius:8px!important; background:rgba(var(--accent-2-rgb),.1)!important; opacity:1!important; }
+body#forums table.forum_index:has(> tbody > tr.colhead) a.last_read:hover{ background:rgba(var(--accent-2-rgb),.22)!important; }
 body#forums table.forum_index:has(> tbody > tr.colhead) td.number_column{ text-align:center!important; }
 body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:nth-child(4){ font-size:14px!important; font-weight:600!important; overflow:hidden!important; text-overflow:ellipsis!important; white-space:nowrap!important; }
 @media (max-width:900px){
@@ -2411,9 +2416,9 @@ body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:nth-child(4)
 /* ================= torrent list: clear separation between rows ================= */
 .torrent_table tr:not(.colhead):not(.colhead_dark) > td{ border-bottom:1px solid rgba(148,163,205,.28)!important; }
 .torrent_table tr:not(.colhead):not(.colhead_dark):last-child > td{ border-bottom:0!important; }
-.torrent_table tr.torrent:nth-of-type(even) > td, .torrent_table tr.torrent_row:nth-of-type(even) > td{ background-color:rgba(124,92,255,.045)!important; }
+.torrent_table tr.torrent:nth-of-type(even) > td, .torrent_table tr.torrent_row:nth-of-type(even) > td{ background-color:rgba(var(--accent-rgb),.045)!important; }
 .torrent_table tr.torrent:nth-of-type(odd) > td, .torrent_table tr.torrent_row:nth-of-type(odd) > td{ background-color:rgba(255,255,255,.012)!important; }
-.torrent_table tr:not(.colhead):not(.colhead_dark):hover > td:not(.tdhack){ background-color:rgba(124,92,255,.11)!important; }
+.torrent_table tr:not(.colhead):not(.colhead_dark):hover > td:not(.tdhack){ background-color:rgba(var(--accent-rgb),.11)!important; }
 .torrent_table tr:not(.colhead):not(.colhead_dark) > td:first-child{ box-shadow:inset -3px 0 0 transparent!important; transition:box-shadow .15s!important; }
 .torrent_table tr:not(.colhead):not(.colhead_dark):hover > td:first-child{ box-shadow:inset -3px 0 0 var(--accent)!important; }
 .torrent_table td{ padding-block:18px!important; }
@@ -2457,20 +2462,20 @@ body#forums form.edit_form[name="forum_thread"] td.label label{ margin:0!importa
 body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td{ align-self:center!important; }
 body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > td.label{ padding:0!important; margin:0!important; }
 
-/* ---------- forum search: category columns (scoped to #forum_search_cat_list only) ---------- */
-#forum_search_cat_list, #forum_search_cat_list > tbody { display: block !important; width: 100% !important; margin: 10px 0 0 !important; }
-#forum_search_cat_list > tbody > tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important; align-items: start !important; gap: 14px !important; padding: 0 !important; }
-#forum_search_cat_list > tbody > tr > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; align-self: start !important; }
-#forum_search_cat_list > tbody > tr > td > table, #forum_search_cat_list > tbody > tr > td > table > tbody { display: block !important; width: 100% !important; }
-#forum_search_cat_list > tbody > tr > td > table { background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r) !important; padding: 8px 12px 10px !important; }
-#forum_search_cat_list table table tr { display: flex !important; align-items: center !important; padding: 0 !important; gap: 0 !important; }
-#forum_search_cat_list table table td { display: flex !important; align-items: center !important; gap: 10px !important; width: 100% !important; padding: 7px 0 !important; border: 0 !important; background: transparent !important; }
-#forum_search_cat_list table table tr:first-child td { padding: 4px 0 8px !important; margin-bottom: 4px !important; border-bottom: 1px solid var(--line) !important; }
-#forum_search_cat_list a.forum_category { color: var(--accent-2) !important; font-weight: 700 !important; }
-#forum_search_cat_list input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; flex: 0 0 20px !important; width: 20px !important; height: 20px !important; margin: 0 !important; padding: 0 !important; background: var(--surface-3) center / 13px no-repeat !important; border: 1.5px solid var(--line-2) !important; border-radius: 6px !important; cursor: pointer; transition: background-color .15s, border-color .15s; }
-#forum_search_cat_list input[type="checkbox"]:hover { border-color: var(--accent) !important; }
-#forum_search_cat_list input[type="checkbox"]:checked { background-color: var(--accent) !important; border-color: var(--accent) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; }
-#forum_search_cat_list label { margin: 0 !important; font-size: 14px !important; font-weight: 600 !important; white-space: normal !important; cursor: pointer; }
+/* ---------- forum search: category columns (scoped to #content #forum_search_cat_list only) ---------- */
+#content #forum_search_cat_list, #content #forum_search_cat_list > tbody { display: block !important; width: 100% !important; margin: 10px 0 0 !important; }
+#content #forum_search_cat_list > tbody > tr { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important; align-items: start !important; gap: 14px !important; padding: 0 !important; }
+#content #forum_search_cat_list > tbody > tr > td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; align-self: start !important; }
+#content #forum_search_cat_list > tbody > tr > td > table, #content #forum_search_cat_list > tbody > tr > td > table > tbody { display: block !important; width: 100% !important; }
+#content #forum_search_cat_list > tbody > tr > td > table { background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: var(--r) !important; padding: 8px 12px 10px !important; }
+#content #forum_search_cat_list table table tr { display: flex !important; align-items: center !important; padding: 0 !important; gap: 0 !important; }
+#content #forum_search_cat_list table table td { display: flex !important; align-items: center !important; gap: 10px !important; width: 100% !important; padding: 7px 0 !important; border: 0 !important; background: transparent !important; }
+#content #forum_search_cat_list table table tr:first-child td { padding: 4px 0 8px !important; margin-bottom: 4px !important; border-bottom: 1px solid var(--line) !important; }
+#content #forum_search_cat_list a.forum_category { color: var(--accent-2) !important; font-weight: 700 !important; }
+#content #forum_search_cat_list input[type="checkbox"] { -webkit-appearance: none !important; appearance: none !important; flex: 0 0 20px !important; width: 20px !important; height: 20px !important; margin: 0 !important; padding: 0 !important; background: var(--surface-3) center / 13px no-repeat !important; border: 1.5px solid var(--line-2) !important; border-radius: 6px !important; cursor: pointer; transition: background-color .15s, border-color .15s; }
+#content #forum_search_cat_list input[type="checkbox"]:hover { border-color: var(--accent) !important; }
+#content #forum_search_cat_list input[type="checkbox"]:checked { background-color: var(--accent) !important; border-color: var(--accent) !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important; }
+#content #forum_search_cat_list label { margin: 0 !important; font-size: 14px !important; font-weight: 600 !important; white-space: normal !important; cursor: pointer; }
 
 @media (max-width: 760px) {
   body#forums table.forum_list, body#forums table.forum_list > tbody { display: block !important; width: 100% !important; }
@@ -2481,4 +2486,290 @@ body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > t
   body#forums table.forum_list tr.row > td:nth-child(1) { grid-row: 1 !important; font-size: 12.5px !important; }
   body#forums table.forum_list tr.row > td:nth-child(3) { display: none !important; }
   body#forums table.forum_list tr.row > td:nth-child(4) { grid-row: 1 !important; grid-column: 2 !important; font-size: 12px !important; color: var(--muted) !important; }
+}
+
+/* ---------- forum search form: same layout language as the other forms (scoped via #content #forum_search_cat_list) ---------- */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout { display: block !important; width: 100% !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody { display: block !important; width: 100% !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:not(.hidden):not(:has(> td[colspan])) { display: grid !important; grid-template-columns: 210px minmax(0, 1fr) !important; column-gap: 24px !important; align-items: start !important; padding: 16px 24px !important; border-bottom: 1px solid var(--line) !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:last-child { border-bottom: 0 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:first-child:not([colspan]) { flex: none !important; width: auto !important; padding: 12px 0 0 !important; color: var(--text) !important; font-size: 14px !important; font-weight: 600 !important; line-height: 1.4 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:first-child strong { font-weight: 600 !important; color: inherit !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:nth-child(2) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 10px 14px !important; width: auto !important; min-width: 0 !important; color: var(--muted) !important; font-size: 14px !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td > input[type="search"] { flex: 1 1 100% !important; width: 100% !important; max-width: none !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td > input.date_picker { flex: 0 1 220px !important; width: 220px !important; min-width: 0 !important; text-align: center !important; }
+/* radio -> chips */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"] { position: absolute !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"] + label { display: inline-flex !important; align-items: center !important; height: 38px !important; padding: 0 18px !important; margin: 0 !important; background: var(--surface-2) !important; border: 1px solid var(--line-2) !important; border-radius: 999px !important; color: var(--muted) !important; font-size: 13.5px !important; font-weight: 600 !important; cursor: pointer !important; user-select: none !important; transition: .15s !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"] + label:hover { border-color: var(--accent) !important; color: var(--strong) !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"]:checked + label { background: linear-gradient(135deg, var(--accent), var(--accent-3)) !important; border-color: transparent !important; color: #fff !important; box-shadow: 0 4px 14px rgba(var(--accent-rgb), .35) !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > input[type="radio"]:focus-visible + label { outline: 2px solid var(--accent-2) !important; outline-offset: 2px !important; }
+/* categories */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) td > span { flex: 1 1 100% !important; font-size: 12.5px !important; color: var(--muted) !important; }
+#content #forum_search_cat_list { margin: 0 !important; }
+#content #forum_search_cat_list > tbody > tr { display: block !important; column-width: 220px !important; column-gap: 14px !important; }
+#content #forum_search_cat_list > tbody > tr > td > table { box-sizing: border-box !important; }
+#content #forum_search_cat_list table table tr:not(:first-child):hover > td { color: var(--strong) !important; }
+#content #forum_search_cat_list input[type="checkbox"]:checked + label { color: var(--strong) !important; }
+/* submit row */
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:has(> td[colspan]) { display: flex !important; justify-content: center !important; border-bottom: 0 !important; padding-top: 6px !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td[colspan] { display: block !important; width: auto !important; padding: 0 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) input[type="submit"] { height: 46px !important; min-width: 200px !important; font-size: 15px !important; }
+@media (max-width: 760px) {
+  #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:not(.hidden):not(:has(> td[colspan])) { grid-template-columns: minmax(0, 1fr) !important; row-gap: 8px !important; padding: 14px 14px !important; }
+  #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td:first-child:not([colspan]) { padding: 0 !important; }
+  #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr > td > input.date_picker { flex: 1 1 140px !important; width: auto !important; }
+  #content #forum_search_cat_list > tbody > tr { column-width: auto !important; column-count: 1 !important; }
+}
+
+#content #forum_search_cat_list table table td { flex-wrap: nowrap !important; flex: 0 0 auto !important; }
+#content #forum_search_cat_list table table td label { flex: 1 1 auto !important; min-width: 0 !important; }
+#content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:has(> td[colspan]) { border-top: 1px solid var(--line) !important; padding: 18px 24px !important; }
+#content #forum_search_cat_list { flex: 1 1 100% !important; max-width: 100% !important; }
+#content #forum_search_cat_list > tbody > tr > td { break-inside: avoid !important; margin: 0 0 14px !important; }
+
+/* ---------- reports v2: a report opens on click (jQuery .toggle() sets inline display on a .hidden table) ---------- */
+body#reportsv2 #all_reports { width: 100% !important; max-width: 1100px !important; margin-inline: auto !important; }
+body#reportsv2 #content form.manage_form table.layout { width: 100% !important; table-layout: auto !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden) { display: grid !important; grid-template-columns: 200px minmax(0, 1fr) !important; align-items: start !important; gap: 8px 20px !important; padding: 14px 4px !important; border-bottom: 1px solid var(--line) !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:has(> td:nth-child(4)) { grid-template-columns: 200px minmax(0, 1fr) 150px minmax(0, 1fr) !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:last-child { border-bottom: 0 !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td { display: block !important; min-width: 0 !important; width: auto !important; padding: 0 !important; border: 0 !important; background: none !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="3"] { grid-column: 2 / -1 !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px 12px !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="4"] { grid-column: 1 / -1 !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 8px 12px !important; padding-top: 6px !important; }
+body#reportsv2 #content form.manage_form table.layout td > br { display: none !important; }
+body#reportsv2 #content form.manage_form table.layout td > div { flex: 1 1 100% !important; text-align: start !important; }
+body#reportsv2 #content form.manage_form table.layout input[type="text"] { flex: 1 1 260px !important; width: auto !important; min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; }
+body#reportsv2 #content form.manage_form table.layout td:not([colspan]) input[type="text"] { width: 100% !important; }
+body#reportsv2 #content form.manage_form table.layout textarea { flex: 1 1 100% !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; min-height: 90px !important; box-sizing: border-box !important; }
+body#reportsv2 #content form.manage_form table.layout td.label { color: var(--muted) !important; font-weight: 600 !important; }
+body#reportsv2 #content form.manage_form table.layout td.label select { margin-inline-start: 6px !important; }
+@media (max-width: 760px) {
+  body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden), body#reportsv2 #content form.manage_form table.layout > tbody > tr:has(> td:nth-child(4)) { grid-template-columns: minmax(0, 1fr) !important; }
+  body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="3"], body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="4"] { grid-column: 1 / -1 !important; }
+}
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] { display: block !important; line-height: 1.8 !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] > br { display: inline !important; }
+
+/* ---------- notification banners (new quote / PM / etc.): clear, glowing, whole card is the link ---------- */
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) {
+  --nb: 34, 197, 94;
+  position: relative !important;
+  display: flex !important; align-items: center !important; justify-content: center !important; gap: 14px !important;
+  min-width: min(520px, 100%) !important; width: fit-content !important; max-width: 100% !important;
+  margin: 0 auto 10px !important; padding: 15px 30px !important;
+  background: linear-gradient(135deg, rgba(var(--nb), .30), rgba(var(--nb), .10)) !important;
+  border: 1px solid rgba(var(--nb), .75) !important;
+  border-radius: var(--r) !important;
+  box-shadow: 0 0 0 4px rgba(var(--nb), .08), 0 12px 32px rgba(var(--nb), .22) !important;
+  color: #fff !important; font-size: 15.5px !important; font-weight: 700 !important; line-height: 1.5 !important;
+  transition: transform .15s ease, border-color .15s ease !important;
+}
+#alerts .alertbar.goldbox, #alerts .alertbar.yellowbox { --nb: 245, 190, 50; }
+#alerts .alertbar.bluebox { --nb: 59, 130, 246; }
+#alerts .alertbar.redbox { --nb: 239, 68, 68; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox):hover { transform: translateY(-2px) !important; border-color: rgba(var(--nb), 1) !important; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox)::before {
+  content: ""; flex: 0 0 11px; width: 11px; height: 11px; border-radius: 50%;
+  background: rgb(var(--nb)); box-shadow: 0 0 0 0 rgba(var(--nb), .7);
+  animation: nbPulse 1.8s ease-out infinite;
+}
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox)::after {
+  content: "←"; font-size: 18px; line-height: 1; color: rgb(var(--nb)); transition: transform .15s ease;
+}
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox):hover::after { transform: translateX(-4px); }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) a { position: static !important; margin: 0 !important; color: #fff !important; text-decoration: none !important; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) a::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+@keyframes nbPulse { 0% { box-shadow: 0 0 0 0 rgba(var(--nb), .65); } 70%, 100% { box-shadow: 0 0 0 11px rgba(var(--nb), 0); } }
+@media (prefers-reduced-motion: reduce) { #alerts .alertbar::before { animation: none !important; } }
+
+/* ---------- motion layer (progressive enhancement; all of it is off for prefers-reduced-motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* 1. soft cross-fade between pages (Chromium/Edge; ignored elsewhere) */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: 160ms ease-out both vtOut; }
+  ::view-transition-new(root) { animation: 240ms ease-in both vtIn; }
+  @keyframes vtOut { to { opacity: 0; } }
+  @keyframes vtIn { from { opacity: 0; } }
+
+  /* 2. slowly drifting aurora behind the page (GPU transform only, never repaints the page) */
+  html::before {
+    content: ""; position: fixed; inset: -25%; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(38% 34% at 22% 28%, rgba(var(--accent-2-rgb), .10), transparent 70%),
+      radial-gradient(34% 30% at 78% 64%, rgba(var(--accent-rgb), .13), transparent 70%),
+      radial-gradient(30% 26% at 58% 18%, rgba(var(--accent-4-rgb), .07), transparent 70%);
+    animation: auroraDrift 48s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes auroraDrift {
+    0%   { transform: translate3d(-3%, -2%, 0) rotate(0deg) scale(1); }
+    50%  { transform: translate3d(3%, 2%, 0) rotate(4deg) scale(1.06); }
+    100% { transform: translate3d(-1%, 4%, 0) rotate(-3deg) scale(1.03); }
+  }
+
+  /* 3. blocks glide in while they scroll into view (Chromium/Safari 26; others show them normally) */
+  @supports (animation-timeline: view()) {
+    body#index #content .box,
+    body#torrents #torrent_table tr.torrent,
+    body#forums table.forum_index tr.row,
+    body#forums table.forum_list tr.row {
+      animation: revealUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  }
+}
+
+/* ---------- home: poster cards (hover only; scoped to #latest5tor) ---------- */
+#latest5tor .owl-stage-outer { padding: 16px 0 !important; margin: -16px 0 !important; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #latest5tor .owl-item > div { position: relative !important; overflow: hidden !important; isolation: isolate; transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .28s ease, border-color .15s ease, background-color .15s ease, opacity .25s ease !important; }
+  /* 1. lift + tilt */
+  #latest5tor .owl-item > div:hover {
+    transform: perspective(800px) translateY(-8px) rotateX(3deg) scale(1.03) !important;
+    box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 22px rgba(var(--accent-rgb), .14), 0 20px 40px rgba(0, 0, 0, .55), 0 0 30px rgba(var(--accent-rgb), .22) !important;
+    z-index: 3 !important;
+  }
+  /* 3. rotating gradient ring: a big spinning conic square clipped by the card, covered by an inner face */
+  #latest5tor .owl-item > div::before {
+    content: ""; position: absolute; z-index: -2; left: 50%; top: 50%; width: 220%; aspect-ratio: 1; translate: -50% -50%;
+    background: conic-gradient(from 0deg, transparent 0 55%, var(--accent) 72%, var(--accent-2) 86%, transparent 100%);
+    opacity: 0; transition: opacity .25s ease; animation: posterRing 3.2s linear infinite; pointer-events: none;
+  }
+  #latest5tor .owl-item > div::after {
+    content: ""; position: absolute; z-index: -1; inset: 2px; border-radius: calc(var(--r) - 2px);
+    background: var(--surface-3); pointer-events: none; opacity: 0; transition: opacity .25s ease;
+  }
+  #latest5tor .owl-item > div:hover::before, #latest5tor .owl-item > div:hover::after { opacity: 1; }
+  @keyframes posterRing { to { rotate: 360deg; } }
+  /* 2. light sweep across the poster */
+  #latest5tor .owl-item > div > a > div { position: relative !important; overflow: hidden !important; }
+  #latest5tor .owl-item > div > a > div::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; transform: translateX(-130%);
+    background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .30) 50%, transparent 62%);
+  }
+  #latest5tor .owl-item > div:hover > a > div::after { transform: translateX(130%); transition: transform .85s ease; }
+  /* 9. spotlight: the hovered poster stays bright, the rest step back */
+  #latest5tor .owl-stage:has(.owl-item:hover) .owl-item:not(:hover) > div { opacity: .55; }
+}
+
+/* ---------- quotes inside quotes: every level gets its own colour ---------- */
+blockquote:not(.gz-editor-card *) blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(var(--accent-2-rgb), .10), rgba(var(--accent-2-rgb), .10)), var(--surface-3) !important;
+  border-color: rgba(var(--accent-2-rgb), .55) !important; border-right-color: var(--accent-2) !important;
+}
+blockquote:not(.gz-editor-card *) blockquote blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(236, 72, 153, .10), rgba(236, 72, 153, .10)), var(--surface-3) !important;
+  border-color: rgba(236, 72, 153, .55) !important; border-right-color: #ec4899 !important;
+}
+blockquote:not(.gz-editor-card *) blockquote blockquote blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(245, 190, 50, .10), rgba(245, 190, 50, .10)), var(--surface-3) !important;
+  border-color: rgba(245, 190, 50, .55) !important; border-right-color: #f5be32 !important;
+}
+
+/* ---------- forum thread list: unread / pinned / locked each read at a glance ---------- */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:first-child { position: relative !important; }
+/* unread: cyan edge + a pulsing dot */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) {
+  box-shadow: inset -3px 0 0 var(--accent-2) !important;
+  background: linear-gradient(270deg, rgba(var(--accent-2-rgb), .08), transparent 40%) !important;
+}
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) h4 a,
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) .last_topic a { color: var(--strong) !important; font-weight: 700 !important; }
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)::after {
+  content: ""; position: absolute; top: 9px; inset-inline-end: 9px; width: 8px; height: 8px; border-radius: 50%; pointer-events: none;
+  background: var(--accent-2); box-shadow: 0 0 0 0 rgba(var(--accent-2-rgb), .7);
+}
+/* pinned: gold edge and a warm wash */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread_sticky, .read_sticky, .read_locked_sticky, .unread_locked_sticky)) {
+  box-shadow: inset -3px 0 0 #f5be32 !important;
+  background: linear-gradient(270deg, rgba(245, 190, 50, .10), transparent 45%) !important;
+}
+/* locked: quieter, with a fine diagonal hatch on the status cell */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.read_locked, .unread_locked, .read_locked_sticky, .unread_locked_sticky)) { opacity: .78; }
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.read_locked, .unread_locked, .read_locked_sticky, .unread_locked_sticky) {
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 4px, transparent 4px 9px) !important; border-radius: var(--r-sm);
+}
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:hover { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)::after { animation: threadPulse 1.9s ease-out infinite; }
+  @keyframes threadPulse { 0% { box-shadow: 0 0 0 0 rgba(var(--accent-2-rgb), .7); } 70%, 100% { box-shadow: 0 0 0 9px rgba(var(--accent-2-rgb), 0); } }
+}
+
+
+/* =====================================================================
+   EXPERIMENT "WOW" (revert point: allnew.bak9)
+   1. section moods  2. home bento  3. category spines & seeding edge
+   4. living buttons  5. title accent bar  6. animated dropdowns
+   ===================================================================== */
+
+/* 1. each section of the site gets its own colour mood (tokens only) */
+html:has(> body#forums)   { --accent-rgb: 59,130,246;  --accent-2-rgb: 34,211,238;  --accent-3: #60a5fa; --accent-4-rgb: 99,102,241; }
+html:has(> body#requests) { --accent-rgb: 16,185,129;  --accent-2-rgb: 163,230,53;  --accent-3: #34d399; --accent-4-rgb: 20,184,166; }
+html:has(> body#user)     { --accent-rgb: 236,72,153;  --accent-2-rgb: 245,158,11;  --accent-3: #f472b6; --accent-4-rgb: 168,85,247; }
+html:has(> body:is(#staffpm,#reportsv2,#tools)) { --accent-rgb: 239,68,68; --accent-2-rgb: 251,146,60; --accent-3: #f87171; --accent-4-rgb: 245,158,11; }
+html:has(> body#inbox)    { --accent-rgb: 20,184,166;  --accent-2-rgb: 56,189,248;  --accent-3: #2dd4bf; --accent-4-rgb: 59,130,246; }
+html:has(> body#wiki)     { --accent-rgb: 245,158,11;  --accent-2-rgb: 253,224,71;  --accent-3: #fbbf24; --accent-4-rgb: 249,115,22; }
+
+/* 2. home page bento (wide screens only; below that the existing stacked layout stays) */
+@media (min-width: 1101px) {
+  body#index #content > .thin:has(> .sidebar_index) {
+    display: grid !important; grid-template-columns: repeat(12, minmax(0, 1fr)) !important; gap: 18px !important; align-items: start; grid-template-rows: auto auto auto 1fr auto !important;
+  }
+  body#index #content > .thin:has(> .sidebar_index) > .sidebar_index { display: contents; }
+  body#index #content > .thin:has(> .sidebar_index) > * { min-width: 0; margin: 0; }
+  body#index .main_column_index { grid-column: 1 / span 8 !important; grid-row: 2 / span 3 !important; }
+  body#index .sidebar_index > .box:not(:nth-last-child(-n+4)) { grid-column: 9 / -1 !important; grid-row: auto !important; }
+  body#index .sidebar_index > .box:nth-last-child(-n+4) { grid-column: span 3 !important; grid-row: 5 !important; align-self: stretch; }
+  body#index #latest_torrents, body#index .box:has(#latest5tor) { grid-column: 1 / -1 !important; grid-row: 1 !important; }
+}
+
+/* 3. category spines on torrent rows + green edge on what you seed */
+body#torrents #torrent_table tr.torrent td:first-child { box-shadow: inset -3px 0 0 var(--cat, transparent); }
+body#torrents #torrent_table tr.torrent:has(.cats_movies)   { --cat: #f59e0b; }
+body#torrents #torrent_table tr.torrent:has(.cats_tv)       { --cat: #38bdf8; }
+body#torrents #torrent_table tr.torrent:has(.cats_games)    { --cat: #a855f7; }
+body#torrents #torrent_table tr.torrent:has(.cats_books)    { --cat: #22c55e; }
+body#torrents #torrent_table tr.torrent:has(.cats_software) { --cat: #ec4899; }
+body#torrents #torrent_table tr.torrent:has(.cats_theater)  { --cat: #f43f5e; }
+body#torrents #torrent_table tr.torrent:has(.cats_other)    { --cat: #94a3b8; }
+body#torrents #torrent_table tr.torrent:is(.tl_seeding, :has(.tl_seeding), :has(.snatched_torrent)) td:first-child {
+  box-shadow: inset -3px 0 0 var(--cat, #22c55e), inset 14px 0 22px -16px rgba(34,197,94,.55);
+}
+
+/* 4. living buttons */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #content :is(input[type="submit"], button:not(.tablinks):not(.gz-editor-card *), a.brackets, .button):not(.gz-editor-card *) {
+    transition: transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s, filter .18s;
+  }
+  #content :is(input[type="submit"], input[type="button"]):not(.gz-editor-card *):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(var(--accent-rgb), .38);
+    filter: brightness(1.1);
+  }
+  #content :is(input[type="submit"], input[type="button"]):not(.gz-editor-card *):active {
+    transform: translateY(0) scale(.97); box-shadow: 0 2px 8px rgba(var(--accent-rgb), .3);
+  }
+}
+
+/* 5. accent bar under page titles (pseudo-element, no gradient text) */
+#content .header > h2 { position: relative; padding-bottom: 10px; }
+#content .header > h2::after {
+  content: ""; position: absolute; left: 50%; margin-left: -28px; bottom: 0; width: 56px; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), .6);
+}
+
+/* 6. dropdowns open with a soft slide + fade */
+@media (prefers-reduced-motion: no-preference) {
+  #menu .nav_dropdown > div {
+    opacity: 0; transform: translateY(-6px) scale(.98); transform-origin: top;
+    transition: opacity .18s ease, transform .18s ease, display .18s allow-discrete;
+  }
+  #menu .nav_dropdown:hover > div, #menu .nav_dropdown:focus-within > div { opacity: 1; transform: none; }
+  @starting-style {
+    #menu .nav_dropdown:hover > div, #menu .nav_dropdown:focus-within > div { opacity: 0; transform: translateY(-6px) scale(.98); }
+  }
 }
