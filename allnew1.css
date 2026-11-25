@@ -26,9 +26,10 @@
   --r: 14px;
   --r-lg: 20px;
   --gap: 18px;
-  --page: min(1100px, 94vw);   /* narrow version (was 1480px) - the only change */
+  --page: min(1480px, 94vw);
   --banner-ratio: 2000 / 300;   /* the home banners are 2000x300 */
   --font: "Heebo", "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
 }
 
 /* ---------- base ---------- */
@@ -63,7 +64,7 @@ body {
 body::before, body::after { display: none !important; }
 #wrapper, .body, .tdhack { background: transparent !important; }
 #wrapper { position: static !important; top: auto !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 0 24px !important; border: 0 !important; }
-.hidden { display: none !important; }
+.hidden:not([style*="display"]) { display: none !important; }
 
 /* the live BBCode editor (.gz-editor-card) brings its own styles: every global rule below skips it */
 :is(div, span, p, td, th, li, label, a, strong, em, input, textarea, select, button,
@@ -101,9 +102,9 @@ img { max-width: 100%; }
   margin-top: 10px !important;
   margin-bottom: var(--gap) !important;
   padding: 6px !important;
-  background: var(--bg) !important;
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  background: rgba(10, 12, 18, .66) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
   border: 1px solid var(--line) !important;
   border-radius: 999px !important;
   box-shadow: 0 12px 32px rgba(0, 0, 0, .4) !important;
@@ -359,7 +360,7 @@ img { max-width: 100%; }
 #userinfo #stats_leeching,
 #userinfo #stats_ratio {
   flex: 1 1 calc(33.333% - 8px) !important;
-  flex-direction: column !important;
+  flex-direction: column;
   gap: 8px !important;
   min-width: 0 !important;
   height: 78px !important;
@@ -492,10 +493,10 @@ img { max-width: 100%; }
 
 /* ---------- panels ---------- */
 .box, #more_news, .panel__body, table.forum_post, table.message_table {
-  background: var(--surface) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, 0) 120px), var(--surface) !important;
   border: 1px solid var(--line) !important;
   border-radius: var(--r-lg) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .25) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 1px 2px rgba(0, 0, 0, .4), 0 14px 34px rgba(0, 0, 0, .28) !important;
   margin: 0 0 var(--gap) !important;
   color: var(--text) !important;
   overflow: hidden !important;
@@ -556,11 +557,14 @@ div.head {
 
 /* tabs inside a head: one segmented control, centred both ways */
 div.head::before, div.head::after { content: none !important; display: none !important; }
+/* the site's own clearfix pseudo-elements on the home tab boxes can push the tabs off-centre */
+#latest_torrents::before, #latest_torrents::after, #latestForums::before, #latestForums::after, #recommended::before, #recommended::after { content: none !important; display: none !important; }
 div.head:has(> span > a[class*="simple-tabs"]) {
   position: relative !important;
-  flex-wrap: nowrap !important;
-  justify-content: center !important;
-  align-content: center !important;
+  display: grid !important;
+  place-items: center !important;
+  box-sizing: border-box !important;
+  float: none !important;
   height: 68px !important;
   min-height: 0 !important;
   padding-block: 0 !important;
@@ -571,8 +575,12 @@ div.head:has(> span > a[class*="simple-tabs"]) > span {
   float: none !important;
   flex: 0 0 auto !important;
   align-self: center !important;
+  justify-self: center !important;
   vertical-align: middle !important;
   transform: none !important;
+  top: auto !important;
+  bottom: auto !important;
+  inset-block: auto !important;
 }
 div.head:has(> span > a[class*="simple-tabs"]) > a[data-toggle-target] {
   position: absolute !important;
@@ -2174,8 +2182,8 @@ table.forum_post td.body { vertical-align: top !important; line-height: 1.8 !imp
 }
 
 /* hidden always wins, whatever else matched */
-.hidden, tr.hidden, td.hidden,
-#wrapper#wrapper#wrapper .hidden { display: none !important; }
+.hidden:not([style*="display"]), tr.hidden:not([style*="display"]), td.hidden:not([style*="display"]),
+#wrapper#wrapper#wrapper .hidden:not([style*="display"]) { display: none !important; }
 
 /* inline-hidden rows (toggled by site JS) stay hidden at every width */
 #content tr[style*="display: none"], #content tr[style*="display:none"] { display: none !important; }
@@ -2522,3 +2530,374 @@ body#forums form.edit_form[name="forum_thread"] table.layout tr:not(.hidden) > t
 #content .thin > form.search_form[name="forums"]:has(#forum_search_cat_list) > table.layout > tbody > tr:has(> td[colspan]) { border-top: 1px solid var(--line) !important; padding: 18px 24px !important; }
 #content #forum_search_cat_list { flex: 1 1 100% !important; max-width: 100% !important; }
 #content #forum_search_cat_list > tbody > tr > td { break-inside: avoid !important; margin: 0 0 14px !important; }
+
+/* ---------- reports v2: a report opens on click (jQuery .toggle() sets inline display on a .hidden table) ---------- */
+body#reportsv2 #all_reports { width: 100% !important; max-width: 1100px !important; margin-inline: auto !important; }
+body#reportsv2 #content form.manage_form table.layout { width: 100% !important; table-layout: auto !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden) { display: grid !important; grid-template-columns: 200px minmax(0, 1fr) !important; align-items: start !important; gap: 8px 20px !important; padding: 14px 4px !important; border-bottom: 1px solid var(--line) !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:has(> td:nth-child(4)) { grid-template-columns: 200px minmax(0, 1fr) 150px minmax(0, 1fr) !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:last-child { border-bottom: 0 !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td { display: block !important; min-width: 0 !important; width: auto !important; padding: 0 !important; border: 0 !important; background: none !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="3"] { grid-column: 2 / -1 !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 8px 12px !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="4"] { grid-column: 1 / -1 !important; display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: center !important; gap: 8px 12px !important; padding-top: 6px !important; }
+body#reportsv2 #content form.manage_form table.layout td > br { display: none !important; }
+body#reportsv2 #content form.manage_form table.layout td > div { flex: 1 1 100% !important; text-align: start !important; }
+body#reportsv2 #content form.manage_form table.layout input[type="text"] { flex: 1 1 260px !important; width: auto !important; min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important; }
+body#reportsv2 #content form.manage_form table.layout td:not([colspan]) input[type="text"] { width: 100% !important; }
+body#reportsv2 #content form.manage_form table.layout textarea { flex: 1 1 100% !important; width: 100% !important; min-width: 0 !important; max-width: 100% !important; min-height: 90px !important; box-sizing: border-box !important; }
+body#reportsv2 #content form.manage_form table.layout td.label { color: var(--muted) !important; font-weight: 600 !important; }
+body#reportsv2 #content form.manage_form table.layout td.label select { margin-inline-start: 6px !important; }
+@media (max-width: 760px) {
+  body#reportsv2 #content form.manage_form table.layout > tbody > tr:not(.hidden), body#reportsv2 #content form.manage_form table.layout > tbody > tr:has(> td:nth-child(4)) { grid-template-columns: minmax(0, 1fr) !important; }
+  body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="3"], body#reportsv2 #content form.manage_form table.layout > tbody > tr > td[colspan="4"] { grid-column: 1 / -1 !important; }
+}
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] { display: block !important; line-height: 1.8 !important; }
+body#reportsv2 #content form.manage_form table.layout > tbody > tr:first-child > td[colspan="3"] > br { display: inline !important; }
+
+/* ---------- notification banners (new quote / PM / etc.): clear, glowing, whole card is the link ---------- */
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) {
+  --nb: 34, 197, 94;
+  position: relative !important;
+  display: flex !important; align-items: center !important; justify-content: center !important; gap: 14px !important;
+  min-width: min(520px, 100%) !important; width: fit-content !important; max-width: 100% !important;
+  margin: 0 auto 10px !important; padding: 15px 30px !important;
+  background: linear-gradient(135deg, rgba(var(--nb), .30), rgba(var(--nb), .10)) !important;
+  border: 1px solid rgba(var(--nb), .75) !important;
+  border-radius: var(--r) !important;
+  box-shadow: 0 0 0 4px rgba(var(--nb), .08), 0 12px 32px rgba(var(--nb), .22) !important;
+  color: #fff !important; font-size: 15.5px !important; font-weight: 700 !important; line-height: 1.5 !important;
+  transition: transform .15s ease, border-color .15s ease !important;
+}
+#alerts .alertbar.goldbox, #alerts .alertbar.yellowbox { --nb: 245, 190, 50; }
+#alerts .alertbar.bluebox { --nb: 59, 130, 246; }
+#alerts .alertbar.redbox { --nb: 239, 68, 68; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox):hover { transform: translateY(-2px) !important; border-color: rgba(var(--nb), 1) !important; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox)::before {
+  content: ""; flex: 0 0 11px; width: 11px; height: 11px; border-radius: 50%;
+  background: rgb(var(--nb)); box-shadow: 0 0 0 0 rgba(var(--nb), .7);
+  animation: nbPulse 1.8s ease-out infinite;
+}
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox)::after {
+  content: "←"; font-size: 18px; line-height: 1; color: rgb(var(--nb)); transition: transform .15s ease;
+}
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox):hover::after { transform: translateX(-4px); }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) a { position: static !important; margin: 0 !important; color: #fff !important; text-decoration: none !important; }
+#alerts .alertbar:is(.greenbox, .goldbox, .yellowbox, .bluebox, .redbox) a::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+@keyframes nbPulse { 0% { box-shadow: 0 0 0 0 rgba(var(--nb), .65); } 70%, 100% { box-shadow: 0 0 0 11px rgba(var(--nb), 0); } }
+@media (prefers-reduced-motion: reduce) { #alerts .alertbar::before { animation: none !important; } }
+
+/* ---------- motion layer (progressive enhancement; all of it is off for prefers-reduced-motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* 1. soft cross-fade between pages (Chromium/Edge; ignored elsewhere) */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: 160ms ease-out both vtOut; }
+  ::view-transition-new(root) { animation: 240ms ease-in both vtIn; }
+  @keyframes vtOut { to { opacity: 0; } }
+  @keyframes vtIn { from { opacity: 0; } }
+
+  /* 2. slowly drifting aurora behind the page (GPU transform only, never repaints the page) */
+  html::before {
+    content: ""; position: fixed; inset: -25%; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(38% 34% at 22% 28%, rgba(56, 189, 248, .10), transparent 70%),
+      radial-gradient(34% 30% at 78% 64%, rgba(124, 92, 255, .13), transparent 70%),
+      radial-gradient(30% 26% at 58% 18%, rgba(236, 72, 153, .06), transparent 70%);
+    animation: auroraDrift 48s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes auroraDrift {
+    0%   { transform: translate3d(-3%, -2%, 0) rotate(0deg) scale(1); }
+    50%  { transform: translate3d(3%, 2%, 0) rotate(4deg) scale(1.06); }
+    100% { transform: translate3d(-1%, 4%, 0) rotate(-3deg) scale(1.03); }
+  }
+
+  /* 3. blocks glide in while they scroll into view (Chromium/Safari 26; others show them normally) */
+  @supports (animation-timeline: view()) {
+    body#index #content .box,
+    body#torrents #torrent_table tr.torrent,
+    body#forums table.forum_index tr.row,
+    body#forums table.forum_list tr.row {
+      animation: revealUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  }
+}
+
+/* ---------- home: poster cards (hover only; scoped to #latest5tor) ---------- */
+#latest5tor .owl-stage-outer { padding: 16px 0 !important; margin: -16px 0 !important; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #latest5tor .owl-item > div { position: relative !important; overflow: hidden !important; isolation: isolate; transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .28s ease, border-color .15s ease, background-color .15s ease, opacity .25s ease !important; }
+  /* 1. lift + tilt */
+  #latest5tor .owl-item > div:hover {
+    transform: perspective(800px) translateY(-8px) rotateX(3deg) scale(1.03) !important;
+    box-shadow: inset 0 0 0 1px var(--accent), inset 0 0 22px rgba(124, 92, 255, .14), 0 20px 40px rgba(0, 0, 0, .55), 0 0 30px rgba(124, 92, 255, .22) !important;
+    z-index: 3 !important;
+  }
+  /* 3. rotating gradient ring: a big spinning conic square clipped by the card, covered by an inner face */
+  #latest5tor .owl-item > div::before {
+    content: ""; position: absolute; z-index: -2; left: 50%; top: 50%; width: 220%; aspect-ratio: 1; translate: -50% -50%;
+    background: conic-gradient(from 0deg, transparent 0 55%, var(--accent) 72%, var(--accent-2) 86%, transparent 100%);
+    opacity: 0; transition: opacity .25s ease; animation: posterRing 3.2s linear infinite; pointer-events: none;
+  }
+  #latest5tor .owl-item > div::after {
+    content: ""; position: absolute; z-index: -1; inset: 2px; border-radius: calc(var(--r) - 2px);
+    background: var(--surface-3); pointer-events: none; opacity: 0; transition: opacity .25s ease;
+  }
+  #latest5tor .owl-item > div:hover::before, #latest5tor .owl-item > div:hover::after { opacity: 1; }
+  @keyframes posterRing { to { rotate: 360deg; } }
+  /* 2. light sweep across the poster */
+  #latest5tor .owl-item > div > a > div { position: relative !important; overflow: hidden !important; }
+  #latest5tor .owl-item > div > a > div::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; transform: translateX(-130%);
+    background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .30) 50%, transparent 62%);
+  }
+  #latest5tor .owl-item > div:hover > a > div::after { transform: translateX(130%); transition: transform .85s ease; }
+  /* 9. spotlight: the hovered poster stays bright, the rest step back */
+  #latest5tor .owl-stage:has(.owl-item:hover) .owl-item:not(:hover) > div { opacity: .55; }
+}
+
+/* ---------- quotes inside quotes: every level gets its own colour ---------- */
+blockquote:not(.gz-editor-card *) blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(56, 189, 248, .10), rgba(56, 189, 248, .10)), var(--surface-3) !important;
+  border-color: rgba(56, 189, 248, .55) !important; border-right-color: var(--accent-2) !important;
+}
+blockquote:not(.gz-editor-card *) blockquote blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(236, 72, 153, .10), rgba(236, 72, 153, .10)), var(--surface-3) !important;
+  border-color: rgba(236, 72, 153, .55) !important; border-right-color: #ec4899 !important;
+}
+blockquote:not(.gz-editor-card *) blockquote blockquote blockquote:not(.spoiler) {
+  background: linear-gradient(0deg, rgba(245, 190, 50, .10), rgba(245, 190, 50, .10)), var(--surface-3) !important;
+  border-color: rgba(245, 190, 50, .55) !important; border-right-color: #f5be32 !important;
+}
+
+/* ---------- forum thread list: unread / pinned / locked each read at a glance ---------- */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:first-child { position: relative !important; }
+/* unread: cyan edge + a pulsing dot */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) {
+  box-shadow: inset -3px 0 0 var(--accent-2) !important;
+  background: linear-gradient(270deg, rgba(56, 189, 248, .08), transparent 40%) !important;
+}
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) h4 a,
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)) .last_topic a { color: var(--strong) !important; font-weight: 700 !important; }
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)::after {
+  content: ""; position: absolute; top: 9px; inset-inline-end: 9px; width: 8px; height: 8px; border-radius: 50%; pointer-events: none;
+  background: var(--accent-2); box-shadow: 0 0 0 0 rgba(56, 189, 248, .7);
+}
+/* pinned: gold edge and a warm wash */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.unread_sticky, .read_sticky, .read_locked_sticky, .unread_locked_sticky)) {
+  box-shadow: inset -3px 0 0 #f5be32 !important;
+  background: linear-gradient(270deg, rgba(245, 190, 50, .10), transparent 45%) !important;
+}
+/* locked: quieter, with a fine diagonal hatch on the status cell */
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:has(> td:is(.read_locked, .unread_locked, .read_locked_sticky, .unread_locked_sticky)) { opacity: .78; }
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.read_locked, .unread_locked, .read_locked_sticky, .unread_locked_sticky) {
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 4px, transparent 4px 9px) !important; border-radius: var(--r-sm);
+}
+body#forums table.forum_index:has(> tbody > tr.colhead) tr.row:hover { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  body#forums table.forum_index:has(> tbody > tr.colhead) tr.row > td:is(.unread, .unread_sticky, .unread_locked, .unread_locked_sticky)::after { animation: threadPulse 1.9s ease-out infinite; }
+  @keyframes threadPulse { 0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, .7); } 70%, 100% { box-shadow: 0 0 0 9px rgba(56, 189, 248, 0); } }
+}
+
+/* =====================================================================
+   1. sticky column heads on torrent lists   2. glass tooltips
+   3. linked post lights up, and is not hidden under the sticky menu
+   ===================================================================== */
+
+/* 1 */
+body#torrents table.torrent_table > tbody > tr.colhead > td,
+body#torrents table.torrent_table > tbody > tr.colhead_dark > td {
+  position: sticky !important;
+  top: 67px;
+  z-index: 50;
+  background: rgba(16, 19, 26, .95) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 1px 0 var(--line-2), 0 10px 18px -12px rgba(0, 0, 0, .7);
+}
+
+/* 2 */
+.tooltipster-base .tooltipster-box, .tooltipster-default {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 60%), rgba(30, 35, 50, .8) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, .14) !important;
+  border-radius: var(--r) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 16px 40px rgba(0, 0, 0, .55), 0 0 0 1px rgba(124, 92, 255, .22) !important;
+}
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-background { border-top-color: rgba(30, 35, 50, .92) !important; }
+.tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-background { border-bottom-color: rgba(30, 35, 50, .92) !important; }
+.tooltipster-sidetip.tooltipster-left .tooltipster-arrow-background { border-left-color: rgba(30, 35, 50, .92) !important; }
+.tooltipster-sidetip.tooltipster-right .tooltipster-arrow-background { border-right-color: rgba(30, 35, 50, .92) !important; }
+.tooltipster-sidetip .tooltipster-arrow-border { border-color: rgba(255, 255, 255, .14) !important; }
+
+/* 3 */
+:is(table.forum_post, div.forum_post, [id^="post"], [id^="comment"]):target { scroll-margin-top: 96px; }
+@media (prefers-reduced-motion: no-preference) {
+  table.forum_post:target, :is(div, table)[id^="post"]:target, :is(div, table)[id^="comment"]:target {
+    outline: 2px solid rgba(56, 189, 248, .9);
+    outline-offset: 5px;
+    animation: targetGlow 2.8s ease-out forwards;
+  }
+  @keyframes targetGlow {
+    0%   { outline-color: rgba(56, 189, 248, 1); outline-offset: 12px; }
+    25%  { outline-offset: 5px; }
+    100% { outline-color: rgba(56, 189, 248, 0); outline-offset: 5px; }
+  }
+}
+/* sticky needs a non-scrolling clip: "clip" keeps the rounded corners but lets heads stick */
+body#torrents .box:has(> table.torrent_table) { overflow: clip !important; }
+
+
+/* =====================================================================
+   Docking stats bar: after the banner scrolls away, the personal stats
+   (upload / download / ratio / seeding / leeching / H&R / points ...)
+   stay under the menu as one slim glass strip, and expand back on the way up.
+   Desktop + modern browsers only; everything else keeps the static bar.
+   ===================================================================== */
+@property --dock { syntax: "<number>"; inherits: true; initial-value: 0; }  /* layout switch: flips at the midpoint */
+@property --dh   { syntax: "<number>"; inherits: true; initial-value: 0; }  /* smooth size / glass */
+/* contents fade out, the bar changes shape while invisible, then fades back in */
+@keyframes dockUp   { 0%, 49% { --dock: 0; } 50%, 100% { --dock: 1; } }
+@keyframes dockSize { from { --dh: 0; } to { --dh: 1; } }
+@keyframes dockFlip { from { flex-direction: column; } to { flex-direction: row; } }
+@keyframes dockFade { 0% { opacity: 1; } 32% { opacity: 0; } 68% { opacity: 0; } 100% { opacity: 1; } }
+
+@supports (animation-timeline: view()) and (timeline-scope: --a) {
+  @media (min-width: 1400px) and (prefers-reduced-motion: no-preference) {
+    #wrapper { timeline-scope: --bn; }
+    html, body { overflow-anchor: none; }   /* the bar changes height while docking; do not let the browser compensate the scroll */
+
+    /* the banner stops being a grid wrapper so the stats bar can stick for the whole page */
+    #banner { display: contents !important; }
+    #banner::before { display: none !important; }
+    #banner > a {
+      view-timeline: --bn block;
+      view-timeline-inset: 58px 0;   /* the bar docks when the banner's bottom edge reaches this line */
+      box-sizing: border-box !important;
+      width: var(--page) !important;
+      height: auto !important;
+      margin: 0 auto var(--gap) !important;
+      aspect-ratio: var(--banner-ratio) !important;
+      background-image: inherit !important;
+      background-color: #05070a !important;
+      background-size: contain !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border: 1px solid var(--line) !important;
+      border-radius: var(--r-lg) !important;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .35) !important;
+    }
+
+    #banner > #userinfo {
+      position: sticky !important;
+      top: 76px !important;
+      z-index: 9000 !important;
+      box-sizing: border-box !important;
+      width: var(--page) !important;
+      height: calc(154px - 108px * var(--dh)) !important;
+      overflow: hidden !important;
+      margin: 0 auto var(--gap) !important;
+      padding: calc(14px - 8px * var(--dock)) calc(14px - 4px * var(--dock)) !important;
+      gap: calc(8px - 2px * var(--dock)) !important;
+      align-content: center !important;
+      border-radius: calc(20px + 8px * var(--dh)) !important;
+      background: color-mix(in srgb, var(--surface) calc(100% - 38% * var(--dh)), transparent) !important;
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      backdrop-filter: blur(18px) saturate(150%);
+      box-shadow: 0 calc(10px + 4px * var(--dh)) calc(30px + 4px * var(--dh)) rgba(0, 0, 0, calc(.25 + .15 * var(--dh))) !important;
+      animation: dockUp linear both, dockSize linear both;
+      animation-timeline: --bn, --bn;
+      animation-range: exit 78% exit 100%;
+    }
+    #userinfo li {
+      height: calc(38px - 6px * var(--dock)) !important;
+      animation: dockFade linear both;
+      animation-timeline: --bn;
+      animation-range: exit 78% exit 100%;
+    }
+    #userinfo #stats_seeding, #userinfo #stats_leeching, #userinfo #stats_ratio {
+      height: calc(78px - 46px * var(--dock)) !important;
+      flex-basis: calc((33.333% - 8px) * (1 - var(--dock)) + 190px * var(--dock)) !important;
+      gap: calc(8px - 2px * var(--dock)) !important;
+      animation: dockFade linear both, dockFlip linear both;
+      animation-timeline: --bn, --bn;
+      animation-range: exit 78% exit 100%;
+    }
+    #userinfo #stats_seeding .stat, #userinfo #stats_leeching .stat,
+    #userinfo #stats_ratio .stat, #userinfo #stats_ratio .stat span { font-size: calc(22px - 8px * var(--dock)) !important; }
+    #userinfo #stats_seeding > a, #userinfo #stats_leeching > a, #userinfo #stats_ratio > a { font-size: calc(12.5px - .5px * var(--dock)) !important; }
+  }
+}
+
+/* =====================================================================
+   Series / group pages: the fanart becomes a cinematic backdrop that fades
+   into the page, the panels turn to glass over it, the poster floats.
+   (pure CSS: the banner <img> itself is stretched behind the page header)
+   ===================================================================== */
+#content .header:has(> .center > img.banner) { position: relative; padding-top: 150px; }
+#content .header > .center:has(> img.banner) { margin: 0; height: 0; }
+#content .header > .center > img.banner {
+  position: absolute !important;
+  top: -20px; left: calc(50% - 50vw);
+  z-index: -1;
+  width: 100vw !important;
+  max-width: none !important;
+  height: min(82vh, 760px) !important;
+  object-fit: cover;
+  object-position: 50% 20%;
+  pointer-events: none;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: saturate(1.3) brightness(.7) contrast(1.05);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24%, rgba(0,0,0,.85) 46%, rgba(0,0,0,.3) 75%, transparent 100%),
+                      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 24%, rgba(0,0,0,.85) 46%, rgba(0,0,0,.3) 75%, transparent 100%),
+              linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-composite: intersect;
+}
+/* accent colour bleeding in from the corner, and a floor so the page text stays readable */
+#content .header:has(> .center > img.banner)::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  top: -20px; left: calc(50% - 50vw); width: 100vw; height: min(82vh, 760px);
+  background:
+    radial-gradient(55% 55% at 88% 0%, rgba(var(--accent-rgb, 124, 92, 255), .30), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 24%, transparent 40%, var(--bg) 100%);
+}
+#content .header:has(> .center > img.banner) > h2 {
+  font-size: clamp(26px, 3.4vw, 46px); line-height: 1.15;
+  text-shadow: 0 2px 26px rgba(0, 0, 0, .85), 0 0 3px rgba(0, 0, 0, .7);
+}
+/* panels become glass over the backdrop */
+body:has(#content .header > .center > img.banner) #content .box:not(.gz-editor-card *) {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 140px), rgba(14, 17, 25, .66) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  border-color: rgba(255, 255, 255, .09) !important;
+}
+/* the poster floats */
+body:has(#content .header > .center > img.banner) #covers img {
+  border-radius: var(--r) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .65), 0 0 0 1px rgba(255, 255, 255, .12), 0 0 70px rgba(var(--accent-rgb, 124, 92, 255), .25) !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    #content .header > .center > img.banner {
+      animation: backdropParallax linear both; animation-timeline: scroll(root); animation-range: 0 800px;
+    }
+    @keyframes backdropParallax { to { translate: 0 120px; scale: 1.08; } }
+  }
+  @media (hover: hover) {
+    body:has(#content .header > .center > img.banner) #covers img { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+    body:has(#content .header > .center > img.banner) #covers:hover img { transform: perspective(900px) rotateY(-6deg) rotateX(3deg) scale(1.03); }
+  }
+}
+@media (max-width: 760px) {
+  #content .header > .center > img.banner, #content .header:has(> .center > img.banner)::before { height: 50vh !important; }
+  #content .header:has(> .center > img.banner) { padding-top: 90px; }
+}
+body:has(#content .header > .center > img.banner) #wrapper { overflow-x: clip; }
